@@ -1,0 +1,42 @@
+[24-Jun-2020 14:15:26 Australia/Darwin] Default exception handler: error/concurrent access from the same user is not supported Debug: 
+Error code: concurrent access from the same user is not supported
+$a contents: 
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 97 of /lib/editor/atto/autosave-ajax.php: call to print_error()
+
+[24-Jun-2020 14:16:26 Australia/Darwin] Default exception handler: error/concurrent access from the same user is not supported Debug: 
+Error code: concurrent access from the same user is not supported
+$a contents: 
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 97 of /lib/editor/atto/autosave-ajax.php: call to print_error()
+
+[24-Jun-2020 14:17:26 Australia/Darwin] Default exception handler: error/concurrent access from the same user is not supported Debug: 
+Error code: concurrent access from the same user is not supported
+$a contents: 
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 97 of /lib/editor/atto/autosave-ajax.php: call to print_error()
+
+[24-Jun-2020 14:18:26 Australia/Darwin] Default exception handler: error/concurrent access from the same user is not supported Debug: 
+Error code: concurrent access from the same user is not supported
+$a contents: 
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 97 of /lib/editor/atto/autosave-ajax.php: call to print_error()
+
+[24-Jun-2020 14:19:25 Australia/Darwin] Default exception handler: error/concurrent access from the same user is not supported Debug: 
+Error code: concurrent access from the same user is not supported
+$a contents: 
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 97 of /lib/editor/atto/autosave-ajax.php: call to print_error()
+
+[24-Jun-2020 14:19:25 Australia/Darwin] Default exception handler: error/concurrent access from the same user is not supported Debug: 
+Error code: concurrent access from the same user is not supported
+$a contents: 
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 97 of /lib/editor/atto/autosave-ajax.php: call to print_error()
+
+[02-Jul-2020 17:02:33 Australia/Darwin] Default exception handler: error/concurrent access from the same user is not supported Debug: 
+Error code: concurrent access from the same user is not supported
+$a contents: 
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 97 of /lib/editor/atto/autosave-ajax.php: call to print_error()
+

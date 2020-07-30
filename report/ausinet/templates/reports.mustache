@@ -1,0 +1,54 @@
+<div class="statics-block">
+    <div class="container">
+		<div class="reports-overview">
+		    <nav class="main-block">
+		        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    {{#sitereports}}
+        		        <a class="nav-item nav-link {{siteactive}}" id="nav-home-tab" data-toggle="tab" href="#site-report" role="tab" aria-controls="nav-home" aria-selected="true">Site</a>
+                    {{/sitereports}}
+                    {{#coursereports}}
+        		        <a class="nav-item nav-link {{courseactive}}" id="nav-contact-tab" data-toggle="tab" href="#course-report" role="tab" aria-controls="nav-contact" aria-selected="false">Courses</a>
+                    {{/coursereports}}
+                    {{#userreports}}
+        		        <a class="nav-item nav-link {{useractive}}" id="nav-profile-tab" data-toggle="tab" href="#user-report" role="tab" aria-controls="nav-profile" aria-selected="false">Users</a>
+                    {{/userreports}}
+		        </div>
+		    </nav>
+		    <!-- Site tab pane -->
+            <div class="tab-content" id="nav-tabContent">
+                {{#sitereports}}
+                <div class="tab-pane fade {{siteactive}}" id="site-report" role="tabpanel" aria-labelledby="nav-home-tab">
+                    
+                    <div class="row">
+                        {{#sitereport}}
+                    	   {{{content}}}
+                        {{/sitereport}}
+                    </div>
+                </div>
+                {{/sitereports}}
+
+                {{#coursereports}}
+                <div class="tab-pane fade {{courseactive}}" id="course-report" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="row">
+                        {{#coursereport}}
+                            {{{content}}}
+                        {{/coursereport}}
+                    </div>
+                </div>
+                {{/coursereports}}
+
+                {{#userreports}}
+                <div class="tab-pane fade {{useractive}}" id="user-report" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="row">
+                        {{#userreport}}
+                            {{{content}}}
+                        {{/userreport}}
+                    </div>
+                </div>
+                {{/userreports}}
+
+
+            </div>
+	    </div>
+    </div>
+</div>

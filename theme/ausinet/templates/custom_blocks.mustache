@@ -1,0 +1,117 @@
+{{!
+    Home Banner block.
+    PARAMS: togglebanner, image, caption, description, link;
+}}
+{{#togglebanner}}
+    <div class="banner-block">
+        {{#bannerimage}}
+        <div class="img-block">
+            <img src="{{bannerimage}}" alt="Home banner" style="max-width: 100%">
+        </div>
+        {{/bannerimage}}
+        <div class="content-block">
+            {{#bannercaption}}
+            <h2>{{bannercaption}}</h2>
+            {{/bannercaption}}
+            <p>{{{bannerdescription}}}</p>
+            {{#bannerlink}}
+            <div class="btn-block">
+                <a href="{{bannerlink}}">{{bannertext}}</a>
+            </div>
+            {{/bannerlink}}
+        </div>
+    </div>
+{{/togglebanner}}
+
+{{#toggleaboutus}}
+
+<div class="support-block">
+    <div class="container">
+        <p>{{#str}} course_contact, theme_ausinet {{/str}}</p>
+    </div>    
+</div>
+
+<div class="additional-block">
+        <div class="container">
+            <div class="row">
+            {{#aboutus_image}}
+                <div class="col-md-5">
+                    <div class="img-block">
+                        <img src="{{aboutus_image}}" alt="About us " style="max-width: 100%">
+                    </div>
+                </div>
+            {{/aboutus_image}}
+
+                <div class="{{^aboutus_image}} col-md-12 {{/aboutus_image}} col-md-7">
+                    <div class="content-block">
+                        <h2>{{{aboutus_title}}}</h2>
+                        {{{aboutus_content}}}                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/toggleaboutus}}
+
+
+{{#toggle_usercounter}}
+<div class="user-reports" id="ausinet-dashboard">
+    <div class="reports-block">
+        <ul class="ausinet-tab">
+            <li  class="active" ><a href="javascript:void(0);" data-href="#my_courses"><span>{{courses}}</span> {{#str}}courses{{/str}}</a></li>
+            <li><a href="javascript:void(0);" data-href="#completed_courses"><span>{{completed}}</span> Completed courses</a></li>      
+            <li><a href="javascript:void(0);" data-href="#badges"><span>{{badges}}</span> {{#str}} badges {{/str}}</a></li>
+            <li><a href="javascript:void(0);" data-href="#points"><span>{{{points}}}</span> Points</a></li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane active" id="my_courses">
+            <h5 class="card-title d-inline">Enrolled courses</h5>
+            {{#coursesblock}}
+                {{{coursesblock}}}
+            {{/coursesblock}}
+            {{^coursesblock}}
+                <div class="no-course-img">
+                {{#pix}} courses, block_myoverview, No courses found {{/pix}}
+                </div>
+            {{/coursesblock}}
+        </div>
+   
+        <div class="tab-pane" id="completed_courses">
+            <h5 class="card-title d-inline">Completed courses</h5>
+            {{#completed_courses}}
+                {{{completed_courses}}}
+            {{/completed_courses}}
+            {{^completed_courses}}
+                <div class="no-course-img">
+                {{#pix}} courses, block_myoverview, No courses found {{/pix}}
+                </div>
+            {{/completed_courses}}
+
+        </div>
+        <div class="tab-pane" id="badges">
+            <h5 class="card-title d-inline">My Badges</h5>
+            {{{badges_block}}}
+        </div>
+        <div class="tab-pane" id="points">
+            <h5 class="card-title d-inline">Total Points</h5>
+            {{{points_block}}}
+        </div>
+
+    </div>
+</div>
+
+
+{{#js}}
+require(['jquery'], function($) {
+    $('.ausinet-tab li').on('click', function() {
+        $('.ausinet-tab li').not($(this)).removeClass('active'); $(this).addClass('active');
+        var id = $(this).find('a').attr('data-href');
+        $("#ausinet-dashboard .tab-pane").not(id).removeClass('active');        
+        $("#ausinet-dashboard .tab-content").find(id).addClass('active');
+    })
+})
+{{/js}}
+
+{{/toggle_usercounter}}

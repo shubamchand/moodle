@@ -1,0 +1,1435 @@
+[18-May-2020 13:15:16 Australia/Darwin] Debugging: Class coursecat is now alias to autoloaded class core_course_category, course_in_list is an alias to core_course_list_element. Class coursecat_sortable_records is deprecated without replacement. Do not include coursecatlib.php in 
+* line 31 of /lib/coursecatlib.php: call to debugging()
+* line 28 of /local/reminders/locallib.php: call to require_once()
+* line 45 of /local/reminders/lib.php: call to require_once()
+* line 7692 of /lib/moodlelib.php: call to include_once()
+* line 5468 of /lib/navigationlib.php: call to get_plugin_list_with_function()
+* line 4215 of /lib/navigationlib.php: call to settings_navigation->load_local_plugin_settings()
+* line 769 of /lib/pagelib.php: call to settings_navigation->initialise()
+* line 830 of /lib/pagelib.php: call to moodle_page->magic_get_settingsnav()
+* line 4017 of /lib/navigationlib.php: call to moodle_page->__get()
+* line 781 of /lib/pagelib.php: call to flat_navigation->initialise()
+* line 830 of /lib/pagelib.php: call to moodle_page->magic_get_flatnav()
+* line 150 of /theme/ausinet/lib.php: call to moodle_page->__get()
+* line 71 of /theme/ausinet/lib.php: call to removemycourses_flatnav()
+* line 807 of /lib/outputlib.php: call to theme_ausinet_page_init()
+* line 1297 of /lib/outputrenderers.php: call to theme_config->init_page()
+* line 1941 of /lib/setuplib.php: call to core_renderer->header()
+* line 410 of /lib/external/externallib.php: call to bootstrap_renderer->__call()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[18-May-2020 13:16:14 Australia/Darwin] Debugging: Class coursecat is now alias to autoloaded class core_course_category, course_in_list is an alias to core_course_list_element. Class coursecat_sortable_records is deprecated without replacement. Do not include coursecatlib.php in 
+* line 31 of /lib/coursecatlib.php: call to debugging()
+* line 28 of /local/reminders/locallib.php: call to require_once()
+* line 45 of /local/reminders/lib.php: call to require_once()
+* line 7692 of /lib/moodlelib.php: call to include_once()
+* line 5468 of /lib/navigationlib.php: call to get_plugin_list_with_function()
+* line 4215 of /lib/navigationlib.php: call to settings_navigation->load_local_plugin_settings()
+* line 769 of /lib/pagelib.php: call to settings_navigation->initialise()
+* line 830 of /lib/pagelib.php: call to moodle_page->magic_get_settingsnav()
+* line 4017 of /lib/navigationlib.php: call to moodle_page->__get()
+* line 781 of /lib/pagelib.php: call to flat_navigation->initialise()
+* line 830 of /lib/pagelib.php: call to moodle_page->magic_get_flatnav()
+* line 150 of /theme/ausinet/lib.php: call to moodle_page->__get()
+* line 71 of /theme/ausinet/lib.php: call to removemycourses_flatnav()
+* line 807 of /lib/outputlib.php: call to theme_ausinet_page_init()
+* line 1297 of /lib/outputrenderers.php: call to theme_config->init_page()
+* line 1941 of /lib/setuplib.php: call to core_renderer->header()
+* line 410 of /lib/external/externallib.php: call to bootstrap_renderer->__call()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[18-May-2020 13:17:28 Australia/Darwin] Debugging: Class coursecat is now alias to autoloaded class core_course_category, course_in_list is an alias to core_course_list_element. Class coursecat_sortable_records is deprecated without replacement. Do not include coursecatlib.php in 
+* line 31 of /lib/coursecatlib.php: call to debugging()
+* line 28 of /local/reminders/locallib.php: call to require_once()
+* line 45 of /local/reminders/lib.php: call to require_once()
+* line 7692 of /lib/moodlelib.php: call to include_once()
+* line 5468 of /lib/navigationlib.php: call to get_plugin_list_with_function()
+* line 4215 of /lib/navigationlib.php: call to settings_navigation->load_local_plugin_settings()
+* line 769 of /lib/pagelib.php: call to settings_navigation->initialise()
+* line 830 of /lib/pagelib.php: call to moodle_page->magic_get_settingsnav()
+* line 4017 of /lib/navigationlib.php: call to moodle_page->__get()
+* line 781 of /lib/pagelib.php: call to flat_navigation->initialise()
+* line 830 of /lib/pagelib.php: call to moodle_page->magic_get_flatnav()
+* line 150 of /theme/ausinet/lib.php: call to moodle_page->__get()
+* line 71 of /theme/ausinet/lib.php: call to removemycourses_flatnav()
+* line 807 of /lib/outputlib.php: call to theme_ausinet_page_init()
+* line 1297 of /lib/outputrenderers.php: call to theme_config->init_page()
+* line 1941 of /lib/setuplib.php: call to core_renderer->header()
+* line 410 of /lib/external/externallib.php: call to bootstrap_renderer->__call()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[19-May-2020 16:52:24 Australia/Darwin] Default exception handler: Your session has most likely timed out. Please log in again. Debug: 
+Error code: invalidsesskey
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 33 of /lib/ajax/setuserpref.php: call to print_error()
+
+[20-May-2020 10:06:51 Australia/Darwin] Debugging: message_add_contact() is deprecated. Please use \core_message\api::create_contact_request() instead. If you wish to block or unblock a user please use \core_message\api::is_blocked() and \core_message\api::block_user() or \core_message\api::unblock_user() respectively. in 
+* line 3243 of /lib/deprecatedlib.php: call to debugging()
+* line 326 of /message/externallib.php: call to message_add_contact()
+* line 244 of /lib/externallib.php: call to core_message_external::create_contacts()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[20-May-2020 10:42:44 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 167 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[20-May-2020 10:42:44 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 167 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[20-May-2020 10:42:44 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 170
+[20-May-2020 10:42:53 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/locallib.php on line 268
+[20-May-2020 14:08:38 Australia/Darwin] Debugging: message_add_contact() is deprecated. Please use \core_message\api::create_contact_request() instead. If you wish to block or unblock a user please use \core_message\api::is_blocked() and \core_message\api::block_user() or \core_message\api::unblock_user() respectively. in 
+* line 3243 of /lib/deprecatedlib.php: call to debugging()
+* line 326 of /message/externallib.php: call to message_add_contact()
+* line 244 of /lib/externallib.php: call to core_message_external::create_contacts()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[20-May-2020 14:53:15 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 167 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[20-May-2020 14:53:15 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 167 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[20-May-2020 14:53:15 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 170
+[20-May-2020 14:53:27 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/locallib.php on line 268
+[21-May-2020 09:43:29 Australia/Darwin] Debugging: message_add_contact() is deprecated. Please use \core_message\api::create_contact_request() instead. If you wish to block or unblock a user please use \core_message\api::is_blocked() and \core_message\api::block_user() or \core_message\api::unblock_user() respectively. in 
+* line 3243 of /lib/deprecatedlib.php: call to debugging()
+* line 326 of /message/externallib.php: call to message_add_contact()
+* line 244 of /lib/externallib.php: call to core_message_external::create_contacts()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 10:43:07 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 10:43:07 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 10:43:07 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[21-May-2020 10:43:14 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/locallib.php on line 268
+[21-May-2020 12:33:32 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:33:33 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:33:33 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[21-May-2020 12:34:04 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:34:04 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:34:04 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[21-May-2020 12:34:38 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:34:38 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:34:38 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[21-May-2020 12:34:42 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/locallib.php on line 268
+[21-May-2020 12:34:58 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:34:58 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:34:58 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[21-May-2020 12:35:03 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/locallib.php on line 268
+[21-May-2020 12:51:46 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:51:46 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:51:46 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[21-May-2020 12:51:52 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/locallib.php on line 268
+[21-May-2020 12:53:17 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:53:17 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:53:17 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[21-May-2020 12:53:25 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/locallib.php on line 268
+[21-May-2020 12:53:42 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:53:42 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:53:42 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[21-May-2020 12:53:49 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/locallib.php on line 268
+[21-May-2020 12:54:03 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:54:03 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:54:03 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[21-May-2020 12:54:09 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/locallib.php on line 268
+[21-May-2020 12:59:16 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:59:16 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 12:59:16 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[21-May-2020 13:10:13 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 13:10:13 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[21-May-2020 13:10:13 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[21-May-2020 13:10:39 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/locallib.php on line 268
+[08-Jun-2020 15:56:50 Australia/Darwin] Default exception handler: Your session has most likely timed out. Please log in again. Debug: 
+Error code: invalidsesskey
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 33 of /lib/ajax/setuserpref.php: call to print_error()
+
+[08-Jun-2020 16:01:55 Australia/Darwin] Debugging: message_add_contact() is deprecated. Please use \core_message\api::create_contact_request() instead. If you wish to block or unblock a user please use \core_message\api::is_blocked() and \core_message\api::block_user() or \core_message\api::unblock_user() respectively. in 
+* line 3243 of /lib/deprecatedlib.php: call to debugging()
+* line 326 of /message/externallib.php: call to message_add_contact()
+* line 244 of /lib/externallib.php: call to core_message_external::create_contacts()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[08-Jun-2020 16:02:36 Australia/Darwin] Debugging: message_add_contact() is deprecated. Please use \core_message\api::create_contact_request() instead. If you wish to block or unblock a user please use \core_message\api::is_blocked() and \core_message\api::block_user() or \core_message\api::unblock_user() respectively. in 
+* line 3243 of /lib/deprecatedlib.php: call to debugging()
+* line 326 of /message/externallib.php: call to message_add_contact()
+* line 244 of /lib/externallib.php: call to core_message_external::create_contacts()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[23-Jun-2020 17:08:42 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[23-Jun-2020 22:54:28 Australia/Darwin] Default exception handler: Your session has most likely timed out. Please log in again. Debug: 
+Error code: invalidsesskey
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 33 of /lib/ajax/setuserpref.php: call to print_error()
+
+[23-Jun-2020 23:42:28 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[23-Jun-2020 23:44:30 Australia/Darwin] Default exception handler: Your session has most likely timed out. Please log in again. Debug: 
+Error code: invalidsesskey
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 33 of /lib/ajax/setuserpref.php: call to print_error()
+
+[23-Jun-2020 23:53:34 Australia/Darwin] Default exception handler: Your session has most likely timed out. Please log in again. Debug: 
+Error code: invalidsesskey
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 33 of /lib/ajax/setuserpref.php: call to print_error()
+
+[23-Jun-2020 23:53:41 Australia/Darwin] Default exception handler: Your session has most likely timed out. Please log in again. Debug: 
+Error code: invalidsesskey
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 33 of /lib/ajax/setuserpref.php: call to print_error()
+
+[23-Jun-2020 23:53:52 Australia/Darwin] Default exception handler: Your session has most likely timed out. Please log in again. Debug: 
+Error code: invalidsesskey
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 33 of /lib/ajax/setuserpref.php: call to print_error()
+
+[23-Jun-2020 23:54:47 Australia/Darwin] Default exception handler: Your session has most likely timed out. Please log in again. Debug: 
+Error code: invalidsesskey
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 33 of /lib/ajax/setuserpref.php: call to print_error()
+
+[23-Jun-2020 23:55:17 Australia/Darwin] Default exception handler: Your session has most likely timed out. Please log in again. Debug: 
+Error code: invalidsesskey
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 33 of /lib/ajax/setuserpref.php: call to print_error()
+
+[24-Jun-2020 01:01:21 Australia/Darwin] Default exception handler: Your session has most likely timed out. Please log in again. Debug: 
+Error code: invalidsesskey
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 33 of /lib/ajax/setuserpref.php: call to print_error()
+
+[24-Jun-2020 07:58:40 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 10:54:01 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 10:54:01 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 10:58:13 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 11:44:01 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 11:50:46 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 11:50:47 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 11:51:33 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 11:53:20 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 12:13:48 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 12:50:31 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 17:15:02 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 17:22:36 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 17:22:48 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 17:22:48 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 17:48:50 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[24-Jun-2020 17:48:50 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[24-Jun-2020 17:48:50 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[24-Jun-2020 17:50:19 Australia/Darwin] Debugging: Did you remember to call setType() for 'cmid'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[24-Jun-2020 17:50:19 Australia/Darwin] Debugging: Did you remember to call setType() for 'type'? Defaulting to PARAM_RAW cleaning. in 
+* line 1389 of /lib/formslib.php: call to debugging()
+* line 322 of /lib/formslib.php: call to moodleform->detectMissingSetType()
+* line 228 of /lib/formslib.php: call to moodleform->_process_submission()
+* line 169 of /theme/ausinet/lib.php: call to moodleform->__construct()
+* line 7900 of /lib/moodlelib.php: call to theme_ausinet_output_fragment_get_restrictuser_form()
+* line 415 of /lib/external/externallib.php: call to component_callback()
+* line 244 of /lib/externallib.php: call to core_external::get_fragment()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[24-Jun-2020 17:50:19 Australia/Darwin] PHP Notice:  Undefined variable: o in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/lib.php on line 172
+[24-Jun-2020 17:50:22 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/theme/ausinet/locallib.php on line 268
+[24-Jun-2020 20:47:13 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[24-Jun-2020 22:53:32 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[25-Jun-2020 10:08:50 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[25-Jun-2020 10:08:50 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[25-Jun-2020 10:24:56 Australia/Darwin] instantiating backup controller 713008e93192316d836f265f42a87356
+[25-Jun-2020 10:24:56 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:24:56 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:24:56 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:24:56 Australia/Darwin] applying plan defaults
+[25-Jun-2020 10:24:56 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:24:56 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 10:24:56 Australia/Darwin] checking plan security
+[25-Jun-2020 10:24:56 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:24:56 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:24:56 Australia/Darwin] calculating controller checksum 6615250d7d980643c335424c2f382f3d
+[25-Jun-2020 10:24:56 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:24:56 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:24:56 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:24:56 Australia/Darwin] calculating controller checksum ccc2a3320a207e01353bba5208ca38a1
+[25-Jun-2020 10:24:56 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:24:56 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:24:56 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:24:56 Australia/Darwin] instantiating restore controller 62fbd4a9fc84b48b266395ec687d8805
+[25-Jun-2020 10:24:56 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:24:56 Australia/Darwin] loading backup info
+[25-Jun-2020 10:24:56 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:24:56 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:24:56 Australia/Darwin] applying restore defaults
+[25-Jun-2020 10:24:56 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:24:56 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 10:24:56 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 10:24:56 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 10:24:56 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 10:24:56 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:24:56 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:24:56 Australia/Darwin] checking plan security
+[25-Jun-2020 10:24:56 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 10:24:56 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:24:56 Australia/Darwin] calculating controller checksum 9b293d7556689b8b5fdc5232938974fb
+[25-Jun-2020 10:24:56 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:24:56 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:24:56 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:24:56 Australia/Darwin] calculating controller checksum 7f75afb0321a6cce70b92338c137e142
+[25-Jun-2020 10:24:56 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:24:56 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:24:56 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:24:56 Australia/Darwin] calculating controller checksum 2eafa5ce84630829eca7a47045360329
+[25-Jun-2020 10:24:56 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:24:57 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 10:24:57 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:24:57 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:28:12 Australia/Darwin] instantiating backup controller a6c857a57e8c57d0c2483c8b67928a51
+[25-Jun-2020 10:28:12 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:28:12 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:28:12 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:28:12 Australia/Darwin] applying plan defaults
+[25-Jun-2020 10:28:12 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:28:12 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 10:28:12 Australia/Darwin] checking plan security
+[25-Jun-2020 10:28:12 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:28:12 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:28:12 Australia/Darwin] calculating controller checksum d8f680e4b0b3df7938649510e8cfc05c
+[25-Jun-2020 10:28:12 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:28:12 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:28:12 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:28:12 Australia/Darwin] calculating controller checksum daa1a4782fcb71d7b8d19bf8bb765c93
+[25-Jun-2020 10:28:12 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:28:13 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:28:13 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:28:13 Australia/Darwin] instantiating restore controller 83957bb4558b71fbbca31215ab05ca67
+[25-Jun-2020 10:28:13 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:28:13 Australia/Darwin] loading backup info
+[25-Jun-2020 10:28:13 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:28:13 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:28:13 Australia/Darwin] applying restore defaults
+[25-Jun-2020 10:28:13 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:28:13 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 10:28:13 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 10:28:13 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 10:28:13 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 10:28:13 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:28:13 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:28:13 Australia/Darwin] checking plan security
+[25-Jun-2020 10:28:13 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 10:28:13 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:28:13 Australia/Darwin] calculating controller checksum 5a3623f1383d967e2b6c13402c3fbb1f
+[25-Jun-2020 10:28:13 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:28:13 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:28:13 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:28:13 Australia/Darwin] calculating controller checksum 1dbbde07226c6f0e28592a0c806c7af1
+[25-Jun-2020 10:28:13 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:28:13 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:28:13 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:28:13 Australia/Darwin] calculating controller checksum de3475566b6692383e1c24de3e8c721e
+[25-Jun-2020 10:28:13 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:28:13 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 10:28:13 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:28:13 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:32:02 Australia/Darwin] instantiating backup controller 93707c91ff911084fc8fec0320c7d576
+[25-Jun-2020 10:32:02 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:32:02 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:32:02 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:32:02 Australia/Darwin] applying plan defaults
+[25-Jun-2020 10:32:02 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:32:02 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 10:32:02 Australia/Darwin] checking plan security
+[25-Jun-2020 10:32:02 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:32:02 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:32:02 Australia/Darwin] calculating controller checksum 4ab09fa622c405bd3a825669cdd6e488
+[25-Jun-2020 10:32:02 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:32:02 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:32:02 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:32:02 Australia/Darwin] calculating controller checksum ec96ef2231e56586ef21168188250b8d
+[25-Jun-2020 10:32:02 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:32:03 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:32:03 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:32:03 Australia/Darwin] instantiating restore controller 0dbc1632e60b2314707db8b700659641
+[25-Jun-2020 10:32:03 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:32:03 Australia/Darwin] loading backup info
+[25-Jun-2020 10:32:03 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:32:03 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:32:03 Australia/Darwin] applying restore defaults
+[25-Jun-2020 10:32:03 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:32:03 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 10:32:03 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 10:32:03 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 10:32:03 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 10:32:03 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:32:03 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:32:03 Australia/Darwin] checking plan security
+[25-Jun-2020 10:32:03 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 10:32:03 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:32:03 Australia/Darwin] calculating controller checksum 3aa406fca18c94ef8db43244088e927b
+[25-Jun-2020 10:32:03 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:32:03 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:32:03 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:32:03 Australia/Darwin] calculating controller checksum c2658d37db3d5a28553904c2961c7d72
+[25-Jun-2020 10:32:03 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:32:03 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:32:03 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:32:03 Australia/Darwin] calculating controller checksum 5c96dc104c9ce9c260a850ff8c96674f
+[25-Jun-2020 10:32:03 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:32:03 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 10:32:03 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:32:03 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:51:38 Australia/Darwin] instantiating backup controller c9bd0b6136269e9af6bb8e346a749496
+[25-Jun-2020 10:51:38 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:51:38 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:51:38 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:51:38 Australia/Darwin] applying plan defaults
+[25-Jun-2020 10:51:38 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:51:38 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 10:51:38 Australia/Darwin] checking plan security
+[25-Jun-2020 10:51:38 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:51:38 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:51:38 Australia/Darwin] calculating controller checksum a13d6e784cfd8122a27b7aaede8de6d2
+[25-Jun-2020 10:51:38 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:51:38 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:51:38 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:51:38 Australia/Darwin] calculating controller checksum a45fbaefccebb32b5922ab7298ce4877
+[25-Jun-2020 10:51:38 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:51:39 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:51:39 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:51:39 Australia/Darwin] instantiating restore controller cf7ed3ce715042c0f4b203d4ddbdda2a
+[25-Jun-2020 10:51:39 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:51:39 Australia/Darwin] loading backup info
+[25-Jun-2020 10:51:39 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:51:39 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:51:39 Australia/Darwin] applying restore defaults
+[25-Jun-2020 10:51:39 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:51:39 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 10:51:39 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 10:51:39 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 10:51:39 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 10:51:39 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:51:39 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:51:39 Australia/Darwin] checking plan security
+[25-Jun-2020 10:51:39 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 10:51:39 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:51:39 Australia/Darwin] calculating controller checksum 315062eff7b765a67228f002bcceae2d
+[25-Jun-2020 10:51:39 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:51:39 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:51:39 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:51:39 Australia/Darwin] calculating controller checksum bec9318972c2b3d7a25c0caca74fddd6
+[25-Jun-2020 10:51:39 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:51:39 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:51:39 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:51:39 Australia/Darwin] calculating controller checksum 47dcfd5fa6201ff1a19cfce5e2057f5d
+[25-Jun-2020 10:51:39 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:51:39 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 10:51:39 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:51:39 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:52:03 Australia/Darwin] instantiating backup controller 23679bfa29720755693a2bdd045c78fa
+[25-Jun-2020 10:52:03 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:52:03 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:52:03 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:52:03 Australia/Darwin] applying plan defaults
+[25-Jun-2020 10:52:03 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:52:03 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 10:52:03 Australia/Darwin] checking plan security
+[25-Jun-2020 10:52:03 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:52:03 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:52:03 Australia/Darwin] calculating controller checksum 73bc0d1fa468d276ce024003ff348d63
+[25-Jun-2020 10:52:03 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:52:03 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:52:03 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:52:03 Australia/Darwin] calculating controller checksum 5159246d90c8aa39b6fb2cd9ae5bd9c2
+[25-Jun-2020 10:52:03 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:52:03 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:52:03 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:52:03 Australia/Darwin] instantiating restore controller 7fdca8de0fd69fbd1a7871680222ca17
+[25-Jun-2020 10:52:03 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:52:03 Australia/Darwin] loading backup info
+[25-Jun-2020 10:52:03 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:52:03 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:52:03 Australia/Darwin] applying restore defaults
+[25-Jun-2020 10:52:03 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:52:03 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 10:52:03 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 10:52:03 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 10:52:03 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 10:52:03 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:52:03 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:52:03 Australia/Darwin] checking plan security
+[25-Jun-2020 10:52:03 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 10:52:03 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:52:03 Australia/Darwin] calculating controller checksum 4b7e111140d3b53f0bf21e19fe230956
+[25-Jun-2020 10:52:03 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:52:03 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:52:03 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:52:03 Australia/Darwin] calculating controller checksum 65728d7815100db9ae6ecda535cc1984
+[25-Jun-2020 10:52:03 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:52:03 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:52:03 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:52:03 Australia/Darwin] calculating controller checksum 19e5ba9c80777a328a8bbf48bc7c1e8d
+[25-Jun-2020 10:52:03 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:52:03 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 10:52:04 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:52:04 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:56:37 Australia/Darwin] instantiating backup controller 2e4bd7ea96b517d11c0d360a0efc966f
+[25-Jun-2020 10:56:37 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:56:37 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:56:37 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:56:37 Australia/Darwin] applying plan defaults
+[25-Jun-2020 10:56:37 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:56:37 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 10:56:37 Australia/Darwin] checking plan security
+[25-Jun-2020 10:56:37 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:56:37 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:56:37 Australia/Darwin] calculating controller checksum 0ecd59c1a2212d8d45cde2b38bcb7e6c
+[25-Jun-2020 10:56:37 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:56:37 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:56:37 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:56:37 Australia/Darwin] calculating controller checksum ec6a86673f7aca1eadb4c5f8777c4ebf
+[25-Jun-2020 10:56:37 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:56:37 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:56:37 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:56:37 Australia/Darwin] instantiating restore controller f0c7ba843bf24e91f3688483ff3b66a5
+[25-Jun-2020 10:56:37 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:56:37 Australia/Darwin] loading backup info
+[25-Jun-2020 10:56:37 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:56:37 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:56:37 Australia/Darwin] applying restore defaults
+[25-Jun-2020 10:56:37 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:56:37 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 10:56:37 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 10:56:37 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 10:56:37 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 10:56:37 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:56:37 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:56:37 Australia/Darwin] checking plan security
+[25-Jun-2020 10:56:37 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 10:56:37 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:56:37 Australia/Darwin] calculating controller checksum 650727384d6d8baf4e4c176ea72c970f
+[25-Jun-2020 10:56:37 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:56:37 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:56:37 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:56:37 Australia/Darwin] calculating controller checksum 41b2a198caa384902b9f38316fcda0c1
+[25-Jun-2020 10:56:37 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:56:37 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:56:37 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:56:37 Australia/Darwin] calculating controller checksum 912111c2fe6848216b217443fe6362a5
+[25-Jun-2020 10:56:37 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:56:38 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 10:56:38 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:56:38 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:57:59 Australia/Darwin] instantiating backup controller 944a59859d8a3a699a8ff82e54e44345
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:57:59 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:57:59 Australia/Darwin] applying plan defaults
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:57:59 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 10:57:59 Australia/Darwin] checking plan security
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:57:59 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:57:59 Australia/Darwin] calculating controller checksum d4e93c3c3b7f5ebe4cc7dc8728774764
+[25-Jun-2020 10:57:59 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:57:59 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:57:59 Australia/Darwin] calculating controller checksum bbbda5c76e9300b504b321c94e3632d3
+[25-Jun-2020 10:57:59 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:57:59 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:57:59 Australia/Darwin] instantiating restore controller 6ae54376e4c021bfbd44741d90ad5604
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:57:59 Australia/Darwin] loading backup info
+[25-Jun-2020 10:57:59 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:57:59 Australia/Darwin] applying restore defaults
+[25-Jun-2020 10:57:59 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:57:59 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 10:57:59 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 10:57:59 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 10:57:59 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 10:57:59 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:57:59 Australia/Darwin] checking plan security
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 10:57:59 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:57:59 Australia/Darwin] calculating controller checksum b394f64cc5d3cb9e9eb9fed05b3b85d9
+[25-Jun-2020 10:57:59 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:57:59 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:57:59 Australia/Darwin] calculating controller checksum 6ae0b04abe25b2c8a1364c8e513928f3
+[25-Jun-2020 10:57:59 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:57:59 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:57:59 Australia/Darwin] calculating controller checksum 96ef0485bc51e88d693e6a9b128dec66
+[25-Jun-2020 10:57:59 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:57:59 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 10:57:59 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:57:59 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:58:51 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[25-Jun-2020 10:59:29 Australia/Darwin] instantiating backup controller 92392a7ed6f90331d8b5b5c20d56e772
+[25-Jun-2020 10:59:29 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:59:29 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:59:29 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:59:29 Australia/Darwin] applying plan defaults
+[25-Jun-2020 10:59:29 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:59:29 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 10:59:29 Australia/Darwin] checking plan security
+[25-Jun-2020 10:59:29 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:59:29 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:59:29 Australia/Darwin] calculating controller checksum a32aa490c0187c06227bfdb3212abbb9
+[25-Jun-2020 10:59:29 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:59:29 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:59:29 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:59:29 Australia/Darwin] calculating controller checksum af34195915084fd389e4593f7b54ce96
+[25-Jun-2020 10:59:29 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:59:29 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:59:29 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:59:29 Australia/Darwin] instantiating restore controller f3fece488f025e5fc3dcb30abac42e88
+[25-Jun-2020 10:59:29 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 10:59:29 Australia/Darwin] loading backup info
+[25-Jun-2020 10:59:29 Australia/Darwin] loading controller plan
+[25-Jun-2020 10:59:29 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 10:59:29 Australia/Darwin] applying restore defaults
+[25-Jun-2020 10:59:29 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:59:29 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 10:59:29 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 10:59:29 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 10:59:29 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 10:59:29 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 10:59:29 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 10:59:29 Australia/Darwin] checking plan security
+[25-Jun-2020 10:59:29 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 10:59:29 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:59:29 Australia/Darwin] calculating controller checksum 9d3898197d289bc0013c728a5cb331e5
+[25-Jun-2020 10:59:29 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:59:29 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 10:59:29 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:59:29 Australia/Darwin] calculating controller checksum b2862335767fdfcf17c9731570c998dd
+[25-Jun-2020 10:59:29 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:59:29 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 10:59:29 Australia/Darwin] saving controller to db
+[25-Jun-2020 10:59:29 Australia/Darwin] calculating controller checksum 842cb1a945f801825e2ef14c08b0b8de
+[25-Jun-2020 10:59:29 Australia/Darwin] loading controller from db
+[25-Jun-2020 10:59:30 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 10:59:30 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 10:59:30 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:00:49 Australia/Darwin] instantiating backup controller 5bf7452099915ea548e24d187fb0df25
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:00:49 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:00:49 Australia/Darwin] applying plan defaults
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:00:49 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 11:00:49 Australia/Darwin] checking plan security
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:00:49 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:00:49 Australia/Darwin] calculating controller checksum dc74af9e04ea8374526ca845d59bb1d2
+[25-Jun-2020 11:00:49 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:00:49 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:00:49 Australia/Darwin] calculating controller checksum f16dc3b517273abf1668d6ebb3d40915
+[25-Jun-2020 11:00:49 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:00:49 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:00:49 Australia/Darwin] instantiating restore controller f0e93cefda0a0ad51c146a622d782b44
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:00:49 Australia/Darwin] loading backup info
+[25-Jun-2020 11:00:49 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:00:49 Australia/Darwin] applying restore defaults
+[25-Jun-2020 11:00:49 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:00:49 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 11:00:49 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 11:00:49 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 11:00:49 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 11:00:49 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:00:49 Australia/Darwin] checking plan security
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 11:00:49 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:00:49 Australia/Darwin] calculating controller checksum eaf7fc40d9d125c5d4a945e31ad7f277
+[25-Jun-2020 11:00:49 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:00:49 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:00:49 Australia/Darwin] calculating controller checksum 91616349539225d4bab70484614110af
+[25-Jun-2020 11:00:49 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:00:49 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:00:49 Australia/Darwin] calculating controller checksum ddcf8fc18dfab5c831da8ddc19d8033b
+[25-Jun-2020 11:00:49 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:00:49 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 11:00:49 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:00:49 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:03:16 Australia/Darwin] instantiating backup controller 119e58ff4f8b9e7faea6ea4a796cd133
+[25-Jun-2020 11:03:16 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:03:16 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:03:16 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:03:16 Australia/Darwin] applying plan defaults
+[25-Jun-2020 11:03:16 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:03:16 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 11:03:16 Australia/Darwin] checking plan security
+[25-Jun-2020 11:03:16 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:03:16 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:03:16 Australia/Darwin] calculating controller checksum bbe2d630b9d1460ad9cf31b6736f6861
+[25-Jun-2020 11:03:16 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:03:16 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:03:16 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:03:16 Australia/Darwin] calculating controller checksum 318ac24896099b43ad9e8df3a6958987
+[25-Jun-2020 11:03:16 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:03:16 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:03:16 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:03:16 Australia/Darwin] instantiating restore controller f388c5f78bad5e88459b1df49ad0c998
+[25-Jun-2020 11:03:16 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:03:16 Australia/Darwin] loading backup info
+[25-Jun-2020 11:03:16 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:03:16 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:03:16 Australia/Darwin] applying restore defaults
+[25-Jun-2020 11:03:16 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:03:16 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 11:03:16 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 11:03:16 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 11:03:16 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 11:03:16 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:03:16 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:03:16 Australia/Darwin] checking plan security
+[25-Jun-2020 11:03:16 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 11:03:16 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:03:16 Australia/Darwin] calculating controller checksum 9230abdd91a9029a8d146220191495f3
+[25-Jun-2020 11:03:16 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:03:16 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:03:16 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:03:16 Australia/Darwin] calculating controller checksum 86fcbc3f9049648588f8ba47b5dea103
+[25-Jun-2020 11:03:16 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:03:16 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:03:16 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:03:16 Australia/Darwin] calculating controller checksum 531c6404364454c09387368590363b8e
+[25-Jun-2020 11:03:16 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:03:17 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 11:03:17 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:03:17 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:23:55 Australia/Darwin] instantiating backup controller b719796775ac7678dbb46843e4ed68c6
+[25-Jun-2020 11:23:55 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:23:55 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:23:55 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:23:55 Australia/Darwin] applying plan defaults
+[25-Jun-2020 11:23:55 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:23:55 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 11:23:55 Australia/Darwin] checking plan security
+[25-Jun-2020 11:23:55 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:23:55 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:23:55 Australia/Darwin] calculating controller checksum 4a93076fe12c482b64fd5864e7030e8a
+[25-Jun-2020 11:23:55 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:23:55 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:23:55 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:23:55 Australia/Darwin] calculating controller checksum 86295945dae4ef2a0b1c945d2228e317
+[25-Jun-2020 11:23:55 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:23:55 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:23:55 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:23:55 Australia/Darwin] instantiating restore controller 2c6d6b1cadcde39d78dbcf6a78a0b8be
+[25-Jun-2020 11:23:55 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:23:55 Australia/Darwin] loading backup info
+[25-Jun-2020 11:23:55 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:23:55 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:23:55 Australia/Darwin] applying restore defaults
+[25-Jun-2020 11:23:55 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:23:55 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 11:23:55 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 11:23:55 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 11:23:55 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 11:23:55 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:23:55 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:23:55 Australia/Darwin] checking plan security
+[25-Jun-2020 11:23:55 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 11:23:55 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:23:55 Australia/Darwin] calculating controller checksum 26578bf812f88707f47ec0060b88d3e5
+[25-Jun-2020 11:23:55 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:23:55 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:23:55 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:23:55 Australia/Darwin] calculating controller checksum f174513cc4dec8d658ead6b6b4063f18
+[25-Jun-2020 11:23:55 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:23:55 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:23:55 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:23:55 Australia/Darwin] calculating controller checksum c44dba4268f7d12b383cb234279e6f18
+[25-Jun-2020 11:23:55 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:23:56 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 11:23:56 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:23:56 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:24:43 Australia/Darwin] instantiating backup controller 98f4dae84fba29693fc685a77de4d5da
+[25-Jun-2020 11:24:43 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:24:43 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:24:43 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:24:43 Australia/Darwin] applying plan defaults
+[25-Jun-2020 11:24:43 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:24:43 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 11:24:43 Australia/Darwin] checking plan security
+[25-Jun-2020 11:24:43 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:24:43 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:24:43 Australia/Darwin] calculating controller checksum fd96025368979475d3a59765e08de95f
+[25-Jun-2020 11:24:43 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:24:43 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:24:43 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:24:43 Australia/Darwin] calculating controller checksum 4e652ca42ecc2ac338ffaacd8a3c145c
+[25-Jun-2020 11:24:43 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:24:44 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:24:44 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:24:44 Australia/Darwin] instantiating restore controller 491b19adc0f3abd529d5d6098aa81dc2
+[25-Jun-2020 11:24:44 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:24:44 Australia/Darwin] loading backup info
+[25-Jun-2020 11:24:44 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:24:44 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:24:44 Australia/Darwin] applying restore defaults
+[25-Jun-2020 11:24:44 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:24:44 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 11:24:44 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 11:24:44 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 11:24:44 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 11:24:44 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:24:44 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:24:44 Australia/Darwin] checking plan security
+[25-Jun-2020 11:24:44 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 11:24:44 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:24:44 Australia/Darwin] calculating controller checksum ef35a33c5f03f2959fd7550f877f9b81
+[25-Jun-2020 11:24:44 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:24:44 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:24:44 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:24:44 Australia/Darwin] calculating controller checksum fed40995ec589c5426d79b76a5290230
+[25-Jun-2020 11:24:44 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:24:44 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:24:44 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:24:44 Australia/Darwin] calculating controller checksum b15b40da313836bb2efab83d871dd176
+[25-Jun-2020 11:24:44 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:24:44 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 11:24:44 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:24:44 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:25:35 Australia/Darwin] instantiating backup controller b6e00358ef6435476ddb6a89d1a5c058
+[25-Jun-2020 11:25:35 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:25:35 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:25:35 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:25:35 Australia/Darwin] applying plan defaults
+[25-Jun-2020 11:25:35 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:25:35 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 11:25:35 Australia/Darwin] checking plan security
+[25-Jun-2020 11:25:35 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:25:35 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:25:35 Australia/Darwin] calculating controller checksum 8ecc7145304d215c37584c0db4eaed64
+[25-Jun-2020 11:25:35 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:25:35 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:25:35 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:25:35 Australia/Darwin] calculating controller checksum 88e92dd792e73d2d5365f6d0b1fc1963
+[25-Jun-2020 11:25:35 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:25:36 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:25:36 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:25:36 Australia/Darwin] instantiating restore controller b97f4f6848d5e2762a5326231a10580e
+[25-Jun-2020 11:25:36 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:25:36 Australia/Darwin] loading backup info
+[25-Jun-2020 11:25:36 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:25:36 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:25:36 Australia/Darwin] applying restore defaults
+[25-Jun-2020 11:25:36 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:25:36 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 11:25:36 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 11:25:36 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 11:25:36 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 11:25:36 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:25:36 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:25:36 Australia/Darwin] checking plan security
+[25-Jun-2020 11:25:36 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 11:25:36 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:25:36 Australia/Darwin] calculating controller checksum e8e2c8e19a2b212b2ecdfe03432a1a51
+[25-Jun-2020 11:25:36 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:25:36 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:25:36 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:25:36 Australia/Darwin] calculating controller checksum d3aa481d786fe05e882cd8d332ec485f
+[25-Jun-2020 11:25:36 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:25:36 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:25:36 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:25:36 Australia/Darwin] calculating controller checksum 453092d37310c7a2050e66353a7d8b56
+[25-Jun-2020 11:25:36 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:25:37 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 11:25:37 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:25:37 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:26:23 Australia/Darwin] instantiating backup controller 668ce1f522671d54bfc10c0663b2427d
+[25-Jun-2020 11:26:23 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:26:23 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:26:23 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:26:23 Australia/Darwin] applying plan defaults
+[25-Jun-2020 11:26:23 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:26:23 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 11:26:23 Australia/Darwin] checking plan security
+[25-Jun-2020 11:26:23 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:26:23 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:26:23 Australia/Darwin] calculating controller checksum 6fa1dc39cd8f84564adfda3fba591d44
+[25-Jun-2020 11:26:23 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:26:23 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:26:23 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:26:23 Australia/Darwin] calculating controller checksum c0d7bae041ec9c22e889cf326d62909e
+[25-Jun-2020 11:26:23 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:26:23 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:26:23 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:26:23 Australia/Darwin] instantiating restore controller 30bf4cf26b82f81e2be72efafde88944
+[25-Jun-2020 11:26:23 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:26:23 Australia/Darwin] loading backup info
+[25-Jun-2020 11:26:23 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:26:23 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:26:23 Australia/Darwin] applying restore defaults
+[25-Jun-2020 11:26:23 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:26:23 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 11:26:23 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 11:26:23 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 11:26:23 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 11:26:23 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:26:23 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:26:23 Australia/Darwin] checking plan security
+[25-Jun-2020 11:26:23 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 11:26:23 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:26:23 Australia/Darwin] calculating controller checksum b35d38016f3048b11e6476595cd7f279
+[25-Jun-2020 11:26:23 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:26:23 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:26:23 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:26:23 Australia/Darwin] calculating controller checksum 0ecce91ed94a83fdd2dafdb36246932a
+[25-Jun-2020 11:26:23 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:26:23 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:26:23 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:26:23 Australia/Darwin] calculating controller checksum 158530bab20ab8018c3c2d30dac8494a
+[25-Jun-2020 11:26:23 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:26:24 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 11:26:24 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:26:24 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:27:18 Australia/Darwin] instantiating backup controller b723336857944bcdf958e63a448ac5a0
+[25-Jun-2020 11:27:18 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:27:18 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:27:18 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:27:18 Australia/Darwin] applying plan defaults
+[25-Jun-2020 11:27:18 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:27:18 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 11:27:18 Australia/Darwin] checking plan security
+[25-Jun-2020 11:27:18 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:27:18 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:27:18 Australia/Darwin] calculating controller checksum fde4a02d322689a8b330aa625f073fc6
+[25-Jun-2020 11:27:18 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:27:18 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:27:18 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:27:18 Australia/Darwin] calculating controller checksum cf72f10ec34fee1731754b7f0455e7cb
+[25-Jun-2020 11:27:18 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:27:19 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:27:19 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:27:19 Australia/Darwin] instantiating restore controller 97d4b92a8d6ccdd45ae1997436367106
+[25-Jun-2020 11:27:19 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 11:27:19 Australia/Darwin] loading backup info
+[25-Jun-2020 11:27:19 Australia/Darwin] loading controller plan
+[25-Jun-2020 11:27:19 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 11:27:19 Australia/Darwin] applying restore defaults
+[25-Jun-2020 11:27:19 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:27:19 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 11:27:19 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 11:27:19 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 11:27:19 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 11:27:19 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 11:27:19 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 11:27:19 Australia/Darwin] checking plan security
+[25-Jun-2020 11:27:19 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 11:27:19 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:27:19 Australia/Darwin] calculating controller checksum b33ba6bb9f6c390177a8473a2b59f745
+[25-Jun-2020 11:27:19 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:27:19 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 11:27:19 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:27:19 Australia/Darwin] calculating controller checksum 010c1ecdb01873847dbdc84c7b169be2
+[25-Jun-2020 11:27:19 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:27:19 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 11:27:19 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:27:19 Australia/Darwin] calculating controller checksum 35b612d2b0e59d2f5170ec6bcd25e2a3
+[25-Jun-2020 11:27:19 Australia/Darwin] loading controller from db
+[25-Jun-2020 11:27:19 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 11:27:19 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 11:27:19 Australia/Darwin] saving controller to db
+[25-Jun-2020 11:56:35 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[25-Jun-2020 12:09:18 Australia/Darwin] Debugging: message_add_contact() is deprecated. Please use \core_message\api::create_contact_request() instead. If you wish to block or unblock a user please use \core_message\api::is_blocked() and \core_message\api::block_user() or \core_message\api::unblock_user() respectively. in 
+* line 3243 of /lib/deprecatedlib.php: call to debugging()
+* line 326 of /message/externallib.php: call to message_add_contact()
+* line 244 of /lib/externallib.php: call to core_message_external::create_contacts()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[25-Jun-2020 12:32:21 Australia/Darwin] instantiating backup controller a2c67d0f59c6f585fe77203c5730ab66
+[25-Jun-2020 12:32:21 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 12:32:21 Australia/Darwin] loading controller plan
+[25-Jun-2020 12:32:21 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 12:32:21 Australia/Darwin] applying plan defaults
+[25-Jun-2020 12:32:21 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 12:32:21 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 12:32:21 Australia/Darwin] checking plan security
+[25-Jun-2020 12:32:21 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 12:32:21 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:32:21 Australia/Darwin] calculating controller checksum 1d89562d87d505c6d8c52a55f19b3ee1
+[25-Jun-2020 12:32:21 Australia/Darwin] loading controller from db
+[25-Jun-2020 12:32:21 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 12:32:21 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:32:21 Australia/Darwin] calculating controller checksum 9716430a74abdf2f088f8e275eef0763
+[25-Jun-2020 12:32:21 Australia/Darwin] loading controller from db
+[25-Jun-2020 12:32:21 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 12:32:21 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:32:21 Australia/Darwin] instantiating restore controller c6f90ea3804cd2af13c5e1d7bb523a6a
+[25-Jun-2020 12:32:21 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 12:32:21 Australia/Darwin] loading backup info
+[25-Jun-2020 12:32:21 Australia/Darwin] loading controller plan
+[25-Jun-2020 12:32:21 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 12:32:21 Australia/Darwin] applying restore defaults
+[25-Jun-2020 12:32:21 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 12:32:21 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 12:32:21 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 12:32:21 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 12:32:21 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 12:32:21 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 12:32:21 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 12:32:21 Australia/Darwin] checking plan security
+[25-Jun-2020 12:32:21 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 12:32:21 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:32:21 Australia/Darwin] calculating controller checksum 683cabf0c000a20c7bf3686507902542
+[25-Jun-2020 12:32:21 Australia/Darwin] loading controller from db
+[25-Jun-2020 12:32:21 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 12:32:21 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:32:21 Australia/Darwin] calculating controller checksum de8a311695d3bad92706bf02d5e00bfa
+[25-Jun-2020 12:32:21 Australia/Darwin] loading controller from db
+[25-Jun-2020 12:32:21 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 12:32:21 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:32:21 Australia/Darwin] calculating controller checksum 298962d2d75677bac51b1019b21306cf
+[25-Jun-2020 12:32:21 Australia/Darwin] loading controller from db
+[25-Jun-2020 12:32:22 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 12:32:22 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 12:32:22 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:33:14 Australia/Darwin] instantiating backup controller 19716b5036999d87d492d19e8575d972
+[25-Jun-2020 12:33:14 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 12:33:14 Australia/Darwin] loading controller plan
+[25-Jun-2020 12:33:14 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 12:33:14 Australia/Darwin] applying plan defaults
+[25-Jun-2020 12:33:14 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 12:33:14 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 12:33:14 Australia/Darwin] checking plan security
+[25-Jun-2020 12:33:14 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 12:33:14 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:33:14 Australia/Darwin] calculating controller checksum a2a06274ea3c72fbde3e660e8fe2fdec
+[25-Jun-2020 12:33:14 Australia/Darwin] loading controller from db
+[25-Jun-2020 12:33:14 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 12:33:14 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:33:14 Australia/Darwin] calculating controller checksum 4b8d7d98cdd06b61081020952ae3db2c
+[25-Jun-2020 12:33:14 Australia/Darwin] loading controller from db
+[25-Jun-2020 12:33:15 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 12:33:15 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:33:15 Australia/Darwin] instantiating restore controller 675de86d4edf812c949bcee051da7f41
+[25-Jun-2020 12:33:15 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 12:33:15 Australia/Darwin] loading backup info
+[25-Jun-2020 12:33:15 Australia/Darwin] loading controller plan
+[25-Jun-2020 12:33:15 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 12:33:15 Australia/Darwin] applying restore defaults
+[25-Jun-2020 12:33:15 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 12:33:15 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 12:33:15 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 12:33:15 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 12:33:15 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 12:33:15 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 12:33:15 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 12:33:15 Australia/Darwin] checking plan security
+[25-Jun-2020 12:33:15 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 12:33:15 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:33:15 Australia/Darwin] calculating controller checksum cca66611dce06c2657cd55ab54c345df
+[25-Jun-2020 12:33:15 Australia/Darwin] loading controller from db
+[25-Jun-2020 12:33:15 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 12:33:15 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:33:15 Australia/Darwin] calculating controller checksum a9b70370ac361d2c72b1c9aebfcbe380
+[25-Jun-2020 12:33:15 Australia/Darwin] loading controller from db
+[25-Jun-2020 12:33:15 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 12:33:15 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:33:15 Australia/Darwin] calculating controller checksum 104b11ef32b1df617e766bb7a11dd6fd
+[25-Jun-2020 12:33:15 Australia/Darwin] loading controller from db
+[25-Jun-2020 12:33:15 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 12:33:15 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 12:33:15 Australia/Darwin] saving controller to db
+[25-Jun-2020 12:39:29 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[25-Jun-2020 13:05:08 Australia/Darwin] Debugging: message_add_contact() is deprecated. Please use \core_message\api::create_contact_request() instead. If you wish to block or unblock a user please use \core_message\api::is_blocked() and \core_message\api::block_user() or \core_message\api::unblock_user() respectively. in 
+* line 3243 of /lib/deprecatedlib.php: call to debugging()
+* line 326 of /message/externallib.php: call to message_add_contact()
+* line 244 of /lib/externallib.php: call to core_message_external::create_contacts()
+* line 79 of /lib/ajax/service.php: call to external_api::call_external_function()
+
+[25-Jun-2020 13:05:28 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[25-Jun-2020 13:05:28 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[25-Jun-2020 13:05:45 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Invalid json in request: Syntax error Debug: 
+Error code: codingerror
+* line 61 of /lib/ajax/service.php: coding_exception thrown
+
+[25-Jun-2020 13:25:55 Australia/Darwin] instantiating backup controller 1e51f2d3f79a234db5dc1fe3281bccab
+[25-Jun-2020 13:25:55 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 13:25:55 Australia/Darwin] loading controller plan
+[25-Jun-2020 13:25:55 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 13:25:55 Australia/Darwin] applying plan defaults
+[25-Jun-2020 13:25:55 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 13:25:55 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 13:25:55 Australia/Darwin] checking plan security
+[25-Jun-2020 13:25:55 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 13:25:55 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:25:55 Australia/Darwin] calculating controller checksum 0e1d04be3476e29af15a2fe16545f00e
+[25-Jun-2020 13:25:55 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:25:55 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 13:25:55 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:25:55 Australia/Darwin] calculating controller checksum 6b36ca2ba5552667a76e6af2e6721263
+[25-Jun-2020 13:25:55 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:25:55 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 13:25:55 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:25:55 Australia/Darwin] instantiating restore controller cd69eb56496f4f223921c96e1735e806
+[25-Jun-2020 13:25:55 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 13:25:55 Australia/Darwin] loading backup info
+[25-Jun-2020 13:25:55 Australia/Darwin] loading controller plan
+[25-Jun-2020 13:25:55 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 13:25:55 Australia/Darwin] applying restore defaults
+[25-Jun-2020 13:25:55 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 13:25:55 Australia/Darwin] Unknown setting: overwrite_conf
+[25-Jun-2020 13:25:55 Australia/Darwin] Unknown setting: course_fullname
+[25-Jun-2020 13:25:55 Australia/Darwin] Unknown setting: course_shortname
+[25-Jun-2020 13:25:55 Australia/Darwin] Unknown setting: course_startdate
+[25-Jun-2020 13:25:55 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 13:25:55 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 13:25:55 Australia/Darwin] checking plan security
+[25-Jun-2020 13:25:55 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 13:25:55 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:25:55 Australia/Darwin] calculating controller checksum 69100046f5041839c8a3ead61fcca846
+[25-Jun-2020 13:25:55 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:25:55 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 13:25:55 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:25:55 Australia/Darwin] calculating controller checksum ccbb075806fbd814174fb22f9803f75c
+[25-Jun-2020 13:25:55 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:25:55 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 13:25:55 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:25:55 Australia/Darwin] calculating controller checksum e089356697072e7748f6b0b28cb1949b
+[25-Jun-2020 13:25:55 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:25:56 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 13:25:56 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 13:25:56 Australia/Darwin] saving controller to db

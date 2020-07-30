@@ -1,0 +1,106 @@
+[18-May-2020 16:25:44 Australia/Darwin] Default exception handler: Unknown exception related to local files (File does not exist) Debug: 
+Error code: storedfileproblem
+* line 1076 of /lib/filestorage/file_storage.php: file_exception thrown
+* line 1019 of /lib/filelib.php: call to file_storage->create_file_from_storedfile()
+* line 932 of /lib/filelib.php: call to file_copy_file_to_file_area()
+* line 1077 of /lib/filelib.php: call to file_merge_draft_areas()
+* line 407 of /question/type/questiontypebase.php: call to file_save_draft_area_files()
+* line 55 of /question/type/description/questiontype.php: call to question_type->save_question()
+* line 274 of /question/question.php: call to qtype_description->save_question()
+
+[19-May-2020 14:46:41 Australia/Darwin] Default exception handler: Unknown exception related to local files (File does not exist) Debug: 
+Error code: storedfileproblem
+* line 1076 of /lib/filestorage/file_storage.php: file_exception thrown
+* line 1019 of /lib/filelib.php: call to file_storage->create_file_from_storedfile()
+* line 932 of /lib/filelib.php: call to file_copy_file_to_file_area()
+* line 1077 of /lib/filelib.php: call to file_merge_draft_areas()
+* line 407 of /question/type/questiontypebase.php: call to file_save_draft_area_files()
+* line 274 of /question/question.php: call to question_type->save_question()
+
+[21-May-2020 13:22:43 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Unknown question type splitset Debug: 
+Error code: codingerror
+* line 95 of /question/engine/bank.php: coding_exception thrown
+* line 89 of /question/classes/bank/edit_menu_column.php: call to question_bank::get_qtype()
+* line 169 of /question/classes/bank/column_base.php: call to core_question\bank\edit_menu_column->display_content()
+* line 973 of /question/classes/bank/view.php: call to core_question\bank\column_base->display()
+* line 852 of /question/classes/bank/view.php: call to core_question\bank\view->print_table_row()
+* line 602 of /question/classes/bank/view.php: call to core_question\bank\view->display_question_list()
+* line 55 of /question/edit.php: call to core_question\bank\view->display()
+
+[24-Jun-2020 12:35:08 Australia/Darwin] Default exception handler: Course or activity not accessible. Debug: You are not logged in
+Error code: requireloginerror
+* line 2711 of /lib/moodlelib.php: require_login_exception thrown
+* line 41 of /question/toggleflag.php: call to require_login()
+
+[24-Jun-2020 12:35:09 Australia/Darwin] Default exception handler: Course or activity not accessible. Debug: You are not logged in
+Error code: requireloginerror
+* line 2711 of /lib/moodlelib.php: require_login_exception thrown
+* line 41 of /question/toggleflag.php: call to require_login()
+
+[24-Jun-2020 13:04:37 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Unknown question type splitset Debug: 
+Error code: codingerror
+* line 95 of /question/engine/bank.php: coding_exception thrown
+* line 89 of /question/classes/bank/edit_menu_column.php: call to question_bank::get_qtype()
+* line 169 of /question/classes/bank/column_base.php: call to core_question\bank\edit_menu_column->display_content()
+* line 973 of /question/classes/bank/view.php: call to core_question\bank\column_base->display()
+* line 852 of /question/classes/bank/view.php: call to core_question\bank\view->print_table_row()
+* line 602 of /question/classes/bank/view.php: call to core_question\bank\view->display_question_list()
+* line 55 of /question/edit.php: call to core_question\bank\view->display()
+
+[24-Jun-2020 13:05:14 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Unknown question type splitset Debug: 
+Error code: codingerror
+* line 95 of /question/engine/bank.php: coding_exception thrown
+* line 89 of /question/classes/bank/edit_menu_column.php: call to question_bank::get_qtype()
+* line 169 of /question/classes/bank/column_base.php: call to core_question\bank\edit_menu_column->display_content()
+* line 973 of /question/classes/bank/view.php: call to core_question\bank\column_base->display()
+* line 852 of /question/classes/bank/view.php: call to core_question\bank\view->print_table_row()
+* line 602 of /question/classes/bank/view.php: call to core_question\bank\view->display_question_list()
+* line 55 of /question/edit.php: call to core_question\bank\view->display()
+
+[24-Jun-2020 13:05:21 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Unknown question type splitset Debug: 
+Error code: codingerror
+* line 95 of /question/engine/bank.php: coding_exception thrown
+* line 89 of /question/classes/bank/edit_menu_column.php: call to question_bank::get_qtype()
+* line 169 of /question/classes/bank/column_base.php: call to core_question\bank\edit_menu_column->display_content()
+* line 973 of /question/classes/bank/view.php: call to core_question\bank\column_base->display()
+* line 852 of /question/classes/bank/view.php: call to core_question\bank\view->print_table_row()
+* line 602 of /question/classes/bank/view.php: call to core_question\bank\view->display_question_list()
+* line 55 of /question/edit.php: call to core_question\bank\view->display()
+
+[29-Jun-2020 13:17:40 Australia/Darwin] Database transaction aborted automatically in /home/ausinet6/public_html/ausinet.net.au/question/preview.php
+[29-Jun-2020 13:17:56 Australia/Darwin] Database transaction aborted automatically in /home/ausinet6/public_html/ausinet.net.au/question/preview.php
+[02-Jul-2020 14:48:04 Australia/Darwin] Default exception handler: Neither a question id, nor a category id and question type, was specified. Debug: 
+Error code: notenoughdatatoeditaquestion
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 147 of /question/question.php: call to print_error()
+
+[02-Jul-2020 14:56:47 Australia/Darwin] Default exception handler: Neither a question id, nor a category id and question type, was specified. Debug: 
+Error code: notenoughdatatoeditaquestion
+* line 494 of /lib/setuplib.php: moodle_exception thrown
+* line 147 of /question/question.php: call to print_error()
+
+[02-Jul-2020 15:13:41 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Unknown question type splitset Debug: 
+Error code: codingerror
+* line 95 of /question/engine/bank.php: coding_exception thrown
+* line 89 of /question/classes/bank/edit_menu_column.php: call to question_bank::get_qtype()
+* line 169 of /question/classes/bank/column_base.php: call to core_question\bank\edit_menu_column->display_content()
+* line 973 of /question/classes/bank/view.php: call to core_question\bank\column_base->display()
+* line 852 of /question/classes/bank/view.php: call to core_question\bank\view->print_table_row()
+* line 602 of /question/classes/bank/view.php: call to core_question\bank\view->display_question_list()
+* line 55 of /question/edit.php: call to core_question\bank\view->display()
+
+[02-Jul-2020 15:16:41 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Unknown question type splitset Debug: 
+Error code: codingerror
+* line 95 of /question/engine/bank.php: coding_exception thrown
+* line 89 of /question/classes/bank/edit_menu_column.php: call to question_bank::get_qtype()
+* line 169 of /question/classes/bank/column_base.php: call to core_question\bank\edit_menu_column->display_content()
+* line 973 of /question/classes/bank/view.php: call to core_question\bank\column_base->display()
+* line 852 of /question/classes/bank/view.php: call to core_question\bank\view->print_table_row()
+* line 602 of /question/classes/bank/view.php: call to core_question\bank\view->display_question_list()
+* line 55 of /question/edit.php: call to core_question\bank\view->display()
+
+[02-Jul-2020 16:34:03 Australia/Darwin] Default exception handler: Course or activity not accessible. Debug: You are not logged in
+Error code: requireloginerror
+* line 2711 of /lib/moodlelib.php: require_login_exception thrown
+* line 41 of /question/toggleflag.php: call to require_login()
+

@@ -1,0 +1,24 @@
+[08-Jun-2020 15:47:55 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/mod/assign/submission/file/locallib.php on line 326
+[08-Jun-2020 15:47:55 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::update_record_raw() id field must be specified. Debug: 
+Error code: codingerror
+* line 1536 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 1593 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->update_record_raw()
+* line 327 of /mod/assign/submission/file/locallib.php: call to mysqli_native_moodle_database->update_record()
+* line 7993 of /mod/assign/locallib.php: call to assign_submission_file->remove()
+* line 8061 of /mod/assign/locallib.php: call to assign->remove_submission()
+* line 4965 of /mod/assign/locallib.php: call to assign->process_remove_submission()
+* line 554 of /mod/assign/locallib.php: call to assign->process_grading_batch_operation()
+* line 55 of /mod/assign/view.php: call to assign->view()
+
+[08-Jun-2020 15:51:08 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/ausinet6/public_html/ausinet.net.au/mod/assign/submission/file/locallib.php on line 326
+[08-Jun-2020 15:51:08 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: moodle_database::update_record_raw() id field must be specified. Debug: 
+Error code: codingerror
+* line 1536 of /lib/dml/mysqli_native_moodle_database.php: coding_exception thrown
+* line 1593 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->update_record_raw()
+* line 327 of /mod/assign/submission/file/locallib.php: call to mysqli_native_moodle_database->update_record()
+* line 7993 of /mod/assign/locallib.php: call to assign_submission_file->remove()
+* line 8061 of /mod/assign/locallib.php: call to assign->remove_submission()
+* line 4965 of /mod/assign/locallib.php: call to assign->process_remove_submission()
+* line 554 of /mod/assign/locallib.php: call to assign->process_grading_batch_operation()
+* line 55 of /mod/assign/view.php: call to assign->view()
+

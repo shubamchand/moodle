@@ -1,0 +1,299 @@
+
+            
+{{#userregistration_method}}
+<div class="col-md-6">
+    <div class="register-block report-element">
+        <h5>Registration</h5>
+        <div class="element-block">
+            <div class="img-block">
+                <canvas id="userregistration_method"></canvas>
+            </div>
+            <div class="register-element" style="display: none;">
+                <ul>
+                    <li><a href="#">302 <span>courses</span></a></li>
+                    <li><a href="#">200 <span>users</span></a></li>
+                    <li><a href="#">32 <span>categories</span></a></li>
+                    <li><a href="#">692 <span>modules</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{{/userregistration_method}}
+
+{{#visits}}
+<div class="col-md-6">
+
+    {{#counts}}   
+        <div class="visits-block report-element">
+            <h5>Total Visits</h5>
+            <ul>
+                <li><a href="#">{{total}}<span>Total</span></a></li>
+                <li><a href="#">{{course}} <span>On course</span></a></li>
+                <li><a href="#">{{module}} <span>On modules</span></a></li>
+            </ul>
+        </div>   
+    {{/counts}}
+
+    <div class="visit-block report-element">
+        <h5>Visits</h5>
+        <div class="element-block">
+            <div class="img-block">
+                <canvas id="visits"></canvas>
+            </div>
+        </div>
+        <ul>
+           
+        </ul>
+    </div>
+
+</div>
+{{/visits}}
+
+{{#registration}}
+<div class="col-md-6">
+    <div class="registration-block report-element">
+        <h5>Registration</h5>
+        <ul>
+            <li><a href="#">200 <span>Total</span></a></li>
+            <li><a href="#">90 <span>Manual</span></a></li>
+            <li><a href="#">20 <span>Self</span></a></li>
+            <li><a href="#">20 <span>Paypal</span></a></li>
+        </ul>
+    </div>
+</div>
+{{/registration}}
+
+{{#registration_chart}}
+<div class="col-md-6">
+
+     {{#counts}}
+    <div class="registration-block report-element">
+        <h5>Total Users</h5>
+        <ul>
+            <li><a href="#"> {{count}} <span>Total</span></a></li>
+            <li><a href="#"> {{confirmed}} <span>Confirmed</span></a></li>
+            <li><a href="#"> {{unconfirmed}} <span>Not Confirmed</span></a></li>
+            <li><a href="#"> {{deleted}} <span>Deleted</span></a></li>
+            <li><a href="#"> {{suspended}} <span>Suspended</span></a></li>
+        </ul>
+    </div>
+    {{/counts}}
+
+    <div class="activity-block report-element">
+        <h5>Today Registrations</h5>
+        <div class="element-block">
+            <div class="img-block">
+                 <canvas id="registration_chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+{{/registration_chart}}
+
+{{#user_sessions}}
+<div class="col-md-6">
+    <div class="session-block report-element">
+        <h5>User session's per week </h5>
+        <div class="element-block">
+            <div class="img-block">
+                <img src="//localhost:7777/mthemes/moodle-38/pluginfile.php/1/theme_ausinet/bannerimage/1580737891/slider-img.jpg" alt="Home banner" style="max-width: 100%" id="yui_3_17_2_1_1580738113042_480">
+            </div>
+        </div>
+    </div>
+</div>
+{{/user_sessions}}
+   
+
+{{#toggle_sitecounter}}
+<div class="col-md-12">
+    <div class="report-block" >
+        <div class="report-stats">
+            <ul>
+                <li><a href="#"><span> {{users}}   </span> Users</a></li>
+                <li><a href="#"><span> {{courses}} </span> Courses</a></li>      
+                <li><a href="#"><span> {{groups}}  </span> Groups</a></li>
+                <li><a href="#"><span> {{cohorts}} </span> Cohorts</a></li>
+                <li><a href="#"><span> {{modules}} </span> Modules</a></li>
+                <li><a href="#"><span> {{instance}} </span> Instances </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{{/toggle_sitecounter}}
+
+{{#sitestats}}
+<div class="col-lg-6">
+    <div class="site-status">
+        <div class="site-block report-element">
+            <h5>Site status</h5>
+            <div class="element-block">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <a class="nav-item nav-link " id="nav-today-tab" data-toggle="tab" href="#nav-today" role="tab" aria-controls="nav-today" aria-selected="true">Today</a>
+                        <a class="nav-item nav-link" id="nav-yesterday-tab" data-toggle="tab" href="#nav-yesterday" role="tab" aria-controls="nav-yesterday" aria-selected="false">Yesterday</a>
+                        <a class="nav-item nav-link" id="nav-week-tab" data-toggle="tab" href="#nav-week" role="tab" aria-controls="nav-week" aria-selected="false">Week</a>
+                        <a class="nav-item nav-link active" id="nav-month-tab" data-toggle="tab" href="#nav-month" role="tab" aria-controls="nav-month" aria-selected="false">Month</a>
+                        <a class="nav-item nav-link" id="nav-year-tab" data-toggle="tab" href="#nav-year" role="tab" aria-controls="nav-year" aria-selected="false">Year</a>
+                    </div>
+                </nav>
+
+                <div class="tab-content" id="nav-Content">
+                    <div class="tab-pane fade " id="nav-today" role="tabpanel" aria-labelledby="nav-today-tab">
+                        <div class="status-block">
+                            <span>Enrollments</span>
+                            <span>{{today.enrolments}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Activity Completion</span>
+                            <span>{{today.modules_completion}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Course completion</span>
+                            <span>{{today.course_completion}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>New Registrations</span>
+                            <span>{{today.user_registration}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Visits</span>
+                            <span>{{today.visits}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Sessions</span>
+                            <span>{{today.sessions}}</span>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-yesterday" role="tabpanel" aria-labelledby="nav-yesterday-tab">
+                        <div class="status-block">
+                            <span>Enrollments</span>
+                            <span>{{yesterday.enrolments}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Activity Completion</span>
+                            <span>{{yesterday.modules_completion}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Course completion</span>
+                            <span>{{yesterday.course_completion}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>New Registrations</span>
+                            <span>{{yesterday.user_registration}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Visits</span>
+                            <span>{{yesterday.visits}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Sessions</span>
+                            <span>{{yesterday.sessions}}</span>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-week" role="tabpanel" aria-labelledby="nav-week-tab">
+                        <div class="status-block">
+                            <span>Enrollments</span>
+                            <span>{{week.enrolments}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Activity Completion</span>
+                            <span>{{week.modules_completion}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Course completion</span>
+                            <span>{{week.course_completion}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>New Registrations</span>
+                            <span>{{week.user_registration}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Visits</span>
+                            <span>{{week.visits}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Sessions</span>
+                            <span>{{week.sessions}}</span>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade show active" id="nav-month" role="tabpanel" aria-labelledby="nav-month-tab">
+                        <div class="status-block">
+                            <span>Enrollments</span>
+                            <span>{{month.enrolments}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Activity Completion</span>
+                            <span>{{month.modules_completion}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Course completion</span>
+                            <span>{{month.course_completion}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>New Registrations</span>
+                            <span>{{month.user_registration}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Visits</span>
+                            <span>{{month.visits}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Sessions</span>
+                            <span>{{month.sessions}}</span>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-year" role="tabpanel" aria-labelledby="nav-year-tab">
+                        <div class="status-block">
+                            <span>Enrollments</span>
+                            <span>{{year.enrolments}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Activity Completion</span>
+                            <span>{{year.modules_completion}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Course completion</span>
+                            <span>{{year.course_completion}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>New Registrations</span>
+                            <span>{{year.user_registration}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Visits</span>
+                            <span>{{year.visits}}</span>
+                        </div>
+                        <div class="status-block">
+                            <span>Sessions</span>
+                            <span>{{year.sessions}}</span>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/sitestats}}
+
+{{#unique_userlogin}}
+    <div class="col-md-6">
+        <div class="activity-progress report-element">
+            <h5>Unique user logins</h5>
+            <div class="element-block">
+                <div class="img-block">
+                    <canvas id="unique-userlogin-chart" width="200" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/unique_userlogin}}

@@ -1,0 +1,23 @@
+
+<div class="reports">
+    <div class="">
+        <a class=" {{#isfavourite}}hidden{{/isfavourite}}" href="#"
+            data-action="add-favourite"
+            data-course-id="{{id}}"
+            aria-controls="favorite-icon-{{ id }}-{{ uniqid }}"
+            >
+            
+           <i class="fa fa-star" title="{{#str}} addtofavourites, block_myoverview {{/str}}" aria-label="{{#str}} addtofavourites, block_myoverview {{/str}}"></i>
+        </a>
+        <a class="{{^isfavourite}}hidden{{/isfavourite}}" href="#"
+            data-action="remove-favourite"
+            data-course-id="{{id}}"
+            aria-controls="favorite-icon-{{ id }}-{{ uniqid }}"
+            >            
+            <i class="icon fa fa-star fa-fw " title="Starred course" aria-label="Starred course"></i>
+        </a>
+       
+
+         <a href="{{reporturl}}"><i class="fa fa-bar-chart"></i></a>
+    </div>
+</div>

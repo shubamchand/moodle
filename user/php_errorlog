@@ -1,0 +1,23 @@
+[19-May-2020 01:43:52 Australia/Darwin] Default exception handler: Can't find data record in database table course. Debug: SELECT * FROM {course} WHERE id = ?
+[array (
+  0 => 16,
+)]
+Error code: invalidrecord
+* line 1562 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1538 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 59 of /user/index.php: call to moodle_database->get_record()
+
+[19-May-2020 01:43:59 Australia/Darwin] Default exception handler: Can't find data record in database table course. Debug: SELECT * FROM {course} WHERE id = ?
+[array (
+  0 => 17,
+)]
+Error code: invalidrecord
+* line 1562 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1538 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 59 of /user/index.php: call to moodle_database->get_record()
+
+[25-Jun-2020 12:09:46 Australia/Darwin] Default exception handler: Course or activity not accessible. Debug: You are not logged in
+Error code: requireloginerror
+* line 2711 of /lib/moodlelib.php: require_login_exception thrown
+* line 48 of /user/profile.php: call to require_login()
+

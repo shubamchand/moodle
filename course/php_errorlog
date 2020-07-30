@@ -1,0 +1,38 @@
+[24-Apr-2020 06:45:27 Africa/Abidjan] Default exception handler: Can't find data record in database table course. Debug: SELECT * FROM {course} WHERE id = ?
+[array (
+  0 => 3,
+)]
+Error code: invalidrecord
+* line 1562 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1538 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 33 of /course/view.php: call to moodle_database->get_record()
+
+[16-May-2020 00:27:02 Australia/Darwin] Default exception handler: Can't find data record in database table course. Debug: SELECT * FROM {course} WHERE id = ?
+[array (
+  0 => 17,
+)]
+Error code: invalidrecord
+* line 1562 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1538 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 33 of /course/view.php: call to moodle_database->get_record()
+
+[29-May-2020 15:18:50 Australia/Darwin] Restored item (<AVAILABILITY_CMNAME_642/>) has availability condition on module that was not restored
+[25-Jun-2020 09:36:14 Australia/Darwin] instantiating backup controller de346c6992d27b07d2ffe95a0738e830
+[25-Jun-2020 09:36:14 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 09:36:14 Australia/Darwin] loading controller plan
+[25-Jun-2020 09:36:14 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 09:36:14 Australia/Darwin] applying plan defaults
+[25-Jun-2020 09:36:14 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 09:36:14 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 09:36:14 Australia/Darwin] checking plan security
+[25-Jun-2020 09:36:14 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 09:36:14 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:36:14 Australia/Darwin] calculating controller checksum a3aa1e87835061d817c58820681bef62
+[25-Jun-2020 09:36:14 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:36:14 Australia/Darwin] setting file inclusion to 1
+[25-Jun-2020 09:36:14 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 09:36:14 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:36:14 Australia/Darwin] calculating controller checksum 8090c748e7f1ffcb044689f981398717
+[25-Jun-2020 09:36:14 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:36:14 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 09:36:14 Australia/Darwin] saving controller to db

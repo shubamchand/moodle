@@ -1,0 +1,82 @@
+[20-May-2020 11:30:53 Australia/Darwin] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 191
+[20-May-2020 11:30:53 Australia/Darwin] PHP Notice:  Undefined offset: 0 in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 414
+[20-May-2020 11:32:08 Australia/Darwin] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 191
+[20-May-2020 11:32:08 Australia/Darwin] PHP Notice:  Undefined offset: 0 in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 414
+[20-May-2020 12:12:28 Australia/Darwin] PHP Notice:  Undefined variable: users in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 1273
+[20-May-2020 12:12:28 Australia/Darwin] Default exception handler: Exception - Argument 1 passed to html_writer::select() must be of the type array, null given, called in [dirroot]/mod/observation/observation.class.php on line 1273 Debug: 
+Error code: generalexceptionmessage
+* line 1867 of /lib/outputcomponents.php: TypeError thrown
+* line 1273 of /mod/observation/observation.class.php: call to html_writer::select()
+* line 1238 of /mod/observation/observation.class.php: call to observation->get_student_list()
+* line 1167 of /mod/observation/observation.class.php: call to observation->survey_render()
+* line 274 of /mod/observation/observation.class.php: call to observation->print_survey()
+* line 75 of /mod/observation/complete.php: call to observation->view()
+
+[20-May-2020 13:02:10 Australia/Darwin] PHP Notice:  Undefined variable: users in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 1273
+[20-May-2020 13:02:10 Australia/Darwin] Default exception handler: Exception - Argument 1 passed to html_writer::select() must be of the type array, null given, called in [dirroot]/mod/observation/observation.class.php on line 1273 Debug: 
+Error code: generalexceptionmessage
+* line 1867 of /lib/outputcomponents.php: TypeError thrown
+* line 1273 of /mod/observation/observation.class.php: call to html_writer::select()
+* line 1238 of /mod/observation/observation.class.php: call to observation->get_student_list()
+* line 1167 of /mod/observation/observation.class.php: call to observation->survey_render()
+* line 274 of /mod/observation/observation.class.php: call to observation->print_survey()
+* line 75 of /mod/observation/complete.php: call to observation->view()
+
+[20-May-2020 15:29:03 Australia/Darwin] PHP Notice:  Undefined variable: users in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 1273
+[20-May-2020 15:29:03 Australia/Darwin] Default exception handler: Exception - Argument 1 passed to html_writer::select() must be of the type array, null given, called in [dirroot]/mod/observation/observation.class.php on line 1273 Debug: 
+Error code: generalexceptionmessage
+* line 1867 of /lib/outputcomponents.php: TypeError thrown
+* line 1273 of /mod/observation/observation.class.php: call to html_writer::select()
+* line 1238 of /mod/observation/observation.class.php: call to observation->get_student_list()
+* line 1167 of /mod/observation/observation.class.php: call to observation->survey_render()
+* line 274 of /mod/observation/observation.class.php: call to observation->print_survey()
+* line 75 of /mod/observation/complete.php: call to observation->view()
+
+[20-May-2020 15:29:28 Australia/Darwin] PHP Notice:  Undefined variable: users in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 1273
+[20-May-2020 15:29:28 Australia/Darwin] Default exception handler: Exception - Argument 1 passed to html_writer::select() must be of the type array, null given, called in [dirroot]/mod/observation/observation.class.php on line 1273 Debug: 
+Error code: generalexceptionmessage
+* line 1867 of /lib/outputcomponents.php: TypeError thrown
+* line 1273 of /mod/observation/observation.class.php: call to html_writer::select()
+* line 1238 of /mod/observation/observation.class.php: call to observation->get_student_list()
+* line 1167 of /mod/observation/observation.class.php: call to observation->survey_render()
+* line 274 of /mod/observation/observation.class.php: call to observation->print_survey()
+* line 75 of /mod/observation/complete.php: call to observation->view()
+
+[20-May-2020 15:33:40 Australia/Darwin] PHP Notice:  Undefined variable: users in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 1273
+[20-May-2020 15:33:40 Australia/Darwin] Default exception handler: Exception - Argument 1 passed to html_writer::select() must be of the type array, null given, called in [dirroot]/mod/observation/observation.class.php on line 1273 Debug: 
+Error code: generalexceptionmessage
+* line 1867 of /lib/outputcomponents.php: TypeError thrown
+* line 1273 of /mod/observation/observation.class.php: call to html_writer::select()
+* line 1238 of /mod/observation/observation.class.php: call to observation->get_student_list()
+* line 1167 of /mod/observation/observation.class.php: call to observation->survey_render()
+* line 274 of /mod/observation/observation.class.php: call to observation->print_survey()
+* line 75 of /mod/observation/complete.php: call to observation->view()
+
+[20-May-2020 15:47:14 Australia/Darwin] PHP Notice:  Undefined variable: users in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 1273
+[20-May-2020 15:47:14 Australia/Darwin] Default exception handler: Exception - Argument 1 passed to html_writer::select() must be of the type array, null given, called in [dirroot]/mod/observation/observation.class.php on line 1273 Debug: 
+Error code: generalexceptionmessage
+* line 1867 of /lib/outputcomponents.php: TypeError thrown
+* line 1273 of /mod/observation/observation.class.php: call to html_writer::select()
+* line 1238 of /mod/observation/observation.class.php: call to observation->get_student_list()
+* line 1167 of /mod/observation/observation.class.php: call to observation->survey_render()
+* line 274 of /mod/observation/observation.class.php: call to observation->print_survey()
+* line 75 of /mod/observation/complete.php: call to observation->view()
+
+[20-May-2020 15:47:32 Australia/Darwin] PHP Notice:  Undefined variable: users in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 1273
+[20-May-2020 15:47:32 Australia/Darwin] Default exception handler: Exception - Argument 1 passed to html_writer::select() must be of the type array, null given, called in [dirroot]/mod/observation/observation.class.php on line 1273 Debug: 
+Error code: generalexceptionmessage
+* line 1867 of /lib/outputcomponents.php: TypeError thrown
+* line 1273 of /mod/observation/observation.class.php: call to html_writer::select()
+* line 1238 of /mod/observation/observation.class.php: call to observation->get_student_list()
+* line 1167 of /mod/observation/observation.class.php: call to observation->survey_render()
+* line 274 of /mod/observation/observation.class.php: call to observation->print_survey()
+* line 75 of /mod/observation/complete.php: call to observation->view()
+
+[03-Jul-2020 10:49:02 Australia/Darwin] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 191
+[03-Jul-2020 10:49:02 Australia/Darwin] PHP Notice:  Undefined offset: 0 in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 414
+[03-Jul-2020 17:04:58 Australia/Darwin] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 191
+[03-Jul-2020 17:04:58 Australia/Darwin] PHP Notice:  Undefined offset: 0 in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 414
+[03-Jul-2020 17:05:58 Australia/Darwin] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 191
+[03-Jul-2020 17:05:58 Australia/Darwin] PHP Notice:  Undefined offset: 0 in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 414
+[03-Jul-2020 17:07:39 Australia/Darwin] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 191
+[03-Jul-2020 17:07:39 Australia/Darwin] PHP Notice:  Undefined offset: 0 in /home/ausinet6/public_html/ausinet.net.au/mod/observation/observation.class.php on line 414

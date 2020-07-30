@@ -1,0 +1,5 @@
+[25-Jun-2020 13:05:44 Australia/Darwin] Default exception handler: Sorry, but you do not currently have permissions to do that (View grades of other users). Debug: 
+Error code: nopermissions
+* line 860 of /lib/accesslib.php: required_capability_exception thrown
+* line 51 of /grade/report/overview/index.php: call to require_capability()
+

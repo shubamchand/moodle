@@ -1,0 +1,122 @@
+
+{{#userinfo}}
+<div class="col-md-6">
+	<div class="username">
+		{{{userimage}}} <span> {{username}}</span>
+		{{#roles}}
+		<div class="user-roles"> 
+			<span> {{{name}}} </span>
+		</div>
+		{{/roles}}
+	</div>
+	<div class="email">
+		{{email}}
+	</div>
+	<div class="access-data">
+		<div class="first-login">
+			<label> First Access : </label>
+			<span class="firstaccess">
+				{{#userdate}} {{firstaccess}}, %A, %d %B %Y, %I:%M %p {{/userdate}}
+			</span>
+		</div>
+		<div class="first-login">
+			<label> Time created : </label>
+			<span class="firstlogin">
+				{{#userdate}} {{timecreated}}, %A, %d %B %Y, %I:%M %p {{/userdate}}
+			</span>
+		</div>
+	</div>
+</div>
+{{/userinfo}}
+
+{{#toggle_usercounter}}
+<div class="col-md-12">
+<div class="user-reports" id="ausinet-dashboard">
+    <div class="reports-block">
+        <ul class="ausinet-tab">
+            <li  class="active" ><a href="javascript:void(0);" data-href="#my_courses"><span>{{courses}}</span> {{#str}}courses{{/str}}</a></li>
+            <li><a href="javascript:void(0);" data-href="#completed_courses"><span>{{completed}}</span> Completed courses</a></li>      
+            <li><a href="javascript:void(0);" data-href="#badges"><span>{{badges}}</span> {{#str}} badges {{/str}}</a></li>
+            <li><a href="javascript:void(0);" data-href="#points"><span>{{{points}}}</span> Points</a></li>
+        </ul>
+    </div>
+</div>
+</div>
+{{/toggle_usercounter}}
+
+{{#enrolled_courses_table}}
+<div class="col-lg-12">
+    <div class="enrol-courses-block report-element">
+		{{{table}}}
+	</div>
+</div>
+{{/enrolled_courses_table}}
+
+
+{{#user_activities}}
+<div class="col-md-6">
+    <div class="report-element ">
+        <h5>user Activities</h5>
+        <div class="element-block">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link " id="nav-user-today-tab" data-toggle="tab" href="#nav-user-today" role="tab" aria-controls="nav-user-today" aria-selected="true">Today</a>
+                    <a class="nav-item nav-link" id="nav-user-lastday-tab" data-toggle="tab" href="#nav-user-lastday" role="tab" aria-controls="nav-user-lastday" aria-selected="false">Yesterday</a>
+                    <a class="nav-item nav-link" id="nav-user-week-tab" data-toggle="tab" href="#nav-user-week" role="tab" aria-controls="nav-user-week" aria-selected="false">Week</a>
+                    <a class="nav-item nav-link active" id="nav-user-month-tab" data-toggle="tab" href="#nav-user-month" role="tab" aria-controls="nav-user-month" aria-selected="false">Month</a>
+                    <a class="nav-item nav-link" id="nav-user-year-tab" data-toggle="tab" href="#nav-user-year" role="tab" aria-controls="nav-user-year" aria-selected="false">Year</a>
+                </div>
+            </nav>
+            <!-- Today -->
+            <div class="tab-content" id="nav-user-Content">
+                <div class="tab-pane fade " id="nav-user-today" role="tabpanel" aria-labelledby="nav-user-today-tab">
+                    <div class="img-block">
+                        <canvas id="user_activities_today"></canvas>
+                    </div>
+                </div>
+           
+            <!-- lastday -->
+             
+                <div class="tab-pane fade " id="nav-user-lastday" role="tabpanel" aria-labelledby="nav-user-lastday-tab">
+                    <div class="img-block">
+                        <canvas id="user_activities_lastday"></canvas>
+                    </div>
+                </div>
+           
+
+            <!-- Week -->
+            
+                <div class="tab-pane fade " id="nav-user-week" role="tabpanel" aria-labelledby="nav-user-week-tab">
+                    <div class="img-block">
+                        <canvas id="user_activities_week"></canvas>
+                    </div>
+                </div>
+            
+
+            <!-- month -->
+           
+                <div class="tab-pane fade show active" id="nav-user-month" role="tabpanel" aria-labelledby="nav-user-month-tab">
+                    <div class="img-block">
+                        <canvas id="user_activities_month"></canvas>
+                    </div>
+                </div>
+            
+
+            <!-- year -->
+           
+                <div class="tab-pane fade " id="nav-user-year" role="tabpanel" aria-labelledby="nav-user-year-tab">
+                    <div class="img-block">
+                        <canvas id="user_activities_year"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+{{/user_activities}}

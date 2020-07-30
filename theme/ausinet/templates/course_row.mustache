@@ -1,0 +1,47 @@
+<div class="row">
+    {{#courses}}
+    <div class="col-lg-4 col-sm-6">
+        <div class="course-block">
+            <div class="img-block">
+                <a href="{{link}}">
+                    <img src="{{imgurl}}" alt="{{name}}" style="max-width: 100%">
+                </a>
+            </div>
+            <div class="content-block">
+                <div class="category-title">
+                    <h5><a href="{{category_link}}">{{category}}</a></h5>
+                </div>
+                <div class="course-title">
+                    <h4>{{{coursename}}}</h4>
+                </div>
+                <div class="course-element">
+                    {{#enrols}}
+                        <div class="user-block">
+                            <span>{{enrols}} Users</span>
+                        </div>
+                    {{/enrols}}
+                    {{#activities}}
+                        <div class="activity-block">
+                            <span>{{activities}} Activities</span>
+                        </div>
+                    {{/activities}}
+                    {{#resources}}
+                        <div class="resource-block">
+                            <span>{{resources}} Resources</span>
+                        </div>
+                    {{/resources}}
+                     {{#sections}}
+                        <div class="resource-block">
+                            <span>{{sections}} Sections</span>
+                        </div>
+                    {{/sections}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/courses}}
+</div>
+
+<div class="btn-block">
+    {{{pagingbar}}}
+</div>

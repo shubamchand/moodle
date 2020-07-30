@@ -1,0 +1,172 @@
+{{#module_activities}}
+<div class="col-md-6">
+    <div class="report-element">
+        <h5>Module Activities</h5>
+        <div class="element-block">
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link " id="nav-module-today-tab" data-toggle="tab" href="#nav-module-today" role="tab" aria-controls="nav-module-today" aria-selected="true">Today</a>
+                    <a class="nav-item nav-link" id="nav-module-lastday-tab" data-toggle="tab" href="#nav-module-lastday" role="tab" aria-controls="nav-module-lastday" aria-selected="false">Yesterday</a>
+                    <a class="nav-item nav-link" id="nav-module-week-tab" data-toggle="tab" href="#nav-module-week" role="tab" aria-controls="nav-module-week" aria-selected="false">Week</a>
+                    <a class="nav-item nav-link active" id="nav-module-month-tab" data-toggle="tab" href="#nav-module-month" role="tab" aria-controls="nav-module-month" aria-selected="false">Month</a>
+                    <a class="nav-item nav-link" id="nav-module-year-tab" data-toggle="tab" href="#nav-module-year" role="tab" aria-controls="nav-module-year" aria-selected="false">Year</a>
+                </div>
+            </nav>
+            <!-- Today -->
+            <div class="tab-content" id="nav-module-Content">
+                <div class="tab-pane fade " id="nav-module-today" role="tabpanel" aria-labelledby="nav-module-today-tab">
+                    <div class="img-block">
+                        <canvas id="module_activities_today"></canvas>
+                    </div>
+                </div>
+           
+            <!-- lastday -->
+             
+                <div class="tab-pane fade " id="nav-module-lastday" role="tabpanel" aria-labelledby="nav-module-lastday-tab">
+                    <div class="img-block">
+                        <canvas id="module_activities_lastday"></canvas>
+                    </div>
+                </div>
+           
+
+            <!-- Week -->
+            
+                <div class="tab-pane fade " id="nav-module-week" role="tabpanel" aria-labelledby="nav-module-week-tab">
+                    <div class="img-block">
+                        <canvas id="module_activities_week"></canvas>
+                    </div>
+                </div>
+            
+
+            <!-- month -->
+           
+                <div class="tab-pane fade show active" id="nav-module-month" role="tabpanel" aria-labelledby="nav-module-month-tab">
+                    <div class="img-block">
+                        <canvas id="module_activities_month"></canvas>
+                    </div>
+                </div>
+            
+
+            <!-- year -->
+           
+                <div class="tab-pane fade " id="nav-module-year" role="tabpanel" aria-labelledby="nav-module-year-tab">
+                    <div class="img-block">
+                        <canvas id="module_activities_year"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+{{/module_activities}}
+
+{{#enrollments}}
+    <div class="col-md-6">
+        <div class="enrollments report-element">
+            <h5>Enrollments</h5>
+            <div class="element-block">
+                <div class="img-block">
+                    <canvas id="enrollments-chart" width="200" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/enrollments}}
+
+{{#enrollment_method}}
+    <div class="col-md-6">
+        <div class="enrollment-method report-element">
+            <h5>enrollment method</h5>
+            <div class="element-block">
+                <div class="img-block">
+                    <canvas id="enrolement-method-chart" width="200" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/enrollment_method}}
+
+
+{{#enrollment_percourse}}
+    <div class="col-md-6">
+        <div class="enrollment-method report-element">
+            <h5>Enrollment Per Course</h5>
+            <div class="element-block">
+                <div class="img-block">
+                    <canvas id="enrolement-per-course-chart" width="200" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/enrollment_percourse}}
+
+
+{{#completionrate}}
+    <div class="col-md-6">
+        <div class="completion-rate report-element">
+            <h5> Completion Rate </h5>
+            <div class="element-block">
+                <div class="img-block">
+                    <canvas id="completion_rate" width="200" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/completionrate}}
+
+{{#module_progress}}
+    <div class="col-md-6">
+        <div class="activity-progress report-element">
+            <h5>Activities Progress</h5>
+            <div class="element-block">
+                <div class="img-block">
+                    <canvas id="module-progress-chart" width="200" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+{{/module_progress}}
+
+{{#assignment_table}}
+<div class="col-lg-6">
+    <div class="assignment-block report-element">
+        <h5>Assignments</h5>
+        <div class="element-block">
+            {{{table}}}          
+        </div>
+    </div>
+</div>
+{{/assignment_table}}
+
+{{#quiz_table}}
+<div class="col-lg-6">
+    <div class="quiz-block report-element">
+        <h5>Quiz's</h5>
+        <div class="element-block">
+            {{{table}}}          
+        </div>
+    </div>
+</div>
+{{/quiz_table}}
+
+{{#toggle_coursecounter}}
+<div class="col-md-12">
+    <div class="report-block" >
+        <div class="report-stats">
+            <ul>
+                <li><a href="#"><span> {{students}}   </span> Students </a></li>
+                <li><a href="#"><span> {{teachers}} </span> Teachers </a></li>      
+                <li><a href="#"><span> {{groups}}  </span> Groups </a></li>
+                <li><a href="#"><span> {{activities}} </span> Activities </a></li>
+                <li><a href="#"><span> {{resources}} </span> Resources </a></li>                
+            </ul>
+        </div>
+    </div>
+</div>
+{{/toggle_coursecounter}}

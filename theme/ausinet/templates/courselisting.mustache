@@ -1,0 +1,49 @@
+ 
+<div class="course-categories">
+    <h2>Course categories</h2>  
+    <div class="category-block">      
+	    {{{categorypicker}}}        
+
+
+	    <div class="course-search">
+	    	{{{search_form}}}
+	    </div>
+
+	    <div class="filter-block">
+	        <div class="dropdown">
+	            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	            </button>
+	            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+	                <a class="dropdown-item" href="#">Asc</a>
+	                <a class="dropdown-item" href="#">Desc</a>
+	            </div>
+	        </div>
+
+	        <div class="view-block">
+	            <div class="dropdown">
+	                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	                </button>
+	                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+	                    <a class="dropdown-item" href="#">card</a>
+	                    <a class="dropdown-item" href="#">list</a>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</div>
+
+    {{#course_content}}
+    <div class="course-content">
+    	{{{course_content}}}    	
+    </div>
+    {{/course_content}}
+
+    <div class="extra-buttons">
+    	{{{extra_buttons}}}
+    </div>
+</div>
+<style>
+.course-categories {
+    display: block !important;
+}
+</style>

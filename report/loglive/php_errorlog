@@ -1,0 +1,5 @@
+[08-Jun-2020 16:12:46 Australia/Darwin] Default exception handler: Course or activity not accessible. Debug: You are not logged in
+Error code: requireloginerror
+* line 2711 of /lib/moodlelib.php: require_login_exception thrown
+* line 37 of /report/loglive/loglive_ajax.php: call to require_login()
+

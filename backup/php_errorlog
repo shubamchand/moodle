@@ -1,0 +1,1168 @@
+[24-Apr-2020 06:32:57 Africa/Abidjan] Potential coding error - existing temptables found when disposing database. Must be dropped!
+[24-Apr-2020 06:33:50 Africa/Abidjan] Default exception handler: Can't find data record in database table course. Debug: SELECT id,category FROM {course} WHERE id = ?
+[array (
+  0 => 3,
+)]
+Error code: invalidrecord
+* line 1562 of /lib/dml/moodle_database.php: dml_missing_record_exception thrown
+* line 1538 of /lib/dml/moodle_database.php: call to moodle_database->get_record_select()
+* line 6852 of /lib/accesslib.php: call to moodle_database->get_record()
+* line 65 of /backup/util/checks/restore_check.class.php: call to context_course::instance()
+* line 201 of /backup/controller/restore_controller.class.php: call to restore_check::check_security()
+* line 94 of /backup/util/ui/base_ui.class.php: call to restore_controller->process_ui_event()
+* line 101 of /backup/restore.php: call to base_ui->__construct()
+
+[24-Apr-2020 06:40:29 Africa/Abidjan] instantiating restore controller 13c4fd46f10f895cb0b14e96358fc080
+[24-Apr-2020 06:40:29 Africa/Abidjan] setting controller status to 100
+[24-Apr-2020 06:40:29 Africa/Abidjan] loading backup info
+[24-Apr-2020 06:40:29 Africa/Abidjan] loading controller plan
+[24-Apr-2020 06:40:29 Africa/Abidjan] setting controller status to 300
+[24-Apr-2020 06:40:29 Africa/Abidjan] applying restore defaults
+[24-Apr-2020 06:40:29 Africa/Abidjan] Unknown setting: questionbank
+[24-Apr-2020 06:40:29 Africa/Abidjan] setting controller status to 400
+[24-Apr-2020 06:40:29 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:29 Africa/Abidjan] setting controller status to 500
+[24-Apr-2020 06:40:29 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:29 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:29 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:29 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:40:29 Africa/Abidjan] calculating controller checksum d9b74a7a47424152dbc095263fe87549
+[24-Apr-2020 06:40:34 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:40:34 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:34 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:34 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:34 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:40:34 Africa/Abidjan] calculating controller checksum d9b74a7a47424152dbc095263fe87549
+[24-Apr-2020 06:40:40 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:40:40 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:40 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:40 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:40 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:40:40 Africa/Abidjan] calculating controller checksum d9b74a7a47424152dbc095263fe87549
+[24-Apr-2020 06:40:47 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:40:47 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:47 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:47 Africa/Abidjan] setting controller status to 600
+[24-Apr-2020 06:40:47 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:40:47 Africa/Abidjan] calculating controller checksum eb7c109d33bfcbc49658cd7b741629cb
+[24-Apr-2020 06:40:47 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:40:48 Africa/Abidjan] setting controller status to 700
+[24-Apr-2020 06:40:48 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:40:48 Africa/Abidjan] calculating controller checksum 9d934eef2b94f90bcc5755e03117c6a5
+[24-Apr-2020 06:40:48 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:40:48 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:48 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:40:48 Africa/Abidjan] calculating controller checksum 9d934eef2b94f90bcc5755e03117c6a5
+[24-Apr-2020 06:40:52 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:40:52 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:52 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:40:53 Africa/Abidjan] setting controller status to 800
+[24-Apr-2020 06:40:53 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:40:53 Africa/Abidjan] calculating controller checksum 1b30160693c077f63c793b3715fe287f
+[24-Apr-2020 06:40:53 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:40:58 Africa/Abidjan] Default exception handler: Error writing to database Debug: Data too long for column 'name' at row 1
+INSERT INTO mdl_observation_question (surveyid,name,type_id,result_id,length,precise,position,content,required,deleted,extradata) VALUES(?,?,?,?,?,?,?,?,?,?,?)
+[array (
+  0 => 4,
+  1 => 'Alterations to the specification',
+  2 => '1',
+  3 => NULL,
+  4 => '0',
+  5 => '0',
+  6 => '11',
+  7 => 'Alterations to the specification resulting from the discussion are negotiated with person(s) of higher authority within the constraints of organisation policy.',
+  8 => 'y',
+  9 => 'n',
+  10 => '0',
+)]
+Error code: dmlwriteexception
+* line 489 of /lib/dml/moodle_database.php: dml_write_exception thrown
+* line 1331 of /lib/dml/mysqli_native_moodle_database.php: call to moodle_database->query_end()
+* line 1377 of /lib/dml/mysqli_native_moodle_database.php: call to mysqli_native_moodle_database->insert_record_raw()
+* line 157 of /mod/observation/backup/moodle2/restore_observation_stepslib.php: call to mysqli_native_moodle_database->insert_record()
+* line 137 of /backup/util/plan/restore_structure_step.class.php: call to restore_observation_activity_structure_step->process_observation_question()
+* line 121 of /backup/util/helper/restore_structure_parser_processor.class.php: call to restore_structure_step->process()
+* line 178 of /backup/util/xml/parser/processors/grouped_parser_processor.class.php: call to restore_structure_parser_processor->dispatch_chunk()
+* line 109 of /backup/util/helper/restore_structure_parser_processor.class.php: call to grouped_parser_processor->postprocess_chunk()
+* line 148 of /backup/util/xml/parser/processors/simplified_parser_processor.class.php: call to restore_structure_parser_processor->postprocess_chunk()
+* line 92 of /backup/util/xml/parser/processors/progressive_parser_processor.class.php: call to simplified_parser_processor->process_chunk()
+* line 190 of /backup/util/xml/parser/progressive_parser.class.php: call to progressive_parser_processor->receive_chunk()
+* line 278 of /backup/util/xml/parser/progressive_parser.class.php: call to progressive_parser->publish()
+* line ? of unknownfile: call to progressive_parser->end_tag()
+* line 179 of /backup/util/xml/parser/progressive_parser.class.php: call to xml_parse()
+* line 158 of /backup/util/xml/parser/progressive_parser.class.php: call to progressive_parser->parse()
+* line 110 of /backup/util/plan/restore_structure_step.class.php: call to progressive_parser->process()
+* line 181 of /backup/util/plan/base_task.class.php: call to restore_structure_step->execute()
+* line 210 of /backup/moodle2/restore_activity_task.class.php: call to base_task->execute()
+* line 178 of /backup/util/plan/base_plan.class.php: call to restore_activity_task->execute()
+* line 168 of /backup/util/plan/restore_plan.class.php: call to base_plan->execute()
+* line 377 of /backup/controller/restore_controller.class.php: call to restore_plan->execute()
+* line 219 of /backup/util/ui/restore_ui.class.php: call to restore_controller->execute_plan()
+* line 141 of /backup/restore.php: call to restore_ui->execute()
+
+[24-Apr-2020 06:40:58 Africa/Abidjan] Potential coding error - existing temptables found when disposing database. Must be dropped!
+[24-Apr-2020 06:42:19 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:42:19 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:42:19 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:42:28 Africa/Abidjan] Default exception handler: error/restore_not_executable_awaiting_required Debug: 
+Error code: restore_not_executable_awaiting_required
+$a contents: 800
+* line 165 of /backup/util/plan/restore_plan.class.php: restore_controller_exception thrown
+* line 377 of /backup/controller/restore_controller.class.php: call to restore_plan->execute()
+* line 219 of /backup/util/ui/restore_ui.class.php: call to restore_controller->execute_plan()
+* line 141 of /backup/restore.php: call to restore_ui->execute()
+
+[24-Apr-2020 06:42:37 Africa/Abidjan] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/course/format/remuiformat/lib.php on line 453
+[24-Apr-2020 06:44:20 Africa/Abidjan] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/course/format/remuiformat/lib.php on line 453
+[24-Apr-2020 06:44:29 Africa/Abidjan] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/course/format/remuiformat/lib.php on line 453
+[24-Apr-2020 06:44:35 Africa/Abidjan] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/course/format/remuiformat/lib.php on line 453
+[24-Apr-2020 06:44:35 Africa/Abidjan] instantiating restore controller 23f5795fdd4705704114b915f03b985f
+[24-Apr-2020 06:44:35 Africa/Abidjan] setting controller status to 100
+[24-Apr-2020 06:44:35 Africa/Abidjan] loading backup info
+[24-Apr-2020 06:44:35 Africa/Abidjan] loading controller plan
+[24-Apr-2020 06:44:35 Africa/Abidjan] setting controller status to 300
+[24-Apr-2020 06:44:35 Africa/Abidjan] applying restore defaults
+[24-Apr-2020 06:44:35 Africa/Abidjan] Unknown setting: questionbank
+[24-Apr-2020 06:44:35 Africa/Abidjan] setting controller status to 400
+[24-Apr-2020 06:44:35 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:35 Africa/Abidjan] setting controller status to 500
+[24-Apr-2020 06:44:35 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:35 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:35 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:35 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:44:35 Africa/Abidjan] calculating controller checksum d5c036c49a6dfb248b9aa7f8ec8c712c
+[24-Apr-2020 06:44:38 Africa/Abidjan] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/course/format/remuiformat/lib.php on line 453
+[24-Apr-2020 06:44:38 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:44:38 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:38 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:38 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:38 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:44:38 Africa/Abidjan] calculating controller checksum d5c036c49a6dfb248b9aa7f8ec8c712c
+[24-Apr-2020 06:44:44 Africa/Abidjan] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/course/format/remuiformat/lib.php on line 453
+[24-Apr-2020 06:44:45 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:44:45 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:45 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:45 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:45 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:44:45 Africa/Abidjan] calculating controller checksum d5c036c49a6dfb248b9aa7f8ec8c712c
+[24-Apr-2020 06:44:52 Africa/Abidjan] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/course/format/remuiformat/lib.php on line 453
+[24-Apr-2020 06:44:52 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:44:52 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:52 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:52 Africa/Abidjan] setting controller status to 600
+[24-Apr-2020 06:44:52 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:44:52 Africa/Abidjan] calculating controller checksum 58faddf5d39fa7274a3bf0524b8fd5bc
+[24-Apr-2020 06:44:52 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:44:52 Africa/Abidjan] setting controller status to 700
+[24-Apr-2020 06:44:52 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:44:52 Africa/Abidjan] calculating controller checksum 122189e713648960d174eb0d1c917a29
+[24-Apr-2020 06:44:52 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:44:52 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:52 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:44:52 Africa/Abidjan] calculating controller checksum 122189e713648960d174eb0d1c917a29
+[24-Apr-2020 06:44:57 Africa/Abidjan] PHP Notice:  Trying to get property 'id' of non-object in /home/ausinet6/public_html/ausinet.net.au/course/format/remuiformat/lib.php on line 453
+[24-Apr-2020 06:44:57 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:44:57 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:57 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:44:58 Africa/Abidjan] setting controller status to 800
+[24-Apr-2020 06:44:58 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:44:58 Africa/Abidjan] calculating controller checksum e32e8b73110d6c56d6271543952a2114
+[24-Apr-2020 06:44:58 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:45:04 Africa/Abidjan] processing file aliases queue
+[24-Apr-2020 06:45:05 Africa/Abidjan] setting controller status to 1000
+[24-Apr-2020 06:45:05 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:45:56 Africa/Abidjan] instantiating backup controller ff4053fab01213943acf364e1bdf69f2
+[24-Apr-2020 06:45:56 Africa/Abidjan] setting controller status to 100
+[24-Apr-2020 06:45:56 Africa/Abidjan] loading controller plan
+[24-Apr-2020 06:45:56 Africa/Abidjan] setting controller status to 300
+[24-Apr-2020 06:45:56 Africa/Abidjan] applying plan defaults
+[24-Apr-2020 06:45:56 Africa/Abidjan] setting controller status to 400
+[24-Apr-2020 06:45:56 Africa/Abidjan] setting file inclusion to 
+[24-Apr-2020 06:45:56 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:45:56 Africa/Abidjan] setting controller status to 500
+[24-Apr-2020 06:45:56 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:45:56 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:45:56 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:45:56 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:45:56 Africa/Abidjan] calculating controller checksum 1d0a6ae8bc18aaf1dfd4292cc5738623
+[24-Apr-2020 06:46:02 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:46:02 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:02 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:02 Africa/Abidjan] setting controller status to 700
+[24-Apr-2020 06:46:02 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:46:02 Africa/Abidjan] calculating controller checksum 208dd9919a91ecaf71d9be8bf0668018
+[24-Apr-2020 06:46:02 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:46:02 Africa/Abidjan] setting file inclusion to 1
+[24-Apr-2020 06:46:02 Africa/Abidjan] setting controller status to 800
+[24-Apr-2020 06:46:02 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:46:02 Africa/Abidjan] calculating controller checksum 87c52adcac16820bc88e3d3c0ea2b4f0
+[24-Apr-2020 06:46:02 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:46:03 Africa/Abidjan] setting controller status to 1000
+[24-Apr-2020 06:46:03 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:46:42 Africa/Abidjan] instantiating restore controller ad73dd04fc0cc711ed02f5c1380d1ff4
+[24-Apr-2020 06:46:42 Africa/Abidjan] setting controller status to 100
+[24-Apr-2020 06:46:42 Africa/Abidjan] loading backup info
+[24-Apr-2020 06:46:42 Africa/Abidjan] loading controller plan
+[24-Apr-2020 06:46:42 Africa/Abidjan] setting controller status to 300
+[24-Apr-2020 06:46:42 Africa/Abidjan] applying restore defaults
+[24-Apr-2020 06:46:42 Africa/Abidjan] Unknown setting: questionbank
+[24-Apr-2020 06:46:42 Africa/Abidjan] Unknown setting: overwrite_conf
+[24-Apr-2020 06:46:42 Africa/Abidjan] Unknown setting: course_fullname
+[24-Apr-2020 06:46:42 Africa/Abidjan] Unknown setting: course_shortname
+[24-Apr-2020 06:46:42 Africa/Abidjan] Unknown setting: course_startdate
+[24-Apr-2020 06:46:42 Africa/Abidjan] setting controller status to 400
+[24-Apr-2020 06:46:42 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:42 Africa/Abidjan] setting controller status to 500
+[24-Apr-2020 06:46:42 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:42 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:42 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:42 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:46:42 Africa/Abidjan] calculating controller checksum 43ea7e4fce18ea8474c17b2f9e87846e
+[24-Apr-2020 06:46:46 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:46:46 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:46 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:46 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:46 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:46:46 Africa/Abidjan] calculating controller checksum 43ea7e4fce18ea8474c17b2f9e87846e
+[24-Apr-2020 06:46:49 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:46:49 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:49 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:49 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:49 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:46:49 Africa/Abidjan] calculating controller checksum 43ea7e4fce18ea8474c17b2f9e87846e
+[24-Apr-2020 06:46:53 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:46:53 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:53 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:46:53 Africa/Abidjan] setting controller status to 600
+[24-Apr-2020 06:46:53 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:46:53 Africa/Abidjan] calculating controller checksum faa8b783718845351a2c6071221b868c
+[24-Apr-2020 06:46:53 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:46:54 Africa/Abidjan] setting controller status to 700
+[24-Apr-2020 06:46:54 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:46:54 Africa/Abidjan] calculating controller checksum 6f22a2bf4c67265a0c9a5cff7afd37bf
+[24-Apr-2020 06:46:54 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:46:54 Africa/Abidjan] setting controller status to 800
+[24-Apr-2020 06:46:54 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:46:54 Africa/Abidjan] calculating controller checksum 9d148e5e58281ad038baee86d3ed68d0
+[24-Apr-2020 06:46:54 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:46:55 Africa/Abidjan] Restored item (<AVAILABILITY_CMNAME_103/>) has availability condition on module that was not restored
+[24-Apr-2020 06:46:56 Africa/Abidjan] processing file aliases queue
+[24-Apr-2020 06:46:56 Africa/Abidjan] setting controller status to 1000
+[24-Apr-2020 06:46:56 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:47:30 Africa/Abidjan] instantiating backup controller 1e86fb45baba941de6ae615c74fffbad
+[24-Apr-2020 06:47:30 Africa/Abidjan] setting controller status to 100
+[24-Apr-2020 06:47:30 Africa/Abidjan] loading controller plan
+[24-Apr-2020 06:47:30 Africa/Abidjan] setting controller status to 300
+[24-Apr-2020 06:47:30 Africa/Abidjan] applying plan defaults
+[24-Apr-2020 06:47:30 Africa/Abidjan] setting controller status to 400
+[24-Apr-2020 06:47:30 Africa/Abidjan] setting file inclusion to 
+[24-Apr-2020 06:47:30 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:47:30 Africa/Abidjan] setting controller status to 500
+[24-Apr-2020 06:47:30 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:47:30 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:47:30 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:47:30 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:47:30 Africa/Abidjan] calculating controller checksum 8b698a7acfd726b8c40247070d207125
+[24-Apr-2020 06:47:36 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:47:36 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:47:36 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:47:36 Africa/Abidjan] setting controller status to 700
+[24-Apr-2020 06:47:36 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:47:36 Africa/Abidjan] calculating controller checksum 8b75c7968ba6c77966169fbaa9488a80
+[24-Apr-2020 06:47:36 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:47:36 Africa/Abidjan] setting file inclusion to 1
+[24-Apr-2020 06:47:36 Africa/Abidjan] setting controller status to 800
+[24-Apr-2020 06:47:36 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:47:36 Africa/Abidjan] calculating controller checksum 013673ed3a8498db86f8e0e570e375fb
+[24-Apr-2020 06:47:36 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:47:37 Africa/Abidjan] setting controller status to 1000
+[24-Apr-2020 06:47:37 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:48:10 Africa/Abidjan] instantiating restore controller 63fad2c10b12b3e447a1649d00dcc208
+[24-Apr-2020 06:48:10 Africa/Abidjan] setting controller status to 100
+[24-Apr-2020 06:48:10 Africa/Abidjan] loading backup info
+[24-Apr-2020 06:48:10 Africa/Abidjan] loading controller plan
+[24-Apr-2020 06:48:10 Africa/Abidjan] setting controller status to 300
+[24-Apr-2020 06:48:10 Africa/Abidjan] applying restore defaults
+[24-Apr-2020 06:48:10 Africa/Abidjan] Unknown setting: questionbank
+[24-Apr-2020 06:48:10 Africa/Abidjan] Unknown setting: overwrite_conf
+[24-Apr-2020 06:48:10 Africa/Abidjan] Unknown setting: course_fullname
+[24-Apr-2020 06:48:10 Africa/Abidjan] Unknown setting: course_shortname
+[24-Apr-2020 06:48:10 Africa/Abidjan] Unknown setting: course_startdate
+[24-Apr-2020 06:48:10 Africa/Abidjan] setting controller status to 400
+[24-Apr-2020 06:48:10 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:48:10 Africa/Abidjan] setting controller status to 500
+[24-Apr-2020 06:48:10 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:48:10 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:48:10 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:48:10 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:48:10 Africa/Abidjan] calculating controller checksum 004cd6004c1f1f1437dbc75996aa433c
+[24-Apr-2020 06:48:15 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:48:15 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:48:15 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:48:15 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:48:15 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:48:15 Africa/Abidjan] calculating controller checksum 004cd6004c1f1f1437dbc75996aa433c
+[24-Apr-2020 06:48:19 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:48:19 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:48:19 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:48:19 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:48:19 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:48:19 Africa/Abidjan] calculating controller checksum 004cd6004c1f1f1437dbc75996aa433c
+[24-Apr-2020 06:48:23 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:48:23 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:48:23 Africa/Abidjan] checking plan security
+[24-Apr-2020 06:48:23 Africa/Abidjan] setting controller status to 600
+[24-Apr-2020 06:48:23 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:48:23 Africa/Abidjan] calculating controller checksum 7c0410f7926d15cbe131834dfe3a2688
+[24-Apr-2020 06:48:23 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:48:23 Africa/Abidjan] setting controller status to 700
+[24-Apr-2020 06:48:23 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:48:23 Africa/Abidjan] calculating controller checksum 0a15976b69783acebed706af0d63ff37
+[24-Apr-2020 06:48:23 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:48:23 Africa/Abidjan] setting controller status to 800
+[24-Apr-2020 06:48:23 Africa/Abidjan] saving controller to db
+[24-Apr-2020 06:48:23 Africa/Abidjan] calculating controller checksum e5c29158906d342d2a6c356fe8fe6e10
+[24-Apr-2020 06:48:23 Africa/Abidjan] loading controller from db
+[24-Apr-2020 06:48:24 Africa/Abidjan] Restored item (<AVAILABILITY_CMNAME_104/>) has availability condition on module that was not restored
+[24-Apr-2020 06:48:24 Africa/Abidjan] Restored item (<AVAILABILITY_CMNAME_104/>) has availability condition on module that was not restored
+[24-Apr-2020 06:48:24 Africa/Abidjan] Restored item (<AVAILABILITY_CMNAME_104/>) has availability condition on module that was not restored
+[24-Apr-2020 06:48:24 Africa/Abidjan] Restored item (<AVAILABILITY_CMNAME_104/>) has availability condition on module that was not restored
+[24-Apr-2020 06:48:24 Africa/Abidjan] Restored item (<AVAILABILITY_CMNAME_104/>) has availability condition on module that was not restored
+[24-Apr-2020 06:48:24 Africa/Abidjan] Restored item (<AVAILABILITY_CMNAME_104/>) has availability condition on module that was not restored
+[24-Apr-2020 06:48:25 Africa/Abidjan] processing file aliases queue
+[24-Apr-2020 06:48:25 Africa/Abidjan] setting controller status to 1000
+[24-Apr-2020 06:48:25 Africa/Abidjan] saving controller to db
+[16-May-2020 00:31:31 Australia/Darwin] instantiating restore controller 3ec33de4453aae576f5f18e002f5c778
+[16-May-2020 00:31:31 Australia/Darwin] setting controller status to 100
+[16-May-2020 00:31:31 Australia/Darwin] loading backup info
+[16-May-2020 00:31:31 Australia/Darwin] loading controller plan
+[16-May-2020 00:31:31 Australia/Darwin] setting controller status to 300
+[16-May-2020 00:31:31 Australia/Darwin] applying restore defaults
+[16-May-2020 00:31:31 Australia/Darwin] Unknown setting: questionbank
+[16-May-2020 00:31:31 Australia/Darwin] setting controller status to 400
+[16-May-2020 00:31:31 Australia/Darwin] checking plan security
+[16-May-2020 00:31:31 Australia/Darwin] setting controller status to 500
+[16-May-2020 00:31:31 Australia/Darwin] checking plan security
+[16-May-2020 00:31:31 Australia/Darwin] checking plan security
+[16-May-2020 00:31:31 Australia/Darwin] checking plan security
+[16-May-2020 00:31:31 Australia/Darwin] saving controller to db
+[16-May-2020 00:31:31 Australia/Darwin] calculating controller checksum c04bc9ac9b25ea2cb8b11e690ba48725
+[16-May-2020 00:31:35 Australia/Darwin] loading controller from db
+[16-May-2020 00:31:35 Australia/Darwin] checking plan security
+[16-May-2020 00:31:35 Australia/Darwin] checking plan security
+[16-May-2020 00:31:35 Australia/Darwin] checking plan security
+[16-May-2020 00:31:35 Australia/Darwin] saving controller to db
+[16-May-2020 00:31:35 Australia/Darwin] calculating controller checksum c04bc9ac9b25ea2cb8b11e690ba48725
+[16-May-2020 00:31:43 Australia/Darwin] loading controller from db
+[16-May-2020 00:31:43 Australia/Darwin] checking plan security
+[16-May-2020 00:31:43 Australia/Darwin] checking plan security
+[16-May-2020 00:31:43 Australia/Darwin] checking plan security
+[16-May-2020 00:31:43 Australia/Darwin] saving controller to db
+[16-May-2020 00:31:43 Australia/Darwin] calculating controller checksum c04bc9ac9b25ea2cb8b11e690ba48725
+[16-May-2020 00:31:50 Australia/Darwin] loading controller from db
+[16-May-2020 00:31:50 Australia/Darwin] checking plan security
+[16-May-2020 00:31:50 Australia/Darwin] checking plan security
+[16-May-2020 00:31:50 Australia/Darwin] setting controller status to 600
+[16-May-2020 00:31:50 Australia/Darwin] saving controller to db
+[16-May-2020 00:31:50 Australia/Darwin] calculating controller checksum 648e54475350ff45489ef41382d345cb
+[16-May-2020 00:31:50 Australia/Darwin] loading controller from db
+[16-May-2020 00:31:54 Australia/Darwin] setting controller status to 700
+[16-May-2020 00:31:54 Australia/Darwin] saving controller to db
+[16-May-2020 00:31:54 Australia/Darwin] calculating controller checksum a7e8e75222c3847e91bcc183039ca593
+[16-May-2020 00:31:54 Australia/Darwin] loading controller from db
+[16-May-2020 00:31:54 Australia/Darwin] checking plan security
+[16-May-2020 00:31:54 Australia/Darwin] saving controller to db
+[16-May-2020 00:31:54 Australia/Darwin] calculating controller checksum a7e8e75222c3847e91bcc183039ca593
+[16-May-2020 00:32:00 Australia/Darwin] loading controller from db
+[16-May-2020 00:32:00 Australia/Darwin] checking plan security
+[16-May-2020 00:32:00 Australia/Darwin] checking plan security
+[16-May-2020 00:32:01 Australia/Darwin] setting controller status to 800
+[16-May-2020 00:32:01 Australia/Darwin] saving controller to db
+[16-May-2020 00:32:01 Australia/Darwin] calculating controller checksum 37ccffc51bb000894ece67e6a2271f29
+[16-May-2020 00:32:01 Australia/Darwin] loading controller from db
+[16-May-2020 00:32:22 Australia/Darwin] processing file aliases queue
+[16-May-2020 00:32:22 Australia/Darwin] setting controller status to 1000
+[16-May-2020 00:32:22 Australia/Darwin] saving controller to db
+[18-May-2020 15:09:21 Australia/Darwin] instantiating restore controller c202cb30593d376c4e48e7bef23eac88
+[18-May-2020 15:09:21 Australia/Darwin] setting controller status to 100
+[18-May-2020 15:09:21 Australia/Darwin] loading backup info
+[18-May-2020 15:09:21 Australia/Darwin] loading controller plan
+[18-May-2020 15:09:21 Australia/Darwin] setting controller status to 300
+[18-May-2020 15:09:21 Australia/Darwin] applying restore defaults
+[18-May-2020 15:09:21 Australia/Darwin] Unknown setting: questionbank
+[18-May-2020 15:09:21 Australia/Darwin] setting controller status to 400
+[18-May-2020 15:09:21 Australia/Darwin] checking plan security
+[18-May-2020 15:09:21 Australia/Darwin] setting controller status to 500
+[18-May-2020 15:09:21 Australia/Darwin] checking plan security
+[18-May-2020 15:09:21 Australia/Darwin] checking plan security
+[18-May-2020 15:09:21 Australia/Darwin] checking plan security
+[18-May-2020 15:09:21 Australia/Darwin] saving controller to db
+[18-May-2020 15:09:21 Australia/Darwin] calculating controller checksum 9fda9d71bc5e18ccc5e80c023bd5062d
+[18-May-2020 15:09:26 Australia/Darwin] loading controller from db
+[18-May-2020 15:09:26 Australia/Darwin] checking plan security
+[18-May-2020 15:09:26 Australia/Darwin] checking plan security
+[18-May-2020 15:09:26 Australia/Darwin] checking plan security
+[18-May-2020 15:09:26 Australia/Darwin] saving controller to db
+[18-May-2020 15:09:26 Australia/Darwin] calculating controller checksum 9fda9d71bc5e18ccc5e80c023bd5062d
+[18-May-2020 15:09:35 Australia/Darwin] loading controller from db
+[18-May-2020 15:09:35 Australia/Darwin] checking plan security
+[18-May-2020 15:09:35 Australia/Darwin] checking plan security
+[18-May-2020 15:09:35 Australia/Darwin] checking plan security
+[18-May-2020 15:09:35 Australia/Darwin] saving controller to db
+[18-May-2020 15:09:35 Australia/Darwin] calculating controller checksum 9fda9d71bc5e18ccc5e80c023bd5062d
+[18-May-2020 15:09:42 Australia/Darwin] loading controller from db
+[18-May-2020 15:09:42 Australia/Darwin] checking plan security
+[18-May-2020 15:09:42 Australia/Darwin] checking plan security
+[18-May-2020 15:09:42 Australia/Darwin] setting controller status to 600
+[18-May-2020 15:09:42 Australia/Darwin] saving controller to db
+[18-May-2020 15:09:42 Australia/Darwin] calculating controller checksum dd78abba74a9371258827ec4ed5689af
+[18-May-2020 15:09:43 Australia/Darwin] loading controller from db
+[18-May-2020 15:09:47 Australia/Darwin] setting controller status to 700
+[18-May-2020 15:09:47 Australia/Darwin] saving controller to db
+[18-May-2020 15:09:47 Australia/Darwin] calculating controller checksum b7b8de86245ce6ccaf6b121806ea755c
+[18-May-2020 15:09:47 Australia/Darwin] loading controller from db
+[18-May-2020 15:09:47 Australia/Darwin] checking plan security
+[18-May-2020 15:09:47 Australia/Darwin] saving controller to db
+[18-May-2020 15:09:47 Australia/Darwin] calculating controller checksum b7b8de86245ce6ccaf6b121806ea755c
+[18-May-2020 15:09:52 Australia/Darwin] loading controller from db
+[18-May-2020 15:09:52 Australia/Darwin] checking plan security
+[18-May-2020 15:09:52 Australia/Darwin] checking plan security
+[18-May-2020 15:09:52 Australia/Darwin] setting controller status to 800
+[18-May-2020 15:09:52 Australia/Darwin] saving controller to db
+[18-May-2020 15:09:52 Australia/Darwin] calculating controller checksum 2175381cf9af455a4378ffd26b8437ed
+[18-May-2020 15:09:52 Australia/Darwin] loading controller from db
+[18-May-2020 15:10:26 Australia/Darwin] processing file aliases queue
+[18-May-2020 15:10:26 Australia/Darwin] setting controller status to 1000
+[18-May-2020 15:10:26 Australia/Darwin] saving controller to db
+[18-May-2020 23:06:52 Australia/Darwin] instantiating restore controller 776ee12a075937b921f3cbbafba394af
+[18-May-2020 23:06:52 Australia/Darwin] setting controller status to 100
+[18-May-2020 23:06:52 Australia/Darwin] loading backup info
+[18-May-2020 23:06:52 Australia/Darwin] loading controller plan
+[18-May-2020 23:06:52 Australia/Darwin] setting controller status to 300
+[18-May-2020 23:06:52 Australia/Darwin] applying restore defaults
+[18-May-2020 23:06:52 Australia/Darwin] Unknown setting: questionbank
+[18-May-2020 23:06:52 Australia/Darwin] setting controller status to 400
+[18-May-2020 23:06:52 Australia/Darwin] checking plan security
+[18-May-2020 23:06:52 Australia/Darwin] setting controller status to 500
+[18-May-2020 23:06:52 Australia/Darwin] checking plan security
+[18-May-2020 23:06:52 Australia/Darwin] checking plan security
+[18-May-2020 23:06:52 Australia/Darwin] checking plan security
+[18-May-2020 23:06:52 Australia/Darwin] saving controller to db
+[18-May-2020 23:06:52 Australia/Darwin] calculating controller checksum 449b635194901e0a89540ecab10fcf87
+[18-May-2020 23:06:55 Australia/Darwin] loading controller from db
+[18-May-2020 23:06:55 Australia/Darwin] checking plan security
+[18-May-2020 23:06:55 Australia/Darwin] checking plan security
+[18-May-2020 23:06:55 Australia/Darwin] checking plan security
+[18-May-2020 23:06:55 Australia/Darwin] saving controller to db
+[18-May-2020 23:06:55 Australia/Darwin] calculating controller checksum 449b635194901e0a89540ecab10fcf87
+[18-May-2020 23:07:02 Australia/Darwin] loading controller from db
+[18-May-2020 23:07:02 Australia/Darwin] checking plan security
+[18-May-2020 23:07:02 Australia/Darwin] checking plan security
+[18-May-2020 23:07:02 Australia/Darwin] checking plan security
+[18-May-2020 23:07:02 Australia/Darwin] saving controller to db
+[18-May-2020 23:07:02 Australia/Darwin] calculating controller checksum 449b635194901e0a89540ecab10fcf87
+[18-May-2020 23:07:15 Australia/Darwin] loading controller from db
+[18-May-2020 23:07:15 Australia/Darwin] checking plan security
+[18-May-2020 23:07:15 Australia/Darwin] checking plan security
+[18-May-2020 23:07:15 Australia/Darwin] setting controller status to 600
+[18-May-2020 23:07:15 Australia/Darwin] saving controller to db
+[18-May-2020 23:07:15 Australia/Darwin] calculating controller checksum f5cb426b252ef7723c65135940f1be78
+[18-May-2020 23:07:15 Australia/Darwin] loading controller from db
+[18-May-2020 23:07:20 Australia/Darwin] setting controller status to 700
+[18-May-2020 23:07:20 Australia/Darwin] saving controller to db
+[18-May-2020 23:07:20 Australia/Darwin] calculating controller checksum 1603f51b3960cd2d77b93dfe75cf8026
+[18-May-2020 23:07:20 Australia/Darwin] loading controller from db
+[18-May-2020 23:07:20 Australia/Darwin] checking plan security
+[18-May-2020 23:07:20 Australia/Darwin] saving controller to db
+[18-May-2020 23:07:20 Australia/Darwin] calculating controller checksum 1603f51b3960cd2d77b93dfe75cf8026
+[18-May-2020 23:07:24 Australia/Darwin] loading controller from db
+[18-May-2020 23:07:24 Australia/Darwin] checking plan security
+[18-May-2020 23:07:24 Australia/Darwin] checking plan security
+[18-May-2020 23:07:24 Australia/Darwin] setting controller status to 800
+[18-May-2020 23:07:24 Australia/Darwin] saving controller to db
+[18-May-2020 23:07:24 Australia/Darwin] calculating controller checksum b34002a346dbcec6eec1fab7b35abc38
+[18-May-2020 23:07:24 Australia/Darwin] loading controller from db
+[18-May-2020 23:07:54 Australia/Darwin] processing file aliases queue
+[18-May-2020 23:07:55 Australia/Darwin] setting controller status to 1000
+[18-May-2020 23:07:55 Australia/Darwin] saving controller to db
+[18-May-2020 23:49:34 Australia/Darwin] instantiating restore controller d12a6d1e2351b0188a75c425d89103c5
+[18-May-2020 23:49:34 Australia/Darwin] setting controller status to 100
+[18-May-2020 23:49:34 Australia/Darwin] loading backup info
+[18-May-2020 23:49:34 Australia/Darwin] loading controller plan
+[18-May-2020 23:49:34 Australia/Darwin] setting controller status to 300
+[18-May-2020 23:49:34 Australia/Darwin] applying restore defaults
+[18-May-2020 23:49:34 Australia/Darwin] Unknown setting: questionbank
+[18-May-2020 23:49:34 Australia/Darwin] setting controller status to 400
+[18-May-2020 23:49:34 Australia/Darwin] checking plan security
+[18-May-2020 23:49:34 Australia/Darwin] setting controller status to 500
+[18-May-2020 23:49:34 Australia/Darwin] checking plan security
+[18-May-2020 23:49:34 Australia/Darwin] checking plan security
+[18-May-2020 23:49:34 Australia/Darwin] checking plan security
+[18-May-2020 23:49:34 Australia/Darwin] saving controller to db
+[18-May-2020 23:49:34 Australia/Darwin] calculating controller checksum def98b8403ad259ee5929b12827dc86d
+[18-May-2020 23:49:38 Australia/Darwin] loading controller from db
+[18-May-2020 23:49:38 Australia/Darwin] checking plan security
+[18-May-2020 23:49:38 Australia/Darwin] checking plan security
+[18-May-2020 23:49:38 Australia/Darwin] checking plan security
+[18-May-2020 23:49:38 Australia/Darwin] saving controller to db
+[18-May-2020 23:49:38 Australia/Darwin] calculating controller checksum def98b8403ad259ee5929b12827dc86d
+[18-May-2020 23:49:43 Australia/Darwin] loading controller from db
+[18-May-2020 23:49:43 Australia/Darwin] checking plan security
+[18-May-2020 23:49:43 Australia/Darwin] checking plan security
+[18-May-2020 23:49:43 Australia/Darwin] checking plan security
+[18-May-2020 23:49:43 Australia/Darwin] saving controller to db
+[18-May-2020 23:49:43 Australia/Darwin] calculating controller checksum def98b8403ad259ee5929b12827dc86d
+[18-May-2020 23:49:49 Australia/Darwin] loading controller from db
+[18-May-2020 23:49:49 Australia/Darwin] checking plan security
+[18-May-2020 23:49:49 Australia/Darwin] checking plan security
+[18-May-2020 23:49:49 Australia/Darwin] setting controller status to 600
+[18-May-2020 23:49:49 Australia/Darwin] saving controller to db
+[18-May-2020 23:49:49 Australia/Darwin] calculating controller checksum 4b444188269a29bc50ebe570014369b8
+[18-May-2020 23:49:49 Australia/Darwin] loading controller from db
+[18-May-2020 23:49:51 Australia/Darwin] setting controller status to 700
+[18-May-2020 23:49:51 Australia/Darwin] saving controller to db
+[18-May-2020 23:49:51 Australia/Darwin] calculating controller checksum 4547301fb392b980f4a0def25f3e6c7d
+[18-May-2020 23:49:51 Australia/Darwin] loading controller from db
+[18-May-2020 23:49:51 Australia/Darwin] checking plan security
+[18-May-2020 23:49:51 Australia/Darwin] saving controller to db
+[18-May-2020 23:49:51 Australia/Darwin] calculating controller checksum 4547301fb392b980f4a0def25f3e6c7d
+[18-May-2020 23:49:54 Australia/Darwin] loading controller from db
+[18-May-2020 23:49:54 Australia/Darwin] checking plan security
+[18-May-2020 23:49:54 Australia/Darwin] checking plan security
+[18-May-2020 23:49:55 Australia/Darwin] setting controller status to 800
+[18-May-2020 23:49:55 Australia/Darwin] saving controller to db
+[18-May-2020 23:49:55 Australia/Darwin] calculating controller checksum def349c0903e0c05dd87dc972fe4cd2a
+[18-May-2020 23:49:55 Australia/Darwin] loading controller from db
+[18-May-2020 23:50:12 Australia/Darwin] processing file aliases queue
+[18-May-2020 23:50:12 Australia/Darwin] setting controller status to 1000
+[18-May-2020 23:50:12 Australia/Darwin] saving controller to db
+[18-May-2020 23:53:15 Australia/Darwin] instantiating restore controller 1d52f6b71f9149972479367bc3430ab8
+[18-May-2020 23:53:15 Australia/Darwin] setting controller status to 100
+[18-May-2020 23:53:15 Australia/Darwin] loading backup info
+[18-May-2020 23:53:15 Australia/Darwin] loading controller plan
+[18-May-2020 23:53:15 Australia/Darwin] setting controller status to 300
+[18-May-2020 23:53:15 Australia/Darwin] applying restore defaults
+[18-May-2020 23:53:15 Australia/Darwin] Unknown setting: questionbank
+[18-May-2020 23:53:15 Australia/Darwin] setting controller status to 400
+[18-May-2020 23:53:15 Australia/Darwin] checking plan security
+[18-May-2020 23:53:15 Australia/Darwin] setting controller status to 500
+[18-May-2020 23:53:15 Australia/Darwin] checking plan security
+[18-May-2020 23:53:15 Australia/Darwin] checking plan security
+[18-May-2020 23:53:15 Australia/Darwin] checking plan security
+[18-May-2020 23:53:15 Australia/Darwin] saving controller to db
+[18-May-2020 23:53:15 Australia/Darwin] calculating controller checksum 42afe2794a5ee0392aedcfa5ad5a074a
+[18-May-2020 23:53:21 Australia/Darwin] loading controller from db
+[18-May-2020 23:53:21 Australia/Darwin] checking plan security
+[18-May-2020 23:53:21 Australia/Darwin] checking plan security
+[18-May-2020 23:53:21 Australia/Darwin] checking plan security
+[18-May-2020 23:53:21 Australia/Darwin] saving controller to db
+[18-May-2020 23:53:21 Australia/Darwin] calculating controller checksum 42afe2794a5ee0392aedcfa5ad5a074a
+[18-May-2020 23:53:25 Australia/Darwin] loading controller from db
+[18-May-2020 23:53:25 Australia/Darwin] checking plan security
+[18-May-2020 23:53:25 Australia/Darwin] checking plan security
+[18-May-2020 23:53:25 Australia/Darwin] checking plan security
+[18-May-2020 23:53:25 Australia/Darwin] saving controller to db
+[18-May-2020 23:53:25 Australia/Darwin] calculating controller checksum 42afe2794a5ee0392aedcfa5ad5a074a
+[18-May-2020 23:53:29 Australia/Darwin] loading controller from db
+[18-May-2020 23:53:29 Australia/Darwin] checking plan security
+[18-May-2020 23:53:29 Australia/Darwin] checking plan security
+[18-May-2020 23:53:29 Australia/Darwin] setting controller status to 600
+[18-May-2020 23:53:29 Australia/Darwin] saving controller to db
+[18-May-2020 23:53:29 Australia/Darwin] calculating controller checksum 8076634cf11acda0fc238e57e72ad2bc
+[18-May-2020 23:53:29 Australia/Darwin] loading controller from db
+[18-May-2020 23:53:31 Australia/Darwin] setting controller status to 700
+[18-May-2020 23:53:31 Australia/Darwin] saving controller to db
+[18-May-2020 23:53:31 Australia/Darwin] calculating controller checksum eba87b38637e56478691f6e36eeb4313
+[18-May-2020 23:53:31 Australia/Darwin] loading controller from db
+[18-May-2020 23:53:31 Australia/Darwin] checking plan security
+[18-May-2020 23:53:31 Australia/Darwin] saving controller to db
+[18-May-2020 23:53:31 Australia/Darwin] calculating controller checksum eba87b38637e56478691f6e36eeb4313
+[18-May-2020 23:53:36 Australia/Darwin] loading controller from db
+[18-May-2020 23:53:36 Australia/Darwin] checking plan security
+[18-May-2020 23:53:36 Australia/Darwin] checking plan security
+[18-May-2020 23:53:37 Australia/Darwin] setting controller status to 800
+[18-May-2020 23:53:37 Australia/Darwin] saving controller to db
+[18-May-2020 23:53:37 Australia/Darwin] calculating controller checksum 110cf18dab00437b30445073184af2a0
+[18-May-2020 23:53:37 Australia/Darwin] loading controller from db
+[18-May-2020 23:53:50 Australia/Darwin] processing file aliases queue
+[18-May-2020 23:53:50 Australia/Darwin] setting controller status to 1000
+[18-May-2020 23:53:50 Australia/Darwin] saving controller to db
+[18-May-2020 23:57:09 Australia/Darwin] instantiating restore controller 3f7141972710677f3140dbc66f52788b
+[18-May-2020 23:57:09 Australia/Darwin] setting controller status to 100
+[18-May-2020 23:57:09 Australia/Darwin] loading backup info
+[18-May-2020 23:57:09 Australia/Darwin] loading controller plan
+[18-May-2020 23:57:09 Australia/Darwin] setting controller status to 300
+[18-May-2020 23:57:09 Australia/Darwin] applying restore defaults
+[18-May-2020 23:57:09 Australia/Darwin] Unknown setting: questionbank
+[18-May-2020 23:57:09 Australia/Darwin] setting controller status to 400
+[18-May-2020 23:57:09 Australia/Darwin] checking plan security
+[18-May-2020 23:57:09 Australia/Darwin] setting controller status to 500
+[18-May-2020 23:57:09 Australia/Darwin] checking plan security
+[18-May-2020 23:57:09 Australia/Darwin] checking plan security
+[18-May-2020 23:57:09 Australia/Darwin] checking plan security
+[18-May-2020 23:57:09 Australia/Darwin] saving controller to db
+[18-May-2020 23:57:09 Australia/Darwin] calculating controller checksum 98b0493b18e7312ece328dd85e042a03
+[18-May-2020 23:57:13 Australia/Darwin] loading controller from db
+[18-May-2020 23:57:13 Australia/Darwin] checking plan security
+[18-May-2020 23:57:13 Australia/Darwin] checking plan security
+[18-May-2020 23:57:13 Australia/Darwin] checking plan security
+[18-May-2020 23:57:13 Australia/Darwin] saving controller to db
+[18-May-2020 23:57:13 Australia/Darwin] calculating controller checksum 98b0493b18e7312ece328dd85e042a03
+[18-May-2020 23:57:17 Australia/Darwin] loading controller from db
+[18-May-2020 23:57:17 Australia/Darwin] checking plan security
+[18-May-2020 23:57:17 Australia/Darwin] checking plan security
+[18-May-2020 23:57:17 Australia/Darwin] checking plan security
+[18-May-2020 23:57:17 Australia/Darwin] saving controller to db
+[18-May-2020 23:57:17 Australia/Darwin] calculating controller checksum 98b0493b18e7312ece328dd85e042a03
+[18-May-2020 23:57:20 Australia/Darwin] loading controller from db
+[18-May-2020 23:57:20 Australia/Darwin] checking plan security
+[18-May-2020 23:57:20 Australia/Darwin] checking plan security
+[18-May-2020 23:57:20 Australia/Darwin] setting controller status to 600
+[18-May-2020 23:57:20 Australia/Darwin] saving controller to db
+[18-May-2020 23:57:20 Australia/Darwin] calculating controller checksum 660c5796966e48024c45233272d0e815
+[18-May-2020 23:57:20 Australia/Darwin] loading controller from db
+[18-May-2020 23:57:23 Australia/Darwin] setting controller status to 700
+[18-May-2020 23:57:23 Australia/Darwin] saving controller to db
+[18-May-2020 23:57:23 Australia/Darwin] calculating controller checksum ac555d4d650218cfafe07c9eb192a1a5
+[18-May-2020 23:57:23 Australia/Darwin] loading controller from db
+[18-May-2020 23:57:23 Australia/Darwin] checking plan security
+[18-May-2020 23:57:23 Australia/Darwin] saving controller to db
+[18-May-2020 23:57:23 Australia/Darwin] calculating controller checksum ac555d4d650218cfafe07c9eb192a1a5
+[18-May-2020 23:57:27 Australia/Darwin] loading controller from db
+[18-May-2020 23:57:27 Australia/Darwin] checking plan security
+[18-May-2020 23:57:27 Australia/Darwin] checking plan security
+[18-May-2020 23:57:28 Australia/Darwin] setting controller status to 800
+[18-May-2020 23:57:28 Australia/Darwin] saving controller to db
+[18-May-2020 23:57:28 Australia/Darwin] calculating controller checksum c3f0728b09cd66f02d0b4abfc5cd11fe
+[18-May-2020 23:57:28 Australia/Darwin] loading controller from db
+[18-May-2020 23:57:47 Australia/Darwin] processing file aliases queue
+[18-May-2020 23:57:47 Australia/Darwin] setting controller status to 1000
+[18-May-2020 23:57:47 Australia/Darwin] saving controller to db
+[20-May-2020 10:32:05 Australia/Darwin] instantiating backup controller 5cbc58504cc2ff1c850ad074f2bda292
+[20-May-2020 10:32:05 Australia/Darwin] setting controller status to 100
+[20-May-2020 10:32:05 Australia/Darwin] loading controller plan
+[20-May-2020 10:32:06 Australia/Darwin] setting controller status to 300
+[20-May-2020 10:32:06 Australia/Darwin] applying plan defaults
+[20-May-2020 10:32:06 Australia/Darwin] setting controller status to 400
+[20-May-2020 10:32:06 Australia/Darwin] setting file inclusion to 
+[20-May-2020 10:32:06 Australia/Darwin] checking plan security
+[20-May-2020 10:32:06 Australia/Darwin] setting controller status to 500
+[20-May-2020 10:32:06 Australia/Darwin] checking plan security
+[20-May-2020 10:32:06 Australia/Darwin] checking plan security
+[20-May-2020 10:32:06 Australia/Darwin] checking plan security
+[20-May-2020 10:32:06 Australia/Darwin] saving controller to db
+[20-May-2020 10:32:06 Australia/Darwin] calculating controller checksum 752a8317f488c10dee1f3ea2cc64fa3f
+[21-May-2020 10:58:24 Australia/Darwin] instantiating backup controller f1b9f26fc8a59834ed9f64ad6deee83c
+[21-May-2020 10:58:24 Australia/Darwin] setting controller status to 100
+[21-May-2020 10:58:24 Australia/Darwin] loading controller plan
+[21-May-2020 10:58:24 Australia/Darwin] setting controller status to 300
+[21-May-2020 10:58:24 Australia/Darwin] applying plan defaults
+[21-May-2020 10:58:24 Australia/Darwin] setting controller status to 400
+[21-May-2020 10:58:24 Australia/Darwin] setting file inclusion to 
+[21-May-2020 10:58:24 Australia/Darwin] checking plan security
+[21-May-2020 10:58:24 Australia/Darwin] setting controller status to 500
+[21-May-2020 10:58:24 Australia/Darwin] checking plan security
+[21-May-2020 10:58:24 Australia/Darwin] checking plan security
+[21-May-2020 10:58:24 Australia/Darwin] checking plan security
+[21-May-2020 10:58:24 Australia/Darwin] saving controller to db
+[21-May-2020 10:58:24 Australia/Darwin] calculating controller checksum 2c774bbf406740cef40011fc6a5a4c0d
+[21-May-2020 11:14:26 Australia/Darwin] instantiating backup controller c0db80febb7a4cdeaa862901f83a3aa1
+[21-May-2020 11:14:26 Australia/Darwin] setting controller status to 100
+[21-May-2020 11:14:26 Australia/Darwin] loading controller plan
+[21-May-2020 11:14:26 Australia/Darwin] setting controller status to 300
+[21-May-2020 11:14:26 Australia/Darwin] applying plan defaults
+[21-May-2020 11:14:26 Australia/Darwin] setting controller status to 400
+[21-May-2020 11:14:26 Australia/Darwin] setting file inclusion to 
+[21-May-2020 11:14:26 Australia/Darwin] checking plan security
+[21-May-2020 11:14:26 Australia/Darwin] setting controller status to 500
+[21-May-2020 11:14:26 Australia/Darwin] checking plan security
+[21-May-2020 11:14:26 Australia/Darwin] checking plan security
+[21-May-2020 11:14:26 Australia/Darwin] checking plan security
+[21-May-2020 11:14:26 Australia/Darwin] saving controller to db
+[21-May-2020 11:14:26 Australia/Darwin] calculating controller checksum e3c6f7c451e47cc5dcbd32e59fcf0996
+[21-May-2020 11:15:28 Australia/Darwin] loading controller from db
+[21-May-2020 11:15:28 Australia/Darwin] checking plan security
+[21-May-2020 11:15:28 Australia/Darwin] checking plan security
+[21-May-2020 11:15:28 Australia/Darwin] checking plan security
+[21-May-2020 11:15:28 Australia/Darwin] saving controller to db
+[21-May-2020 11:15:28 Australia/Darwin] calculating controller checksum 57160725d09e8d0ed6da925f3f468bd5
+[21-May-2020 11:16:37 Australia/Darwin] loading controller from db
+[21-May-2020 11:16:37 Australia/Darwin] checking plan security
+[21-May-2020 11:16:37 Australia/Darwin] checking plan security
+[21-May-2020 11:16:37 Australia/Darwin] checking plan security
+[21-May-2020 11:16:37 Australia/Darwin] saving controller to db
+[21-May-2020 11:16:37 Australia/Darwin] calculating controller checksum 0b7dd3aab96cf6e7011518e24b8ef623
+[21-May-2020 11:16:58 Australia/Darwin] loading controller from db
+[21-May-2020 11:16:58 Australia/Darwin] checking plan security
+[21-May-2020 11:16:58 Australia/Darwin] checking plan security
+[21-May-2020 11:16:58 Australia/Darwin] setting controller status to 700
+[21-May-2020 11:16:58 Australia/Darwin] saving controller to db
+[21-May-2020 11:16:58 Australia/Darwin] calculating controller checksum 65202567e6ff55278e4d0dc35d062009
+[21-May-2020 11:16:58 Australia/Darwin] loading controller from db
+[21-May-2020 11:16:58 Australia/Darwin] setting file inclusion to 1
+[21-May-2020 11:16:58 Australia/Darwin] setting controller status to 800
+[21-May-2020 11:16:58 Australia/Darwin] saving controller to db
+[21-May-2020 11:16:58 Australia/Darwin] calculating controller checksum c238d03f2abf9c6d04f13813af39f239
+[21-May-2020 11:16:58 Australia/Darwin] loading controller from db
+[21-May-2020 11:16:59 Australia/Darwin] section skipped by _included setting
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting Student Sign Off Sheet
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting Announcements
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting Resources
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting UEERE5001 – Lecture Notes
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting Relevant Australian Standards
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting GSES Book – Battery Storage Systems for Grid-Connected PV Systems, 2nd Edition - Hard copy
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting CEC Battery Installation Guidelines for Installers
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting CEC Guide to Installing a Household Battery Storage System
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting Best Practice Guide for Battery Storage Equipment
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting Solax Inverter Datasheet/Manual
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting Solax Battery Datasheet/Manual
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting LG Chem Battery Datasheet/Manual
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting 
+    Video Lecture
+
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting UEERE5001 – Video Lecture
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting 
+    Assessment
+  (copy)
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting UEERE5001 – Battery Design Theory Assessment
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting UEERE5001 – Battery Design Practical Assessment
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting Observations
+    
+
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting UEERE5001 – Observation Sheet
+[21-May-2020 11:16:59 Australia/Darwin] section skipped by _included setting Student Feedback
+[21-May-2020 11:16:59 Australia/Darwin] activity skipped by _included setting Student Feedback
+[21-May-2020 11:17:04 Australia/Darwin] setting controller status to 1000
+[21-May-2020 11:17:04 Australia/Darwin] saving controller to db
+[21-May-2020 11:21:19 Australia/Darwin] instantiating restore controller 288d928b00103986a0328d7cedd0060c
+[21-May-2020 11:21:19 Australia/Darwin] setting controller status to 100
+[21-May-2020 11:21:19 Australia/Darwin] loading backup info
+[21-May-2020 11:21:19 Australia/Darwin] loading controller plan
+[21-May-2020 11:21:19 Australia/Darwin] setting controller status to 300
+[21-May-2020 11:21:19 Australia/Darwin] applying restore defaults
+[21-May-2020 11:21:19 Australia/Darwin] Unknown setting: questionbank
+[21-May-2020 11:21:19 Australia/Darwin] setting controller status to 400
+[21-May-2020 11:21:19 Australia/Darwin] checking plan security
+[21-May-2020 11:21:19 Australia/Darwin] setting controller status to 500
+[21-May-2020 11:21:19 Australia/Darwin] checking plan security
+[21-May-2020 11:21:20 Australia/Darwin] checking plan security
+[21-May-2020 11:21:20 Australia/Darwin] checking plan security
+[21-May-2020 11:21:20 Australia/Darwin] saving controller to db
+[21-May-2020 11:21:20 Australia/Darwin] calculating controller checksum 1914c4b8720fc421427e4c31363850af
+[21-May-2020 11:21:29 Australia/Darwin] loading controller from db
+[21-May-2020 11:21:29 Australia/Darwin] checking plan security
+[21-May-2020 11:21:29 Australia/Darwin] checking plan security
+[21-May-2020 11:21:29 Australia/Darwin] checking plan security
+[21-May-2020 11:21:29 Australia/Darwin] saving controller to db
+[21-May-2020 11:21:29 Australia/Darwin] calculating controller checksum 3c8497dcb0a9792cd28597e8e03d1838
+[21-May-2020 11:22:07 Australia/Darwin] loading controller from db
+[21-May-2020 11:22:07 Australia/Darwin] checking plan security
+[21-May-2020 11:22:07 Australia/Darwin] checking plan security
+[21-May-2020 11:22:07 Australia/Darwin] checking plan security
+[21-May-2020 11:22:07 Australia/Darwin] saving controller to db
+[21-May-2020 11:22:07 Australia/Darwin] calculating controller checksum 3c8497dcb0a9792cd28597e8e03d1838
+[21-May-2020 11:22:32 Australia/Darwin] loading controller from db
+[21-May-2020 11:22:32 Australia/Darwin] checking plan security
+[21-May-2020 11:22:32 Australia/Darwin] checking plan security
+[21-May-2020 11:22:32 Australia/Darwin] setting controller status to 600
+[21-May-2020 11:22:32 Australia/Darwin] saving controller to db
+[21-May-2020 11:22:32 Australia/Darwin] calculating controller checksum a9245735eccfcbe35c43fc3244ba4877
+[21-May-2020 11:22:32 Australia/Darwin] loading controller from db
+[21-May-2020 11:22:34 Australia/Darwin] setting controller status to 700
+[21-May-2020 11:22:34 Australia/Darwin] saving controller to db
+[21-May-2020 11:22:34 Australia/Darwin] calculating controller checksum 92275d480f7253f54de433252fb1a305
+[21-May-2020 11:22:34 Australia/Darwin] loading controller from db
+[21-May-2020 11:22:34 Australia/Darwin] setting controller status to 800
+[21-May-2020 11:22:34 Australia/Darwin] saving controller to db
+[21-May-2020 11:22:34 Australia/Darwin] calculating controller checksum 83320e7484adadeb8a63fd371cb66255
+[21-May-2020 11:22:34 Australia/Darwin] loading controller from db
+[21-May-2020 11:22:42 Australia/Darwin] processing file aliases queue
+[21-May-2020 11:22:42 Australia/Darwin] setting controller status to 1000
+[21-May-2020 11:22:42 Australia/Darwin] saving controller to db
+[23-May-2020 10:40:24 Australia/Darwin] unable to find the conversion path
+[23-May-2020 10:51:07 Australia/Darwin] Restored item (<AVAILABILITY_CMNAME_592/>) has availability condition on module that was not restored
+[23-May-2020 13:52:57 Australia/Darwin] Restored item (<AVAILABILITY_CMNAME_616/>) has availability condition on module that was not restored
+[23-May-2020 14:20:39 Australia/Darwin] Restored item (<AVAILABILITY_CMNAME_617/>) has availability condition on module that was not restored
+[28-May-2020 16:03:43 Australia/Darwin] Restored item (<AVAILABILITY_CMNAME_640/>) has availability condition on module that was not restored
+[29-May-2020 16:50:19 Australia/Darwin] Restored item (<AVAILABILITY_CMNAME_643/>) has availability condition on module that was not restored
+[03-Jun-2020 10:29:39 Australia/Darwin] Restored item (<AVAILABILITY_CMNAME_714/>) has availability condition on module that was not restored
+[08-Jun-2020 13:08:47 Australia/Darwin] Restored item (<AVAILABILITY_CMNAME_734/>) has availability condition on module that was not restored
+[25-Jun-2020 09:26:53 Australia/Darwin] instantiating backup controller 093771b87109b7efc69fad3f834b5ea6
+[25-Jun-2020 09:26:53 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 09:26:53 Australia/Darwin] loading controller plan
+[25-Jun-2020 09:26:53 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 09:26:53 Australia/Darwin] applying plan defaults
+[25-Jun-2020 09:26:53 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 09:26:53 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 09:26:53 Australia/Darwin] checking plan security
+[25-Jun-2020 09:26:53 Australia/Darwin] setting controller status to 500
+[25-Jun-2020 09:26:53 Australia/Darwin] checking plan security
+[25-Jun-2020 09:26:53 Australia/Darwin] checking plan security
+[25-Jun-2020 09:26:53 Australia/Darwin] checking plan security
+[25-Jun-2020 09:26:53 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:26:53 Australia/Darwin] calculating controller checksum 8e28f65fdb99467967d23b12ef871da4
+[25-Jun-2020 09:27:07 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:27:07 Australia/Darwin] checking plan security
+[25-Jun-2020 09:27:07 Australia/Darwin] checking plan security
+[25-Jun-2020 09:27:07 Australia/Darwin] checking plan security
+[25-Jun-2020 09:27:07 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:27:07 Australia/Darwin] calculating controller checksum 30969de4b938a3b5b56da237dc7090a5
+[25-Jun-2020 09:27:16 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:27:16 Australia/Darwin] checking plan security
+[25-Jun-2020 09:27:16 Australia/Darwin] checking plan security
+[25-Jun-2020 09:27:16 Australia/Darwin] checking plan security
+[25-Jun-2020 09:27:16 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:27:16 Australia/Darwin] calculating controller checksum 30969de4b938a3b5b56da237dc7090a5
+[25-Jun-2020 09:27:42 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:27:42 Australia/Darwin] checking plan security
+[25-Jun-2020 09:27:42 Australia/Darwin] checking plan security
+[25-Jun-2020 09:27:42 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 09:27:42 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:27:42 Australia/Darwin] calculating controller checksum 744e0f78fca4e49bf7b57ed3f6b75487
+[25-Jun-2020 09:27:42 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:27:42 Australia/Darwin] setting file inclusion to 1
+[25-Jun-2020 09:27:42 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 09:27:42 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:27:42 Australia/Darwin] calculating controller checksum 5d7546a8b417bc49d41706280d287b2f
+[25-Jun-2020 09:27:42 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:28:00 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 09:28:00 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:28:49 Australia/Darwin] instantiating restore controller 78ab78c6dd41e189fb789bca0a0a7275
+[25-Jun-2020 09:28:49 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 09:28:49 Australia/Darwin] loading backup info
+[25-Jun-2020 09:28:49 Australia/Darwin] loading controller plan
+[25-Jun-2020 09:28:49 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 09:28:49 Australia/Darwin] applying restore defaults
+[25-Jun-2020 09:28:49 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 09:28:49 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 09:28:49 Australia/Darwin] checking plan security
+[25-Jun-2020 09:28:49 Australia/Darwin] setting controller status to 500
+[25-Jun-2020 09:28:49 Australia/Darwin] checking plan security
+[25-Jun-2020 09:28:49 Australia/Darwin] checking plan security
+[25-Jun-2020 09:28:49 Australia/Darwin] checking plan security
+[25-Jun-2020 09:28:49 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:28:49 Australia/Darwin] calculating controller checksum 4b3e094aa148257426a5fc170731e997
+[25-Jun-2020 09:28:56 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:28:56 Australia/Darwin] checking plan security
+[25-Jun-2020 09:28:56 Australia/Darwin] checking plan security
+[25-Jun-2020 09:28:56 Australia/Darwin] checking plan security
+[25-Jun-2020 09:28:56 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:28:56 Australia/Darwin] calculating controller checksum 0e4f72f81e7f855db231e5c71e8b31ec
+[25-Jun-2020 09:29:43 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:29:43 Australia/Darwin] checking plan security
+[25-Jun-2020 09:29:43 Australia/Darwin] checking plan security
+[25-Jun-2020 09:29:43 Australia/Darwin] checking plan security
+[25-Jun-2020 09:29:43 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:29:43 Australia/Darwin] calculating controller checksum d8fa178c00f385de3515ecd1ed67aa08
+[25-Jun-2020 09:29:52 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:29:52 Australia/Darwin] checking plan security
+[25-Jun-2020 09:29:52 Australia/Darwin] checking plan security
+[25-Jun-2020 09:29:52 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 09:29:52 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:29:52 Australia/Darwin] calculating controller checksum c990e5739f04676045246dcc90ddd352
+[25-Jun-2020 09:29:52 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:29:54 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 09:29:54 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:29:54 Australia/Darwin] calculating controller checksum 7e27175a968c91de7b3c2be9fec2f093
+[25-Jun-2020 09:29:54 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:29:54 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 09:29:54 Australia/Darwin] saving controller to db
+[25-Jun-2020 09:29:54 Australia/Darwin] calculating controller checksum 50fbdcc86740d0910f61fb91bce5f373
+[25-Jun-2020 09:29:54 Australia/Darwin] loading controller from db
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE038B - Participate in development and follow a personal competency development plan
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting Resources
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting Induction Part 1 
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting Induction Part 2
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE038B - Short Notes
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting 
+   Assessment
+
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE038B - Theory Assessment
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting 
+    Observations
+
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE038B – Observation sheet 
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE117A - Implement and monitor energy sector OHS policies and procedures
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting Resources 
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE117A – Short notes 
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting Electrical Safety Regulation 2013
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting Workplace Health and Safety Regulation
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting Assessments
+
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE117A – Theory Assessment
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting 
+    Observations
+
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE117A - Observation sheet 
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE124A - Compile and produce an energy sector detailed report (124A Project Report)
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting Resources  
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE124A – Report Writing 
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE124A – Short Notes
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting Assessments
+    
+
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE124A – Theory Assessment
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting 
+    Observations
+
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEE124A - Observation sheet 
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEK145A - Implement and monitor energy sector environmental and sustainable policies and procedures
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting Resources   
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEK145A - Short notes
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEK145A - Develop a plan for Mitigation of Environmental accident
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEK145A - Environment Protection Act 94
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEK145A - Environmental Report
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEK145A - Statistics water-heating
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting 
+    Assessments
+
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEK145A - Theory Assessment
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting 
+    Observations
+[25-Jun-2020 09:30:10 Australia/Darwin] activity skipped by _included setting UEENEEEK145A - Observation sheet
+[25-Jun-2020 09:30:13 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 09:30:14 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 09:30:14 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:28:59 Australia/Darwin] instantiating backup controller 309a426d4b0e4902ceaa42c4f6c8f424
+[25-Jun-2020 13:28:59 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 13:28:59 Australia/Darwin] loading controller plan
+[25-Jun-2020 13:28:59 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 13:28:59 Australia/Darwin] applying plan defaults
+[25-Jun-2020 13:28:59 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 13:28:59 Australia/Darwin] setting file inclusion to 
+[25-Jun-2020 13:28:59 Australia/Darwin] checking plan security
+[25-Jun-2020 13:28:59 Australia/Darwin] setting controller status to 500
+[25-Jun-2020 13:28:59 Australia/Darwin] checking plan security
+[25-Jun-2020 13:28:59 Australia/Darwin] checking plan security
+[25-Jun-2020 13:28:59 Australia/Darwin] checking plan security
+[25-Jun-2020 13:28:59 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:28:59 Australia/Darwin] calculating controller checksum 425c37706f4b980827d868c3900069b2
+[25-Jun-2020 13:29:37 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:29:37 Australia/Darwin] checking plan security
+[25-Jun-2020 13:29:37 Australia/Darwin] checking plan security
+[25-Jun-2020 13:29:37 Australia/Darwin] checking plan security
+[25-Jun-2020 13:29:37 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:29:37 Australia/Darwin] calculating controller checksum 5b62d76d721396ad51c848c368512669
+[25-Jun-2020 13:32:27 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:32:27 Australia/Darwin] checking plan security
+[25-Jun-2020 13:32:27 Australia/Darwin] checking plan security
+[25-Jun-2020 13:32:27 Australia/Darwin] checking plan security
+[25-Jun-2020 13:32:27 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:32:27 Australia/Darwin] calculating controller checksum 665f3d3ecbabb72e7480f76934045e5f
+[25-Jun-2020 13:32:36 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:32:36 Australia/Darwin] checking plan security
+[25-Jun-2020 13:32:36 Australia/Darwin] checking plan security
+[25-Jun-2020 13:32:36 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 13:32:36 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:32:36 Australia/Darwin] calculating controller checksum ad7c59c64bfc0afd3e78369fe259136d
+[25-Jun-2020 13:32:36 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:32:36 Australia/Darwin] setting file inclusion to 1
+[25-Jun-2020 13:32:36 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 13:32:36 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:32:36 Australia/Darwin] calculating controller checksum b0b63d2e1a6ecf601e6da86ea88af187
+[25-Jun-2020 13:32:36 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:32:36 Australia/Darwin] section skipped by _included setting
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Student Sign Off Sheet
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Resources (copy) (copy)
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Lecture Notes - Part 1
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Lecture Notes - Part 2
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Relevant Australian Standards
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting GSES Book
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting CEC Design guidelines for accredited installers 
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting CEC Guidelines for Install and Supervise for Accredited installers
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Fronius Galvo Installation Guide
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Fronius Primo Datasheet
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Fronius Galvo Datasheet
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Fronius Installation Manual
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting SolarEdge Inverter Datasheet
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting SolarEdge Inverter Installation Manual
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting ENPHASE IQ7 Datasheet
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting ENPHASE IQ7 Installation Manual
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Jinko Cheeta 310-330 PV Panel Datasheet
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Jinko Tiger 360-380 PV Panel Datasheet
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting PGK DC Isolator Datasheet
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting CHIKO Installation Manual
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting CLENERGY Code-Compliant Planning and Installation
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting 
+    Video Lectures
+ (copy)
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting UEENEEK125A + UEENEEK135A– Video Lectures
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting 
+    Assessments
+
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Quiz 3
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Quiz 4
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Design Final Exam
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting JSEA
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Design – Practical Assessment
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Observations
+    
+ (copy)
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Observation Sheet
+[25-Jun-2020 13:32:36 Australia/Darwin] section skipped by _included setting Student Feedback
+[25-Jun-2020 13:32:36 Australia/Darwin] activity skipped by _included setting Student Feedback
+[25-Jun-2020 13:32:43 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 13:32:43 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:39:28 Australia/Darwin] instantiating restore controller 9cfe52492d360c42b90863c537f2d836
+[25-Jun-2020 13:39:28 Australia/Darwin] setting controller status to 100
+[25-Jun-2020 13:39:28 Australia/Darwin] loading backup info
+[25-Jun-2020 13:39:28 Australia/Darwin] loading controller plan
+[25-Jun-2020 13:39:28 Australia/Darwin] setting controller status to 300
+[25-Jun-2020 13:39:28 Australia/Darwin] applying restore defaults
+[25-Jun-2020 13:39:28 Australia/Darwin] Unknown setting: questionbank
+[25-Jun-2020 13:39:28 Australia/Darwin] setting controller status to 400
+[25-Jun-2020 13:39:28 Australia/Darwin] checking plan security
+[25-Jun-2020 13:39:28 Australia/Darwin] setting controller status to 500
+[25-Jun-2020 13:39:28 Australia/Darwin] checking plan security
+[25-Jun-2020 13:39:28 Australia/Darwin] checking plan security
+[25-Jun-2020 13:39:28 Australia/Darwin] checking plan security
+[25-Jun-2020 13:39:28 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:39:28 Australia/Darwin] calculating controller checksum 96692c66b648eddb4c2936f98dfe031e
+[25-Jun-2020 13:40:03 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:40:03 Australia/Darwin] checking plan security
+[25-Jun-2020 13:40:03 Australia/Darwin] checking plan security
+[25-Jun-2020 13:40:03 Australia/Darwin] checking plan security
+[25-Jun-2020 13:40:03 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:40:03 Australia/Darwin] calculating controller checksum 9fb7bf3e6568ec0c7117042a4ba1a53d
+[25-Jun-2020 13:40:07 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:40:08 Australia/Darwin] checking plan security
+[25-Jun-2020 13:40:08 Australia/Darwin] checking plan security
+[25-Jun-2020 13:40:08 Australia/Darwin] checking plan security
+[25-Jun-2020 13:40:08 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:40:08 Australia/Darwin] calculating controller checksum 9fb7bf3e6568ec0c7117042a4ba1a53d
+[25-Jun-2020 13:40:15 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:40:15 Australia/Darwin] checking plan security
+[25-Jun-2020 13:40:15 Australia/Darwin] checking plan security
+[25-Jun-2020 13:40:15 Australia/Darwin] setting controller status to 600
+[25-Jun-2020 13:40:15 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:40:15 Australia/Darwin] calculating controller checksum 1bff9ed90f8f0c6ef6f970fc70d5acc1
+[25-Jun-2020 13:40:15 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:40:17 Australia/Darwin] setting controller status to 700
+[25-Jun-2020 13:40:17 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:40:17 Australia/Darwin] calculating controller checksum fc6a03583a1150928b23056e84aa2220
+[25-Jun-2020 13:40:17 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:40:17 Australia/Darwin] setting controller status to 800
+[25-Jun-2020 13:40:17 Australia/Darwin] saving controller to db
+[25-Jun-2020 13:40:17 Australia/Darwin] calculating controller checksum 8f6c53c7b0746c06963a8512cfe42b63
+[25-Jun-2020 13:40:17 Australia/Darwin] loading controller from db
+[25-Jun-2020 13:40:23 Australia/Darwin] activity skipped by _included setting Quiz 1
+[25-Jun-2020 13:40:23 Australia/Darwin] activity skipped by _included setting Quiz 2
+[25-Jun-2020 13:40:24 Australia/Darwin] processing file aliases queue
+[25-Jun-2020 13:40:24 Australia/Darwin] setting controller status to 1000
+[25-Jun-2020 13:40:24 Australia/Darwin] saving controller to db
+[29-Jun-2020 15:50:56 Australia/Darwin] Restored item (<AVAILABILITY_CMNAME_849/>) has availability condition on module that was not restored
+[02-Jul-2020 15:11:54 Australia/Darwin] instantiating backup controller 33995cccc8520a0ffb1e5a67e51f039e
+[02-Jul-2020 15:11:54 Australia/Darwin] setting controller status to 100
+[02-Jul-2020 15:11:54 Australia/Darwin] loading controller plan
+[02-Jul-2020 15:11:54 Australia/Darwin] setting controller status to 300
+[02-Jul-2020 15:11:54 Australia/Darwin] applying plan defaults
+[02-Jul-2020 15:11:54 Australia/Darwin] setting controller status to 400
+[02-Jul-2020 15:11:54 Australia/Darwin] setting file inclusion to 
+[02-Jul-2020 15:11:54 Australia/Darwin] checking plan security
+[02-Jul-2020 15:11:54 Australia/Darwin] setting controller status to 500
+[02-Jul-2020 15:11:54 Australia/Darwin] checking plan security
+[02-Jul-2020 15:11:54 Australia/Darwin] checking plan security
+[02-Jul-2020 15:11:54 Australia/Darwin] checking plan security
+[02-Jul-2020 15:11:54 Australia/Darwin] saving controller to db
+[02-Jul-2020 15:11:54 Australia/Darwin] calculating controller checksum 47203cb6738da70502f5118d5b677c2c
+[02-Jul-2020 15:12:03 Australia/Darwin] loading controller from db
+[02-Jul-2020 15:12:03 Australia/Darwin] checking plan security
+[02-Jul-2020 15:12:03 Australia/Darwin] checking plan security
+[02-Jul-2020 15:12:03 Australia/Darwin] setting controller status to 700
+[02-Jul-2020 15:12:03 Australia/Darwin] saving controller to db
+[02-Jul-2020 15:12:03 Australia/Darwin] calculating controller checksum e036396a3c48dba3ad3d211f6d3e159f
+[02-Jul-2020 15:12:03 Australia/Darwin] loading controller from db
+[02-Jul-2020 15:12:03 Australia/Darwin] setting file inclusion to 1
+[02-Jul-2020 15:12:03 Australia/Darwin] setting controller status to 800
+[02-Jul-2020 15:12:03 Australia/Darwin] saving controller to db
+[02-Jul-2020 15:12:03 Australia/Darwin] calculating controller checksum eb30209c50f088cf1195ef8dad0719ca
+[02-Jul-2020 15:12:03 Australia/Darwin] loading controller from db
+[02-Jul-2020 15:12:43 Australia/Darwin] setting controller status to 1000
+[02-Jul-2020 15:12:43 Australia/Darwin] saving controller to db
+[06-Jul-2020 15:33:24 Australia/Darwin] Invalid sequence found in restored multianswer question 709
+[06-Jul-2020 15:33:24 Australia/Darwin] Invalid sequence found in restored multianswer question 710
+[06-Jul-2020 15:33:24 Australia/Darwin] Invalid sequence found in restored multianswer question 711
+[06-Jul-2020 15:33:24 Australia/Darwin] Invalid sequence found in restored multianswer question 712
+[06-Jul-2020 15:33:24 Australia/Darwin] Invalid sequence found in restored multianswer question 713
+[06-Jul-2020 15:33:24 Australia/Darwin] Invalid sequence found in restored multianswer question 714
+[06-Jul-2020 15:33:24 Australia/Darwin] Invalid sequence found in restored multianswer question 715
+[06-Jul-2020 15:33:24 Australia/Darwin] Invalid sequence found in restored multianswer question 716
+[06-Jul-2020 15:33:24 Australia/Darwin] Invalid sequence found in restored multianswer question 717
+[06-Jul-2020 15:33:24 Australia/Darwin] Invalid sequence found in restored multianswer question 718
+[06-Jul-2020 15:33:24 Australia/Darwin] Invalid sequence found in restored multianswer question 719
+[06-Jul-2020 15:33:24 Australia/Darwin] Invalid sequence found in restored multianswer question 720
+[06-Jul-2020 16:04:47 Australia/Darwin] Invalid sequence found in restored multianswer question 767
+[06-Jul-2020 16:04:47 Australia/Darwin] Invalid sequence found in restored multianswer question 768
+[06-Jul-2020 16:04:47 Australia/Darwin] Invalid sequence found in restored multianswer question 769
+[06-Jul-2020 16:04:47 Australia/Darwin] Invalid sequence found in restored multianswer question 770
+[06-Jul-2020 16:04:47 Australia/Darwin] Invalid sequence found in restored multianswer question 771
+[06-Jul-2020 16:04:47 Australia/Darwin] Invalid sequence found in restored multianswer question 772
+[06-Jul-2020 16:04:47 Australia/Darwin] Invalid sequence found in restored multianswer question 773
+[06-Jul-2020 16:04:47 Australia/Darwin] Invalid sequence found in restored multianswer question 774
+[06-Jul-2020 16:04:47 Australia/Darwin] Invalid sequence found in restored multianswer question 775
+[06-Jul-2020 16:04:47 Australia/Darwin] Invalid sequence found in restored multianswer question 776
+[06-Jul-2020 16:04:47 Australia/Darwin] Invalid sequence found in restored multianswer question 777
+[06-Jul-2020 16:04:47 Australia/Darwin] Invalid sequence found in restored multianswer question 778
+[08-Jul-2020 23:34:06 Australia/Darwin] Restored item (<AVAILABILITY_CMNAME_934/>) has availability condition on module that was not restored
+[09-Jul-2020 00:00:21 Australia/Darwin] Invalid sequence found in restored multianswer question 862
+[09-Jul-2020 00:00:21 Australia/Darwin] Invalid sequence found in restored multianswer question 863
+[09-Jul-2020 00:00:21 Australia/Darwin] Invalid sequence found in restored multianswer question 864
+[09-Jul-2020 00:00:21 Australia/Darwin] Invalid sequence found in restored multianswer question 865
+[09-Jul-2020 00:00:21 Australia/Darwin] Invalid sequence found in restored multianswer question 866
+[09-Jul-2020 00:00:21 Australia/Darwin] Invalid sequence found in restored multianswer question 867
+[09-Jul-2020 00:00:21 Australia/Darwin] Invalid sequence found in restored multianswer question 868
+[09-Jul-2020 00:00:21 Australia/Darwin] Invalid sequence found in restored multianswer question 869
+[09-Jul-2020 00:00:21 Australia/Darwin] Invalid sequence found in restored multianswer question 870
+[09-Jul-2020 00:00:21 Australia/Darwin] Invalid sequence found in restored multianswer question 871
+[09-Jul-2020 00:00:21 Australia/Darwin] Invalid sequence found in restored multianswer question 872
+[09-Jul-2020 00:00:21 Australia/Darwin] Invalid sequence found in restored multianswer question 873
+[10-Jul-2020 12:23:39 Australia/Darwin] Invalid sequence found in restored multianswer question 930
+[10-Jul-2020 12:23:39 Australia/Darwin] Invalid sequence found in restored multianswer question 931
+[10-Jul-2020 12:23:39 Australia/Darwin] Invalid sequence found in restored multianswer question 932
+[10-Jul-2020 12:23:39 Australia/Darwin] Invalid sequence found in restored multianswer question 933
+[10-Jul-2020 12:23:39 Australia/Darwin] Invalid sequence found in restored multianswer question 934
+[10-Jul-2020 12:23:39 Australia/Darwin] Invalid sequence found in restored multianswer question 935
+[10-Jul-2020 12:23:39 Australia/Darwin] Invalid sequence found in restored multianswer question 936
+[10-Jul-2020 12:23:39 Australia/Darwin] Invalid sequence found in restored multianswer question 937
+[10-Jul-2020 12:23:39 Australia/Darwin] Invalid sequence found in restored multianswer question 938
+[10-Jul-2020 12:23:39 Australia/Darwin] Invalid sequence found in restored multianswer question 939
+[10-Jul-2020 12:23:39 Australia/Darwin] Invalid sequence found in restored multianswer question 940
+[10-Jul-2020 12:23:39 Australia/Darwin] Invalid sequence found in restored multianswer question 941
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1002
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1003
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1004
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1005
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1006
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1007
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1008
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1009
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1010
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1011
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1012
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1013
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1014
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1015
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1016
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1017
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1018
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1019
+[10-Jul-2020 13:30:40 Australia/Darwin] Invalid sequence found in restored multianswer question 1020
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1128
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1129
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1130
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1131
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1132
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1133
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1134
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1135
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1136
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1137
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1138
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1139
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1140
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1141
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1142
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1143
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1144
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1145
+[13-Jul-2020 13:56:48 Australia/Darwin] Invalid sequence found in restored multianswer question 1146
