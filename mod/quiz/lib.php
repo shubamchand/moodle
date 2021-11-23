@@ -131,6 +131,9 @@ function quiz_update_instance($quiz, $mform) {
 
     // Update the database.
     $quiz->id = $quiz->instance;
+     if(empty($quiz->enablehelp)){
+     $quiz->enablehelp =0;   
+    }
     $DB->update_record('quiz', $quiz);
 
     // Do the processing required after an add or an update.
@@ -1851,7 +1854,7 @@ function quiz_question_pluginfile($course, $context, $component,
 
     if (!$attemptobj->check_file_access($slot, $isreviewing, $context->id,
             $component, $filearea, $args, $forcedownload)) {
-        send_file_not_found();
+        //send_file_not_found();
     }
 
     $fs = get_file_storage();

@@ -32,25 +32,62 @@ function report_outline_print_row($mod, $instance, $result) {
     global $OUTPUT, $CFG;
 
     $image = $OUTPUT->image_icon('icon', $mod->modfullname, $mod->modname);
+	$completionstate = $status = $setby = "";
+	$hide = false;
+	if($mod->modname=="forum" || $mod->modname=="label"){
+		$hide = true;
+	}
+	if(isset($result->completion->completionstate)){
+		$completionstate = $result->completion->completionstate;
+	}
+	if($completionstate == 1 || $completionstate == 2){
+		$status = "Completed";
+	}
+	else{
+		$status = "Not completed";
+	}
 
     echo "<tr>";
     echo "<td valign=\"top\">$image</td>";
     echo "<td valign=\"top\" style=\"width:300\">";
     echo "   <a title=\"$mod->modfullname\"";
     echo "   href=\"$CFG->wwwroot/mod/$mod->modname/view.php?id=$mod->id\">".format_string($instance->name,true)."</a></td>";
-    echo "<td>&nbsp;&nbsp;&nbsp;</td>";
-    echo "<td valign=\"top\">";
-    if (isset($result->info)) {
-        echo "$result->info";
-    } else {
-        echo "<p style=\"text-align:center\">-</p>";
-    }
-    echo "</td>";
-    echo "<td>&nbsp;&nbsp;&nbsp;</td>";
-    if (!empty($result->time)) {
-        $timeago = format_time(time() - $result->time);
-        echo "<td valign=\"top\" style=\"white-space: nowrap\">".userdate($result->time)." ($timeago)</td>";
-    }
+	if($hide==false){
+		echo "<td valign='top'><strong>Status:</strong> $status</td>";
+		echo "<td valign=\"top\">";
+		if (isset($result->info)) {
+			if($result->info == "Grade: -" && $completionstate == 1){
+				echo "<p style=\"text-align:center\"><strong>Grade:</strong> 100%</p>";
+			}
+			else{
+				echo "$result->info";
+			}
+		} else {
+			if($completionstate == 1){
+					echo "<p style=\"text-align:center\"><strong>Grade:</strong> 100%</p>";
+			}
+			if($completionstate == 0){
+				echo "<p style=\"text-align:center\"><strong>Grade:</strong> Not available</p>";
+			}
+		}
+		echo "</td>";
+		echo "<td valign='top'>";
+		if(isset($result->completion->note)){
+			if(!empty($result->completion->setby)){
+				$setby = $result->completion->setby;
+			}
+			echo "<strong>Note:</strong> ". $result->completion->note;
+			$timeago = format_time(time() - $result->completion->timemodified);
+			echo "<br><small>(set by $setby) ".userdate($result->completion->timemodified)." ($timeago ago) </small>";
+		}
+		else {
+			if(!empty($result->time)) {
+				$timeago = format_time(time() - $result->time);
+				echo "<p>".userdate($result->time)." ($timeago ago) </p>";
+			}
+		}
+		echo "</td>";
+	}
     echo "</tr>";
 }
 

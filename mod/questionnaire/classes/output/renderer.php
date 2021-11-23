@@ -182,6 +182,27 @@ class renderer extends \plugin_renderer_base {
         return $output;
     }
 
+    private function calculate_progress($section, $questionsbysec) {
+        $done = 0;
+        $todo = 0;
+        for ($i = 1; $i <= count($questionsbysec); $i++) {
+            if ($i < $section) {
+                $done += count($questionsbysec[$i]);
+            } else {
+                $todo += count($questionsbysec[$i]);
+            }
+        }
+
+        return round($done / ($done + $todo) * 100);
+    }
+
+    public function render_progress_bar($section, $questionsbysec) {
+        $templatecontext['percent'] = $this->calculate_progress($section, $questionsbysec);
+        $helpicon = new \help_icon('progresshelp', 'mod_questionnaire');
+        $templatecontext['progresshelp'] = $helpicon->export_for_template($this);
+        return $this->render_from_template('mod_questionnaire/progressbar', $templatecontext);
+    }
+
     /**
      * Render a question for a survey.
      * @param \mod_questionnaire\question\question $question The question object.
@@ -194,6 +215,30 @@ class renderer extends \plugin_renderer_base {
     public function question_output($question, $response, $dependants=[], $qnum, $blankquestionnaire) {
 
         $pagetags = $question->question_output($response, $dependants, $qnum, $blankquestionnaire);
+
+        /**
+        * @author VaibhavGhadage
+        * @since 10th June 2021
+        * @desc Here with, applied changes to the Student Feedback Questionnaire in which question 44 to be automatically populated based on the date the student has started the course. Currently it is defaulted to todays date.
+        */
+        //checks the question number
+        if($pagetags->qnum == 44){
+            //global variables
+            global $DB, $USER, $COURSE;
+            
+            //get time started from course completions table
+            //$course_start_date = $DB->get_field('course_completions', 'timestarted', array('userid' => $USER->id, 'course' => $COURSE->id), $strictness=IGNORE_MISSING);
+            $course_start_date = $DB->get_record_sql("select ue.timestart from {user_enrolments} ue JOIN {enrol} e ON ue.enrolid = e.id where e.courseid = $COURSE->id AND ue.userid = $USER->id");
+            //validate start date is present
+            if(!empty($course_start_date)){
+                //converted the unix timestamp to human readable format
+                $course_start_date =  gmdate("Y-m-d", $course_start_date->timestart);
+
+                //assigned the converted date to object which passing value to the date type
+                $pagetags->qformelement->qelements->choice->value = $course_start_date;
+            }
+        }
+        //End of code by VaibhavG
 
         // If the question has a template, then render it from the 'qformelement' context. If no template, then 'qformelement'
         // already contains HTML.

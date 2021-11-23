@@ -28,6 +28,27 @@ define('PWRESET_STATUS_NOEMAILSENT', 1);
 define('PWRESET_STATUS_TOKENSENT', 2);
 define('PWRESET_STATUS_OTHEREMAILSENT', 3);
 define('PWRESET_STATUS_ALREADYSENT', 4);
+define('GET_ADMIN', 2);
+define('GET_TRAINER', 7);
+
+function core_login_add_new_contact(){
+    global $DB, $USER;
+		
+    if(!$DB->record_exists('message_contacts', array('userid'=>GET_ADMIN, 'contactid'=>$USER->id))) {
+	$newcontact = new stdClass();
+	$newcontact->contactid = $USER->id;
+        $newcontact->userid = GET_ADMIN;
+        $newcontact->timecreated = time();
+        $DB->insert_record('message_contacts', $newcontact);
+    }
+    if(!$DB->record_exists('message_contacts', array('userid'=>GET_TRAINER, 'contactid'=>$USER->id))) {
+	$newcontact = new stdClass();
+	$newcontact->contactid = $USER->id;
+        $newcontact->userid = GET_TRAINER;
+        $newcontact->timecreated = time();
+        $DB->insert_record('message_contacts', $newcontact);
+    }
+}
 
 /**
  *  Processes a user's request to set a new password in the event they forgot the old one.

@@ -25,8 +25,10 @@
 
 require('../../config.php');
 require_once($CFG->libdir . '/completionlib.php');
+require('locallib.php');
 
 define('COMPLETION_REPORT_PAGE', 25);
+
 
 // Get course
 $id = required_param('course',PARAM_INT);
@@ -65,6 +67,16 @@ function csv_quote($value) {
 }
 
 $url = new moodle_url('/report/progress/index_custom.php', array('course'=>$id));
+
+if(isset($_POST['save'])){
+	global $SESSION;
+	$result = $notes->save_changes($_POST['changecompl'], $_POST['note'], $_POST['smode']);
+	if($result===true){
+		$SESSION->result = "Changes saved successfully";
+		redirect($url);
+	}
+}
+
 if ($sort !== '') {
     $url->param('sort', $sort);
 }
@@ -82,6 +94,9 @@ if ($silast !== 'all') {
 }
 $PAGE->set_url($url);
 $PAGE->set_pagelayout('report');
+$PAGE->requires->css(new moodle_url($CFG->wwwroot.'/report/progress/custom/style.css'));
+$PAGE->requires->js(new moodle_url($CFG->wwwroot.'/lib/jquery/jquery-3.4.1.js'));
+$PAGE->requires->js(new moodle_url($CFG->wwwroot.'/report/progress/custom/custom.js'));
 
 require_login($course);
 
@@ -169,7 +184,6 @@ if ($total) {
 }
 
 if ($csv && $grandtotal && count($activities)>0) { // Only show CSV if there are some users/actvs
-
     $shortname = format_string($course->shortname, true, array('context' => $context));
     header('Content-Disposition: attachment; filename=progress.'.
         preg_replace('/[^a-z0-9-]/','_',core_text::strtolower(strip_tags($shortname))).'.csv');
@@ -185,11 +199,9 @@ if ($csv && $grandtotal && count($activities)>0) { // Only show CSV if there are
         $line="\n";
     }
 } else {
-
     // Navigation and header
     $strreports = get_string("reports");
     $strcompletion = get_string('activitycompletion', 'completion');
-
     $PAGE->set_title($strcompletion);
     $PAGE->set_heading($course->fullname);
     echo $OUTPUT->header();
@@ -218,7 +230,6 @@ if (strlen($sort)) {
     $link .= '&amp;sort='.$sort;
 }
 $link .= '&amp;start=';
-
 $pagingbar = '';
 
 // Initials bar.
@@ -228,13 +239,10 @@ $pagingbar .= $OUTPUT->initials_bar($sifirst, 'firstinitial', get_string('firstn
 $pagingbar .= $OUTPUT->initials_bar($silast, 'lastinitial', get_string('lastname'), $prefixlast, $url);
 
 // Do we need a paging bar?
-if ($total > COMPLETION_REPORT_PAGE) {
-
-    
+if ($total > COMPLETION_REPORT_PAGE) { 
     // Paging bar
     $pagingbar .= '<div class="paging">';
     $pagingbar .= get_string('page').': ';
-
     $sistrings = array();
     if ($sifirst != 'all') {
         $sistrings[] =  "sifirst={$sifirst}";
@@ -255,40 +263,31 @@ if ($total > COMPLETION_REPORT_PAGE) {
     $curpage = 0;
     while ($curstart < $total) {
         $curpage++;
-
         if ($curstart == $start) {
             $pagingbar .= '&nbsp;'.$curpage.'&nbsp;';
         } else {
             $pagingbar .= "&nbsp;<a href=\"{$link}{$curstart}{$sistring}\">$curpage</a>&nbsp;";
         }
-
         $curstart += COMPLETION_REPORT_PAGE;
     }
-
     // Display next link
     $nstart = $start + COMPLETION_REPORT_PAGE;
     if ($nstart < $total) {
         $pagingbar .= "&nbsp;(<a class=\"next\" href=\"{$link}{$nstart}{$sistring}\">".get_string('next').'</a>)';
     }
-
     $pagingbar .= '</div>';
 }
 
 // Okay, let's draw the table of progress info,
-
 // Start of table
 if (!$csv) {
-
-    print '<br class="clearer"/>'; // ugh
-
+    print '<br class="clearer"/>';
     print $pagingbar;
-
-    if (!$total) {
+    if(!$total){
         echo $OUTPUT->heading(get_string('nothingtodisplay'));
         echo $OUTPUT->footer();
         exit;
     }
-
     $base_url = ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on' ? 'https' : 'http' ) . '://' .  $_SERVER['HTTP_HOST'];
     $url = $base_url.$_SERVER['REQUEST_URI'];
     $str = $_SERVER['QUERY_STRING'];
@@ -303,8 +302,35 @@ if (!$csv) {
     '.$userform->display().'
     </div>';
     echo $studentselector;
+	
+	//Show session message if any
+	if(isset($SESSION->result)){
+		print '<div class="alert alert-success alert-dismissible"><button type="button" class="close" data-dismiss="alert">&times;</button>'. $SESSION->result .'</div>';
+		unset($SESSION->result);
+	}
 
     print '<div id="completion-progress-wrapper" class="no-overflow">';
+	
+	// Add Note Popup - Start
+    print '<div class="popupbg"></div>
+	<div class="custompopup">
+		<div class="cp_student"></div>
+		<form action="" method="post">
+		<textarea name="note" class="note" required></textarea>
+		<input type="hidden" name="changecompl" class="changecompl">
+		<label>Choose saving mode:</label>
+		<select name="smode" class="smode" required>
+		<option value="single">Save note for single activity</option>
+		<option value="multi">Save note for whole section</option>
+		</select>
+		<div class="popup_single_acti"></div>
+		<div class="popup_multi_acti"></div>
+		<input type="submit" class="btn_savepopup btn btn-primary" value="Save changes" name="save">
+        <button type="button" class="btn_cancelpopup btn btn-primary">Cancel</button>
+		</form>
+	</div>';
+	// Add Note Popup - End
+	
     print '<table id="completion-progress" class="generaltable flexible boxaligncenter" style="text-align:left"><thead><tr style="vertical-align:top">';
 
     // User heading / sort option
@@ -312,39 +338,19 @@ if (!$csv) {
 
     $sistring = "&amp;silast={$silast}&amp;sifirst={$sifirst}";
 
-   /* if ($firstnamesort) {
-        print
-            get_string('firstname')." / <a href=\"./?course={$course->id}{$sistring}\">".
-            get_string('lastname').'</a>';
-    } else {
-        print "<a href=\"./?course={$course->id}&amp;sort=firstname{$sistring}\">".
-            get_string('firstname').'</a> / '.
-            get_string('lastname');
-    }*/
     print  get_string('activities').'</a> / '.
             get_string('resources');
     print '</th>';
 
-    // Print user identity columns
-    /*foreach ($extrafields as $field) {
-        echo '<th scope="col" class="completion-identifyfield">' .
-                get_user_field_name($field) . '</th>';
-    }*/
     foreach($progress as $user) {
         // User name
         if ($csv) {
             print csv_quote(fullname($user));
-           /* foreach ($extrafields as $field) {
-                echo $sep . csv_quote($user->{$field});
-            }*/
         } else {
             $course_progress = \core_completion\progress::get_course_progress_percentage($course, $user->id);            
-            print '<th scope="row" class="completion-header" data-progress="'.(int) $course_progress.'" ><a href="'.$CFG->wwwroot.'/user/view.php?id='.
-                $user->id.'&amp;course='.$course->id.'">
-                <div class="rotated-text-container"><span class="rotated-text">'.fullname($user).'</span></div></a></th>';
-            /*foreach ($extrafields as $field) {
-                echo '<th>' . s($user->{$field}) . '</th>';
-            }*/
+            print '<th scope="row" class="completion-header" data-progress="'.(int) $course_progress .'" >
+			<a href="'.$CFG->wwwroot.'/user/view.php?id='. $user->id .'&amp;course='. $course->id .'">
+            <div class="rotated-text-container"><span class="rotated-text">'. fullname($user) .'</span></div></a></th>';
         }
     }
 
@@ -360,52 +366,11 @@ if ($csv) {
     print '</tr></thead><tbody>';
 }
 
-// Activities
-/*$formattedactivities = array();
-foreach($activities as $activity) {
-    $datepassed = $activity->completionexpected && $activity->completionexpected <= time();
-    $datepassedclass = $datepassed ? 'completion-expired' : '';
-
-    if ($activity->completionexpected) {
-        $datetext=userdate($activity->completionexpected,get_string('strftimedate','langconfig'));
-    } else {
-        $datetext='';
-    }
-
-    // Some names (labels) come URL-encoded and can be very long, so shorten them
-    $displayname = format_string($activity->name, true, array('context' => $activity->context));
-
-    if ($csv) {
-        print $sep.csv_quote($displayname).$sep.csv_quote($datetext);
-    } else {
-        $shortenedname = shorten_text($displayname);
-        print '<tr scope="col" class="completion-header '.$datepassedclass.'">'.
-            '<a href="'.$CFG->wwwroot.'/mod/'.$activity->modname.
-            '/view.php?id='.$activity->id.'" title="' . s($displayname) . '">'.
-            '<div class="rotated-text-container"><span class="rotated-text">'.$shortenedname.'</span></div>'.
-            '<div class="modicon">'.
-            $OUTPUT->image_icon('icon', get_string('modulename', $activity->modname), $activity->modname) .
-            '</div>'.
-            '</a>';
-        if ($activity->completionexpected) {
-            print '<div class="completion-expected"><span>'.$datetext.'</span></div>';
-        }
-        print '</tr>';
-    }
-    $formattedactivities[$activity->id] = (object)array(
-        'datepassedclass' => $datepassedclass,
-        'displayname' => $displayname,
-    );
-}
-*/
+$colspan = 1 + count($progress);
+$sections = array();
+$show = true;
 
 foreach($activities as $activity) {
-
-/*    if ($csv) {
-        print $line;
-    } else {
-        print '<tr><td>';
-    }*/
 
     $datepassed = $activity->completionexpected && $activity->completionexpected <= time();
     $datepassedclass = $datepassed ? 'completion-expired' : '';
@@ -423,10 +388,25 @@ foreach($activities as $activity) {
         print $sep.csv_quote($displayname).$sep.csv_quote($datetext);
     } else {
         // $shortenedname = shorten_text($displayname);
-        print '<tr><td>'.
-            '<a href="'.$CFG->wwwroot.'/mod/'.$activity->modname.
+		$class = "section".$activity->section;
+		$section = $notes->get_section($activity->section);
+		
+		if(!in_array($section->name,$sections) || $show==true){
+			if(!empty($section->name)){
+				print '<tr><td align="center" colspan="'.$colspan.'"> Section : '. $section->name .'</td></tr>';
+			}
+			else{
+				print '<tr><td align="center" colspan="'.$colspan.'"> Section : Name not available</td></tr>';
+			}
+			$sections[$activity->section] = $section->name;
+			$show = false;
+		}
+		
+        print '<tr><td>' .
+            '<a class="'.$class.'" href="'.$CFG->wwwroot.'/mod/'.$activity->modname .
             '/view.php?id='.$activity->id.'" title="' . s($displayname) . '">'.
-            '<span class="">'.$displayname.'</span>'.
+            '<span class="">'.$displayname.'
+			</span>'.
             '<div class="modicon">'.
             $OUTPUT->image_icon('icon', get_string('modulename', $activity->modname), $activity->modname) .
             '</div>'.
@@ -443,19 +423,6 @@ foreach($activities as $activity) {
 
     // Row for each user
     foreach($progress as $user) {
-        // User name
-        if ($csv) {
-          /*  print csv_quote(fullname($user));
-            foreach ($extrafields as $field) {
-                echo $sep . csv_quote($user->{$field});
-            }*/
-        } else {
-           /* print '<tr><th scope="row"><a href="'.$CFG->wwwroot.'/user/view.php?id='.
-                $user->id.'&amp;course='.$course->id.'">'.fullname($user).'</a></th>';
-           */ /*foreach ($extrafields as $field) {
-                echo '<td>' . s($user->{$field}) . '</td>';
-            }*/
-        }
 
     // Progress for each activity
 
@@ -465,10 +432,12 @@ foreach($activities as $activity) {
             $state = $thisprogress->completionstate;
             $overrideby = $thisprogress->overrideby;
             $date = userdate($thisprogress->timemodified);
+			$cmcid = $notes->get_cmcid($activity->id,$thisprogress->userid);
         } else {
             $state = COMPLETION_INCOMPLETE;
             $overrideby = 0;
-            $date = '';
+			$cmcid = 0;
+            $date = '';	
         }
 
         // Work out how it corresponds to an icon
@@ -495,12 +464,30 @@ foreach($activities as $activity) {
         } else {
             $describe = get_string('completion-' . $completiontype, 'completion');
         }
-        $a=new StdClass;
-        $a->state=$describe;
-        $a->date=$date;
-        $a->user=fullname($user);
+		
+        $a = new StdClass;
+        $a->state = $describe;
+        $a->date = $date;
+        $a->user = fullname($user);
         $a->activity = $formattedactivities[$activity->id]->displayname;
-        $fulldescribe=get_string('progress-title','completion',$a);
+        $fulldescribe = get_string('progress-title','completion',$a);
+		
+		if($cmcid>0){
+			if($notes->is_note($cmcid)){
+				$notedata = $notes->get_note($cmcid);
+				$noteid = $notedata->id;
+				$note = $notedata->note;
+				$fulldescribe = "Note : $note \n---\n" . $fulldescribe;
+			}
+			else{
+				$noteid = 0;
+				$note = "";
+			}
+		}
+		else{
+			$noteid = 0;
+			$note = "";
+		}
 
         if ($csv) {
             print $sep.csv_quote($describe).$sep.csv_quote($date);
@@ -509,13 +496,16 @@ foreach($activities as $activity) {
             if (has_capability('moodle/course:overridecompletion', $context) &&
                     $state != COMPLETION_COMPLETE_PASS && $state != COMPLETION_COMPLETE_FAIL) {
                 $newstate = ($state == COMPLETION_COMPLETE) ? COMPLETION_INCOMPLETE : COMPLETION_COMPLETE;
-                $changecompl = $user->id . '-' . $activity->id . '-' . $newstate;
+                $changecompl = $cmcid . '-' . $user->id . '-' . $activity->id . '-' . $newstate . '-' . $noteid . '-' . $course->id . '-' . $activity->section;
                 $url = new moodle_url($PAGE->url, ['sesskey' => sesskey()]);
-                $celltext = html_writer::link($url, $celltext, array('class' => 'changecompl', 'data-changecompl' => $changecompl,
-                                                                     'data-activityname' => $a->activity,
-                                                                     'data-userfullname' => $a->user,
-                                                                     'data-completiontracking' => $completiontrackingstring,
-                                                                     'role' => 'button'));
+                $celltext = html_writer::link($url, $celltext, array(
+				'class' => "change_status", 
+				'data-changecompl' => $changecompl,
+				'data-note' => $note,
+				'data-activityname' => $a->activity,
+				'data-userfullname' => $a->user,
+				'data-completiontracking' => $completiontrackingstring,
+				'role' => 'button'));
             }
             print '<td class="completion-progresscell '.$formattedactivities[$activity->id]->datepassedclass.'">'.
                 $celltext . '</td>';
@@ -541,4 +531,3 @@ print '<ul class="progress-actions"><li><a href="index.php?course='.$course->id.
     get_string('excelcsvdownload','completion').'</a></li></ul>';
 
 echo $OUTPUT->footer();
-

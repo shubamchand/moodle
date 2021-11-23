@@ -1314,7 +1314,7 @@ class cm_info implements IteratorAggregate {
     /**
      * @return moodle_url URL to link to for this module, or null if it doesn't have a view page
      */
-    private function get_url() {
+    public function get_url() {
         $this->obtain_dynamic_data();
         return $this->url;
     }
@@ -1362,7 +1362,7 @@ class cm_info implements IteratorAggregate {
      * Getter method for property $name, ensures that dynamic data is obtained.
      * @return string
      */
-    private function get_name() {
+    public function get_name() {
         $this->obtain_dynamic_data();
         return $this->name;
     }
@@ -1917,7 +1917,7 @@ class cm_info implements IteratorAggregate {
      * Getter method for property $uservisible, ensures that dynamic data is retrieved.
      * @return bool
      */
-    private function get_user_visible() {
+    public function get_user_visible() {
         $this->obtain_dynamic_data();
         return $this->uservisible;
     }

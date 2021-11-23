@@ -30,6 +30,7 @@ require_once($CFG->dirroot.'/user/editlib.php');
 require_once($CFG->dirroot.'/user/profile/lib.php');
 require_once($CFG->dirroot.'/user/lib.php');
 require_once($CFG->dirroot.'/webservice/lib.php');
+require_once($CFG->libdir . '/externallib.php');
 
 $id     = optional_param('id', $USER->id, PARAM_INT);    // User id; -1 if creating new user.
 $course = optional_param('course', SITEID, PARAM_INT);   // Course id (defaults to Site).
@@ -200,6 +201,23 @@ if ($userform->is_cancelled()) {
             $usernew->password = AUTH_PASSWORD_NOT_CACHED;
         }
         $usernew->id = user_create_user($usernew, false, false);
+
+        //create new contact request as system as it
+        // $methodname = 'core_message_add_contacts';
+        // $args = ['userids' => $usernew->id,'userid' =>$CFG->trainerid];
+        // $response = external_api::call_external_function($methodname, $args, true);
+        
+        $trainer = $DB->get_record('user', array('email' => $CFG->traineremail), '*', MUST_EXIST);
+        if(is_object($trainer)){
+            $messagecontact = new stdClass();
+            $messagecontact->id = -1;
+            $messagecontact->userid  = $trainer->id;
+            $messagecontact->contactid  = $usernew->id;
+            $messagecontact->timecreated = time();
+            $DB->insert_record('message_contacts', $messagecontact);
+        }
+       
+      
 
         if (!$authplugin->is_internal() and $authplugin->can_change_password() and !empty($usernew->newpassword)) {
             if (!$authplugin->user_update_password($usernew, $usernew->newpassword)) {

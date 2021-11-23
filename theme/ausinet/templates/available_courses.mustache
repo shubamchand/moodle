@@ -13,9 +13,11 @@
             <div class="title">
                 <h5>{{#str}} cost, enrol_paypal {{/str}}</h5>
             </div>-->
+            {{#check}}
             <div class="title" style="float:right;">
                 <h5>{{#str}} options, core {{/str}}</h5>
             </div>
+            {{/check}}
         </div>
 
         {{#courses}}
@@ -47,12 +49,12 @@
                     </div>
                 </div>
                 {{/optionsblock}}
-                {{^optionsblock}}
+              <!--  {{^optionsblock}}
                 <div class="options-block">
                 <a class="btn btn-primary" href="{{link}}">{{#str}} view, core {{/str}}</a>
                 </div>
                 
-                {{/optionsblock}}
+                {{/optionsblock}}-->
             </div>
         {{/courses}}
     </div>

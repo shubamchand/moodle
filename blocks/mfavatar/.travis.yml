@@ -1,0 +1,62 @@
+language: php
+sudo: required
+dist: trusty
+
+addons:
+  hosts:
+    - moodle.test
+  firefox: "35.0.1"
+  postgresql: "9.4"
+  apt:
+    packages:
+      - oracle-java9-installer
+      - oracle-java9-set-default
+      - redis-server
+
+services:
+  - redis-server
+
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.npm
+
+env:
+  global:
+    - IGNORE_PATHS=vendor,source
+    - IGNORE_NAMES=*.txt,*.md
+
+# Alternate tests with MySQL and PostgreSQL
+matrix:
+  include:
+    # PHP 7.0
+    - php: 7.0
+      env: DB=mysqli MOODLE_BRANCH=MOODLE_35_STABLE
+    - php: 7.2
+      env: DB=pgsql MOODLE_BRANCH=MOODLE_37_STABLE
+    - php: 7.2
+      env: DB=pgsql MOODLE_BRANCH=master
+
+before_install:
+  - phpenv config-rm xdebug.ini
+  - cd ../..
+  - nvm install 8.9;
+    nvm use 8.9;
+    composer create-project -n --no-dev --prefer-dist moodlerooms/moodle-plugin-ci ci ^2;
+  - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
+
+install:
+  - moodle-plugin-ci install -vvv
+  - echo '$CFG->cookiesecure = false;' >> moodle/config.php
+
+script:
+  - moodle-plugin-ci validate
+  - moodle-plugin-ci phplint
+  - moodle-plugin-ci phpcpd
+  - moodle-plugin-ci phpmd
+  - moodle-plugin-ci codechecker
+  - moodle-plugin-ci savepoints
+  - moodle-plugin-ci mustache
+  - moodle-plugin-ci grunt || false
+  - moodle-plugin-ci phpunit
+  - moodle-plugin-ci behat

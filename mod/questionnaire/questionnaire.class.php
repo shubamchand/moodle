@@ -1110,6 +1110,7 @@ class questionnaire {
             if (empty($msg)) {
                 return;
             }
+            $formdata->rid = $this->existing_response_action($formdata, $userid);
         }
 
         if (!empty($formdata->resume) && ($this->resume)) {
@@ -1124,6 +1125,7 @@ class questionnaire {
             $msg = $this->response_check_format($formdata->sec, $formdata);
             if ($msg) {
                 $formdata->next = '';
+                $formdata->rid = $this->existing_response_action($formdata, $userid);
             } else {
                 $nextsec = $this->next_page_action($formdata, $userid);
                 if ($nextsec === false) {
@@ -1147,6 +1149,7 @@ class questionnaire {
             $msg = $this->response_check_format($formdata->sec, $formdata, false, true);
             if ($msg) {
                 $formdata->prev = '';
+                $formdata->rid = $this->existing_response_action($formdata, $userid);
             } else {
                 $prevsec = $this->previous_page_action($formdata, $userid);
                 if ($prevsec === false) {
@@ -1159,12 +1162,6 @@ class questionnaire {
 
         if (!empty($formdata->rid)) {
             $this->add_response($formdata->rid);
-        }
-
-        if (!empty($userid)) {
-            $username = core_user::get_user($userid);
-            /*$this->page->add_to_page('respondentinfo', '<div> <fieldset><label>'.get_string('student').'</label> <span> '.$username.'</span></fieldset> </div>');  */         
-            $this->page->add_to_page('questions', $this->renderer->render_from_template('questionnaire/studentlist', ['username' => fullname($username)] ) ) ;
         }
 
         $formdatareferer = !empty($formdata->referer) ? htmlspecialchars($formdata->referer) : '';
@@ -1241,6 +1238,11 @@ class questionnaire {
         }
 
         $this->print_survey_start($message, $section, $numsections, $hasrequired, '', 1);
+        // Only show progress bar on questionnaires with more than one page.
+        if ($this->progressbar && isset($this->questionsbysec) && count($this->questionsbysec) > 1) {
+            $this->page->add_to_page('progressbar',
+                    $this->renderer->render_progress_bar($section, $this->questionsbysec));
+        }
         foreach ($this->questionsbysec[$section] as $questionid) {
             if ($this->questions[$questionid]->type_id != QUESSECTIONTEXT) {
                 $i++;
@@ -1386,11 +1388,11 @@ class questionnaire {
         if ($section == 1) {
             if (!empty($this->survey->title)) {
                 $this->survey->title = format_string($this->survey->title);
-                $this->page->add_to_page('title', clean_text($this->survey->title, FORMAT_HTML));
+                $this->page->add_to_page('title', $this->survey->title);
             }
             if (!empty($this->survey->subtitle)) {
                 $this->survey->subtitle = format_string($this->survey->subtitle);
-                $this->page->add_to_page('subtitle', clean_text($this->survey->subtitle, FORMAT_HTML));
+                $this->page->add_to_page('subtitle', $this->survey->subtitle);
             }
             if ($this->survey->info) {
                 $infotext = file_rewrite_pluginfile_urls($this->survey->info, 'pluginfile.php',
@@ -1917,6 +1919,23 @@ class questionnaire {
         return $success;
     }
 
+
+    /**
+     * get submited data by keys whic are question no itself. New function added here
+     * @param int $rid The id of the response record.
+     * @return string. formated string
+     *
+     */
+
+    private function get_specific_question($question_keys =[],$rid){
+        $responses = $this->get_full_submission_for_export($rid);
+        $required_data = [];
+        foreach($question_keys as $qKey){
+            $required_data[] = $responses[$qKey];
+        }
+        return $this->get_partial_submission_for_notifications_from_response($required_data);
+    }
+
     /**
      * Send submission notifications to users with "submissionnotification" capability.
      * @param int $rid The id of the response record.
@@ -1928,9 +1947,12 @@ class questionnaire {
 
         $this->add_response($rid);
         $message = '';
-
+        $partial_formated_question_answer = '';
         if ($this->notifications == 2) {
             $message .= $this->get_full_submission_for_notifications($rid);
+           
+        } else if($this->notifications == 1){
+            $partial_formated_question_answer = $this->get_specific_question([38,39],$rid);
         }
 
         $success = true;
@@ -1954,18 +1976,33 @@ class questionnaire {
             $info->submissionurl = $CFG->wwwroot.'/mod/questionnaire/report.php?action=vresp&sid='.$this->survey->id.
                 '&rid='.$rid.'&instance='.$this->id;
             $info->coursename = $this->course->fullname;
+            $info->coursecode = $this->course->shortname;
 
             $info->postsubject = get_string('submissionnotificationsubject', 'questionnaire');
             $info->posttext = get_string($langstringtext, 'questionnaire', $info);
             $info->posthtml = '<p>' . get_string($langstringhtml, 'questionnaire', $info) . '</p>';
+            if(!empty($partial_formated_question_answer)){
+                $string = trim(strip_tags($partial_formated_question_answer));
+                print_r($string);
+                var_dump($string);
+                exit;
+                if(empty($string)){
+                   
+                } else {
+                    $info->posttext .=  "<br />\n";
+                    $info->posttext .=  $partial_formated_question_answer;
+                    $info->posthtml .=  "<br />\n";
+                    $info->posthtml .=  $partial_formated_question_answer;
+                }
+            }
             if (!empty($message)) {
                 $info->posttext .= html_to_text($message);
                 $info->posthtml .= $message;
             }
-
+           
             foreach ($notifyusers as $notifyuser) {
-                $info->userto = $notifyuser;
-                $this->send_message($info, 'notification');
+                    $info->userto = $notifyuser;
+                    $this->send_message($info, 'notification');
             }
         }
 
@@ -2062,6 +2099,25 @@ class questionnaire {
             $message .= html_to_text($response->questionname) . "<br />\n";
             $message .= get_string('question') . ': ' . html_to_text($response->questiontext) . "<br />\n";
             $message .= get_string('answers', 'questionnaire') . ":<br />\n";
+            foreach ($response->answers as $answer) {
+                $message .= html_to_text($answer) . "<br />\n";
+            }
+            $message .= "<br />\n";
+        }
+
+        return $message;
+    }
+
+    /**
+     * Return a formatted string containing supplied the questions and answers for a specific submission.  New function added here
+     * @param $rid
+     * @return string
+     * @throws coding_exception
+     */
+    private function get_partial_submission_for_notifications_from_response($responses) {
+        $message = '';
+        foreach ($responses as $response) {
+            $message .= "<strong>".html_to_text($response->questiontext) . "</strong><br />\n";
             foreach ($response->answers as $answer) {
                 $message .= html_to_text($answer) . "<br />\n";
             }
@@ -2358,6 +2414,11 @@ class questionnaire {
         }
         if (empty($thankhead)) {
             $thankhead = get_string('thank_head', 'questionnaire');
+        }
+        if ($this->progressbar && isset($this->questionsbysec) && count($this->questionsbysec) > 1) {
+            // Show 100% full progress bar on completion.
+            $this->page->add_to_page('progressbar',
+                    $this->renderer->render_progress_bar(count($this->questionsbysec) + 1, $this->questionsbysec));
         }
         $this->page->add_to_page('title', $thankhead);
         $this->page->add_to_page('addinfo',
@@ -2705,9 +2766,9 @@ class questionnaire {
             $this->survey_results_navbar($rid);
         }
 
-        $this->page->add_to_page('title', clean_text($this->survey->title));
+        $this->page->add_to_page('title', format_string($this->survey->title));
         if ($this->survey->subtitle) {
-            $this->page->add_to_page('subtitle', clean_text($this->survey->subtitle));
+            $this->page->add_to_page('subtitle', format_string($this->survey->subtitle));
         }
         if ($this->survey->info) {
             $infotext = file_rewrite_pluginfile_urls($this->survey->info, 'pluginfile.php',
@@ -3859,5 +3920,41 @@ class questionnaire {
             $this->commit_submission_response($rid, $userid);
         }
         return $ret;
+    }
+
+    public function get_all_file_areas() {
+        global $DB;
+
+        $areas = [];
+        $areas['info'] = $this->sid;
+        $areas['thankbody'] = $this->sid;
+
+        // Add question areas.
+        if (empty($this->questions)) {
+            $this->add_questions();
+        }
+        $areas['question'] = [];
+        foreach ($this->questions as $question) {
+            $areas['question'][] = $question->id;
+        }
+
+        // Add feedback areas.
+        $areas['feedbacknotes'] = $this->sid;
+        $fbsections = $DB->get_records('questionnaire_fb_sections', ['surveyid' => $this->sid]);
+        if (!empty($fbsections)) {
+            $areas['sectionheading'] = [];
+            foreach ($fbsections as $section) {
+                $areas['sectionheading'][] = $section->id;
+                $feedbacks = $DB->get_records('questionnaire_feedback', ['sectionid' => $section->id]);
+                if (!empty($feedbacks)) {
+                    $areas['feedback'] = [];
+                    foreach ($feedbacks as $feedback) {
+                        $areas['feedback'][] = $feedback->id;
+                    }
+                }
+            }
+        }
+
+        return $areas;
     }
 }

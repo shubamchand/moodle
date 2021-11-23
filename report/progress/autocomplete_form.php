@@ -22,4 +22,3 @@ class selectusers extends moodleform {
 		$this->add_action_buttons(false, 'Get');
 	}
 }
-

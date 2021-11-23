@@ -317,8 +317,11 @@ class course_completion_setup {
 		$this->coursecontext = context_course::instance($courseid);
 		$this->user = \core_user::get_user($userid);
 		$this->course = get_course($courseid);
+        if($courseid!=16)
+        {
 		$this->send_email_trainers();
 		$this->send_email_student();
+        }
 	}
 
 	function send_email_trainers() {
@@ -327,7 +330,9 @@ class course_completion_setup {
 
 		$student = html_writer::link($CFG->wwwroot.'/user/profile.php?id='.$this->user->id, fullname($this->user));
 		$course = html_writer::link($CFG->wwwroot.'/course/view.php?id='.$this->course->id, format_string($this->course->fullname));
-		$bodyhtml = get_string('completionmail_teacher', 'theme_ausinet', ['student' => $student, 'course' => $course]);
+		$coursecode = $this->course->shortname?format_string($this->course->shortname):'';
+		// changes added here with new vairable coursecode to display shortname field in the email template
+		$bodyhtml = get_string('completionmail_teacher', 'theme_ausinet', ['student' => $student, 'course' => $course ,'coursecode' => $coursecode]);
 		$subject = get_string('completionmailsubject_teacher', 'theme_ausinet');
 		foreach($trainers as $key => $trainer) {
 			// $userto = \core_user::get_user($userid);

@@ -87,13 +87,8 @@ class essay extends text {
             $value = '';
         }
         if ($canusehtmleditor) {
-            $draftitemid = file_get_unused_draft_itemid();
-            $editor = editors_get_preferred_editor(FORMAT_HTML);
-            $editor->use_editor($name, questionnaire_get_editor_options($this->context),
-                ['media'=>$this->specific_filepicker_options(['audio', 'video'], $draftitemid, $this->context),
-                'image'=>$this->specific_filepicker_options(['image'], $draftitemid, $this->context)
-                ]
-            );
+            $editor = editors_get_preferred_editor();
+            $editor->use_editor($name, questionnaire_get_editor_options($this->context));
             $texteditor = html_writer::tag('textarea', $value,
                             array('id' => $name, 'name' => $name, 'rows' => $rows, 'cols' => $cols));
         } else {
@@ -105,26 +100,6 @@ class essay extends text {
 
         return $output;
     }
-
-    public function specific_filepicker_options($acceptedtypes, $draftitemid, $context) {
-        global $CFG;
-
-        require_once($CFG->dirroot.'/repository/lib.php');
-        $filepickeroptions = new \stdClass();
-        $filepickeroptions->accepted_types = $acceptedtypes;
-        $filepickeroptions->return_types = FILE_INTERNAL | FILE_EXTERNAL;
-        $filepickeroptions->context = $context;
-        $filepickeroptions->env = 'filepicker';
-
-        $options = initialise_filepicker($filepickeroptions);
-        $options->context = $context;
-        $options->client_id = uniqid();
-        $options->env = 'editor';
-        $options->itemid = $draftitemid;
-
-        return (object) $options;
-    }
-    
 
     /**
      * @param \mod_questionnaire\responsetype\response\response $response

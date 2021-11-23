@@ -25,6 +25,7 @@
 
 require('../../config.php');
 require_once($CFG->dirroot.'/report/outline/locallib.php');
+require_once($CFG->dirroot.'/report/progress/locallib.php');
 require_once($CFG->dirroot.'/report/outline/lib.php');
 
 $userid   = required_param('id', PARAM_INT);
@@ -141,7 +142,8 @@ foreach ($sections as $i => $section) {
                                 } else {
                                     $output = report_outline_user_outline($user->id, $cmid, $mod->modname, $instance->id);
                                 }
-                                report_outline_print_row($mod, $instance, $output);
+								$output->completion = $notes->get_cmcdetail($cmid, $user->id);
+								report_outline_print_row($mod, $instance, $output);
                                 break;
                             case "complete":
                                 $user_complete = $mod->modname."_user_complete";
@@ -162,10 +164,35 @@ foreach ($sections as $i => $section) {
 
                                 $output = ob_get_contents();
                                 ob_end_clean();
+								
+								$completionstate = $setby = "";
+								$completion = $notes->get_cmcdetail($cmid, $user->id);
 
-                                if (str_replace(' ', '', $output) != '<ul></ul>') {
-                                    echo $output;
-                                }
+								if(isset($completion->completionstate)){
+									$completionstate = $completion->completionstate;
+									if($completionstate == 2){
+										$output .= "<strong>Status:</strong> Completed";
+									}
+									if($completionstate == 1){
+										$output .= "<strong>Status:</strong> Completed, <strong>Grade:</strong> 100%";
+									}
+									if($completionstate == 0){
+										$output .= "<strong>Status:</strong> Not completed, <strong>Grade:</strong> Not available";
+									}
+									
+									if(isset($completion->note)){
+										$setby = $completion->setby;
+										$output .= "<br><strong>Note:</strong> " . $completion->note;
+										$timeago = format_time(time() - $completion->timemodified);
+										$output .= "<br><small>(set by $setby) ".userdate($completion->timemodified)." ($timeago ago) </small>";
+									}
+									//echo $output;
+								}
+								
+								if (str_replace(' ', '', $output) != '<ul></ul>') {
+										echo $output;
+									}
+								echo "<hr>";								
                                 break;
                             }
                         }

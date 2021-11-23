@@ -1,0 +1,81 @@
+@charset "utf-8";
+/* CSS Document */
+
+.block_course_status button.btn-course-status:focus {
+    background-position: 0;
+}
+
+.block_course_status button.btn-course-status {
+    font-size: 1em;
+    border-radius: 0;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+    padding: 10px 17px 10px 17px;
+    font-family: Arial;
+    color: #fff;
+    font-weight: 300;
+    text-decoration: none;
+    margin: 0;
+}
+
+.block_course_status button.btn-unpublished,
+.block_course_status button.btn-unpublished:hover,
+.block_course_status button.btn-unpublished:focus,
+.block_course_status button.btn-unpublished:focus {
+    background: #f28585;
+    background-image: linear-gradient(to bottom, #f28585, #f08484);
+    border: 1px solid #f28585;
+    color: #fff;
+    cursor: default;
+    outline: 0;
+}
+
+.block_course_status button:not(:disabled) {
+    cursor: pointer;
+}
+
+.block_course_status button.btn-unpublish {
+    background: #f7f7f7;
+    background-image: linear-gradient(to bottom, #f7f7f7, #f2f2f2);
+    border-radius: 0;
+    border: solid #dbdbdb 1px;
+    color: #524e52;
+}
+
+.block_course_status button.btn-unpublish:hover {
+    background: #ebe8eb;
+    background-image: linear-gradient(to bottom, #ebe8eb, #e3e0e3);
+    border-radius: 0;
+    border: solid #dbdbdb 1px;
+    color: #524e52;
+}
+
+
+.block_course_status button.btn-published,
+.block_course_status button.btn-published:hover,
+.block_course_status button.btn-published:focus,
+.block_course_status button.btn-published:focus {
+    background: #80cc76;
+    background-image: linear-gradient(to bottom, #80cc76, #71b569);
+    border: 1px solid #80cc76;
+    color: #fff;
+    cursor: default;
+    outline: 0;
+}
+
+.block_course_status button.btn-publish {
+    background: #f7f7f7;
+    background-image: linear-gradient(to bottom, #f7f7f7, #f2f2f2);
+    border-radius: 0;
+    border: solid #dbdbdb 1px;
+    color: #524e52;
+}
+
+.block_course_status .btn-publish:hover {
+    background: #ebe8eb;
+    background-image: linear-gradient(to bottom, #ebe8eb, #e3e0e3);
+    border-radius: 0;
+    border: solid #dbdbdb 1px;
+    color: #524e52;
+}

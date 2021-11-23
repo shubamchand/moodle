@@ -353,8 +353,16 @@ class question_type {
         } else {
             $question->generalfeedback = trim($form->generalfeedback['text']);
         }
+
         $question->generalfeedbackformat = !empty($form->generalfeedback['format']) ?
                 $form->generalfeedback['format'] : 0;
+
+        /* added here for compalinace by nirmal */
+        if (empty($form->compliance['text'])) {
+            $question->compliance = '';
+        } else {
+            $question->compliance = trim($form->compliance['text']);
+        }
 
         if ($question->name === '') {
             $question->name = shorten_text(strip_tags($form->questiontext['text']), 15);
@@ -411,6 +419,14 @@ class question_type {
                     $form->generalfeedback['itemid'], $context->id,
                     'question', 'generalfeedback', (int)$question->id,
                     $this->fileoptions, $question->generalfeedback);
+        }
+        
+        /* added here for compalinace by nirmal */
+        if (!empty($question->compliance) && !empty($form->compliance['itemid'])) {
+            $question->compliance = file_save_draft_area_files(
+                    $form->compliance['itemid'], $context->id,
+                    'question', 'compliance', (int)$question->id,
+                    $this->fileoptions, $question->compliance);
         }
         $DB->update_record('question', $question);
 
@@ -891,6 +907,7 @@ class question_type {
         $question->questiontextformat = $questiondata->questiontextformat;
         $question->generalfeedback = $questiondata->generalfeedback;
         $question->generalfeedbackformat = $questiondata->generalfeedbackformat;
+        $question->compliance = $questiondata->compliance;
         $question->defaultmark = $questiondata->defaultmark + 0;
         $question->length = $questiondata->length;
         $question->penalty = $questiondata->penalty;

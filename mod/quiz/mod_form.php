@@ -79,6 +79,11 @@ class mod_quiz_mod_form extends moodleform_mod {
         // Introduction.
         $this->standard_intro_elements(get_string('introduction', 'quiz'));
 
+        $mform->addElement('checkbox', 'enablehelp','',  get_string('enablehelpdesc', 'quiz')
+                );
+        $choice = array(1=>'1',2=>'2',3=>'3',4=>'4',5=>'5',6=>'6',7=>'7',8=>'8',9=>'9',10=>'10');
+        $mform->addElement('select', 'helpafterattempt', get_string('helpafterattempt', 'quiz'),
+               $choice,2);    
         // -------------------------------------------------------------------------------
         $mform->addElement('header', 'timing', get_string('timing', 'quiz'));
 

@@ -426,13 +426,17 @@ class core_course_renderer extends plugin_renderer_base {
         }
 
         $completionicon = '';
-
+        $completiontext = '';
         if ($isediting || !$istrackeduser) {
             switch ($completion) {
                 case COMPLETION_TRACKING_MANUAL :
-                    $completionicon = 'manual-enabled'; break;
+                    $completionicon = 'manual-enabled';
+                     $completiontext = "Not completed";
+                      break;
                 case COMPLETION_TRACKING_AUTOMATIC :
-                    $completionicon = 'auto-enabled'; break;
+                    $completionicon = 'auto-enabled'; 
+                    $completiontext = "Completed";
+                    break;
             }
         } else {
             $completiondata = $completioninfo->get_data($mod, true);
@@ -440,23 +444,31 @@ class core_course_renderer extends plugin_renderer_base {
                 switch($completiondata->completionstate) {
                     case COMPLETION_INCOMPLETE:
                         $completionicon = 'manual-n' . ($completiondata->overrideby ? '-override' : '');
+                        $completiontext = "Not completed";
                         break;
                     case COMPLETION_COMPLETE:
                         $completionicon = 'manual-y' . ($completiondata->overrideby ? '-override' : '');
+                        $completiontext = "Completed";
                         break;
                 }
             } else { // Automatic
                 switch($completiondata->completionstate) {
                     case COMPLETION_INCOMPLETE:
                         $completionicon = 'auto-n' . ($completiondata->overrideby ? '-override' : '');
+                         $completiontext = "Not Completed"; 
                         break;
                     case COMPLETION_COMPLETE:
                         $completionicon = 'auto-y' . ($completiondata->overrideby ? '-override' : '');
+                         $completiontext = "Completed";
                         break;
                     case COMPLETION_COMPLETE_PASS:
-                        $completionicon = 'auto-pass'; break;
+                        $completionicon = 'auto-pass';
+                         $completiontext = "Completed";
+                          break;
                     case COMPLETION_COMPLETE_FAIL:
-                        $completionicon = 'auto-fail'; break;
+                        $completionicon = 'auto-fail';
+                         $completiontext = "Re-attempt";
+                          break;
                 }
             }
         }
@@ -505,21 +517,55 @@ class core_course_renderer extends plugin_renderer_base {
                     'type' => 'hidden', 'name' => 'modulename', 'value' => $formattedname));
                 $output .= html_writer::empty_tag('input', array(
                     'type' => 'hidden', 'name' => 'completionstate', 'value' => $newstate));
+                $output .= html_writer::span($completiontext."&nbsp; ");  
                 $output .= html_writer::tag('button',
                     $this->output->pix_icon('i/completion-' . $completionicon, $imgalt),
                         array('class' => 'btn btn-link', 'aria-live' => 'assertive'));
+               
                 $output .= html_writer::end_tag('div');
                 $output .= html_writer::end_tag('form');
             } else {
+                 if ($mod->__get('modname') == 'quiz' && $completiondata->completionstate == COMPLETION_INCOMPLETE) {
+                    $completiontext = $this->get_quiz_completion_status($mod, $USER->id);
+                     if($completiontext=='Re-attempt'){
+                        $completionicon = 'auto-fail';
+                         $completionpixicon = new pix_icon('i/completion-' . $completionicon, 'Re-attempt', '',
+                        array('title' => 'Re-attempt'));
+                    }
+                }
                 // In auto mode, the icon is just an image.
                 $completionpixicon = new pix_icon('i/completion-'.$completionicon, $imgalt, '',
                         array('title' => $imgalt));
-                $output .= html_writer::tag('span', $this->output->render($completionpixicon),
+                $output .= html_writer::tag('span',$completiontext."&nbsp; ". $this->output->render($completionpixicon),
                         array('class' => 'autocompletion'));
             }
         }
         return $output;
     }
+ public function get_quiz_completion_status($mod, $userid) {
+        global $DB;
+        if ($mod->__get('modname') == 'quiz') {
+
+            $sql = "select * from {quiz_attempts} where quiz=:quiz and userid=:userid "
+                    . "order by timemodified desc";
+            $filter = array('quiz' => $mod->__get('instance'), 'userid' => $userid);
+
+            $attempts = $DB->get_records_sql($sql, $filter, 0, 1);
+           
+            if ($attempts && sizeof($attempts) > 0) {
+                if ($attempts[array_key_first($attempts)]->sumgrades == NULL and  $attempts[array_key_first($attempts)]->state == 'finished') {
+                    return 'Submitted';
+                } if ($attempts[array_key_first($attempts)]->sumgrades == NULL and  $attempts[array_key_first($attempts)]->state == 'inprogress') {
+                    return 'In-Progress';
+                }else {
+                    return 'Re-attempt';
+                }
+            }
+
+            return 'Not completed';
+        }
+    }
+ 
 
     /**
      * Checks if course module has any conditions that may make it unavailable for

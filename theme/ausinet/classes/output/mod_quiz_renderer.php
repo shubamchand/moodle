@@ -37,7 +37,7 @@ class mod_quiz_renderer extends \mod_quiz_renderer {
                     new moodle_url($attemptobj->attempt_url(null, $attemptobj->get_currentpage())),
                     get_string('returnattempt', 'quiz'));
             $output .= $this->container($this->container($this->render($button),
-                    'controls'), 'submitbtns mdl-align');
+                    'controls'), 'submitbtns btattempt mdl-align');
         }
 
         // Finish attempt button.
@@ -54,6 +54,7 @@ class mod_quiz_renderer extends \mod_quiz_renderer {
                 new moodle_url($attemptobj->processattempt_url(), $options),
                 get_string('submitallandfinish', 'quiz'));
         $button->id = 'responseform';
+		
         if ($attemptobj->get_state() == quiz_attempt::IN_PROGRESS) {
             $button->add_action(new confirm_action(get_string('confirmclose', 'quiz'), null,
                     get_string('submitallandfinish', 'quiz')));
@@ -61,36 +62,19 @@ class mod_quiz_renderer extends \mod_quiz_renderer {
 
         $duedate = $attemptobj->get_due_date();
         $output .= '<div class="submit-actions">';
-        $message = '        
+        /*$message = '        
             <div class="quiz-declaration" >
                 <input type="checkbox" name="declaration" id="declaration" value="true" >
                 <label for="declaration"> I declare that this is my own work </label>
             </div>';
         $PAGE->requires->js_amd_inline('
             require(["jquery", "core/modal_factory"], function($, modal) {
-                var declare = $(".path-mod-quiz").find(".quiz-declaration #declaration");
-                if (declare.length >= 1) {
-                    $(".submit-actions .singlebutton button[type=submit]").attr("disabled", true);
-                    $(".quiz-declaration #declaration").on("change", function(e) {
-
-                        if (declare.is(":checked")) {
-                            $(".submit-actions .singlebutton button[type=submit]").removeAttr("disabled");
-                        } else {
-                            $(".submit-actions .singlebutton button[type=submit]").attr("disabled", true);
-                        }
-                    })
-
-                    $(".submit-actions .singlebutton").on("click", function(e) {
-                        if ($(".submit-actions .singlebutton button[type=submit]").attr("disabled") == true) {
-                            alert("You need to select the declaration before submit");
-                        }
-                        
-                    })
-                }
-
-            })' );
+				var copybtn = $(".submit-actions").html();
+				$(".quizsummaryofattempt").before(copybtn);
+				
+			})' );*/
         
-        // $message = '';
+       $message = '';
         if ($attemptobj->get_state() == quiz_attempt::OVERDUE) {
             $message = get_string('overduemustbesubmittedby', 'quiz', userdate($duedate));
 
@@ -98,9 +82,7 @@ class mod_quiz_renderer extends \mod_quiz_renderer {
             $message = get_string('mustbesubmittedby', 'quiz', userdate($duedate));
         }
 
-        $output .= $this->countdown_timer($attemptobj, time());
-     
-         
+        $output .= $this->countdown_timer($attemptobj, time());        
 
         if ($nosubmit) {
             $button = \html_writer::tag('button', get_string('submitallandfinish', 'quiz'), array('href' => 'javascript:void(0)', 'id' => 'notansweredmodal'));
@@ -124,7 +106,6 @@ class mod_quiz_renderer extends \mod_quiz_renderer {
         } else {
              $output .= $this->container($message . $this->container(
                 $this->render($button), 'controls'), 'submitbtns mdl-align');
-
         }
         $output .= '</div>';
         return $output;
@@ -161,6 +142,7 @@ class mod_quiz_renderer extends \mod_quiz_renderer {
                         array('class' => 'quizattemptcounts'));
             }
         }
+		
         return $output;
     }
 
@@ -238,8 +220,6 @@ class mod_quiz_renderer extends \mod_quiz_renderer {
         
         $attemptid = optional_param('attempt', null, PARAM_INT);
 
-
-
         $feedback = $this->getattempt_feedback($attemptid);        
         if ($feedback) { 
             // $summarydata['comment']['content'] = $feedback;
@@ -255,9 +235,11 @@ class mod_quiz_renderer extends \mod_quiz_renderer {
                 'content' => $this->question_marking_field($attemptid)
             );
         }
+		
         $output = '';
         $output .= $this->header();
         $output .= $this->review_summary_table($summarydata, $page);
+		
         // Select all graded.
         if ($attemptobj->has_capability('mod/quiz:viewreports') && ($attemptobj->get_state() == quiz_attempt::FINISHED)) {
             $output .= $this->selectallgrade();

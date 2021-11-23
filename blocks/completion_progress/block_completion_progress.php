@@ -41,7 +41,9 @@ class block_completion_progress extends block_base {
      * @return void
      */
     public function init() {
-        $this->title = get_string('pluginname', 'block_completion_progress');
+        $this->title = get_string('pluginname', 'block_completion_progress').
+        ' &nbsp;&nbsp; <button type="button" style="height:34px;" class="btn btn-secondary rounded" data-toggle="modal" data-target="#progressChartModel">
+         <i class=" fa fa-pie-chart fa-lg " aria-hidden="true"></i></button>';
     }
 
     /**
@@ -104,6 +106,8 @@ class block_completion_progress extends block_base {
     public function get_content() {
         global $USER, $COURSE, $CFG, $OUTPUT, $DB;
 
+         $this->page->requires->jquery();
+         $this->page->requires->js(new moodle_url('https://www.gstatic.com/charts/loader.js'));
         // If content has already been generated, don't waste time generating it again.
         if ($this->content !== null) {
             return $this->content;
@@ -254,6 +258,8 @@ class block_completion_progress extends block_base {
             if (has_capability('block/completion_progress:showbar', $this->context)) {
                 $submissions = block_completion_progress_student_submissions($COURSE->id, $USER->id);
                 $completions = block_completion_progress_completions($activities, $USER->id, $COURSE, $submissions);
+              // print_object($completions);
+                 $pie_chart_data = block_completion_progress_pie_chart_data($completions);
                 $this->content->text .= block_completion_progress_bar(
                     $activities,
                     $completions,
@@ -285,7 +291,25 @@ class block_completion_progress extends block_base {
         $arguments = array($blockinstancesonpage, array($USER->id));
         $this->page->requires->js_init_call('M.block_completion_progress.setupScrolling', array(), false, $jsmodule);
         $this->page->requires->js_init_call('M.block_completion_progress.init', $arguments, false, $jsmodule);
-
+        $chart_data = array($pie_chart_data['data'],$pie_chart_data['color']);
+        $this->page->requires->js_init_call('M.block_completion_progress.drawPieChart', $chart_data, true, $jsmodule);
+     
+         $this->content->text .='<div class="modal fade" id="progressChartModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog"  role="document">
+    <div class="modal-content" style="width:600px;height:600px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Completion Progress</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div id="donutchart" ></div>
+      </div>
+    
+    </div>
+  </div>
+</div>';
         return $this->content;
     }
 }

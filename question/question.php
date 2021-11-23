@@ -201,6 +201,8 @@ if ($wizardnow !== '') {
 } else {
     $mform = $qtypeobj->create_editing_form('question.php', $question, $category, $contexts, $formeditable);
 }
+
+
 $toform = fullclone($question); // send the question object and a few more parameters to the form
 $toform->category = "{$category->id},{$category->contextid}";
 $toform->scrollpos = $scrollpos;
@@ -219,6 +221,7 @@ if ($cm !== null){
 }
 
 $toform->inpopup = $inpopup;
+
 
 $mform->set_data($toform);
 

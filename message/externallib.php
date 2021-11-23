@@ -1109,6 +1109,51 @@ class core_message_external extends external_api {
     }
 
     /**
+     * Creates a contact request.
+     *
+     * @param int $userid The id of the user who is creating the contact request
+     * @param int $requesteduserid The id of the user being requested
+     */
+    public static function add_contact(int $userid, int $requesteduserid) {
+        global $CFG, $USER;
+
+        // Check if messaging is enabled.
+        if (empty($CFG->messaging)) {
+            throw new moodle_exception('disabled', 'message');
+        }
+
+        // Validate context.
+        $context = context_system::instance();
+        self::validate_context($context);
+
+        $params = ['userid' => $userid, 'requesteduserid' => $requesteduserid];
+        $params = self::validate_parameters(self::confirm_contact_request_parameters(), $params);
+
+        $capability = 'moodle/site:manageallmessaging';
+        if (($USER->id != $params['userid']) && !has_capability($capability, $context)) {
+            throw new required_capability_exception($context, $capability, 'nopermissions', '');
+        }
+
+        $result = [
+            'warnings' => []
+        ];
+
+        if (!\core_message\api::can_create_contact($params['userid'], $params['requesteduserid'])) {
+            $result['warnings'][] = [
+                'item' => 'user',
+                'itemid' => $params['requesteduserid'],
+                'warningcode' => 'cannotcreatecontactrequest',
+                'message' => 'You are unable to add a contact for this user'
+            ];
+        } else {
+           
+                $result['request'] = \core_message\api::add_contact($params['userid'], $params['requesteduserid']);
+        }
+
+        return $result;
+    }
+
+    /**
      * Confirm a contact request parameters description.
      *
      * @return external_function_parameters

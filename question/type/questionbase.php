@@ -85,8 +85,13 @@ abstract class question_definition {
     /** @var string question general feedback. */
     public $generalfeedback;
 
+    
     /** @var integer question test format. */
     public $generalfeedbackformat;
+
+    /** @var string question compliance. */
+    public $compliance;
+
 
     /** @var number what this quetsion is marked out of, by default. */
     public $defaultmark = 1;
@@ -388,6 +393,12 @@ abstract class question_definition {
     public function format_generalfeedback($qa) {
         return $this->format_text($this->generalfeedback, $this->generalfeedbackformat,
                 $qa, 'question', 'generalfeedback', $this->id);
+    }
+
+    /** @return the result of applying {@link format_text()} to the general feedback. */
+    public function format_compliance($qa) {
+        return $this->format_text($this->compliance, $this->generalfeedbackformat,
+                $qa, 'question', 'compliance', $this->id);
     }
 
     /**

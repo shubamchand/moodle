@@ -219,6 +219,10 @@ if ($ADMIN->fulltree) {
             get_string('autosaveperiod', 'quiz'), get_string('autosaveperiod_desc', 'quiz'), 60, 1));
 }
 
+ $setting = new admin_setting_configcheckbox('quiz/enablehelp',
+            get_string('enablehelp', 'quiz'), get_string('enablehelpdesc', 'quiz'),
+            1);
+     $quizsettings->add($setting);
 // Now, depending on whether any reports have their own settings page, add
 // the quiz setting page to the appropriate place in the tree.
 if (empty($reportsbyname) && empty($rulesbyname)) {

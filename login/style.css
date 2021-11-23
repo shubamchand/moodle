@@ -1,0 +1,17 @@
+
+.pass {
+    float:right;
+    position:absolute;
+    right:35%;
+    top:36.5%; 
+    vertical-align: middle ;
+}
+
+.confirmpass {
+    float:right;
+    position:absolute;
+    right:35%;
+    top:42.5%; 
+    vertical-align: middle ;
+}
+

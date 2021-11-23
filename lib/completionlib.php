@@ -1130,7 +1130,11 @@ class completion_info {
      * @return bool
      */
     public function is_tracked_user($userid) {
-        return is_enrolled(context_course::instance($this->course->id), $userid, 'moodle/course:isincompletionreports', true);
+        /* Modified by Bala - Sept17, 2021
+        * Completion not showing 100% in dashboard for disable users after enrolment expiry (Not current). 
+        * Setting the last param to false will return the user as enrolled.  */
+        return is_enrolled(context_course::instance($this->course->id), $userid, 'moodle/course:isincompletionreports', false);
+        //return is_enrolled(context_course::instance($this->course->id), $userid, 'moodle/course:isincompletionreports', true);
     }
 
     /**

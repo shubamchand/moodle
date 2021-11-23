@@ -87,6 +87,12 @@ if ($ADMIN->fulltree) {
         null )
     );
 
+   $settings->add(new admin_setting_configcolourpicker('block_completion_progress/inProgress_colour',
+        get_string('inProgress_colour_title', 'block_completion_progress'),
+        get_string('inProgress_colour_descr', 'block_completion_progress'),
+        get_string('inProgress_colour', 'block_completion_progress'),
+        null )
+    );
     $settings->add(new admin_setting_configcheckbox('block_completion_progress/showinactive',
         get_string('showinactive', 'block_completion_progress'),
         '',

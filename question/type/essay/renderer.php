@@ -356,7 +356,8 @@ class qtype_essay_format_editorfilepicker_renderer extends qtype_essay_format_ed
         }
 
         $formatoptions = new stdClass();
-        $formatoptions->para = false;
+        //$formatoptions->para = false;
+        $formatoptions->noclean = true;
         $text = $qa->rewrite_response_pluginfile_urls($step->get_qt_var($name),
                 $context->id, 'answer', $step);
         return format_text($text, $step->get_qt_var($name . 'format'), $formatoptions);

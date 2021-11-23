@@ -1,0 +1,55 @@
+[22-Aug-2021 08:53:10 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Missing implementation method of format_remuiformat\external\api::course_progress_data Debug: 
+Error code: codingerror
+* line 102 of /lib/externallib.php: coding_exception thrown
+* line 36 of /admin/webservice/documentation.php: call to external_api::external_function_info()
+
+[22-Aug-2021 08:53:17 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Missing implementation method of format_remuiformat\external\api::course_progress_data Debug: 
+Error code: codingerror
+* line 102 of /lib/externallib.php: coding_exception thrown
+* line 36 of /admin/webservice/documentation.php: call to external_api::external_function_info()
+
+[22-Aug-2021 08:53:17 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Missing implementation method of format_remuiformat\external\api::course_progress_data Debug: 
+Error code: codingerror
+* line 102 of /lib/externallib.php: coding_exception thrown
+* line 36 of /admin/webservice/documentation.php: call to external_api::external_function_info()
+
+[22-Aug-2021 08:53:18 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Missing implementation method of format_remuiformat\external\api::course_progress_data Debug: 
+Error code: codingerror
+* line 102 of /lib/externallib.php: coding_exception thrown
+* line 36 of /admin/webservice/documentation.php: call to external_api::external_function_info()
+
+[22-Aug-2021 08:53:18 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Missing implementation method of format_remuiformat\external\api::course_progress_data Debug: 
+Error code: codingerror
+* line 102 of /lib/externallib.php: coding_exception thrown
+* line 36 of /admin/webservice/documentation.php: call to external_api::external_function_info()
+
+[22-Aug-2021 08:53:18 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Missing implementation method of format_remuiformat\external\api::course_progress_data Debug: 
+Error code: codingerror
+* line 102 of /lib/externallib.php: coding_exception thrown
+* line 36 of /admin/webservice/documentation.php: call to external_api::external_function_info()
+
+[22-Aug-2021 08:53:18 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Missing implementation method of format_remuiformat\external\api::course_progress_data Debug: 
+Error code: codingerror
+* line 102 of /lib/externallib.php: coding_exception thrown
+* line 36 of /admin/webservice/documentation.php: call to external_api::external_function_info()
+
+[22-Aug-2021 08:53:19 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Missing implementation method of format_remuiformat\external\api::course_progress_data Debug: 
+Error code: codingerror
+* line 102 of /lib/externallib.php: coding_exception thrown
+* line 36 of /admin/webservice/documentation.php: call to external_api::external_function_info()
+
+[22-Aug-2021 08:53:19 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Missing implementation method of format_remuiformat\external\api::course_progress_data Debug: 
+Error code: codingerror
+* line 102 of /lib/externallib.php: coding_exception thrown
+* line 36 of /admin/webservice/documentation.php: call to external_api::external_function_info()
+
+[22-Aug-2021 08:53:19 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Missing implementation method of format_remuiformat\external\api::course_progress_data Debug: 
+Error code: codingerror
+* line 102 of /lib/externallib.php: coding_exception thrown
+* line 36 of /admin/webservice/documentation.php: call to external_api::external_function_info()
+
+[22-Aug-2021 08:53:20 Australia/Darwin] Default exception handler: Coding error detected, it must be fixed by a programmer: Missing implementation method of format_remuiformat\external\api::course_progress_data Debug: 
+Error code: codingerror
+* line 102 of /lib/externallib.php: coding_exception thrown
+* line 36 of /admin/webservice/documentation.php: call to external_api::external_function_info()
+

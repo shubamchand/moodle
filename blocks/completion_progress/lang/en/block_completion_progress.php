@@ -82,6 +82,7 @@ $string['pluginname'] = 'Completion Progress';
 $string['progress'] = 'Progress';
 $string['progressbar'] = 'Completion Progress';
 $string['privacy:metadata'] = 'The Completion Progress block only displays existing completion data.';
+$string['selectitem'] = 'Select \'{$a}\'';
 $string['shortname'] = 'Short course name';
 $string['showallinfo'] = 'Show all info';
 $string['showinactive'] = 'Show inactive students in Overview';
@@ -98,3 +99,7 @@ $string['why_show_precentage_help'] = '<p>It is possible to show an overall perc
 $string['why_use_icons'] = 'Why you might want to use icons?';
 $string['why_use_icons_help'] = '<p>You may wish to add tick and cross icons in the Completion Progress to make this block more visually accessible for students with colour-blindness.</p><p>It may also make the meaning of the block clearer if you believe colours are not intuitive, either for cultural or personal reasons.</p>';
 $string['wrapafter'] = 'When wrapping, limit rows to';
+$string['inProgress_colour_title'] = 'IN-Progress ';
+$string['inProgress_colour_descr'] = 'HTML colour code for In-Progress elements that have not yet been submitted';
+$string['inProgress_colour'] = 'IN-Progress';
+

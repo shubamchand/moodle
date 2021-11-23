@@ -181,6 +181,11 @@ class manager {
             $s = new \stdClass();
             $s->sitename = format_string($SITE->shortname, true, array('context' => \context_course::instance(SITEID)));
             $s->url = $CFG->wwwroot.'/message/index.php?id='.$eventdata->userfrom->id;
+
+            /**Added by Bala Oct 10,2021 - Display sender's email in emailtagline string**/
++           $sender_email = $localisedeventdata->userfrom->email;
++           $s->email = $sender_email;
+            /**End**/
             $emailtagline = get_string_manager()->get_string('emailtagline', 'message', $s, $recipient->lang);
 
             $localisedeventdata->fullmessage = $eventdata->fullmessage;

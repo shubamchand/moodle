@@ -6066,7 +6066,7 @@ function email_to_user($user, $from, $subject, $messagetext, $messagehtml = '', 
 
     if (is_string($from)) { // So we can pass whatever we want if there is need.
         $mail->From     = $noreplyaddress;
-        $mail->FromName = $from;
+        $mail->FromName = $CFG->supportname;
     // Check if using the true address is true, and the email is in the list of allowed domains for sending email,
     // and that the senders email setting is either displayed to everyone, or display to only other users that are enrolled
     // in a course with the sender.
@@ -6085,7 +6085,7 @@ function email_to_user($user, $from, $subject, $messagetext, $messagehtml = '', 
         if ($CFG->emailfromvia == EMAIL_VIA_ALWAYS) {
             $fromstring = get_string('emailvia', 'core', $fromdetails);
         }
-        $mail->FromName = $fromstring;
+        $mail->FromName = $CFG->supportname;
         if (empty($replyto)) {
             $tempreplyto[] = array($from->email, fullname($from));
         }
@@ -6099,7 +6099,7 @@ function email_to_user($user, $from, $subject, $messagetext, $messagehtml = '', 
         if ($CFG->emailfromvia != EMAIL_VIA_NEVER) {
             $fromstring = get_string('emailvia', 'core', $fromdetails);
         }
-        $mail->FromName = $fromstring;
+        $mail->FromName = $CFG->supportname;
         if (empty($replyto)) {
             $tempreplyto[] = array($noreplyaddress, get_string('noreplyname'));
         }

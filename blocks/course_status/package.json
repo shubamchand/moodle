@@ -1,0 +1,27 @@
+{
+  "name": "course_status",
+  "version": "1.0.2",
+  "description": "Course status block",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "eslint": "^4.16.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-load-gruntfile": "0.0.2",
+    "grunt-stylelint": "^0.9.0",
+    "stylelint": "^8.4.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-promise": "^3.6.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://manoj5882@bitbucket.org/covuni/moodle-block_course_status.git"
+  },
+  "author": "Manoj Solanki",
+  "license": "GPL-3.0",
+  "homepage": "https://bitbucket.org/covuni/moodle-block_course_status#readme"
+}

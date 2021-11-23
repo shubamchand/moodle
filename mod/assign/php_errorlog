@@ -22,3 +22,6 @@ Error code: codingerror
 * line 554 of /mod/assign/locallib.php: call to assign->process_grading_batch_operation()
 * line 55 of /mod/assign/view.php: call to assign->view()
 
+[08-Sep-2021 06:28:54 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[09-Nov-2021 06:19:06 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[09-Nov-2021 06:19:07 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0

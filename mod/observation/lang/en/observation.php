@@ -561,7 +561,7 @@ $string['started'] = 'started';
 $string['strfdate'] = '%d/%m/%Y';
 $string['strfdateformatcsv'] = 'd/m/Y H:i:s';
 $string['submissionnotificationhtmlanon'] = 'There is a new <a href="{$a->submissionurl}">submission</a> to the "{$a->name}" observation.';
-$string['submissionnotificationhtmluser'] = '<a href="{$a->profileurl}">{$a->username}</a> has a new <a href="{$a->submissionurl}">submission</a> to the "{$a->name}" observation in the course "{$a->coursename}".';
+$string['submissionnotificationhtmluser'] = 'fafaf <a href="{$a->profileurl}">{$a->username}</a> has a new <a href="{$a->submissionurl}">submission</a> to the "{$a->name}" observation in the course "{$a->coursename}".';
 $string['submissionnotificationsubject'] = 'New observation submission';
 $string['submissionnotificationtextanon'] = 'There is a new submission ({$a->submissionurl}) to the "{$a->name}" observation.';
 $string['submissionnotificationtextuser'] = '{$a->username} ({$a->profileurl}) has a new submission ({$a->submissionurl}) to the "{$a->name}" observation in the course "{$a->coursename}".';

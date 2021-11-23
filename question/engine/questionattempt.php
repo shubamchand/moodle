@@ -557,7 +557,7 @@ class question_attempt {
                 $this->usageid,
                 $this->slot,
                 $file->get_itemid())) .
-                $file->get_filepath() . $file->get_filename(), true);
+                $file->get_filepath() . $file->get_filename(), false);
     }
 
     /**

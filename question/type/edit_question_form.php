@@ -196,6 +196,12 @@ abstract class question_edit_form extends question_wizard_form {
                 array('rows' => 10), $this->editoroptions);
         $mform->setType('generalfeedback', PARAM_RAW);
         $mform->addHelpButton('generalfeedback', 'generalfeedback', 'question');
+        /* compliance field added */
+
+        $mform->addElement('editor', 'compliance', get_string('compliance', 'question'),
+                array('rows' => 10), $this->editoroptions);
+        $mform->setType('compliance', PARAM_RAW);
+        $mform->addHelpButton('compliance', 'compliance', 'question');
 
         $mform->addElement('text', 'idnumber', get_string('idnumber', 'question'), 'maxlength="100"  size="10"');
         $mform->addHelpButton('idnumber', 'idnumber', 'question');
@@ -555,6 +561,25 @@ abstract class question_edit_form extends question_wizard_form {
         $question->generalfeedback['format'] = empty($question->generalfeedbackformat) ?
                 editors_get_preferred_format() : $question->generalfeedbackformat;
         $question->generalfeedback['itemid'] = $draftid;
+
+        /* added for complaince here start added by nirmal*/ 
+        $draftid = file_get_submitted_draft_itemid('compliance');
+        
+        if (empty($question->compliance)) {
+            $compliance = $this->_form->getElement('compliance')->getValue();
+            $question->compliance = $compliance['text'];
+        }
+       
+        $feedback = file_prepare_draft_area($draftid, $this->context->id,
+                'question', 'compliance', empty($question->id) ? null : (int) $question->id,
+                $this->fileoptions, $question->compliance);
+        $question->compliance = array();
+        $question->compliance['text'] = $feedback;
+        $question->compliance['format'] = empty($question->complianceformat) ?
+                editors_get_preferred_format() : $question->complianceformat;
+        $question->compliance['itemid'] = $draftid;
+        /* added for complaince here ends  added by nirmal*/
+
 
         // Remove unnecessary trailing 0s form grade fields.
         if (isset($question->defaultgrade)) {

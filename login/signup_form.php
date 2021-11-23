@@ -32,9 +32,14 @@ require_once('lib.php');
 
 class login_signup_form extends moodleform implements renderable, templatable {
     function definition() {
-        global $USER, $CFG;
+        global $USER, $CFG, $PAGE;
 
         $mform = $this->_form;
+          // gnuwings
+            // Require the js and css file
+        $PAGE->requires->css('/login/style.css');
+        $PAGE->requires->js('/login/custom.js', true);
+            // gnuwings
 
         $mform->addElement('header', 'createuserandpass', get_string('createuserandpass'), '');
 
@@ -45,10 +50,28 @@ class login_signup_form extends moodleform implements renderable, templatable {
 
         if (!empty($CFG->passwordpolicy)){
             $mform->addElement('static', 'passwordpolicyinfo', '', print_password_policy());
+            
         }
+        
+        // gnuwings
+        // Toggle eye for password. Changed the addelement type from password to passwordunmask
         $mform->addElement('password', 'password', get_string('password'), 'maxlength="32" size="12"');
         $mform->setType('password', core_user::get_property_type('password'));
         $mform->addRule('password', get_string('missingpassword'), 'required', null, 'client');
+        $mform->addElement('html', '<span class = "pass" title="Reveal/Hide">
+                <i class = "icon fa fa-eye-slash" onclick = "passReveal()" id = "hidepass"></i></span>');
+           
+        $strpasswordagain = get_string('password') . ' (' . get_string('again') . ')';
+        $mform->addElement('password', 'cpassword', $strpasswordagain, 'maxlength="32" size="12"');
+        $mform->setType('cpassword', core_user::get_property_type('password'));
+        $mform->addRule('cpassword', get_string('missingpassword'), 'required', null, 'client');
+        $mform->addElement('html', '<span class = "confirmpass" title="Reveal/Hide">
+                <i class = "icon fa fa-eye-slash" onclick = "cpassReveal()" id = "hidecpass"></i></span>');
+        // gnuwings
+        // End  
+        //$mform->addElement('password', 'password', get_string('password'), 'maxlength="32" size="12"');
+        //$mform->setType('password', core_user::get_property_type('password'));
+        //$mform->addRule('password', get_string('missingpassword'), 'required', null, 'client');
 
         $mform->addElement('header', 'supplyinfo', get_string('supplyinfo'),'');
 
@@ -146,6 +169,15 @@ class login_signup_form extends moodleform implements renderable, templatable {
                 $errors['recaptcha_element'] = get_string('missingrecaptchachallengefield');
             }
         }
+        
+     // gnuwings
+        // Validation for Password(again)
+        if ($data['password'] !== $data['cpassword']) {
+            $errors['password'] = get_string('passwordsdiffer');
+            $errors['cpassword'] = get_string('passwordsdiffer');
+        }
+        //gnuwings
+        // End of Validation for Password(again)
 
         $errors += signup_validate_data($data, $files);
 

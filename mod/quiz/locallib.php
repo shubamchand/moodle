@@ -2647,6 +2647,7 @@ function quiz_create_attempt_handling_errors($attemptid, $cmid = null) {
         }
     }
     if (!empty($cmid) && $attempobj->get_cmid() != $cmid) {
+    
         throw new moodle_exception('invalidcoursemodule');
     } else {
         return $attempobj;

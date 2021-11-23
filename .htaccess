@@ -1,6 +1,7 @@
 #mixed content fixer
 Header always set Content-Security-Policy: upgrade-insecure-requests
-SetEnv PHPRC /home/ausinet6/public_html/ausinet.net.au/php.ini
+#SetEnv PHPRC /home/ausinet6/public_html/ausinet.net.au/php.ini
+SetEnv PHPRC  /home/u712-s3dtxcjyzxph/www/electricalcourses.net.au/public_html/php.ini
 <IfModule mod_dtimeout.c>
 <Files ~ ".php">
 SetEnvIf Request_URI "index.php" DynamicTimeout=600

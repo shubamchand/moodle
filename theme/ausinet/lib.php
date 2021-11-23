@@ -28,8 +28,13 @@ defined('MOODLE_INTERNAL') || die();
 function theme_ausinet_page_init($PAGE) {
     global $OUTPUT, $USER;
 
-
     $PAGE->requires->jquery();
+    if ($PAGE->pagetype == 'mod-quiz-reviewquestion' || $PAGE->pagetype == 'mod-quiz-review' || $PAGE->pagetype == 'mod-quiz-report'){
+        $PAGE->requires->css('/theme/ausinet/style/slick.css');
+        $PAGE->requires->css('/theme/ausinet/style/slick-theme.css');
+        $PAGE->requires->jquery_plugin('slick', 'theme_ausinet');
+        $PAGE->requires->js('/theme/ausinet/javascript/attachment_slider.js');
+    }
 
     if ($PAGE->pagetype == 'mod-quiz-attempt') {
         quiz_add_jsparam($PAGE);

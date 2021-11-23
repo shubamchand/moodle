@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<libraries>
+    <library>
+        <location>vendor/</location>
+        <name>laravolt/avatar</name>
+        <version>2.2.0</version>
+        <license>MIT</license>
+        <licenseversion></licenseversion>
+    </library>
+    <library>
+        <location>fonts/OpenSans-Bold.ttf</location>
+        <name>OpenSans-Bold.ttf</name>
+        <version>1.0.0</version>
+        <license>MIT</license>
+        <licenseversion></licenseversion>
+    </library>
+</libraries>

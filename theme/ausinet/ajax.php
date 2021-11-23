@@ -1,30 +1,21 @@
 <?php 
 
+error_reporting(E_ALL);
+ini_set('display_errors', true);
 // $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
-
 // define('AJAX_SCRIPT', true);
 
 header("Content-Type: application/json");
 
 require_once('../../config.php');
+require_once($CFG->dirroot.'/mod/quiz/locallib.php');
+require_once($CFG->dirroot.'/question/engine/lib.php');
 
 if ($_POST['grade_essay'] ) {
-
-	require_once($CFG->dirroot.'/mod/quiz/locallib.php');
-	require_once($CFG->dirroot.'/question/engine/lib.php');
-
-	// print_r($_POST);
-	// exit;
-	error_reporting(E_ALL);
-	ini_set('display_errors', true);
-
 
 	$method = optional_param('method', null, PARAM_RAW);	
 	$overallfeedback = optional_param('overallfeedback', null, PARAM_RAW);
 	$notifystudent = optional_param('notifystudent', null, PARAM_RAW);
-
-	// print_object($notifystudent);exit;
-
 	$cmid = required_param('cmid', PARAM_INT);	
 	$grade = optional_param('grade', null, PARAM_RAW);
 	$attemptid = optional_param('attempt', null, PARAM_RAW);
@@ -136,7 +127,6 @@ if ($_POST['grade_essay'] ) {
 	if ($method == 'gradeall') {		
 		$records = $DB->get_record_sql('SELECT * FROM {quiz_attempts} LIMIT 1');		
 
-
 		if (!(property_exists($records, 'feedback'))) {		
 			$DB->execute('ALTER TABLE `{quiz_attempts}` ADD `feedback` TEXT NULL ');
 		}
@@ -161,10 +151,6 @@ if ($_POST['grade_essay'] ) {
 
 // exit;
     echo json_encode(['error' => false, 'navpanel' => $navpanel]);
-
-
-
-	
     
     if (count($slots) > 1 ) {
      	\core\notification::success('Assessment marks updated');
@@ -181,8 +167,90 @@ if ($_POST['grade_essay'] ) {
 		echo json_encode(['error' => true ]);		
 	}
 	exit;
-} 
+}else if($_POST['report_question']){
+	
+	global $DB;
+	
+	$cmid = required_param('cmid', PARAM_INT);	
+	$qno = optional_param('qno', null, PARAM_RAW);
+	$attemptid = optional_param('attempt', null, PARAM_RAW);
+	$rq_msg = optional_param('rq_msg', null, PARAM_RAW);
+	
+	$attemptobj = quiz_create_attempt_handling_errors($attemptid, $cmid);
+	
+	$studentid = $attemptobj->get_userid();
+	$sender = core_user::get_user($studentid);
 
+	$a = new stdClass();
+	$a->courseid = $attemptobj->get_courseid();
+	$a->quizcmid = $attemptobj->get_cmid();
+	$a->quizid = $attemptobj->get_quizid();
+	$a->attemptid = $attemptobj->get_attemptid();	
+	$a->quizname = $attemptobj->get_quiz()->name;
+	//$a->quizurl = $CFG->wwwroot.'/mod/quiz/review.php?attempt=' . $a->attemptid;
+	$a->quizurl = $CFG->wwwroot . '/mod/quiz/view.php?id=' . $a->quizcmid;
+	$a->coursename = format_string(get_course($a->courseid)->fullname);
+	$a->quizreviewurl = $CFG->wwwroot.'/mod/quiz/review.php?attempt=' . $a->attemptid;
+	$a->qno = $qno;
+	$a->rq_msg = $rq_msg;
+	
+	$role = $DB->get_record('role', array('shortname' => 'editingteacher'));
+	$context = get_context_instance(CONTEXT_COURSE, $a->courseid);
+	$teachers = get_role_users($role->id, $context);
+
+	$error = 0;
+	
+	foreach($teachers as $teacher){
+		$courseteacher = core_user::get_user($teacher->id);
+		if (send_report_notification($sender, $courseteacher, $a)) {
+			$error = 0;
+		} else {
+			$error++;	
+		}
+	}
+	
+	if($error==0){
+		echo json_encode(['error' => false]);
+	}
+	else{
+		echo json_encode(['error' => true ]);
+	}
+	exit;
+}
+
+function send_report_notification($sender, $courseteacher, $a){
+	
+	$a->username     = fullname($sender);
+    $a->userusername = $sender->username;
+	$a->trainername = fullname($courseteacher);
+	$a->email = $sender->email;
+    // Prepare the message.
+    $eventdata = new \core\message\message();
+    $eventdata->courseid          = $a->courseid;
+    $eventdata->component         = 'theme_ausinet';
+    $eventdata->name              = 'quiz_graded';
+    $eventdata->notification      = 1;
+
+    $eventdata->userfrom          = $sender;
+    $eventdata->userto            = $courseteacher;
+    $eventdata->subject           = get_string('reportquestionsubject', 'theme_ausinet', $a);
+    $eventdata->fullmessage       = get_string('reportquestionbody', 'theme_ausinet', $a);
+    $eventdata->fullmessageformat = FORMAT_PLAIN;
+    $eventdata->fullmessagehtml   = '';
+
+    $eventdata->smallmessage      = get_string('reportquestionsmall', 'theme_ausinet', $a);
+    $eventdata->contexturl        = $a->quizurl;
+    $eventdata->contexturlname    = $a->quizname;
+    $eventdata->customdata        = [
+        'cmid' => $a->quizcmid,
+        'instance' => $a->quizid,
+        'attemptid' => $a->attemptid,
+    ];
+	 
+	$messageid = message_send($eventdata);
+	
+	return $messageid;
+}
 
 function send_graded_notification($recipient, $a) {
 
@@ -219,10 +287,6 @@ function send_graded_notification($recipient, $a) {
 
    return $output;
 
-}	
-
-// print_r($json);
-// echo "Asdfasdf";
-// exit;
+}
 
 ?>

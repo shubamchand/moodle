@@ -64,23 +64,118 @@
                     </div>
                 </div>
                 <button type="button" class="btn" id="quiz-nav"></button>
+                <input type="hidden" name="reportqno" id="reportqno">
             </div>
         </div>
     </div>
 </header>
 {{#js}}
 require(['jquery'], function($) {
+
+	var x = getCookie('quiz_nav_state');
+	
+	var btattempt = $(".btattempt").html();
+	$(".quizsummaryofattempt").before('<div class="submitbtns btattempt mdl-align">'+btattempt+'</div>');
+	var btnsubmitall = $(".submit-actions").html();
+	$(".quizsummaryofattempt").before('<div class="submit-actions">'+btnsubmitall+'</div>');
+	
+	
+	if(x == "on"){
+		show_nav();
+	}
+	else{
+		var y = $(location).attr('href'); 
+		var att = y.search("attempt.php");
+		if(att>0){
+			hide_nav();
+		}
+	}
+	
+	var url = window.location.href;
+	var checkreview = url.search("review.php");
+	if(checkreview > 0){
+		$("#region-main.has-blocks").addClass("reviewpage");
+		console.log("Review page");
+	}
+	else{
+		$("#region-main.has-blocks").removeClass("reviewpage");
+		console.log("Not review page");
+	}
+
+	function setCookie(cname, cvalue, exdays) {
+	  var d = new Date();
+	  d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+	  var expires = "expires="+d.toUTCString();
+	  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+	
+	function getCookie(cname) {
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i <ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+	
+	function hide_nav(){
+		$('#quiz-nav').removeClass('show');
+        $('#region-main').removeClass('show');
+        $("#block-region-side-pre").parent('section').removeClass('show');
+        $("#mod_quiz_navblock").css('opacity','0');
+        $("#mod_quiz_navblock").css('display','none');
+	}
+	
+	function show_nav(){
+		$('#quiz-nav').addClass('show');      
+        $('#region-main').addClass('show');  
+        $("#block-region-side-pre").parent('section').addClass('show');
+		$("#mod_quiz_navblock").css('opacity','1');
+        $("#mod_quiz_navblock").css('display','block');
+	}
     
     $('#quiz-nav').click(function() {
         if ($("#block-region-side-pre").parent('section').hasClass('show')) {
-            $('#quiz-nav').removeClass('show');
-            $('#region-main').removeClass('show');
-            $("#block-region-side-pre").parent('section').removeClass('show');
+            hide_nav();
+			setCookie('quiz_nav_state', '', -1);
+			setCookie('quiz_nav_state', 'off', 365);
         } else {
-            $('#quiz-nav').addClass('show');      
-            $('#region-main').addClass('show');  
-            $("#block-region-side-pre").parent('section').addClass('show');
+            show_nav();
+			setCookie('quiz_nav_state', '', -1);
+			setCookie('quiz_nav_state', 'on', 365);
         }
     })
+	
+	$(".reportquestion").click(function(){
+		var qno = $(this).attr("id");
+		$("#reportqno").val(qno);
+	})
+	// Added by Rudra
+	$(".infoquestion1").click(function(){
+		var qno1 = $(this).attr("id");
+		$("#2-modal-title").html('Question '+qno1);
+		var info_html=$("#info_"+qno1).html();
+		$("#info_box").html(info_html);
+		$("#2-modal-title").html('Question '+qno1);
+		
+	})
+	// EOF Rudra
+	$("body").on("change", ".quiz-declaration #declaration", function(e) {
+		$(".qd_errmsg").empty();
+        if ($(this).is(":checked")) {
+            $(".confirmation-buttons input[type=button]").show();	
+        } else {
+            $(".confirmation-buttons input[type=button]").hide();
+			$(".qd_errmsg").text("You must tick the box to proceed");
+        }
+    })
+	
 })
 {{/js}}

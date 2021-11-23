@@ -149,7 +149,10 @@ class course_renderer extends \core_course_renderer {
                 $data[] = $this->available_coursebox($chelper, $course, $classes);
             }
             // print_object($data);
-            $content .= $this->render_template('theme_ausinet/available_courses', ['courses' => $data]);
+            // gnuwings
+            $check = (isloggedin()) ? true : false;
+            $content .= $this->render_template('theme_ausinet/available_courses', ['courses' => $data, 'check' => $check]);
+            // gnuwings
             $content .= \html_writer::end_tag('div');
             return $content;
         }
@@ -190,8 +193,14 @@ class course_renderer extends \core_course_renderer {
           // course name
         $coursename = $chelper->get_course_formatted_name($course);
         $data['name'] =  $coursename;
-        $coursenamelink = \html_writer::link(new moodle_url('/course/view.php', array('id' => $course->id)),
-                                            $coursename, array('class' => $course->visible ? '' : 'dimmed'));
+         //gnuwings. Link activates only when user loggedin.
+        if (isloggedin()) {
+			$coursenamelink = \html_writer::link(new moodle_url('/course/view.php', array('id' => $course->id)),
+                                           $coursename, array('class' => $course->visible ? '' : 'dimmed'));
+		} else {
+			$coursenamelink = $coursename;
+		}
+        // gnuwings
         $cost = ausinet_get_course_cost($course->id);
         $stats = ausinet_get_course_stats($course);
         $data = array_merge( $stats, $data);

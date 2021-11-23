@@ -86,7 +86,9 @@ if ((isset($_GET['cache']) and $_GET['cache'] === '0')
 }
 
 require('../config.php');
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // Invalidate the cache of version.php in any circumstances to help core_component
 // detecting if the version has changed and component cache should be reset.
 if (function_exists('opcache_invalidate')) {

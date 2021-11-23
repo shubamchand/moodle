@@ -72,6 +72,13 @@ function block_completion_progress_student_submissions($courseid, $userid) {
                           AND m.name = 'workshop'
                           AND m.id = c.module
                           AND c.instance = w.id",
+        'quiz'=> "SELECT DISTINCT c.id  FROM {quiz_attempts} qa,  {quiz} q, {modules} m, {course_modules} c "
+        . "  WHERE qa.userid=:userid "
+        . "AND qa.quiz=q.id "
+        . "AND  q.course=:courseid  "
+        . "AND m.name = 'quiz'"
+        . "AND m.id = c.module "
+        . "AND c.instance = q.id  "
     );
 
     foreach ($queries as $moduletype => $query) {
@@ -80,7 +87,7 @@ function block_completion_progress_student_submissions($courseid, $userid) {
             $submissions[] = $cmid;
         }
     }
-
+  
     return $submissions;
 }
 
@@ -114,6 +121,13 @@ function block_completion_progress_course_submissions($courseid) {
                           AND m.name = 'workshop'
                           AND m.id = c.module
                           AND c.instance = w.id",
+         'quiz' => "SELECT " . $DB->sql_concat('qa.userid', "'-'", 'c.id') . ""
+        . " ,qa.id FROM {quiz_attempts} qa,  {quiz} q, {modules} m, {course_modules} c "
+        . "  WHERE   qa.quiz=q.id "
+        . "AND  q.course=:courseid  "
+        . "AND m.name = 'quiz'"
+        . "AND m.id = c.module "
+        . "AND c.instance = q.id  "                  
     );
 
     foreach ($queries as $moduletype => $query) {
@@ -319,6 +333,7 @@ function block_completion_progress_filter_visibility($activities, $userid, $cour
  * @return array   an describing the user's attempts based on module+instance identifiers
  */
 function block_completion_progress_completions($activities, $userid, $course, $submissions) {
+   global $DB;
     $completions = array();
     $completion = new completion_info($course);
     $cm = new stdClass();
@@ -326,9 +341,31 @@ function block_completion_progress_completions($activities, $userid, $course, $s
     foreach ($activities as $activity) {
         $cm->id = $activity['id'];
         $activitycompletion = $completion->get_data($cm, true, $userid);
+     
         $completions[$activity['id']] = $activitycompletion->completionstate;
-        if ($completions[$activity['id']] === COMPLETION_INCOMPLETE && in_array($activity['id'], $submissions)) {
-            $completions[$activity['id']] = 'submitted';
+         
+       
+       
+        if ($completions[$activity['id']] == COMPLETION_INCOMPLETE && in_array($activity['id'], $submissions)) {
+          
+            if ($cm = get_coursemodule_from_id('quiz', $activity['id'])) {
+                $SQL = "SELECT * FROM {quiz_attempts} where quiz=:quizid and userid=:userid  order by attempt desc limit 0,1";
+                $attempt = $DB->get_record_sql($SQL, array('quizid' => $cm->instance, 'userid' => $userid));
+
+                if ($attempt) {
+                    if ($attempt->state == 'inprogress') {
+                        $completions[$activity['id']] = 'inprogress';
+                    } else if ($attempt->state == 'finished') {
+                        if ($attempt->sumgrades == NULL) {
+                            $completions[$activity['id']] = 'submitted';
+                        } else {
+                            $completions[$activity['id']] = 3;
+                        }
+                    }
+                }
+            } else {
+                $completions[$activity['id']] = 'submitted';
+            }
         }
     }
 
@@ -361,7 +398,8 @@ function block_completion_progress_bar($activities, $completions, $config, $user
         'completed_colour' => 'completed_colour',
         'submittednotcomplete_colour' => 'submittednotcomplete_colour',
         'notCompleted_colour' => 'notCompleted_colour',
-        'futureNotCompleted_colour' => 'futureNotCompleted_colour'
+        'futureNotCompleted_colour' => 'futureNotCompleted_colour',
+        'inProgress_colour' => 'inProgress_colour'
     );
     $colours = array();
     foreach ($colournames as $name => $stringkey) {
@@ -481,6 +519,9 @@ function block_completion_progress_bar($activities, $completions, $config, $user
             $celloptions['style'] .= $colours['notCompleted_colour'].';';
             $cellcontent = $OUTPUT->pix_icon($useicons == 1 ? 'cross' : 'blank', '', 'block_completion_progress');
 
+        }else if ($complete === 'inprogress') {
+            $celloptions['style'] .= $colours['inProgress_colour'] . ';';
+            $cellcontent = $OUTPUT->pix_icon($useicons == 1 ? 'cross' : 'blank', '', 'block_completion_progress');
         } else {
             $celloptions['style'] .= $colours['futureNotCompleted_colour'].';';
             $cellcontent = $OUTPUT->pix_icon('blank', '', 'block_completion_progress');
@@ -552,6 +593,7 @@ function block_completion_progress_bar($activities, $completions, $config, $user
     $stringsubmitted = get_string('submitted', 'block_completion_progress');
     foreach ($activities as $activity) {
         $completed = $completions[$activity['id']];
+         
         $divoptions = array('class' => 'progressEventInfo',
                             'id' => 'progressBarInfo'.$instance.'-'.$userid.'-'.$activity['id'],
                             'style' => 'display: none;');
@@ -577,10 +619,15 @@ function block_completion_progress_bar($activities, $completions, $config, $user
             $icon = 'tick';
             $altattribute = $stringpassed;
         } else if ($completed == COMPLETION_COMPLETE_FAIL) {
-            $content .= $stringfailed.'&nbsp;';
+            $content .= 'Re-attempt'.'&nbsp;';
             $icon = 'cross';
-            $altattribute = $stringfailed;
-        } else {
+            $altattribute = 'Re-attempt';
+        }else if ($completed === 'inprogress') {
+    
+            $content .=  'In-Progress &nbsp;';
+            $icon = 'cross';
+            $altattribute = 'In-Progress';
+        }  else {
             $content .= $stringincomplete .'&nbsp;';
             $icon = 'cross';
             $altattribute = $stringincomplete;
@@ -589,6 +636,7 @@ function block_completion_progress_bar($activities, $completions, $config, $user
                 $altattribute .= '(' . $stringsubmitted . ')';
             }
         }
+       
         $content .= $OUTPUT->pix_icon($icon, $altattribute, 'block_completion_progress', array('class' => 'iconInInfo'));
         $content .= HTML_WRITER::empty_tag('br');
         if ($activity['expected'] != 0) {
@@ -678,4 +726,53 @@ function block_completion_progress_group_membership ($group, $courseid, $userid)
     }
 
     return false;
+}
+
+function block_completion_progress_pie_chart_data($completions) {
+    $result = array();
+    $complete = 0;
+    $inprogress = 0;
+    $submitted = 0;
+    $incomplete = 0;
+    $reattempt = 0;
+
+    foreach ($completions as $completion) {
+
+        if ('submitted' === $completion) {
+            $submitted++;
+        } else if ('inprogress' === $completion) {
+            $inprogress++;
+        
+        }else if (COMPLETION_COMPLETE === intval($completion) || COMPLETION_COMPLETE_PASS === intval($completion)) {
+            $complete++;
+        } else if (COMPLETION_INCOMPLETE == $completion) {
+          
+            $incomplete++;
+        } else if (COMPLETION_COMPLETE_FAIL == $completion) {
+            $reattempt++;
+        }
+    }
+    $result['data'] = array('Activities' => 'Completion Progress', 'Completed' => $complete, 'Not Completed' => $incomplete, 'Submitted' => $submitted, 'In Progress' => $inprogress, 'Re-attempt' => $reattempt);
+ 
+    $colournames = array();
+     $colournames['completed_colour'] =  'completed_colour'; 
+      $colournames['futureNotCompleted_colour'] =  'futureNotCompleted_colour';  
+       $colournames['submittednotcomplete_colour'] =  'submittednotcomplete_colour';
+   
+      $colournames['inProgress_colour'] =  'inProgress_colour';   
+  
+      $colournames['notCompleted_colour'] =  'notCompleted_colour';   
+    
+    
+    
+    
+    $colours = array();
+    foreach ($colournames as $name => $stringkey) {
+        $colour = get_config('block_completion_progress', $name) ?: get_string('block_completion_progress', $stringkey);
+        $colours[] = array('color' => $colour);
+    }
+    $result['color'] = $colours;
+ 
+  
+    return $result;
 }

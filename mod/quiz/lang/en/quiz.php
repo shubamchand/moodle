@@ -214,8 +214,9 @@ $string['configtimelimitsec'] = 'Default time limit for quizzes in seconds. 0 me
 $string['configurerandomquestion'] = 'Configure question';
 $string['confirmclose'] = '
 <div class="quiz-declaration" >
-	<input type="checkbox" name="declaration" id="declaration" value="true" >
+	<input type="checkbox" name="declaration" id="declaration" checked>
 	<label for="declaration"> I declare that this is my own work </label>
+	<span style="color:red" class="qd_errmsg"></span>
 </div>
 Once you submit, you will no longer be able to change your answers for this attempt.';
 $string['confirmremovequestion'] = 'Are you sure you want to remove this {$a} question?';
@@ -384,6 +385,9 @@ $string['fractionsnomax'] = 'One of the answers should be 100%, so that it is<br
 $string['fromfile'] = 'from file:';
 $string['functiondisabledbysecuremode'] = 'That functionality is currently disabled';
 $string['generalfeedback'] = 'General feedback';
+$string['compliance'] = 'Compliance';
+$string['compliance_help'] = 'Compliance Help';
+
 $string['generalfeedback_help'] = 'General feedback is text which is shown after a question has been attempted. Unlike feedback for a specific question which depends on the response given, the same general feedback is always shown.';
 $string['graceperiod'] = 'Submission grace period';
 $string['graceperiod_desc'] = 'If what to do when time expires is set to \'Allow a grace period to submit, but not change any responses\', this is the default amount of extra time that is allowed.';
@@ -1008,3 +1012,9 @@ $string['yourfinalgradeis'] = 'Your final grade for this quiz is {$a}.';
 $string['numattemptsmade'] = '{$a} attempts made on this quiz';
 $string['reviewofattempt'] = 'Review of attempt {$a}';
 $string['reviewofpreview'] = 'Review of preview';
+
+// Added by abhishek
+$string['enablehelp'] = 'Enable help content during attempt.';
+$string['enablehelpdesc'] = 'Enable help content during attempt.';
+$string['helpafterattempt']= 'Show help content at attempt number.';
+

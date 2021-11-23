@@ -1,0 +1,24 @@
+.path-admin-tool-supporter #page-header .card {
+    /* More space for actual content */
+    display: none;
+}
+.path-admin-tool-supporter tbody {
+    /* More space for actual content */
+    line-height: 1;
+}
+.path-admin-tool-supporter #course_table_filtering .nav-tabs {
+    /* No double lines */
+    border-bottom: 1px solid #fff;
+}
+.path-admin-tool-supporter #course_details #CoursePill_3 table {
+    /* Enlarges Enrolment methods */
+    width: 100%;
+}
+
+table.dataTable td.dataTables_empty {
+    cursor: default !important;
+}
+
+table.dataTable.row-border tbody td {
+    cursor: pointer;
+}

@@ -25,15 +25,12 @@ class question_renderer extends \core_question_renderer {
      */
     public function question(\question_attempt $qa, \qbehaviour_renderer $behaviouroutput,
             \qtype_renderer $qtoutput, \question_display_options $options, $number) {
-
-        // print_object($options);
-
+        global $DB;
         $tags = \core_tag_tag::get_tags_by_area_in_contexts('core_question', 'question', [ (object)['id' => $qa->get_question()->contextid ]]);
         $tagstrings = [];
         foreach ($tags as $tag) {
             $tagstrings[$tag->name] = 'tag-'.$tag->name;
         }
-// print_object($options);
 
         $output = '';
         $output .= html_writer::start_tag('div', array(
@@ -46,9 +43,128 @@ class question_renderer extends \core_question_renderer {
                // implode(' ', $tagstrings)
             ))
         ));
-        // print_object($options);
+		
+		$cmid = $options->editquestionparams['cmid'];
+		//$attempt = required_param('attempt',PARAM_INT);
+        $attempt = optional_param('attempt',null, PARAM_INT);
+		if(empty($cmid)){
+	        //$cmid= required_param('cmid',PARAM_INT);
+            $cmid= optional_param('cmid',null, PARAM_INT);
+		}
+        $cm= get_coursemodule_from_id('quiz', $cmid);
+        $siteenablehelp= get_config('quiz','enablehelp');
+
+        $quiz = $DB->get_record('quiz', array('id' => $cm->instance));
+       
+        $quiz_attempts = $DB->get_record('quiz_attempts', array('id' => $attempt));
 
         $questioninfo = $this->info($qa, $behaviouroutput, $qtoutput, $options, $number);
+		$questioninfo .= html_writer::start_tag('div', array('class' => 'report-question'));
+		$questioninfo .= '<a id="'.$number.'" class="reportquestion" title="Report this question" href="javascript:void(0);"> '.("Report").'</a>';
+		$questioninfo .= html_writer::end_tag('div');
+		
+		//if($number == 1){
+			$questioninfo .= html_writer::start_tag('div', array('class' => 'report-question-popup','style'=>'display:none'));
+			$questioninfo .= '
+				<textarea class="rq_msg" rows="5" placeholder="write your message here" required></textarea>
+				<input type="hidden" name="cmid" value="' . $cmid . '">
+				<input type="hidden" name="attempt" value="' . $attempt . '">
+				<div style="margin-top:10px">
+					<input type="submit" class="btn btn-primary" name="reportthis" value="Submit">
+					<button type="button" class="btn btn-primary grade-close">Cancel</button>
+				</div>
+			';
+			$questioninfo .= html_writer::end_tag('div');
+		//}
+
+		// Edited by Rudra
+		$typeobj=$qa->get_question();
+		if($qa->get_question()->qtype->name()=='essay'){
+		    $info_text=  $typeobj->format_text(
+		        $typeobj->graderinfo, $typeobj->graderinfo, $qa, 'qtype_essay',
+		        'graderinfo', $typeobj->id);
+		}else{
+		    $info_text=  $typeobj->format_generalfeedback($qa);
+		}
+
+        
+       
+		if(strip_tags($info_text) != ""){
+		    $attributes = array(
+		        'alt' => 'More Information ' .$qa->get_question()->qtype->name(),
+		        'class' => 'infoquestion',
+		        'id' => 'info'.$number,
+		    );
+
+		    $questioninfo .= html_writer::start_tag('div', array('class' => 'info-question'));
+		    $questioninfo .= html_writer::start_tag('a', array('class' => 'infoquestion1','id'=>$number),
+		        'title="Question". $number href="javascript:void(0);" ');
+		    if(($siteenablehelp == 1 && $quiz->enablehelp == 1 &&  $quiz_attempts->attempt >= $quiz->helpafterattempt) || ($cm ? has_capability('mod/quiz:manage',\context_module::instance($cm->id)) : TRUE)){
+              $questioninfo .= $this->pix_icon('docs','More information '.$qa->get_question()->qtype->name(), '',$attributes);
+		   
+            }
+            $questioninfo .= html_writer::end_tag('a');
+		    $questioninfo .= html_writer::end_tag('div');
+
+            if(($siteenablehelp == 1 && $quiz->enablehelp == 1 &&  $quiz_attempts->attempt >= $quiz->helpafterattempt) || ($cm ? has_capability('mod/quiz:manage',\context_module::instance($cm->id)) : TRUE)){
+		        $questioninfo .= html_writer::start_tag('div', array('class' => 'info-question-popup','style'=>'display:none','id'=>'info_'.$number));
+		        $questioninfo .= '
+				<input type="hidden" name="cmid" value="' . $cmid . '">
+                <input type="hidden" name="ques_num" value="' . $number . '">
+				<input type="hidden" name="attempt" value="' . $attempt . '">
+				<div style="margin-top:10px">
+					'.$info_text.'
+				</div>';
+		        $questioninfo .= html_writer::end_tag('div');
+            }
+		}
+		// End by Rudra
+
+		/* Edited by Nirmal for compliance */
+		if($qa->get_question()->qtype->name()=='essay'){
+		    $compliance_text=  $typeobj->format_text(
+		        $typeobj->compliance, $typeobj->compliance, $qa, 'qtype_essay',
+		        'compliance', $typeobj->id);
+		}else{
+		    $compliance_text=  $typeobj->format_compliance($qa);
+		}
+       
+		if(strip_tags($compliance_text) != ""){
+		    $attributes = array(
+		        'alt' => 'Compliance',
+		        'class' => 'compliancequestion',
+		        'id' => 'compliance'.$number,
+		    );
+
+		    $questioninfo .= html_writer::start_tag('div', array('class' => 'compliance-question'));
+		    $questioninfo .= html_writer::start_tag('a', array('class' => 'compliancequestion compliancequestion1','id'=>$number, 'title' => 'Compliance '.$number,'href' => 'javascript:void(0);'),
+		        'title="Question". $number href="javascript:void(0);" ');
+		    if(($siteenablehelp == 1 && $quiz->enablehelp == 1 &&  $quiz_attempts->attempt >= $quiz->helpafterattempt) || ($cm ? has_capability('mod/quiz:manage',\context_module::instance($cm->id)) : TRUE)){
+            //   $questioninfo .= $this->pix_icon('docs','More information', '',$attributes);
+            //   $questioninfo .= '<a id="'.$number.'" class="compliancequestion" title="Compliance" href="javascript:void(0);"> '.("Compliance").'</a>';
+              $questioninfo .= 'Compliance';
+		   
+            }
+            $questioninfo .= html_writer::end_tag('a');
+		    $questioninfo .= html_writer::end_tag('div');
+
+            if(($siteenablehelp == 1 && $quiz->enablehelp == 1 &&  $quiz_attempts->attempt >= $quiz->helpafterattempt) || ($cm ? has_capability('mod/quiz:manage',\context_module::instance($cm->id)) : TRUE)){
+		        $questioninfo .= html_writer::start_tag('div', array('class' => 'compliance-question-popup','style'=>'display:none','id'=>'compliance_'.$number));
+		        $questioninfo .= '
+				<input type="hidden" name="cmid" value="' . $cmid . '">
+                <input type="hidden" name="ques_num" value="' . $number . '">
+				<input type="hidden" name="attempt" value="' . $attempt . '">
+				<div style="margin-top:10px">
+					'.$compliance_text.'
+				</div>';
+		        $questioninfo .= html_writer::end_tag('div');
+            }
+		}
+		/* End edited by Nirmal for compliance */
+
+
+
+        
         $questioninfo .= html_writer::start_tag('div', array('class' => 'lms-comments '));
         if (!$this->is_participant()) {
             $questioninfo .= $this->manual_comment($qa, $behaviouroutput, $qtoutput, $options);
@@ -73,23 +189,10 @@ class question_renderer extends \core_question_renderer {
                     $this->formulation($qa, $behaviouroutput, $qtoutput, $options)).
                     $comment,
                 array('class' => 'formulation clearfix'));
-        /*$output .= html_writer::nonempty_tag('div',
-                $this->add_part_heading(get_string('feedback', 'question'),
-                    $this->outcome($qa, $behaviouroutput, $qtoutput, $options)),
-                array('class' => 'outcome clearfix'));*/
-        // $participant = $this->is_participant();
-        // if (\question_display_options::VISIBLE) {
-            /*$output .= html_writer::nonempty_tag('div',
-                $this->add_part_heading(get_string('comments', 'question'),
-                    $this->manual_comment($qa, $behaviouroutput, $qtoutput, $options, $participant)),
-                array('class' => 'comment clearfix'));*/
-        // }
-     /*   $output .= html_writer::nonempty_tag('div',
-                $this->response_history($qa, $behaviouroutput, $qtoutput, $options),
-                array('class' => 'history clearfix'));*/
 
         $output .= html_writer::end_tag('div');
         $output .= html_writer::end_tag('div');
+		
         return $output;
     }
 
@@ -109,31 +212,23 @@ class question_renderer extends \core_question_renderer {
         }       
         $fields = $behaviouroutput->manual_comment_fields($qa, $options);
         return $this->manual_comment_view($qa, $options, $fields);
-    }
-
-    
+    } 
 
     public function manual_comment_view(\question_attempt $qa, \question_display_options $options, $fields) {
         global $PAGE;
         $output = '';
-        // print_object($qa);exit;
-        // echo 
-        // moodle_url()
-        // if (isset($options->manualcommentlink)) {
-            // $attempt = $options->manualcommentlink->get_param('attempt');
-        // }
+
         $attempt = optional_param('attempt', null, PARAM_INT);
-        
-        // $attempt = get_attemptid
         
         if ($options->manualcommentlink) {
             $url = new moodle_url('/mod/quiz/comment.php', array('slot' => $qa->get_slot(), 'attempt' => $attempt));
             $gradePass = ($qa->get_mark() == 1) ? 'checked' : '';
             $gradeFail = ($qa->get_mark() == 0) ? 'checked' : '';
+            $question = $qa->get_question();
             $output .= '<div class="ausinet-grade" >
                 <form action="'.$url.'" class="ausinet-essay-grade" data-cmid="'.$PAGE->cm->id.'">
                     <div class="comment-grade-parent right">
-                        <div class="comment-question">
+						<div class="comment-question">
                             <a href="javascript:void(0);"> '.("Make comment").'</a>
                         </div>
                         <div class="grade-section">
@@ -147,15 +242,15 @@ class question_renderer extends \core_question_renderer {
                     <input type="hidden" value="'.$attempt.'" name="attempt">
                     <input type="hidden" value="'.$qa->get_slot().'" name="slot">
                     <div class="comment-fields hide">'.$fields.'
-                    </div>  
-                                     
+						<div class="graderinfo"><h6>'. get_string('graderinfo','qtype_essay').'</h6>'.
+						html_writer::nonempty_tag('div', $question->format_text(
+							$question->graderinfo, $question->graderinfo, $qa, 'qtype_essay',
+							'graderinfo', $question->id), array('class' => 'graderinfocontent')).'
+						</div>					
+                    </div>
                 </form>
             </div>';
-            /*$link = $this->output->action_link($url, get_string('commentormark', 'question'), new popup_action('click', $url, 'commentquestion',                   array('width' => 600, 'height' => 800)));
-            $output .= html_writer::tag('div', $link, array('class' => 'commentlink'));*/
         }
         return $output;
-    }
-
-   
+    } 
 }
