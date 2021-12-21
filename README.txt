@@ -52,3 +52,5 @@ lib/myprofilelib.php - Line 168
 
 user/editlib.php - Added USI and Employer in user registration form - line no 295 
 lang/en/moodle.php - Added string for USI and Employer - Line no 2154 - $string['usi'] = 'USI number'; and line no 740 - $string['employer'] = 'Employer';
+
+22/12/2021
