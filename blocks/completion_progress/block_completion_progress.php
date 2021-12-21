@@ -41,9 +41,7 @@ class block_completion_progress extends block_base {
      * @return void
      */
     public function init() {
-        $this->title = get_string('pluginname', 'block_completion_progress').
-        ' &nbsp;&nbsp; <button type="button" style="height:34px;" class="btn btn-secondary rounded" data-toggle="modal" data-target="#progressChartModel">
-         <i class=" fa fa-pie-chart fa-lg " aria-hidden="true"></i></button>';
+        $this->title = get_string('pluginname', 'block_completion_progress');
     }
 
     /**
@@ -72,7 +70,7 @@ class block_completion_progress extends block_base {
      * @return bool
      */
     public function instance_allow_multiple() {
-        return !block_completion_progress_on_site_page();
+        return !block_completion_progress_on_site_page($this->page);
     }
 
     /**
@@ -81,7 +79,7 @@ class block_completion_progress extends block_base {
      * @return bool
      */
     public function instance_allow_config() {
-        return !block_completion_progress_on_site_page();
+        return !block_completion_progress_on_site_page($this->page);
     }
 
     /**
@@ -106,8 +104,6 @@ class block_completion_progress extends block_base {
     public function get_content() {
         global $USER, $COURSE, $CFG, $OUTPUT, $DB;
 
-         $this->page->requires->jquery();
-         $this->page->requires->js(new moodle_url('https://www.gstatic.com/charts/loader.js'));
         // If content has already been generated, don't waste time generating it again.
         if ($this->content !== null) {
             return $this->content;
@@ -123,7 +119,7 @@ class block_completion_progress extends block_base {
         }
 
         // Draw the multi-bar content for the Dashboard and Front page.
-        if (block_completion_progress_on_site_page()) {
+        if (block_completion_progress_on_site_page($this->page)) {
 
             if (!$CFG->enablecompletion) {
                 $this->content->text .= get_string('completion_not_enabled', 'block_completion_progress');
@@ -152,7 +148,7 @@ class block_completion_progress extends block_base {
                        AND bi.parentcontextid = :contextid
                   ORDER BY region, weight, bi.id";
 
-            foreach ($courses as $courseid => $course) {
+            foreach ($courses as $course) {
 
                 // Get specific block config and context.
                 $completion = new completion_info($course);
@@ -160,7 +156,7 @@ class block_completion_progress extends block_base {
                     $context = CONTEXT_COURSE::instance($course->id);
                     $params = array('contextid' => $context->id, 'pagetype' => 'course-view-%');
                     $blockinstances = $DB->get_records_sql($sql, $params);
-                    $exclusions = block_completion_progress_exclusions($course->id);
+                    $exclusions = block_completion_progress_exclusions($course->id, $USER->id);
                     foreach ($blockinstances as $blockid => $blockinstance) {
                         $blockinstance->config = unserialize(base64_decode($blockinstance->configdata));
                         $blockinstance->activities = block_completion_progress_get_activities($course->id, $blockinstance->config);
@@ -196,7 +192,7 @@ class block_completion_progress extends block_base {
                         ) {
                             $this->content->text .= HTML_WRITER::tag('p', s(format_string($blockinstance->config->progressTitle)));
                         }
-                        $submissions = block_completion_progress_student_submissions($course->id, $USER->id);
+                        $submissions = block_completion_progress_submissions($course->id, $USER->id);
                         $completions = block_completion_progress_completions($blockinstance->activities, $USER->id, $course,
                             $submissions);
                         $this->content->text .= block_completion_progress_bar($blockinstance->activities,
@@ -244,7 +240,7 @@ class block_completion_progress extends block_base {
             }
 
             // Check if any activities/resources have been created.
-            $exclusions = block_completion_progress_exclusions($COURSE->id);
+            $exclusions = block_completion_progress_exclusions($COURSE->id, $USER->id);
             $activities = block_completion_progress_get_activities($COURSE->id, $this->config);
             $activities = block_completion_progress_filter_visibility($activities, $USER->id, $COURSE->id, $exclusions);
             if (empty($activities)) {
@@ -256,10 +252,8 @@ class block_completion_progress extends block_base {
 
             // Display progress bar.
             if (has_capability('block/completion_progress:showbar', $this->context)) {
-                $submissions = block_completion_progress_student_submissions($COURSE->id, $USER->id);
+                $submissions = block_completion_progress_submissions($COURSE->id, $USER->id);
                 $completions = block_completion_progress_completions($activities, $USER->id, $COURSE, $submissions);
-              // print_object($completions);
-                 $pie_chart_data = block_completion_progress_pie_chart_data($completions);
                 $this->content->text .= block_completion_progress_bar(
                     $activities,
                     $completions,
@@ -282,34 +276,20 @@ class block_completion_progress extends block_base {
         }
 
         // Organise access to JS.
-        $jsmodule = array(
-            'name' => 'block_completion_progress',
-            'fullpath' => '/blocks/completion_progress/module.js',
-            'requires' => array(),
-            'strings' => array(),
-        );
-        $arguments = array($blockinstancesonpage, array($USER->id));
-        $this->page->requires->js_init_call('M.block_completion_progress.setupScrolling', array(), false, $jsmodule);
-        $this->page->requires->js_init_call('M.block_completion_progress.init', $arguments, false, $jsmodule);
-        $chart_data = array($pie_chart_data['data'],$pie_chart_data['color']);
-        $this->page->requires->js_init_call('M.block_completion_progress.drawPieChart', $chart_data, true, $jsmodule);
-     
-         $this->content->text .='<div class="modal fade" id="progressChartModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog"  role="document">
-    <div class="modal-content" style="width:600px;height:600px;">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Completion Progress</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       <div id="donutchart" ></div>
-      </div>
-    
-    </div>
-  </div>
-</div>';
+        $this->page->requires->js_call_amd('block_completion_progress/progressbar', 'init', [
+            'instances' => $blockinstancesonpage,
+        ]);
+        $cachevalue = debugging() ? -1 : (int)get_config('block_completion_progress', 'cachevalue');
+        $this->page->requires->css('/blocks/completion_progress/css.php?v=' . $cachevalue);
+
         return $this->content;
+    }
+
+    /**
+     * Bumps a value to assist in caching of configured colours in css.php.
+     */
+    public static function increment_cache_value() {
+        $value = get_config('block_completion_progress', 'cachevalue') + 1;
+        set_config('cachevalue', $value, 'block_completion_progress');
     }
 }

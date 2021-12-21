@@ -194,8 +194,7 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
             $state = question_state::graded_state_for_fraction($fraction);
         } else {
             // use manual grading, as per the "essay" question type
-            $fraction = null;
-            $state = question_state::manually_graded_state_for_fraction();
+            $state = question_state::manually_graded_state_for_fraction(null);
         }
         return array($fraction, $state);
     }
@@ -373,7 +372,7 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
         }
 
         // detect common errors
-        list($errors, $errorpercent) = $this->get_common_errors($text);
+        list($errors, $errortext, $errorpercent) = $this->get_common_errors($text);
 
         // Get stats for this $text.
         $stats = $this->get_stats($text, $files, $errors);
@@ -432,8 +431,9 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
                     case $ANSWER_TYPE_PHRASE:
                         if ($search = trim($answer->feedback)) {
                             if ($match = $this->search_text($search, $text, $answer->fullmatch, $answer->casesensitive, $answer->ignorebreaks)) {
-                                $rawfraction += ($answer->feedbackformat / 100);
+                                list($pos, $length, $match) = $match;
                                 $myphrases[$match] = $search;
+                                $rawfraction += ($answer->feedbackformat / 100);
                             } else if (empty($answer->ignorebreaks) && preg_match('/\\bAND|ANY\\b/', $search) && preg_match("/[\r\n]/us", $text)) {
                                 $breaks++;
                             }
@@ -497,6 +497,7 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
         $this->save_current_response('completepercent', $completepercent);
         $this->save_current_response('displayoptions', $displayoptions);
         $this->save_current_response('errors', $errors);
+        $this->save_current_response('errortext', $errortext);
         $this->save_current_response('errorpercent', $errorpercent);
     }
 
@@ -560,6 +561,7 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
             $a = '';
             $alen = 0;
         } else {
+            $a = strip_tags($a);
             $alen = core_text::strlen($a);
         }
 
@@ -567,6 +569,7 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
             $b = '';
             $blen = 0;
         } else {
+            $b = strip_tags($b);
             $blen = core_text::strlen($b);
         }
 
@@ -580,15 +583,15 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
 
         // Compare short strings (of up to 255 chars) with "levenshtein()" because its faster.
         // Compare long strings with "similar_text()" because it can handle texts of any length.
-        if ($alen > 255 || $blen > 255) {
-            // "similar_text()" returns the number of matching chars in both $a and $b,
-            // i.e. the higher number, the more similar the texts are.
-            $fraction = (($maxlen - similar_text($a, $b)) / $maxlen);
-        } else {
+        if ($maxlen <= 255) {
             // "levenshtein()" returns the minimal number of characters
             // you have to replace, insert or delete to transform $a into $b
             // i.e. the lower the number, the more similar the texts are.
             $fraction = (levenshtein($a, $b) / $maxlen);
+        } else {
+            // "similar_text()" returns the number of matching chars in both $a and $b,
+            // i.e. the higher number, the more similar the texts are.
+            $fraction = (($maxlen - similar_text($a, $b)) / $maxlen);
         }
 
         return (round($fraction * 100, 2) <= $thresholdpercent);
@@ -601,6 +604,7 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
         global $DB;
 
         $errors = array();
+        $matches = array();
 
         if (empty($this->errorcmid)) {
             $cm = null;
@@ -619,7 +623,9 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
             if ($entries = $DB->get_records('glossary_entries', array('glossaryid' => $cm->instance), 'concept')) {
                 foreach ($entries as $entry) {
                     if ($match = $this->glossary_entry_search_text($entry, $entry->concept, $text)) {
+                        list($pos, $length, $match) = $match;
                         $errors[$match] = $this->glossary_entry_link($cm->name, $entry, $match);
+                        $matches[$pos] = (object)array('pos' => $pos, 'length' => $length, 'match' => $match);
                     } else {
                         $entryids[] = $entry->id;
                     }
@@ -631,32 +637,45 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
                     foreach ($aliases as $alias) {
                         $entry = $entries[$alias->entryid];
                         if ($match = $this->glossary_entry_search_text($entry, $alias->alias, $text)) {
+                            list($pos, $length, $match) = $match;
                             $errors[$match] = $this->glossary_entry_link($cm->name, $entry, $match);
+                            $matches[$pos] = (object)array('pos' => $pos, 'length' => $length, 'match' => $match);
                         }
                     }
                 }
             }
+        }
 
-            // sort the matching errors by length (longest to shortest)
+        $errortext = $text;
+        if (count($matches)) {
+            // sort error $matches from last position to first position
+            krsort($matches);
+            foreach ($matches as $match) {
+                $pos = $match->pos;
+                $length = $match->length;
+                $match = $errors[$match->match]; // a link to the glossary
+                $errortext = substr_replace($errortext, $match, $pos, $length);
+            }
+        }
+
+        if (count($errors)) {
+            // sort the common errors by length (shortest to longest)
             // https://stackoverflow.com/questions/3955536/php-sort-hash-array-by-key-length
             $matches = array_keys($errors);
-            $keys = array_map('core_text::strlen', $matches);
-            array_multisort($keys, SORT_DESC, $matches);
+            $lengths = array_map('core_text::strlen', $matches);
+            array_multisort($lengths, SORT_DESC, $matches, $errors);
 
             // remove matches that are substrings of longer matches
-            $keys = array();
-            foreach ($matches as $match) {
+            while ($match = array_shift($matches)) {
                 $search = '/^'.preg_quote($match, '/').'.+/iu';
                 $search = preg_grep($search, $matches);
                 if (count($search)) {
                     unset($errors[$match]);
-                } else {
-                    $keys[] = $match;
                 }
             }
         }
 
-        return array($errors, count($errors) * $percent);
+        return array($errors, $errortext, count($errors) * $percent);
     }
 
     /**
@@ -665,10 +684,18 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
      * @param object $entry
      * @param string $match
      * @param string $text
-     * @return string the matching substring in $text or ""
+     * @return mixed array($match, $pos, $length) if matching substring in $text; otherwise ""
      */
     protected function glossary_entry_search_text($entry, $search, $text) {
-        return $this->search_text($search, $text, $entry->fullmatch, $entry->casesensitive);
+        if (empty($entry->usedynalink)) {
+            $fullmatch = $this->errorfullmatch;
+            $casesensitive = $this->errorcasesensitive;
+        } else {
+            $fullmatch = $entry->fullmatch;
+            $casesensitive = $entry->casesensitive;
+        }
+        $ignorebreaks = $this->errorignorebreaks;
+        return $this->search_text($search, $text, $fullmatch, $casesensitive, $ignorebreaks);
     }
 
     /**
@@ -726,7 +753,8 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
                                      '}' => 'CLOSE_CURLY',
                                      '<' => 'OPEN_ANGLE',
                                      '>' => 'CLOSE_ANGLE',
-                                     '\\' => 'BACKSLASH');
+                                     '\\' => 'BACKSLASH',
+                                     '\b' => 'WORD_BREAK');
             self::$flipmetachars = array_flip(self::$metachars);
         }
 
@@ -744,11 +772,13 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
         if ($ignorebreaks) {
             $regexp .= 's';
         }
-        if (preg_match($regexp, $text, $match)) {
+        if (preg_match($regexp, $text, $match, PREG_OFFSET_CAPTURE)) {
+            list($match, $offset) = $match[0];
+            $length = strlen($match);
             if (core_text::strlen($search) < core_text::strlen($match[0])) {
-                return $search;
+                $match = $search;
             }
-            return $match[0];
+            return array($offset, $length, $match);
         } else {
             return ''; // no matches
         }
@@ -943,34 +973,36 @@ class qtype_essayautograde_question extends qtype_essay_question implements ques
         // https://pear.php.net/manual/en/package.text.text-statistics.intro.php
         // https://pear.php.net/package/Text_Statistics/docs/latest/__filesource/fsource_Text_Statistics__Text_Statistics-1.0.1TextWord.php.html
         $str = strtoupper($word);
-        $oldlen = strlen($str);
-        if ($oldlen < 2) {
+        if (strlen($str) < 2) {
             $count = 1;
         } else {
             $count = 0;
 
-            // detect syllables for double-vowels
-            $vowels = array('AA','AE','AI','AO','AU',
-                            'EA','EE','EI','EO','EU',
-                            'IA','IE','II','IO','IU',
-                            'OA','OE','OI','OO','OU',
-                            'UA','UE','UI','UO','UU');
-            $str = str_replace($vowels, '', $str);
-            $newlen = strlen($str);
-            $count += (($oldlen - $newlen) / 2);
+            // Detect syllables for double-vowels.
+            $vowelcount = 0;
+            $vowels = array('AA','AE','AI','AO','AU','AY',
+                            'EA','EE','EI','EO','EU','EY',
+                            'IA','IE','II','IO','IU','IY',
+                            'OA','OE','OI','OO','OU','OY',
+                            'UA','UE','UI','UO','UU','UY',
+                            'YA','YE','YI','YO','YU','YY');
+            $str = str_replace($vowels, '', $str, $vowelcount);
+            $count += $vowelcount;
 
-            // detect syllables for single-vowels
-            $vowels = array('A','E','I','O','U');
-            $str = str_replace($vowels, '', $str);
-            $oldlen = $newlen;
-            $newlen = strlen($str);
-            $count += ($oldlen - $newlen);
+            // Cache the final letter, in case it is an "e"
+            $finalletter = substr($str, -1);
 
-            // adjust count for special last char
-            switch (substr($str, -1)) {
-                case 'E': $count--; break;
-                case 'Y': $count++; break;
-            };
+            // Detect syllables for single-vowels.
+            $vowelcount = 0;
+            $vowels = array('A','E','I','O','U','Y');
+            $str = str_replace($vowels, '', $str, $vowelcount);
+            $count += $vowelcount;
+
+            // Adjust the count for words that end in "e"
+            // and have at least one other vowel.
+            if ($count > 1 && $finalletter == 'E') {
+                $count--;
+            }
         }
         return $count;
     }

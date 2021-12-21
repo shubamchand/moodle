@@ -66,6 +66,10 @@ class message {
     /** @var string Module name. */
     private $modulename;
 
+    private $is_trainer_message; // added by nirmal message
+
+    private $trainer_group_name; // added by nirmal message
+
     /** @var string Component name. */
     private $component;
 
@@ -136,6 +140,8 @@ class message {
     private $properties = array(
         'courseid',
         'modulename',
+        'is_trainer_message', // added by nirmal message
+        'trainer_group_name', // added by nirmal message
         'component',
         'name',
         'userfrom',

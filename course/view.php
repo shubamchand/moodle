@@ -57,6 +57,9 @@
 
     require_login($course);
 
+       // added by nirmal
+    $completioninfo = new completion_info($course);
+    $completioninfo->process_for_observation($USER->id);
     // Switchrole - sanity check in cost-order...
     $reset_user_allowed_editing = false;
     if ($switchrole > 0 && confirm_sesskey() &&

@@ -1,0 +1,31 @@
+.modtype_labelcollapsed .lc_section {
+    cursor: pointer;
+}
+
+.modtype_labelcollapsed .lc_section span {
+    font-weight: normal;
+}
+
+.modtype_labelcollapsed .lc_section.collapsed::after {
+    font: inherit;
+    font-family: "FontAwesome";
+    font-weight: 400;
+    font-size: 36px;
+    position: absolute;
+    margin-left: 8px;
+    line-height: 32px;
+    color: darkgray;
+    content: "\f0a9";
+}
+
+.modtype_labelcollapsed .lc_section::after {
+    font: inherit;
+    font-family: "FontAwesome";
+    font-weight: 400;
+    font-size: 36px;
+    position: absolute;
+    margin-left: 8px;
+    line-height: 32px;
+    color: dimgray;
+    content: "\f0ab";
+}

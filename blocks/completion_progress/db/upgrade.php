@@ -39,11 +39,9 @@
 defined('MOODLE_INTERNAL') or die();
 
 /**
- * Apply per-version upgrade changes.
- *
+ * @global moodle_database $DB
  * @param int $oldversion
  * @param object $block
- * @return boolean
  */
 function xmldb_block_completion_progress_upgrade($oldversion, $block) {
     return true;

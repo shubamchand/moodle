@@ -324,7 +324,7 @@ function message_format_contexturl($message) {
  * @param int $format message format such as FORMAT_PLAIN or FORMAT_HTML
  * @return int|false the ID of the new message or false
  */
-function message_post_message($userfrom, $userto, $message, $format) {
+function message_post_message($userfrom, $userto, $message, $format, $is_trainer_message = false) { // $is_trainer_message = false added by nirmal message
     global $PAGE;
 
     $eventdata = new \core\message\message();
@@ -345,6 +345,11 @@ function message_post_message($userfrom, $userto, $message, $format) {
     } else {
         $eventdata->fullmessage      = $message;
         $eventdata->fullmessagehtml  = '';
+    }
+
+    if($is_trainer_message){
+        $eventdata->is_trainer_message = true;
+        $eventdata->trainer_group_name = $userfrom->username;
     }
 
     $eventdata->fullmessageformat = $format;

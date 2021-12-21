@@ -6160,7 +6160,7 @@ body.Three-Phase #section-1 ul.section {
 	top:200px;
 	width:300px;
 	max-width:300px;
-	max-height:600px;
+	max-height:500px;
 	overflow:auto;
 	background-color:#fff !important;
 }
@@ -6256,17 +6256,17 @@ body.Three-Phase #section-1 ul.section {
   
 }
 /* start added by nirmal */
-.infoquestion {
-    margin-right: -5px;
+.infoquestion1 {
+    border-right: 1px solid #999;
 }
 .compliance-question{
 	border:none !important;
-    border-left:1px solid #999 !important;
 }
 
-.compliancequestion {
-    margin-left: 5px;
+p.quizattemptavailable {
+    text-align: center;
 }
+
 /* end added by nirmal */
 
 .info-question-popup{

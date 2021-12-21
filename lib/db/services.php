@@ -1434,6 +1434,29 @@ $functions = array(
         'ajax' => true,
         'services' => array(MOODLE_OFFICIAL_MOBILE_SERVICE),
     ),
+
+     'core_message_send_instant_messages_trainer' => array( // added by nirmal message
+        'classname' => 'core_message_external',
+        'methodname' => 'send_instant_messages_trainer',
+        'classpath' => 'message/externallib.php',
+        'description' => 'Send instant messages',
+        'type' => 'write',
+        'capabilities' => 'moodle/site:sendmessage',
+        'ajax' => true,
+        'services' => array(MOODLE_OFFICIAL_MOBILE_SERVICE),
+    ),
+
+    'core_message_add_trainer_to_conversation' => array( // added by nirmal message
+        'classname' => 'core_message_external',
+        'methodname' => 'add_trainer_to_conversation',
+        'classpath' => 'message/externallib.php',
+        'description' => 'add trainer to the conversation',
+        'type' => 'write',
+        'capabilities' => 'moodle/site:sendmessage',
+        'ajax' => true,
+        'services' => array(MOODLE_OFFICIAL_MOBILE_SERVICE),
+    ),
+    
     'core_message_get_conversation_messages' => array(
         'classname' => 'core_message_external',
         'methodname' => 'get_conversation_messages',

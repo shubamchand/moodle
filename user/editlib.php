@@ -292,6 +292,18 @@ function useredit_shared_definition(&$mform, $editoroptions, $filemanageroptions
         $mform->setType('email', PARAM_RAW_TRIMMED);
     }
 
+//Added those two extra fields in user registration form - 21/12/2021 - Shubham
+    $purpose = user_edit_map_field_purpose($user->id, 'usi');
+    $mform->addElement('text', 'usi', get_string('usi'), 'maxlength="100" size="30"' . $purpose);
+    //$mform->addRule('usi', $strrequired, 'required', null, 'client');
+    $mform->setType('usi', PARAM_TEXT);
+
+    $purpose = user_edit_map_field_purpose($user->id, 'employer');
+    $mform->addElement('text', 'employer', get_string('employer'), 'maxlength="200" size="30"' . $purpose);
+    //$mform->addRule('employer', $strrequired, 'required', null, 'client');
+    $mform->setType('employer', PARAM_TEXT);
+  //End
+
     $choices = array();
     $choices['0'] = get_string('emaildisplayno');
     $choices['1'] = get_string('emaildisplayyes');

@@ -552,6 +552,7 @@ $string['nodatasubmitted'] = 'No data was submitted.';
 $string['noessayquestionsfound'] = 'No manually graded questions found';
 $string['nogradewarning'] = 'This quiz is not graded, so you cannot set overall feedback that differs by grade.';
 $string['nomoreattempts'] = 'No more attempts are allowed';
+$string['attemptavailable'] = '{$a->count} attempt available'; // added by nirmal for showing attempt available
 $string['none'] = 'None';
 $string['noopen'] = 'No open date';
 $string['nooverridedata'] = 'You must override at least one of the quiz settings.';
@@ -1017,4 +1018,7 @@ $string['reviewofpreview'] = 'Review of preview';
 $string['enablehelp'] = 'Enable help content during attempt.';
 $string['enablehelpdesc'] = 'Enable help content during attempt.';
 $string['helpafterattempt']= 'Show help content at attempt number.';
+
+// added by nirmal
+$string['comliancereport']= 'Compliance Report';
 

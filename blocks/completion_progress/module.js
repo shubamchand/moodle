@@ -97,30 +97,5 @@ M.block_completion_progress = {
             target.detachEvent('on' + evt, func);
             target.attachEvent('on' + evt, func);
         }
-    },
-     drawPieChart:function(yui,chartdata,color){
-      
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-          google.visualization.obj
-        var data = google.visualization.arrayToDataTable(Object.entries(chartdata)
-        );
-
-        var options = {
-         
-           width:550,
-           height:510,
-           pieSliceText:'none',
-           pieSliceTextStyle:{color:'#000000',fontSize:14},
-           slices: color
-          
-      };
-         
-   console.log(options);
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-      }
     }
 };

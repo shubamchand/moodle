@@ -289,6 +289,23 @@ class quiz {
         return $questions;
     }
 
+
+    /**
+     * Added by nirmal to load question for compliance report.
+     */
+    public function get_partial_questions($questionids = null) {
+        if (is_null($questionids)) {
+            $questionids = array_keys($this->questions);
+        }
+        $questions = array();
+        foreach ($questionids as $id) {
+            if (!array_key_exists($id, $this->questions)) {
+                throw new moodle_exception('cannotstartmissingquestion', 'quiz', $this->view_url());
+            }
+            $questions[$id] = $this->questions[$id];
+        }
+        return $questions;
+    }
     /**
      * Get all the sections in this quiz.
      * @return array 0, 1, 2, ... => quiz_sections row from the database.
@@ -2635,6 +2652,110 @@ class quiz_attempt_nav_panel extends quiz_nav_panel_base {
                 get_string('endtest', 'quiz'), array('class' => 'endtestlink')) .
                 $output->countdown_timer($this->attemptobj, time()) .
                 $this->render_restart_preview_link($output);
+    }
+}
+
+
+
+
+
+/**
+ * Specialisation of {@link quiz_nav_panel_base} for the re attempt quiz page. added by nirmal
+ *
+ * @copyright  2008 Tim Hunt
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @since      Moodle 2.0
+ */
+class quiz_reattempt_nav_panel extends quiz_nav_panel_base {
+
+    /**
+     * @Overwrite the method of quiz_nav_panel_base
+     * Get the buttons and section headings to go in the quiz navigation block.
+     * @return renderable[] the buttons, possibly interleaved with section headings.
+     */
+    public function get_question_buttons() {
+            $buttons = array();
+            $cmid      = optional_param('cmid', null, PARAM_INT);
+            $last_attempt_data = end(quiz_get_user_attempts($this->attemptobj->get_quiz()->id, $this->attemptobj->get_userid(), 'finished', true));
+            $attemptobj = quiz_create_attempt_handling_errors($last_attempt_data->id, $cmid);
+            $slots = $attemptobj->get_slots();
+            foreach($slots as $slot){
+                if ($heading = $this->attemptobj->get_heading_before_slot($slot)) {
+                    $buttons[] = new quiz_nav_section_heading(format_string($heading));
+                }
+                $qa = $attemptobj->get_question_attempt($slot);
+                $options = $attemptobj->get_display_options(true);
+                $showcorrectness = $options->correctness && $qa->has_marks();
+                $stateclass  = $qa->get_state_class($showcorrectness);
+                $statestring = $this->get_state_string($qa, $showcorrectness);
+
+                if($stateclass=='incorrect' || $stateclass=='partiallycorrect'){
+                    $qan = $this->attemptobj->get_question_attempt($slot);
+                    $showcorrectnessn = $this->options->correctness && $qan->has_marks();
+                    $statestring = $this->get_state_string($qan, $showcorrectnessn);
+                    if($statestring=='Answer saved'){
+                        $stateclass  = 'answersaved';
+                    }
+
+                } else {
+                    $qa = $this->attemptobj->get_question_attempt($slot);
+                    $showcorrectness = $this->options->correctness && $qa->has_marks();
+                    $stateclass  = $qa->get_state_class($showcorrectness);
+                    $statestring = $this->get_state_string($qa, $showcorrectness);
+                }
+                
+                $button = new quiz_nav_question_button();
+                $button->id          = 'quiznavbutton' . $slot;
+                $button->number      = $this->attemptobj->get_question_number($slot);
+                $button->stateclass  = $stateclass; //$qa->get_state_class($showcorrectness);
+                $button->navmethod   = $this->attemptobj->get_navigation_method();
+                if (!$showcorrectness && $button->stateclass == 'notanswered') {
+                    $button->stateclass = 'complete';
+                }
+                $button->statestring = $statestring; //$this->get_state_string($qa, $showcorrectness);
+                $button->page        = $this->attemptobj->get_question_page($slot);
+                $button->currentpage = $this->showall || $button->page == $this->page;
+                $button->flagged     = $qa->is_flagged();
+                $button->url         = $this->get_question_url($slot);
+                if ($this->attemptobj->is_blocked_by_previous_question($slot)) {
+                    $button->url = null;
+                    $button->stateclass = 'blocked';
+                    $button->statestring = get_string('questiondependsonprevious', 'quiz');
+                }
+                $buttons[] = $button;
+
+            }
+        return $buttons;
+    }
+
+    
+    public function get_question_url($slot) {
+        if ($this->attemptobj->can_navigate_to($slot)) {
+            return $this->attemptobj->attempt_url($slot, -1, $this->page);
+        } else {
+            return null;
+        }
+    }
+
+    public function render_before_button_bits(mod_quiz_renderer $output) {
+        return html_writer::tag('div', get_string('navnojswarning', 'quiz'),
+                array('id' => 'quiznojswarning'));
+    }
+
+    public function render_end_bits(mod_quiz_renderer $output) {
+            $html = '';
+            if ($this->attemptobj->get_num_pages() > 1) {
+                if ($this->showall) {
+                    $html .= html_writer::link($this->attemptobj->review_url(null, 0, false),
+                            get_string('showeachpage', 'quiz'));
+                } else {
+                    $html .= html_writer::link($this->attemptobj->review_url(null, 0, true),
+                            get_string('showall', 'quiz'));
+                }
+            }
+            $html .= $output->finish_review_link($this->attemptobj);
+            $html .= $this->render_restart_preview_link($output);
+            return $html;
     }
 }
 

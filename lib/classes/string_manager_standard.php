@@ -23,7 +23,7 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
-
+ini_set('memory_limit', '5G');// added to allocate more memory for the page - Shubham 05/12/2021
 
 /**
  * Standard string_manager implementation

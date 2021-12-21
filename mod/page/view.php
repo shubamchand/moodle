@@ -54,6 +54,9 @@ require_capability('mod/page:view', $context);
 // Completion and trigger events.
 page_view($page, $course, $cm, $context);
 
+// added by nirmal
+$completioninfo = new completion_info($course);
+$completioninfo->process_for_observation($USER->id);
 $PAGE->set_url('/mod/page/view.php', array('id' => $cm->id));
 
 $options = empty($page->displayoptions) ? array() : unserialize($page->displayoptions);

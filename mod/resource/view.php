@@ -57,6 +57,10 @@ require_capability('mod/resource:view', $context);
 // Completion and trigger events.
 resource_view($resource, $course, $cm, $context);
 
+// added by nirmal
+$completioninfo = new completion_info($course);
+$completioninfo->process_for_observation($USER->id);
+
 $PAGE->set_url('/mod/resource/view.php', array('id' => $cm->id));
 
 if ($resource->tobemigrated) {

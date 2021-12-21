@@ -12771,3 +12771,23 @@ Error code: invalidfiletype
 [09-Nov-2021 06:19:35 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
 [09-Nov-2021 06:20:12 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
 [09-Nov-2021 07:59:33 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[05-Dec-2021 13:15:52 Australia/Darwin] Debugging: Invalid get_string() identifier: 'filearea_uploaded' or component 'securepdf'. Perhaps you are missing $string['filearea_uploaded'] = ''; in mod/securepdf/lang/en/securepdf.php? in 
+* line 353 of /lib/classes/string_manager_standard.php: call to debugging()
+* line 7295 of /lib/moodlelib.php: call to core_string_manager_standard->get_string()
+* line 280 of /mod/securepdf/lib.php: call to get_string()
+* line 67 of /lib/filebrowser/file_info_context_module.php: call to securepdf_get_file_areas()
+* line 216 of /lib/filebrowser/file_browser.php: call to file_info_context_module->__construct()
+* line 91 of /lib/filebrowser/file_browser.php: call to file_browser->get_file_info_context_module()
+* line 127 of /repository/recent/lib.php: call to file_browser->get_file_info()
+* line 102 of /repository/repository_ajax.php: call to repository_recent->get_listing()
+
+[05-Dec-2021 13:15:52 Australia/Darwin] Debugging: Invalid get_string() identifier: 'filearea_uploaded' or component 'securepdf'. Perhaps you are missing $string['filearea_uploaded'] = ''; in mod/securepdf/lang/en/securepdf.php? in 
+* line 353 of /lib/classes/string_manager_standard.php: call to debugging()
+* line 7295 of /lib/moodlelib.php: call to core_string_manager_standard->get_string()
+* line 280 of /mod/securepdf/lib.php: call to get_string()
+* line 67 of /lib/filebrowser/file_info_context_module.php: call to securepdf_get_file_areas()
+* line 216 of /lib/filebrowser/file_browser.php: call to file_info_context_module->__construct()
+* line 91 of /lib/filebrowser/file_browser.php: call to file_browser->get_file_info_context_module()
+* line 127 of /repository/recent/lib.php: call to file_browser->get_file_info()
+* line 102 of /repository/repository_ajax.php: call to repository_recent->get_listing()
+

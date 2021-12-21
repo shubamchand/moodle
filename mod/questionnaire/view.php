@@ -35,6 +35,10 @@ list($cm, $course, $questionnaire) = questionnaire_get_standard_page_items($id, 
 require_course_login($course, true, $cm);
 $context = context_module::instance($cm->id);
 
+// added by nirmal
+$completioninfo = new completion_info($course);
+$completioninfo->process_for_observation($USER->id);
+
 $url = new moodle_url($CFG->wwwroot.'/mod/questionnaire/view.php');
 if (isset($id)) {
     $url->param('id', $id);

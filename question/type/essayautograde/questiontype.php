@@ -68,15 +68,18 @@ class qtype_essayautograde extends question_type {
     public function extra_question_fields() {
         return array($this->plugin_name().'_options', // DB table name
                      'responseformat', 'responserequired', 'responsefieldlines',
-                     'attachments', 'attachmentsrequired', 'filetypeslist',
+                     'attachments', 'attachmentsrequired',
                      'graderinfo', 'graderinfoformat',
                      'responsetemplate', 'responsetemplateformat',
                      'responsesample', 'responsesampleformat',
+                     'minwordlimit', 'maxwordlimit',
+                     'maxbytes', 'filetypeslist',
                      'enableautograde', 'itemtype', 'itemcount',
                      'showfeedback', 'showcalculation',
                      'showtextstats', 'textstatitems',
                      'showgradebands', 'addpartialgrades','showtargetphrases',
                      'errorcmid', 'errorpercent',
+                     'errorfullmatch', 'errorcasesensitive', 'errorignorebreaks',
                      'correctfeedback', 'correctfeedbackformat',
                      'incorrectfeedback', 'incorrectfeedbackformat',
                      'partiallycorrectfeedback', 'partiallycorrectfeedbackformat');
@@ -141,6 +144,9 @@ class qtype_essayautograde extends question_type {
             'responsetemplateformat' => $formdata->responsetemplate['format'],
             'responsesample'      => $formdata->responsesample['text'],
             'responsesampleformat' => $formdata->responsesample['format'],
+            'minwordlimit'        => isset($formdata->minwordlimit) ? $formdata->minwordlimit : 0,
+            'maxwordlimit'        => isset($formdata->maxwordlimit) ? $formdata->maxwordlimit : 0,
+            'maxbytes'            => isset($formdata->maxbytes) ? $formdata->maxbytes : 0,
             'filetypeslist'       => isset($formdata->filetypeslist) ? $formdata->filetypeslist : '',
             'enableautograde'     => isset($formdata->enableautograde) ? $formdata->enableautograde : 1,
             'itemtype'            => isset($formdata->itemtype) ? $formdata->itemtype : self::ITEM_TYPE_CHARS,
@@ -154,6 +160,9 @@ class qtype_essayautograde extends question_type {
             'showtargetphrases'   => isset($formdata->showtargetphrases) ? $formdata->showtargetphrases : 1,
             'errorcmid'           => isset($formdata->errorcmid) ? $formdata->errorcmid : 0,
             'errorpercent'        => isset($formdata->errorpercent) ? $formdata->errorpercent : 0,
+            'errorfullmatch'      => isset($formdata->errorfullmatch) ? $formdata->errorfullmatch : 0,
+            'errorcasesensitive'  => isset($formdata->errorcasesensitive) ? $formdata->errorcasesensitive : 0,
+            'errorignorebreaks'   => isset($formdata->errorignorebreaks) ? $formdata->errorignorebreaks : 0,
         );
 
         if ($cmid = $options->errorcmid) {
@@ -273,8 +282,9 @@ class qtype_essayautograde extends question_type {
             $oldanswers = array();
         }
 
+        // If anything that affects the grade has changed, we force a regrade.
         if ($addpartialgrades == $options->addpartialgrades && $errorpercent == $options->errorpercent) {
-            $regrade =  true;
+            $regrade =  false;
         } else {
             $regrade =  true;
         }
@@ -311,10 +321,12 @@ class qtype_essayautograde extends question_type {
             $DB->delete_records($answerstable, array('id' => $oldanswer->id));
         }
 
-        // regrade question if necessary
-        if ($regrade) {
-            $this->regrade_question($formdata->id);
-        }
+        // Regrade question if necessary (DISABLED 2021-06-09)
+        // We don't do this anymore, because regrades are supposed to be done manually.
+        // See: https://github.com/gbateson/moodle-qtype_essayautograde/issues/47
+        //if ($regrade) {
+        //    $this->regrade_question($formdata->id);
+        //}
 
         return true;
     }
@@ -427,6 +439,10 @@ class qtype_essayautograde extends question_type {
     /**
      * based on "regrade_attempt()" method
      * in "mod/quiz/report/overview/report.php"
+     *
+     * This method was useful during development, but is not suitable for
+     * public release, so it is never called. For more information, see:
+     * https://github.com/gbateson/moodle-qtype_essayautograde/issues/47
      */
     protected function regrade_question($questionid) {
         global $CFG, $DB;
@@ -509,7 +525,7 @@ class qtype_essayautograde extends question_type {
                 continue;
             }
             if (in_array($field, $textfields)) {
-                $files = $fs->get_area_files($contextid, 'question', $field, $questionid);
+                $files = $fs->get_area_files($question->contextid, 'question', $field, $question->id);
                 $output .= "    <$field ".$format->format($question->options->{$field.'format'}).">\n";
                 $output .= '      '.$format->writetext($question->options->$field);
                 $output .= $format->write_files($files);
@@ -776,7 +792,6 @@ class qtype_essayautograde extends question_type {
             default: $question->itemtype = self::ITEM_TYPE_NONE;
         }
 
-
         // regular expression to detect question option
         $search = $this->get_gift_fields();
         $search[] = 'gradebands';
@@ -965,6 +980,9 @@ class qtype_essayautograde extends question_type {
             'responsetemplateformat' => 0,
             'responsesample'       => '',
             'responsesampleformat' =>  0,
+            'minwordlimit'         =>  0,
+            'maxwordlimit'         =>  0,
+            'maxbytes'             =>  0,
             'filetypeslist'        => '',
             'enableautograde'      =>  1,
             'itemtype'             =>  0,

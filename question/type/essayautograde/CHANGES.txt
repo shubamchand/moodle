@@ -2,6 +2,60 @@
 Change log for qtype_essayautograde
 ========================================
 
+2021-10-19 (12)
+ - add buttons to rotate and scale image file submitted as response to question
+
+2021-09-10 (11)
+ - #55 fix missing 'fraction' parameter when autograde is not enabled
+
+2021-07-19 (10)
+ - refine method to count syllables. Thanks to drachels.
+
+2021-07-15 (09)
+ - In Moodle >= 3.11, inform user of minimum and maximum word count, and warn if there are too few, or too many, words.
+
+2021-07-15 (08)
+ - (Issue #45) skip backup of errorcmmid field if it does not exist in the database
+
+2021-07-14 (07)
+ - add Javascript to show/hide editors on settings page depending on setting of responseformat
+
+2021-07-14 (06)
+ - improve the insertion of error glossary links into the answer review page
+
+2021-06-30 (03)
+ - add message to CHANGES.txt
+
+2021-06-30 (03)
+ - (1) fix issue #39 (strip HTML tags before comparing response to template), and issue #44 (confusing label for 'Correct response')
+
+2021-06-10 (02)
+ - fix small typo introduced in previous commit. Thanks ewallah for spotting this issue.
+
+2021-06-10 (00)
+ - add min/max wordlimit fields in options table
+
+2021-06-09 (00)
+ - in edit form, rename 'get_default_value()' method to 'get_my_default_value()' for compatability with Moodle >= 3.10
+
+2021-06-09 (98)
+ - (Issue #47) do not force regrade when changing parameters on the question settings
+
+2021-06-09 (97)
+ - add return value of 'void' to setUp and tearDown methods in tests/questiontype_test.php
+
+2021-06-08 (96)
+ - modify declaration of parameters accepted by get_default_value method in the edit form
+
+2021-01-29 (95)
+ - Thanks TimeBandit001, for fix #42, and thanks TimHunt for the review.
+
+2020-09-03 (94)
+ - (issue #37) fix assertions in tests/question_test [Thanks to ewallah]
+
+2020-08-24 (93)
+ - in tests/walkthrough_test.php, rename text_editorfield to check_editorfield in order to prevent errors in travis. Thanks to ewallah for this suggestion :-)
+
 2020-07-31 (92)
  - first attempt to add hook to plagismplugins - not tested yet
 

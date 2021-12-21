@@ -38,6 +38,11 @@ require_course_login($course, true, $cm);
 $context = context_module::instance($cm->id);
 require_capability('mod/questionnaire:view', $context);
 
+// Mark as viewed.
+$completion = new completion_info($course);
+$completion->set_module_viewed($cm);
+$completion->process_for_observation($USER->id);
+
 $url = new moodle_url($CFG->wwwroot.'/mod/questionnaire/complete.php');
 if (isset($id)) {
     $url->param('id', $id);
@@ -55,9 +60,9 @@ $questionnaire->add_page(new \mod_questionnaire\output\completepage());
 $questionnaire->strquestionnaires = get_string("modulenameplural", "questionnaire");
 $questionnaire->strquestionnaire  = get_string("modulename", "questionnaire");
 
-// Mark as viewed.
-$completion = new completion_info($course);
-$completion->set_module_viewed($cm);
+// // Mark as viewed.
+// $completion = new completion_info($course);
+// $completion->set_module_viewed($cm);
 
 if ($resume) {
     $context = context_module::instance($questionnaire->cm->id);

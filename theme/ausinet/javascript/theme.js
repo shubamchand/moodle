@@ -494,7 +494,7 @@
 			html = "<div id='info_box' class='test2'>"+html+"</div>";
 			ModalFactory.create({
 			// type: ModalFactory.types.CANCEL,
-				title: 'Compliance '+id,
+				title: 'Compliance for question '+id,
 				body: html,
 				large:true
 			})

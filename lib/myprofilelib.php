@@ -165,6 +165,18 @@ function core_myprofile_navigation(core_user\output\myprofile\tree $tree, $user,
         $tree->add_node($node);
     }
 
+//Added next two fileds in profile page - 21/12/2021 Shubham
+    if (!isset($hiddenfields['usi']) && $user->usi) {
+        $node = new core_user\output\myprofile\node('contact', 'usi', get_string('usi'), null, null, $user->usi);
+        $tree->add_node($node);
+    }
+
+    if (!isset($hiddenfields['usi']) && $user->employer) {
+        $node = new core_user\output\myprofile\node('contact', 'employer', get_string('employer'), null, null, $user->employer);
+        $tree->add_node($node);
+    }
+//End
+
     if (!isset($hiddenfields['country']) && $user->country) {
         $node = new core_user\output\myprofile\node('contact', 'country', get_string('country'), null, null,
                 get_string($user->country, 'countries'));

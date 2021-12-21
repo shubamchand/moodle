@@ -347,7 +347,7 @@ if (!$csv) {
         if ($csv) {
             print csv_quote(fullname($user));
         } else {
-            $course_progress = \core_completion\progress::get_course_progress_percentage($course, $user->id);            
+            $course_progress = \core_completion\progress::get_course_progress_percentage($course, $user->id);        
             print '<th scope="row" class="completion-header" data-progress="'.(int) $course_progress .'" >
 			<a href="'.$CFG->wwwroot.'/user/view.php?id='. $user->id .'&amp;course='. $course->id .'">
             <div class="rotated-text-container"><span class="rotated-text">'. fullname($user) .'</span></div></a></th>';
@@ -369,9 +369,10 @@ if ($csv) {
 $colspan = 1 + count($progress);
 $sections = array();
 $show = true;
-
+$completion_data = [];
+$i = 0;
 foreach($activities as $activity) {
-
+  
     $datepassed = $activity->completionexpected && $activity->completionexpected <= time();
     $datepassedclass = $datepassed ? 'completion-expired' : '';
 
@@ -390,6 +391,7 @@ foreach($activities as $activity) {
         // $shortenedname = shorten_text($displayname);
 		$class = "section".$activity->section;
 		$section = $notes->get_section($activity->section);
+       
 		
 		if(!in_array($section->name,$sections) || $show==true){
 			if(!empty($section->name)){
@@ -425,6 +427,34 @@ foreach($activities as $activity) {
     foreach($progress as $user) {
 
     // Progress for each activity
+        $completion_data[$user->id][$section->id]['data'][$i]['name'] = $activity->name; 
+        $completion_data[$user->id][$section->id]['data'][$i]['cmid'] = $activity->id; 
+        $completion_data[$user->id][$section->id]['data'][$i]['section'] = $section->name;
+        $completion_data[$user->id][$section->id]['data'][$i]['section_id'] = $section->id;
+       
+        $completion_data[$user->id][$section->id]['data'][$i]['modname'] = $activity->modname;
+        $completion_data[$user->id][$section->id]['data'][$i]['modname'] = $activity->modname;
+        if($activity->modname=='observation'){
+            $completion_data[$user->id][$section->id]['has_observation'] = 1;
+            if(isset($completion_data[$user->id][$section->id]['observation_count'])){
+                $completion_data[$user->id][$section->id]['observation_count'] += 1;
+            } else {
+                $completion_data[$user->id][$section->id]['observation_count'] = 1;
+            }
+        } else {
+            $completion_data[$user->id][$section->id]['observation_count'] += 0;
+        }
+        
+       
+
+        if(isset($completion_data[$user->id][$section->id]['total'])){
+            $completion_data[$user->id][$section->id]['total'] += 1;
+        } else {
+            $completion_data[$user->id][$section->id]['total'] = 1;
+        }
+        
+        
+       
 
         // Get progress information and state
         if (array_key_exists($activity->id, $user->progress)) {
@@ -439,6 +469,7 @@ foreach($activities as $activity) {
 			$cmcid = 0;
             $date = '';	
         }
+        
 
         // Work out how it corresponds to an icon
         switch($state) {
@@ -495,6 +526,7 @@ foreach($activities as $activity) {
             $celltext = $OUTPUT->pix_icon('i/' . $completionicon, s($fulldescribe));
             if (has_capability('moodle/course:overridecompletion', $context) &&
                     $state != COMPLETION_COMPLETE_PASS && $state != COMPLETION_COMPLETE_FAIL) {
+               
                 $newstate = ($state == COMPLETION_COMPLETE) ? COMPLETION_INCOMPLETE : COMPLETION_COMPLETE;
                 $changecompl = $cmcid . '-' . $user->id . '-' . $activity->id . '-' . $newstate . '-' . $noteid . '-' . $course->id . '-' . $activity->section;
                 $url = new moodle_url($PAGE->url, ['sesskey' => sesskey()]);
@@ -509,6 +541,20 @@ foreach($activities as $activity) {
             }
             print '<td class="completion-progresscell '.$formattedactivities[$activity->id]->datepassedclass.'">'.
                 $celltext . '</td>';
+        } 
+        $completion_data[$user->id][$section->id]['data'][$i]['state'] = $state;
+        if($state==1 || $state==2){
+            if(isset($completion_data[$user->id][$section->id]['completed'])){
+                $completion_data[$user->id][$section->id]['completed'] += 1;
+            } else {
+                $completion_data[$user->id][$section->id]['completed'] = 1;
+            }
+        } else {
+            if(isset($completion_data[$user->id][$section->id]['completed'])){
+                $completion_data[$user->id][$section->id]['completed'] += 0;
+            } else {
+                $completion_data[$user->id][$section->id]['completed'] = 0;
+            }
         }
     }
 
@@ -517,8 +563,81 @@ foreach($activities as $activity) {
     } else {
         print '</tr>';
     }
-}
+$i++;}
 
+// added by nirmal
+foreach($completion_data as $userid => $cSectionDaa){
+    $is_all_finished = true;
+    foreach($cSectionDaa as $sectionid => $sData){
+
+        if($sData['completed']==0 && $sData['observation_count']==0){
+            $is_all_finished = false;
+             // no need to do as its not observation and sectioon is not compelted so go out of loop
+        }  else if($sData['total']>($sData['completed'] + $sData['observation_count'])){
+            $is_all_finished = false;
+        }  else   if($sData['observation_count']==0 || $sData['total'] == $sData['completed']){
+             // no need to do as its not have observation observation and sectioon is  compelted so does not need to check for observation entry
+        } else if($sData['observation_count'] == $sData['total'] && $sData['completed']==0){
+          // need to do entry here for obseration
+            if($is_all_finished){
+                foreach($sData['data'] as $cData){
+                    if($cData['modname']=='observation' && $cData['state']==0) { 
+                    $check_record = $DB->get_record('course_modules_completion_observation',
+                        array(
+                            'coursemoduleid' => $cData['cmid'],
+                            'userid' => $userid,
+                            'section_id' => $sectionid,
+                            'courseid' =>$course->id
+                        ),
+                        '*'
+                    );
+                
+                    if(empty($check_record)){
+                        // insert record
+                        $inserObject = new \stdClass();
+                        $inserObject->coursemoduleid = $cData['cmid'];
+                        $inserObject->userid = $userid;
+                        $inserObject->section_id = $sectionid;
+                        $inserObject->courseid = $course->id;
+                        $DB->insert_record('course_modules_completion_observation', $inserObject);
+                    }
+                    
+                    } // no need to check further 
+                }
+            }
+        } else if($sData['total'] == ($sData['completed'] + $sData['observation_count'])){
+            foreach($sData['data'] as $cData){
+                if($cData['modname']=='observation' && $cData['state']==0) { 
+                $check_record = $DB->get_record('course_modules_completion_observation',
+                    array(
+                        'coursemoduleid' => $cData['cmid'],
+                        'userid' => $userid,
+                        'section_id' => $sectionid,
+                        'courseid' =>$course->id
+                    ),
+                    '*'
+                );
+            
+                if(empty($check_record)){
+                    // insert record
+                    $inserObject = new \stdClass();
+                    $inserObject->coursemoduleid = $cData['cmid'];
+                    $inserObject->userid = $userid;
+                    $inserObject->section_id = $sectionid;
+                    $inserObject->courseid = $course->id;
+                    $DB->insert_record('course_modules_completion_observation', $inserObject);
+                }
+                
+                } // no need to check further 
+            }
+        }
+
+        
+    }
+    // return true;
+
+}
+// exit;
 if ($csv) {
     exit;
 }

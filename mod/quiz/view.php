@@ -57,6 +57,11 @@ require_login($course, false, $cm);
 $context = context_module::instance($cm->id);
 require_capability('mod/quiz:view', $context);
 
+
+// added by nirmal
+$completioninfo = new completion_info($course);
+$completioninfo->process_for_observation($USER->id);
+
 // Cache some other capabilities we use several times.
 $canattempt = has_capability('mod/quiz:attempt', $context);
 $canreviewmine = has_capability('mod/quiz:reviewmyattempts', $context);
@@ -207,8 +212,10 @@ if (!$viewobj->quizhasquestions) {
                 $viewobj->buttontext = '';
             } else if ($viewobj->numattempts == 0) {
                 $viewobj->buttontext = get_string('attemptquiznow', 'quiz');
+                $viewobj->attempt_available = ($quiz->attempts - $viewobj->numattempts); // added by nirmal for showing attempt available
             } else {
                 $viewobj->buttontext = get_string('reattemptquiz', 'quiz');
+                $viewobj->attempt_available = ($quiz->attempts - $viewobj->numattempts); // added by nirmal for showing attempt available
             }
 
         } else if ($canpreview) {

@@ -55,7 +55,7 @@ class message {
     }
 
     private function get_welcome_fields() {
-        $welcomefields = array('sitelink', 'sitename', 'resetpasswordlink', 'siteurl');
+        $welcomefields = array('sitelink', 'sitename', 'resetpasswordlink');
 
         return $welcomefields;
     }
@@ -109,7 +109,6 @@ class message {
         $sitename = $SITE->fullname;
         $resetpasswordlink = \html_writer::link(
             new \moodle_url('/login/forgot_password.php'), get_string('resetpass', 'local_welcome'));
-        $siteurl = new \moodle_url('/');
         foreach ($this->welcomefields as $field) {
             $values[$field] = $$field;
         }

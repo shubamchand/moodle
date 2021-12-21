@@ -142,6 +142,22 @@ function xmldb_qtype_essayautograde_upgrade($oldversion) {
         upgrade_plugin_savepoint(true, $newversion, $plugintype, $pluginname);
     }
 
+    $newversion = 2021061000;
+    if ($oldversion < $newversion) {
+        // Add new fields for Moodle >= 3.10.
+        $fieldnames = array('minwordlimit', 'maxwordlimit', 'maxbytes');
+        xmldb_qtype_essayautograde_addfields($dbman, $pluginoptionstable, $fieldnames);
+        upgrade_plugin_savepoint(true, $newversion, $plugintype, $pluginname);
+    }
+
+    $newversion = 2021071205;
+    if ($oldversion < $newversion) {
+        // Add new fields for more granular matching of entries in the Glossary of common errors
+        $fieldnames = array('errorfullmatch', 'errorcasesensitive', 'errorignorebreaks');
+        xmldb_qtype_essayautograde_addfields($dbman, $pluginoptionstable, $fieldnames);
+        upgrade_plugin_savepoint(true, $newversion, $plugintype, $pluginname);
+    }
+
     return true;
 }
 
@@ -171,6 +187,9 @@ function xmldb_qtype_essayautograde_addfields($dbman, $pluginoptionstable, $fiel
     $fields = array(
         new xmldb_field('responsesample',                 XMLDB_TYPE_TEXT),
         new xmldb_field('responsesampleformat',           XMLDB_TYPE_INTEGER,  2, null, XMLDB_NOTNULL, null, 0),
+        new xmldb_field('minwordlimit',                   XMLDB_TYPE_INTEGER, 10, null, XMLDB_NOTNULL, null, 0),
+        new xmldb_field('maxwordlimit',                   XMLDB_TYPE_INTEGER, 10, null, XMLDB_NOTNULL, null, 0),
+        new xmldb_field('maxbytes',                       XMLDB_TYPE_INTEGER, 10, null, XMLDB_NOTNULL, null, 0),
         new xmldb_field('filetypeslist',                  XMLDB_TYPE_TEXT),
         new xmldb_field('enableautograde',                XMLDB_TYPE_INTEGER,  2, null, XMLDB_NOTNULL, null, 1),
         new xmldb_field('itemtype',                       XMLDB_TYPE_INTEGER,  4, null, XMLDB_NOTNULL, null, 0),
@@ -184,6 +203,9 @@ function xmldb_qtype_essayautograde_addfields($dbman, $pluginoptionstable, $fiel
         new xmldb_field('showtargetphrases',              XMLDB_TYPE_INTEGER,  2, null, XMLDB_NOTNULL, null, 0),
         new xmldb_field('errorcmid',                      XMLDB_TYPE_INTEGER, 10, null, XMLDB_NOTNULL, null, 0),
         new xmldb_field('errorpercent',                   XMLDB_TYPE_INTEGER,  6, null, XMLDB_NOTNULL, null, 0),
+        new xmldb_field('errorfullmatch',                 XMLDB_TYPE_INTEGER,  2, null, XMLDB_NOTNULL, null, 0),
+        new xmldb_field('errorcasesensitive',             XMLDB_TYPE_INTEGER,  2, null, XMLDB_NOTNULL, null, 0),
+        new xmldb_field('errorignorebreaks',              XMLDB_TYPE_INTEGER,  2, null, XMLDB_NOTNULL, null, 0),
         new xmldb_field('correctfeedback',                XMLDB_TYPE_TEXT),
         new xmldb_field('correctfeedbackformat',          XMLDB_TYPE_INTEGER,  2, null, XMLDB_NOTNULL, null, 0),
         new xmldb_field('incorrectfeedback',              XMLDB_TYPE_TEXT),

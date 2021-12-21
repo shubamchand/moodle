@@ -7291,3 +7291,20 @@ Error code: generalexceptionmessage
 [09-Nov-2021 05:30:48 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
 [09-Nov-2021 05:41:33 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
 [09-Nov-2021 05:47:43 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[23-Nov-2021 12:44:07 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/event/course_module_viewed.php on line 54
+[23-Nov-2021 12:45:02 Australia/Darwin] PHP Notice:  Trying to get property 'id' of non-object in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/observation.class.php on line 191
+[23-Nov-2021 12:45:02 Australia/Darwin] PHP Notice:  Undefined offset: 0 in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/observation.class.php on line 414
+[30-Nov-2021 11:21:39 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/event/course_module_viewed.php on line 54
+[30-Nov-2021 11:21:45 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/question/question.php on line 974
+[30-Nov-2021 11:22:05 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/question/question.php on line 974
+[30-Nov-2021 11:22:22 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/question/question.php on line 974
+[30-Nov-2021 11:22:26 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/event/course_module_viewed.php on line 54
+[30-Nov-2021 12:20:22 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/event/course_module_viewed.php on line 54
+[30-Nov-2021 16:14:47 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/event/course_module_viewed.php on line 54
+[19-Dec-2021 16:50:11 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/event/course_module_viewed.php on line 54
+[19-Dec-2021 16:50:18 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/question/question.php on line 974
+[19-Dec-2021 16:50:32 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/event/course_module_viewed.php on line 54
+[19-Dec-2021 16:50:38 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/event/course_module_viewed.php on line 54
+[19-Dec-2021 16:50:50 Australia/Darwin] PHP Notice:  Trying to get property 'id' of non-object in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/observation.class.php on line 191
+[19-Dec-2021 16:50:50 Australia/Darwin] PHP Notice:  Undefined offset: 0 in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/observation.class.php on line 441
+[19-Dec-2021 16:50:50 Australia/Darwin] PHP Warning:  Creating default object from empty value in /home/customer/www/electricalcourses.net.au/public_html/mod/observation/classes/question/yesno.php on line 186

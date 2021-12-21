@@ -66,14 +66,16 @@
     {{#message}}<div class="message">{{{.}}}</div>{{/message}}
     {{#continue}}{{{continue}}}{{/continue}}
     <div class="generalbox">
-        {{{formstart}}}     
-
-       
-
+        {{{formstart}}}  
+        <div align="center" class="notice" style="padding: 0.5em 0 0.5em 0.2em;">
+            <div class="buttons">
+                {{{controlbuttons}}}
+            </div>
+        </div>  
         {{#questions}}{{{.}}}{{/questions}}
         {{#pageinfo}}{{{.}}}{{/pageinfo}}
         {{#cansubmit}}
-        <div class="notice" style="padding: 0.5em 0 0.5em 0.2em;">
+        <div align="center" class="notice" style="padding: 0.5em 0 0.5em 0.2em;">
             <div class="buttons">
                 {{{controlbuttons}}}
             </div>

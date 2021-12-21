@@ -500,6 +500,7 @@ $string["ungrouped"] = "Un-Grouped";
 $string["UntitledForm"] = "Untitled Form";
 $string["upgrade"] = "Upgrade to PRO";
 $string["username"] = "Username";
+$string['usi'] = 'USI number';
 $string["value"] = $string["placeholder.value"] = "Value";
 $string["viewXML"] = "</>";
 $string["warning"] = "Warning";

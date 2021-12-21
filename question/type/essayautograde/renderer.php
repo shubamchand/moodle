@@ -66,10 +66,18 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
             $answer = preg_replace('/<a[^>]*class="[^">]*autolink[^">]*"[^>]*>(.*?)<\/a>/ius', '$1', $answer);
             $answer = preg_replace('/ *min-height: [0-9.]+em;/ius', '$1', $answer);
             if ($question->errorcmid) {
-                $currentresponse = $question->get_current_response();
-                if (count($currentresponse->errors)) {
-                    $answer = strtr($answer, $currentresponse->errors);
+                $start = strpos($answer, '>');
+                if ($start === false) {
+                    $start = 0;
+                } else {
+                    $start += 1;
                 }
+                $end = strrpos($answer, '<');
+                if ($end === false) {
+                    $end = strlen($answer);
+                }
+                $currentresponse = $question->get_current_response();
+                $answer = substr_replace($answer, $currentresponse->errortext, $start, $end - $start);
             }
         } else {
             $answer = $renderer->response_area_input('answer', $qa, $step, $linecount, $options->context);
@@ -100,11 +108,15 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
             case $question->plugin_constant('ITEM_TYPE_FILES'): $itemtype = 'files'; break;
         }
 
+        $minwords = (empty($question->minwordlimit) ? 0 : $question->minwordlimit);
+        $maxwords = (empty($question->maxwordlimit) ? 0 : $question->maxwordlimit);
+
         $editor = $this->get_editor_type($question);
         $sample = question_utils::to_plain_text($question->responsesample,
                                                 $question->responsesampleformat,
                                                 array('para' => false));
-        $params = array($readonly, $itemtype, $editor, $sample);
+
+        $params = array($readonly, $itemtype, $minwords, $maxwords, $editor, $sample);
         $PAGE->requires->js_call_amd('qtype_essayautograde/essayautograde', 'init', $params);
 
         return $result;
@@ -144,11 +156,15 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
             $mimetype = $file->get_mimetype();
             $mimetext = get_mimetype_description($file);
 
-            switch (substr($mimetype, 0, strpos($mimetype, '/'))) {
+            $filetype = substr($mimetype, 0, strpos($mimetype, '/'));
+            switch ($filetype) {
 
                 case 'image':
+                    // Use a Bootstrap class to prevent <img> extending outside the <p> element.
+                    // Same effect as style="max-width: 100%; height: auto; width: auto;"
                     $params = array('src' => $url,
-                                    'alt' => $mimetext);
+                                    'alt' => $mimetext,
+                                    'class' => 'img-responsive');
                     $file = html_writer::empty_tag('img', $params);
                     break;
 
@@ -170,7 +186,9 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
                     $icon = $this->output->pix_icon($icon, $mimetext, 'moodle', array('class' => 'icon'));
                     $file = html_writer::link($qa->get_response_file_url($file), $icon.' '.s($file->get_filename()));
             }
-            $output[] = html_writer::tag('p', $file, array('style' => 'width: 100%; max-width: 480px;'));
+            $params = array('class'=> "read-only-file $filetype",
+                            'style' => 'width: 100%; max-width: 480px;');
+            $output[] = html_writer::tag('p', $file, $params);
         }
         return implode($output);
     }
@@ -200,12 +218,13 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
             $pickeroptions->accepted_types = $filetypes;
         }
 
-        $manager = new form_filemanager($pickeroptions);
-        $renderer = $this->page->get_renderer('core', 'files');
+        $filemanager = new form_filemanager($pickeroptions);
+        $filemanager->options->maxbytes = $qa->get_question()->maxbytes;
+        $filesrenderer = $this->page->get_renderer('core', 'files');
         $params = array('type'  => 'hidden',
                         'value' => $itemid,
                         'name'  => $qa->get_qt_field_name($name));
-        $output = $renderer->render($manager).html_writer::empty_tag('input', $params);
+        $output = $filesrenderer->render($filemanager).html_writer::empty_tag('input', $params);
 
         // Remove restrictions (this is done  with CSS)
         // $output = preg_replace('/(?<=<div class="fp-restrictions">)\s*<span>.*?<\/span>/s', '', $output);
@@ -266,7 +285,6 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
             $output .= html_writer::alist($restrictions);
         }
 
-
         return $output;
     }
 
@@ -305,7 +323,7 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
         }
 
         // If required, show explanation of grade calculation.
-        if ($show || true) {
+        if ($show) {
 
             $plugin = 'qtype_essayautograde';
             $question = $qa->get_question();
@@ -359,22 +377,22 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
             );
 
             if ($question->itemtype == $question->plugin_constant('ITEM_TYPE_FILES')) {
-                $textstatitems = '';
                 $showgradebands = false;
                 $showtargetphrases = false;
+                $showtextstatitems = preg_match('/\bfiles\b/', $question->textstatitems);
             } else {
-                $textstatitems = $question->textstatitems;
                 $showgradebands = ($show[$question->showgradebands] && count($currentresponse->bands));
                 $showtargetphrases = $show[$question->showtargetphrases] && count($currentresponse->phrases);
+                $showtextstatitems = ($show[$question->showtextstats] && strlen(trim($question->textstatitems)));
             }
 
-            if ($show[$question->showtextstats] && $textstatitems) {
+            if ($showtextstatitems) {
                 $strman = get_string_manager();
 
                 $table = new html_table();
                 $table->attributes['class'] = 'generaltable essayautograde review stats';
 
-                $names = explode(',', $textstatitems);
+                $names = explode(',', $question->textstatitems);
                 $names = array_filter($names);
                 foreach ($names as $name) {
                     $label = get_string($name, $plugin);
@@ -461,7 +479,7 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
 
                 // Plagiarism links, if any.
                 foreach ($currentresponse->plagiarism as $plagiarism) {
-                    $details[] = html_writer('p', $plagiarism);
+                    $details[] = html_writer::tag('p', $plagiarism);
                 }
 
                 if (empty($details) && $currentresponse->count) {
@@ -720,7 +738,13 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
                     foreach ($currentresponse->errors as $error => $link) {
                         $status = $this->feedback_image(0.00).get_string('commonerror', $plugin);
                         $status = html_writer::tag('span', $status, array('class' => 'error'));
-                        $error = html_writer::alist(array($link), array('start' => (++$i)), 'ol');
+                        if ($maxcount == 1) {
+                            $error = $link;
+                        } else if ($maxcount < 10) {
+                            $error = html_writer::alist(array($link));
+                        } else {
+                            $error = html_writer::alist(array($link), array('start' => (++$i)), 'ol');
+                        }
                         $output .= html_writer::start_tag('tr', array('class' => 'commonerror'));
                         $output .= html_writer::tag('td', $error, array('class' => 'cell c0'));
                         $output .= html_writer::tag('td', $status, array('class' => 'cell c1'));
@@ -767,8 +791,10 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
 
     /**
      * Generate an automatic description of the correct response to this question.
-     * Not all question types can do this. If it is not possible, this method
-     * should just return an empty string.
+     *
+     * This method is called when either of the following conditions are met:
+     * (1) "Show right answer" is checked in Quiz settings during live quiz
+     * (2) "Right answer" is set to "Shown" when previewing a questions
      *
      * @param question_attempt $qa the question attempt to display.
      * @return string HTML fragment.
@@ -780,10 +806,11 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
         $plugin = 'qtype_essayautograde';
         $question = $qa->get_question();
 
-        if ($step = $qa->get_last_step()) {
-            $show = preg_match('/(partial|wrong)$/', $step->get_state());
-        } else {
-            $show = false;
+        $show = false;
+        if (empty($question->showfeedback)) {
+            if ($step = $qa->get_last_step()) {
+                $show = preg_match('/(partial|wrong)$/', $step->get_state());
+            }
         }
 
         if ($show) {
@@ -840,7 +867,9 @@ class qtype_essayautograde_renderer extends qtype_with_combined_feedback_rendere
 
             if ($output) {
                 $name = 'correctresponse';
-                $output = html_writer::tag('h5', get_string('corrresp', 'quiz')).
+                // "corrresp", "quiz" is available in Moodle >= 2.0
+                // "rightanswer", "question" is available in Moodle >= 2.1
+                $output = html_writer::tag('h5', get_string('feedbackhints', $plugin)).
                           html_writer::tag('p', get_string($name, $plugin), array('class' => $name)).
                           $output;
             }
@@ -906,7 +935,6 @@ class qtype_essayautograde_format_editor_renderer extends qtype_essay_format_edi
     }
 }
 
-
 /**
  * An essayautograde format renderer for essayautogrades where the student should use the HTML
  * editor with the file picker.
@@ -921,7 +949,6 @@ class qtype_essayautograde_format_editorfilepicker_renderer extends qtype_essay_
     }
 }
 
-
 /**
  * An essayautograde format renderer for essayautogrades where the student should use a plain
  * input box, but with a normal, proportional font.
@@ -935,7 +962,6 @@ class qtype_essayautograde_format_plain_renderer extends qtype_essay_format_plai
         return 'qtype_essayautograde_plain';
     }
 }
-
 
 /**
  * An essayautograde format renderer for essayautogrades where the student should use a plain

@@ -1,0 +1,93 @@
+.block_course_observation_notification .content {
+    font-size: 0.75em !important;
+    padding: 0 4px 4px 4px;
+}
+
+.block_course_observation_notification dl,
+.block_course_observation_notification dt,
+.block_course_observation_notification dd,
+.block_course_observation_notification ul,
+.block_course_observation_notification li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.block_course_observation_notification .gm_icon {
+    float: left;
+    height: 16px;
+    margin-right: 4px;
+    width: 16px;
+}
+
+.block_course_observation_notification .cmod {
+    line-height: 16px;
+    margin: 6px 0 2px 0;
+}
+
+.block_course_observation_notification .module {
+    line-height: 16px;
+    padding: 3px 0 3px 20px;
+    position: relative;
+}
+
+.block_course_observation_notification .toggle {
+    background: transparent url('[[pix:block_course_observation_notification|closed]]') no-repeat 50% 50%;
+    cursor: pointer;
+    display: block;
+    float: left;
+    height: 16px;
+    left: 0;
+    position: relative;
+    width: 16px;
+}
+
+.block_course_observation_notification .toggle.open {
+    background: transparent url('[[pix:block_course_observation_notification|open]]') no-repeat 50% 50% !important;
+}
+
+.jsenabled .block_course_observation_notification_hide {
+    display: none;
+}
+
+.block_course_observation_notification .cloakable {
+    border-top: 1px dotted #ccc;
+    line-height: 1em;
+    margin: 0 0 3px 0;
+}
+
+.block_course_observation_notification .gradable {
+    border-bottom: 1px dotted #ccc;
+    padding: 2px 0;
+}
+
+.block_course_observation_notification .gradable a {
+    display: inline-block;
+}
+
+.block_course_observation_notification .gradable .gm_icon {
+    margin-top: 1px;
+}
+
+.block_course_observation_notification .cloakable * {
+    font-size: 9px;
+}
+
+.block_course_observation_notification .empty {
+    line-height: 15px;
+}
+
+.block_course_observation_notification .empty img {
+    float: left;
+    height: 15px;
+    margin-right: 4px;
+    width: 15px;
+}
+
+.block_course_observation_notification .excess {
+    color: rgb(205,0,0);
+    font-weight: bold;
+    margin-top: 4px;
+    padding: 4px 16px;
+    text-align: center;
+}

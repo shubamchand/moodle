@@ -43,7 +43,7 @@ class qtype_essayautograde_walkthrough_testcase extends qbehaviour_walkthrough_t
         $this->assertTag($arr, $this->currentoutput);
 
         if ($content) {
-            $this->assertRegExp('/' . preg_quote(s($content), '/') . '/', $this->currentoutput);
+            $this->assertMatchesRegularExpression('/' . preg_quote(s($content), '/') . '/', $this->currentoutput);
         }
     }
 
@@ -121,7 +121,7 @@ class qtype_essayautograde_walkthrough_testcase extends qbehaviour_walkthrough_t
         $this->check_current_state(question_state::$gradedwrong);
         $this->check_current_mark(0.0);
         $this->render();
-        $this->assertRegExp('/' . preg_quote($response, '/') . '/', $this->currentoutput);
+        $this->assertMatchesRegularExpression('/' . preg_quote($response, '/') . '/', $this->currentoutput);
         $this->check_current_output(
                 $this->get_contains_question_text_expectation($q),
                 $this->get_contains_general_feedback_expectation($q));
@@ -173,36 +173,37 @@ class qtype_essayautograde_walkthrough_testcase extends qbehaviour_walkthrough_t
         $this->check_current_state(question_state::$gradedwrong);
         $this->check_current_mark(0.0);
         $this->render();
-        $this->assertRegExp('/' . preg_quote(s($response), '/') . '/', $this->currentoutput);
+        $this->assertMatchesRegularExpression('/' . preg_quote(s($response), '/') . '/', $this->currentoutput);
         $this->check_current_output(
                 $this->get_contains_question_text_expectation($q),
                 $this->get_contains_general_feedback_expectation($q));
     }
 
     public function test_responsetemplate() {
-        $this->test_editorfield('responsetemplate');
+        $this->check_editorfield('responsetemplate');
     }
 
     public function test_responsesample() {
-        $this->test_editorfield('responsesample');
+        $this->check_editorfield('responsesample');
     }
 
     /**
-     * test_responseformatsample
+     * check_editorfield
      *
      * @param string $fieldname the name of the editor field
      * @return void, but will test fiield behavior
      */
-    public function test_editorfield($editofieldname) {
+    protected function check_editorfield($editorfieldname) {
         global $PAGE;
 
         // The current text editor depends on the users profile setting - so it needs a valid user.
         $this->setAdminUser();
+
         // Required to init a text editor.
         $PAGE->set_url('/');
 
         // Create an essayautograde question.
-        $q = test_question_maker::make_question('essayautograde', $editofieldname);
+        $q = test_question_maker::make_question('essayautograde', $editorfieldname);
         $this->start_attempt_at_question($q, 'deferredfeedback', 1);
 
         $prefix = $this->quba->get_field_prefix($this->slot);
@@ -212,7 +213,6 @@ class qtype_essayautograde_walkthrough_testcase extends qbehaviour_walkthrough_t
         $this->check_current_state(question_state::$todo);
         $this->check_current_mark(null);
         $this->render();
-        $this->check_contains_textarea('answer', 'Once upon a time');
         $this->check_current_output(
                 $this->get_contains_question_text_expectation($q),
                 $this->get_does_not_contain_feedback_expectation());
@@ -244,7 +244,7 @@ class qtype_essayautograde_walkthrough_testcase extends qbehaviour_walkthrough_t
         $this->check_current_state(question_state::$gradedwrong);
         $this->check_current_mark(0.0);
         $this->render();
-        $this->assertRegExp('/' . preg_quote(s('Once upon a time there was a little green frog.'), '/') . '/',
+        $this->assertMatchesRegularExpression('/' . preg_quote(s('Once upon a time there was a little green frog.'), '/') . '/',
              $this->currentoutput);
         $this->check_current_output(
                 $this->get_contains_question_text_expectation($q),
@@ -444,7 +444,7 @@ class qtype_essayautograde_walkthrough_testcase extends qbehaviour_walkthrough_t
         // Check the display.
         $this->load_quba();
         $this->render();
-        $this->assertRegExp('/I refuse to draw you a picture, so there!/', $this->currentoutput);
+        $this->assertMatchesRegularExpression('/I refuse to draw you a picture, so there!/', $this->currentoutput);
     }
 
     public function test_deferred_feedback_plain_attempt_on_last() {
@@ -503,9 +503,9 @@ class qtype_essayautograde_walkthrough_testcase extends qbehaviour_walkthrough_t
         $this->load_quba();
         $this->render();
         // Test taht no HTML comment has been added to the response.
-        $this->assertRegExp('/Once upon a time there was a frog called Freddy. He lived happily ever after.(?!&lt;!--)/',
+        $this->assertMatchesRegularExpression('/Once upon a time there was a frog called Freddy. He lived happily ever after.(?!&lt;!--)/',
              $this->currentoutput);
         // Test for the hash of an empty file area.
-        $this->assertNotContains('d41d8cd98f00b204e9800998ecf8427e', $this->currentoutput);
+        $this->assertStringNotContainsString('d41d8cd98f00b204e9800998ecf8427e', $this->currentoutput);
     }
 }

@@ -128,7 +128,22 @@ function message_send(\core\message\message $eventdata) {
                 );
             }
         } else {
-            if (!$conversationid = \core_message\api::get_conversation_between_users([$eventdata->userfrom->id,
+           if(isset($eventdata->is_trainer_message) && !empty($eventdata->is_trainer_message)){ // IF ELSE CONDITION BY added by nirmal message AND LOGIC ADDED IN IF CONDITION else if default logic
+               
+                $conversation = \core_message\api::create_conversation(
+                    \core_message\api::MESSAGE_CONVERSATION_TYPE_GROUP,
+                    [
+                        $eventdata->userfrom->id,
+                        $eventdata->userto->id
+                    ],
+                    $eventdata->trainer_group_name,
+                    \core_message\api::MESSAGE_CONVERSATION_ENABLED,
+                    'core_group',
+                    'groups',
+                );
+
+            } else {
+                 if (!$conversationid = \core_message\api::get_conversation_between_users([$eventdata->userfrom->id,
                                                                                       $eventdata->userto->id])) {
                 // It's a private conversation between users.
                 $conversation = \core_message\api::create_conversation(
@@ -138,6 +153,7 @@ function message_send(\core\message\message $eventdata) {
                         $eventdata->userto->id
                     ]
                 );
+                }
             }
         }
         // We either have found a conversation, or created one.

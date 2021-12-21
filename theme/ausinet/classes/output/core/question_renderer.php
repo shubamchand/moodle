@@ -139,7 +139,7 @@ class question_renderer extends \core_question_renderer {
 		    $questioninfo .= html_writer::start_tag('div', array('class' => 'compliance-question'));
 		    $questioninfo .= html_writer::start_tag('a', array('class' => 'compliancequestion compliancequestion1','id'=>$number, 'title' => 'Compliance '.$number,'href' => 'javascript:void(0);'),
 		        'title="Question". $number href="javascript:void(0);" ');
-		    if(($siteenablehelp == 1 && $quiz->enablehelp == 1 &&  $quiz_attempts->attempt >= $quiz->helpafterattempt) || ($cm ? has_capability('mod/quiz:manage',\context_module::instance($cm->id)) : TRUE)){
+		    if(($cm ? has_capability('mod/quiz:manage',\context_module::instance($cm->id)) : TRUE)){
             //   $questioninfo .= $this->pix_icon('docs','More information', '',$attributes);
             //   $questioninfo .= '<a id="'.$number.'" class="compliancequestion" title="Compliance" href="javascript:void(0);"> '.("Compliance").'</a>';
               $questioninfo .= 'Compliance';

@@ -223,7 +223,29 @@ class notes{
 		WHERE id = ?';
 		$params = array($cmcid);
 		$result = $DB->execute($sql, $params);
+		$this->updateObservation($cmcid, $cmc); // added by nirmal
 		return $result;
+	}
+
+	// added by nirmal for observation
+	public function updateObservation($cmcid, $cmc){
+		global $DB;
+		$check_record = $DB->get_record('course_modules_completion_observation',
+			array(
+				'coursemoduleid' => $cmc->coursemoduleid,
+				'userid' => $cmc->userid
+			),
+			'*'
+		);
+		if($check_record){
+			$sql = 'UPDATE {course_modules_completion_observation} 
+			SET completionstate = '. $cmc->completionstate .'
+			WHERE coursemoduleid = ? and userid = ?';
+		
+			$params = array($cmc->coursemoduleid,$cmc->userid);
+			$result = $DB->execute($sql, $params);
+			return $result;
+		}	
 	}
 	
 	private function update_note($noteid, $note){

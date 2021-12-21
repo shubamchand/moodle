@@ -255,6 +255,128 @@ class completion_info {
         $this->course_id = $course->id;
     }
 
+
+     public function process_for_observation($userid){
+        $qContext = context_course::instance($this->course->id);
+        if (!has_capability('mod/quiz:manage', $qContext)) {
+            global $DB;
+            $modinfo = get_fast_modinfo($this->course);
+            $modnamesused = $modinfo->get_used_module_names();
+            $mods = $modinfo->get_cms();
+            $sec_data = $modinfo->get_sections();
+            $sectionsData = $modinfo->get_section_info_all();
+            $sectionmods = array();
+            $i = 1;foreach($modinfo->sections as $section=>$sections){
+                $output[$i] = array(
+                    "activityinfo" => array(),
+                    "progressinfo" => array(),
+                );
+                if (empty($modinfo->sections[$section])) {
+                    return $output[$i];
+                }
+                // Generate array with count of activities in this section.
+                
+                $total = 0;
+                $complete = 0;
+                $cancomplete = isloggedin() && !isguestuser();
+                // $completioninfo = new \completion_info($course);
+                foreach ($modinfo->sections[$section] as $cmid) {
+                    $thismod = $modinfo->cms[$cmid];
+                    if ($thismod->modname == 'label') {
+                        // Labels are special (not interesting for students)!
+                        continue;
+                    }
+            
+                    if ($thismod->uservisible) {    
+                        if (isset($sectionmods[$thismod->modname])) {
+                            $sectionmods[$section][$cmid]['name'] = $thismod->modname;
+                            $sectionmods[$section][$cmid]['cmname'] = $thismod->name;
+                            $sectionmods[$section][$cmid]['count']++;
+                        } else {
+                            $sectionmods[$section][$cmid]['name'] = $thismod->modname;
+                            $sectionmods[$section][$cmid]['cmname'] = $thismod->name;
+                            $sectionmods[$section][$cmid]['count'] = 1;
+                        }
+                        $sectionmods[$section][$cmid]['cmid'] = $cmid; // added by nirmal
+                        $sectionmods[$section][$cmid]['section'] = $sectionsData[$section]->id; // added by nirmal
+                        if ($cancomplete && $this->is_enabled($thismod) != COMPLETION_TRACKING_NONE) {
+                            $total++;
+                            $completiondata = $this->get_data($thismod, true);
+                            $sectionmods[$section][$cmid]['completed'] = 0; // added by nirmal
+                            if ($completiondata->completionstate == COMPLETION_COMPLETE ||
+                                    $completiondata->completionstate == COMPLETION_COMPLETE_PASS) {
+                                $complete++;
+                                $sectionmods[$section][$cmid]['completed'] = 1; // added by nirmal
+                            }
+                        } else {
+                            $sectionmods[$section][$cmid]['completed'] = 'none';
+                            unset($sectionmods[$section][$cmid]);
+                        }
+                    }
+                }
+                
+            $i++;}
+            //  echo '<pre>';
+            // print_r($sectionmods);
+            // echo '</pre>';
+            // exit;
+            $course_complete = true;
+            foreach($sectionmods as $section => $modules){
+                $section_complete = true;
+                $has_only_observation = true;
+                foreach($modules as $cmid => $module){
+                    if($module['completed']==0 && $module['name']!=='observation'){
+                        $section_complete = false;
+                        $course_complete = false;
+                        $has_only_observation = false;
+                    } else if($module['completed']==0 && $module['name']=='observation' && $section_complete && !$has_only_observation){ // count !=1 check if its not only observation 
+                            $check_recored = $DB->get_records('course_modules_completion_observation',
+                                array(
+                                    'coursemoduleid' => $cmid,
+                                    'userid' => $userid,
+                                    'section_id' => $module['section'],
+                                )
+                            );
+                            if(empty($check_recored)){
+                                // insert record
+                                $inserObject = new \stdClass();
+                                $inserObject->coursemoduleid = $cmid;
+                                $inserObject->userid = $userid;
+                                $inserObject->section_id = $module['section'];
+                                $inserObject->courseid = $this->course->id;
+                                $DB->insert_record('course_modules_completion_observation', $inserObject);
+                            }
+                        // insert observation for each module
+                    } else if($module['completed']==0 && $has_only_observation && $course_complete){
+                            $check_recored = $DB->get_records('course_modules_completion_observation',
+                                    array(
+                                        'coursemoduleid' => $cmid,
+                                        'userid' => $userid,
+                                        'section_id' => $module['section'],
+                                    )
+                                );
+                                if(empty($check_recored)){
+                                    // insert record
+                                    $inserObject = new \stdClass();
+                                    $inserObject->coursemoduleid = $cmid;
+                                    $inserObject->userid = $userid;
+                                    $inserObject->section_id = $module['section'];
+                                    $inserObject->courseid = $this->course->id;
+                                    $DB->insert_record('course_modules_completion_observation', $inserObject);
+                                }
+
+                    } else {
+                        $has_only_observation = false;
+                    }
+            
+                }
+            }
+        }
+
+       
+    }
+
+
     /**
      * Determines whether completion is enabled across entire site.
      *

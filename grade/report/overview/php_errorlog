@@ -345,3 +345,8 @@ Error code: nopermissions
 [04-Nov-2021 08:08:54 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
 [09-Nov-2021 05:52:03 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
 [09-Nov-2021 06:02:43 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[23-Nov-2021 15:40:22 Australia/Darwin] Default exception handler: Sorry, but you do not currently have permissions to do that (View grades of other users). Debug: 
+Error code: nopermissions
+* line 860 of /lib/accesslib.php: required_capability_exception thrown
+* line 51 of /grade/report/overview/index.php: call to require_capability()
+

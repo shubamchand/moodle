@@ -785,7 +785,15 @@ class mod_quiz_renderer extends plugin_renderer_base {
         $output .= $this->view_table($quiz, $context, $viewobj);
         $output .= $this->view_result_info($quiz, $context, $cm, $viewobj);
         $output .= $this->box($this->view_page_buttons($viewobj), 'quizattempt');
+        $output .= $this->showAttempAvailable($quiz, $context, $cm, $viewobj); // added by nirmal
         return $output;
+    }
+
+    // added by nirmal for showing attempt available
+    public function showAttempAvailable($quiz, $context, $cm, $viewobj){
+        if($viewobj->attempt_available<=0){
+            return '';
+        } else return html_writer::tag('p', get_string('attemptavailable', 'quiz',array('count' => $viewobj->attempt_available)),array('class' => 'quizattemptavailable'));
     }
 
     /**
@@ -1354,6 +1362,8 @@ class mod_quiz_view_object {
     public $popupoptions;
     /** @var bool $quizhasquestions whether the quiz has any questions. */
     public $quizhasquestions;
+    /** @var int $attempt_available contains the difference of attempt in settting and attempt compeleted. **/ 
+    public $attempt_available;
 
     public function __get($field) {
         switch ($field) {

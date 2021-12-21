@@ -99,6 +99,19 @@ class core_message_external extends external_api {
             ]);
             $messages[] = $createdmessage;
         }
+        
+        if(!empty($message)){
+            $data = json_encode([
+                'conversationid' => $conversationid,
+                'userid' => $USER->id,
+                'message_sent' => 'Message Sent',
+                'user_event' => 'new_message',
+                'messages' => $messages,
+                'user_from' => $USER->firstname.' '.$USER->lastname
+
+            ]);
+            self::send_push_notification($data,'new_message_conversation');
+        }
 
         return $messages;
     }
@@ -2504,7 +2517,7 @@ class core_message_external extends external_api {
      */
     public static function get_conversation_messages(int $currentuserid, int $convid, int $limitfrom = 0, int $limitnum = 0,
                                                          bool $newest = false, int $timefrom = 0) {
-        global $CFG, $USER;
+        global $CFG, $USER, $PAGE, $DB;
 
         // Check if messaging is enabled.
         if (empty($CFG->messaging)) {
@@ -2530,7 +2543,26 @@ class core_message_external extends external_api {
 
         // Check that the user belongs to the conversation.
         if (!\core_message\api::is_user_in_conversation($params['currentuserid'], $params['convid'])) {
-            throw new moodle_exception('User is not part of conversation.');
+            // added by nirmal message
+            //  check here if conversation is a group conversation and user is trainer
+            $context = $PAGE->context; // added by nirmal message
+            if (has_capability('moodle/course:update', $context) || has_capability('mod/quiz:create', $context) || has_capability('mod/quiz:manage', $context) || has_capability('moodle/question:add', $context)) {
+                // if (has_capability('moodle/course:manageactivities', $context)) { // added by nirmal message
+                $check_record = $DB->get_record('message_conversations', array('id' =>$convid,'component' => 'core_group','itemtype' => 'groups'));
+                if(!$check_record->itemid && !$check_record->contextid){ // double confirming that it is a trainer chat
+                    // add to conversation list
+                    $obj = new stdClass;
+                    $obj->conversationid  = (int) $convid;
+                    $obj->userid  = (int) $currentuserid;
+                    $obj->timecreated  = time();
+                    $DB->insert_record('message_conversation_members', $obj);
+
+                }else {
+                    throw new moodle_exception('User is not part of conversation.');
+                }
+            } else {
+                throw new moodle_exception('User is not part of conversation.');
+            }
         }
 
         $sort = $newest ? 'timecreated DESC' : 'timecreated ASC';
@@ -4935,4 +4967,294 @@ class core_message_external extends external_api {
     public static function delete_message_for_all_users_returns() {
         return new external_warnings();
     }
+
+    /* Added by nirmal for message */
+
+     /**
+     * Return the structure of a message area message.
+     *
+     * @return external_single_structure
+     * @since Moodle 3.6
+     */
+    private static function get_add_trainer_to_conversation_structure() { // added by nirmal message
+        return new external_single_structure(
+            array(
+                'userid' => new external_value(PARAM_INT, 'The id of the user'),
+                'conversationid' => new external_value(PARAM_INT, 'The id of id of the conversation'),
+                'type' => new external_value(PARAM_INT, 'The type  of conversation event')
+            )
+        );
+    }
+
+     /**
+     * Returns description of method parameters
+     *
+     * @return external_function_parameters
+     * @since Moodle 2.2
+     */
+    public static function send_instant_messages_trainer_parameters() { // added by nirmal message
+        return new external_function_parameters(
+            array(
+                'messages' => new external_multiple_structure(
+                    new external_single_structure(
+                        array(
+                            'touserid' => new external_value(PARAM_INT, 'id of the user to send the private message'),
+                            'text' => new external_value(PARAM_RAW, 'the text of the message'),
+                            'textformat' => new external_format_value('text', VALUE_DEFAULT, FORMAT_MOODLE),
+                            'clientmsgid' => new external_value(PARAM_ALPHANUMEXT, 'your own client id for the message. If this id is provided, the fail message id will be returned to you', VALUE_OPTIONAL),
+                        )
+                    )
+                )
+            )
+        );
+    }
+
+
+    public static function add_trainer_to_conversation_parameters() { // added by nirmal
+        return new external_function_parameters(
+            array(
+                'conversationid' => new external_value(PARAM_INT, 'id of the conversation'),
+                'userid' => new external_value(PARAM_INT, 'id of the trainer to add to conversation'),
+                'type' => new external_value(PARAM_INT, 'The type  of conversation event')
+               
+            )
+        );
+    }
+
+    
+    public static function send_push_notification($data,$event='event_typing'){
+      
+        $app_id = '1316560';
+        $app_key = '03537f8d0e9c7622f362';
+        $app_secret = '660f6f15f7944ce4fc55';
+        $app_cluster = 'ap4';
+        $auth_version = '1.0';
+
+        $port=80;
+        $payload = json_encode([
+            'name' => $event,
+            'channels' => ['brief-star-163'],
+            'data' => $data
+            
+            ]);
+        $debug=false;
+        $host='http://api.pusherapp.com';
+        $port=80;
+        $timeout=30;
+
+
+        $sUrl="/apps/{$app_id}/events";
+    
+        #signature
+        $signature="POST\n".$sUrl."\n";
+        if($encode) $payload=json_encode($payload);
+        $query= "auth_key={$app_key}&auth_timestamp=".time()
+                ."&auth_version=".$auth_version."&body_md5=".md5($payload);
+        if($socketId!==null) $query.="&socket_id={$socketId}";
+        
+        $authSignature=hash_hmac('sha256',$signature.$query,$app_secret,false);
+        $signedQuery="{$query}&auth_signature={$authSignature}";
+        $url="$host:{$port}{$sUrl}?$signedQuery";
+        
+        $ch=curl_init();  
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch,CURLOPT_HTTPHEADER,array("Content-Type: application/json","Accept: application/json"));
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch,CURLOPT_POST,1);
+        curl_setopt($ch,CURLOPT_POSTFIELDS,$payload);
+        curl_setopt($ch,CURLOPT_TIMEOUT,$timeout);
+
+        $response=curl_exec($ch);
+        curl_close($ch);
+    }
+
+    /**
+     * Add trainer to conversation so that trianer could access message send by the user.
+     *
+     * This conversation is group type conversation.
+     *
+     * @param int $conversationid the id of the conversation to which the messages will be sent.
+     * @param array $userid An id of user to add to conversation.
+     * @since Moodle 3.6
+     */
+    public static function add_trainer_to_conversation(int $conversationid, int $userid, int $type) { // added by nirmal
+        global $USER;
+        $data = json_encode([
+            'conversationid' => $conversationid,
+            'userid' => $USER->id,
+            'message_sent' => 'Message Sent',
+            'user_event' => $type==1?$USER->username.' is typing..':''
+        ]);
+        self::send_push_notification($data);
+        $event = 'event_typing';
+        
+        
+        $response = [];
+        $response[] =  [
+            'conversationid' => $conversationid,
+            'userid' => $userid,
+            'type' => $type
+        ];
+        return $response;
+    
+
+    }
+
+
+     /**
+     * Returns description of method result value.
+     *
+     * @return external_description
+     * @since Moodle 3.6
+     */
+    public static function add_trainer_to_conversation_returns() { // added by nirmal message
+        return new external_multiple_structure(
+            self::get_add_trainer_to_conversation_structure()
+        );
+    }
+    /**
+     * Send public messages from the current USER to other trainer
+     * Will assing receiver a default trainer and later other user can also join the conversation
+     *
+     * @param array $messages An array of message to send.
+     * @return array
+     * @since Moodle 2.2
+     */
+    public static function send_instant_messages_trainer($messages = array()) { // added by nirmal message
+        global $CFG, $USER, $DB;
+
+        // Check if messaging is enabled.
+        if (empty($CFG->messaging)) {
+            throw new moodle_exception('disabled', 'message');
+        }
+
+        // Ensure the current user is allowed to run this function
+        $context = context_system::instance();
+        self::validate_context($context);
+        require_capability('moodle/site:sendmessage', $context);
+
+        // Ensure the current user is allowed to delete message for everyone.
+        $candeletemessagesforallusers = has_capability('moodle/site:deleteanymessage', $context);
+
+        $params = self::validate_parameters(self::send_instant_messages_parameters(), array('messages' => $messages));
+
+        //retrieve all tousers of the messages
+        $receivers = array();
+        foreach($params['messages'] as $message) {
+        $receivers[] = $message['touserid']; // get master trainer here
+        }
+        list($sqluserids, $sqlparams) = $DB->get_in_or_equal($receivers);
+        $tousers = $DB->get_records_select("user", "id " . $sqluserids . " AND deleted = 0", $sqlparams);
+
+        $resultmessages = array();
+        $messageids = array();
+        foreach ($params['messages'] as $message) {
+            $resultmsg = array(); //the infos about the success of the operation
+
+            // We are going to do some checking.
+            // Code should match /messages/index.php checks.
+            $success = true;
+
+            // Check the user exists.
+            if (empty($tousers[$message['touserid']])) {
+                $success = false;
+                $errormessage = get_string('touserdoesntexist', 'message', $message['touserid']);
+            }
+
+            // TODO MDL-31118 performance improvement - edit the function so we can pass an array instead userid
+            // Check if the recipient can be messaged by the sender.
+            if ($success && !\core_message\api::can_send_message($tousers[$message['touserid']]->id, $USER->id)) {
+                $success = false;
+                $errormessage = get_string('usercantbemessaged', 'message', fullname(\core_user::get_user($message['touserid'])));
+            }
+
+            // Now we can send the message (at least try).
+            if ($success) {
+                // TODO MDL-31118 performance improvement - edit the function so we can pass an array instead one touser object.
+                $success = message_post_message($USER, $tousers[$message['touserid']],
+                        $message['text'], external_validate_format($message['textformat']),true); // true parameter added by nirmal message in message_post_message
+            }
+
+            // Build the resultmsg.
+            if (isset($message['clientmsgid'])) {
+                $resultmsg['clientmsgid'] = $message['clientmsgid'];
+            }
+            if ($success) {
+                $resultmsg['msgid'] = $success;
+                $resultmsg['timecreated'] = time();
+                $resultmsg['candeletemessagesforallusers'] = $candeletemessagesforallusers;
+                $messageids[] = $success;
+            } else {
+                // WARNINGS: for backward compatibility we return this errormessage.
+                //          We should have thrown exceptions as these errors prevent results to be returned.
+                // See http://docs.moodle.org/dev/Errors_handling_in_web_services#When_to_send_a_warning_on_the_server_side .
+                $resultmsg['msgid'] = -1;
+                $resultmsg['errormessage'] = $errormessage;
+            }
+
+            $resultmessages[] = $resultmsg;
+        }
+
+        if (!empty($messageids)) {
+            $messagerecords = $DB->get_records_list(
+                'messages',
+                'id',
+                $messageids,
+                '',
+                'id, conversationid, smallmessage, fullmessageformat, fullmessagetrust');
+            $resultmessages = array_map(function($resultmessage) use ($messagerecords, $USER) {
+                $id = $resultmessage['msgid'];
+                $resultmessage['conversationid'] = isset($messagerecords[$id]) ? $messagerecords[$id]->conversationid : null;
+                $resultmessage['useridfrom'] = $USER->id;
+                $resultmessage['text'] = message_format_message_text((object) [
+                    'smallmessage' => $messagerecords[$id]->smallmessage,
+                    'fullmessageformat' => external_validate_format($messagerecords[$id]->fullmessageformat),
+                    'fullmessagetrust' => $messagerecords[$id]->fullmessagetrust
+                ]);
+                return $resultmessage;
+            }, $resultmessages);
+        }
+
+        if(!empty($resultmessages)){
+            $data = json_encode([
+                'conversationid' => $resultmessages[0]['conversationid'],
+                'userid' => $USER->id,
+                'message_sent' => 'Message Sent',
+                'user_event' => 'new_message_new_conversation',
+                'messages' => $resultmessages,
+                'user_from' => $USER->firstname.' '.$USER->lastname
+
+            ]);
+            self::send_push_notification($data,'new_message_trainer');
+        }
+
+        return $resultmessages;
+    }
+
+
+      /**
+     * Returns description of method result value
+     *
+     * @return external_description
+     * @since Moodle 2.2
+     */
+    public static function send_instant_messages_trainer_returns() { // added by nirmal message
+        return new external_multiple_structure(
+            new external_single_structure(
+                array(
+                    'msgid' => new external_value(PARAM_INT, 'test this to know if it succeeds:  id of the created message if it succeeded, -1 when failed'),
+                    'clientmsgid' => new external_value(PARAM_ALPHANUMEXT, 'your own id for the message', VALUE_OPTIONAL),
+                    'errormessage' => new external_value(PARAM_TEXT, 'error message - if it failed', VALUE_OPTIONAL),
+                    'text' => new external_value(PARAM_RAW, 'The text of the message', VALUE_OPTIONAL),
+                    'timecreated' => new external_value(PARAM_INT, 'The timecreated timestamp for the message', VALUE_OPTIONAL),
+                    'conversationid' => new external_value(PARAM_INT, 'The conversation id for this message', VALUE_OPTIONAL),
+                    'useridfrom' => new external_value(PARAM_INT, 'The user id who sent the message', VALUE_OPTIONAL),
+                    'candeletemessagesforallusers' => new external_value(PARAM_BOOL,
+                        'If the user can delete messages in the conversation for all users', VALUE_DEFAULT, false),
+                )
+            )
+        );
+    }
+
+
 }

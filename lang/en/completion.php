@@ -144,6 +144,10 @@ $string['hiddenrules'] = 'Some settings specific to <b>{$a}</b> have been hidden
 $string['editcoursecompletionsettings'] = 'Edit course completion settings';
 $string['enablecompletion'] = 'Enable completion tracking';
 $string['enablecompletion_help'] = 'If enabled, activity completion conditions may be set in the activity settings and/or course completion conditions may be set. It is recommended to have this enabled so that meaningful data is displayed in the course overview on the Dashboard.';
+$string['completionnotify'] = 'Send completion email to Current student only:'; // added by nirmal for disabling notification on course
+$string['completionnotify_help'] = '‘Yes’ means send email to Active students only in this course
+‘No’ means send email all students in this course. 
+Active means enrolment is not expired or ended in this course';
 $string['enrolmentduration'] = 'Enrolment duration';
 $string['enrolmentdurationlength'] = 'User must remain enrolled for';
 $string['err_noactivities'] = 'Completion information is not enabled for any activity, so none can be displayed. You can enable completion information by editing the settings for an activity.';

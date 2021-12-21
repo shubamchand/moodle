@@ -15,6 +15,8 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+ * Strings for component 'qtype_mtf', language 'en'
+ *
  * @package     qtype_mtf
  * @author      Amr Hourani (amr.hourani@id.ethz.ch)
  * @author      Martin Hanusch (martin.hanusch@let.ethz.ch)
@@ -41,9 +43,6 @@ $string['false'] = 'False';
 $string['feedbackforoption'] = 'Feedback for';
 $string['generalfeedback'] = 'General Feedback.';
 $string['generalfeedback_help'] = 'The same general feedback is displayed regardless of the answer chosen. <br />Use general feedback e.g. to explain the correct answers or give students a link to additional information.';
-/* for compliance field added here */
-$string['compliance'] = 'Compliance';
-$string['compliance_help'] = 'Compliance Help';
 $string['maxpoints'] = 'Max. points';
 $string['mustsupplyresponses'] = 'You must supply values for all responses.';
 $string['mustsupplyvalue'] = 'You must supply a value here.';

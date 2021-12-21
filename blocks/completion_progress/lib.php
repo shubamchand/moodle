@@ -26,116 +26,212 @@ defined('MOODLE_INTERNAL') || die;
 
 require_once($CFG->libdir.'/completionlib.php');
 
-// Global defaults.
+/**
+ * Default number of cells per row in wrap mode.
+ */
 const DEFAULT_COMPLETIONPROGRESS_WRAPAFTER = 16;
+
+/**
+ * Default presentation mode for long bars: squeeze, scroll, or wrap.
+ */
 const DEFAULT_COMPLETIONPROGRESS_LONGBARS = 'squeeze';
-const DEFAULT_COMPLETIONPROGRESS_SCROLLCELLWIDTH = 25;
+
+/**
+ * Default course name (long/short) to show on Dashboard pages.
+ */
 const DEFAULT_COMPLETIONPROGRESS_COURSENAMETOSHOW = 'shortname';
+
+/**
+ * Default display of inactive students on the overview page.
+ */
 const DEFAULT_COMPLETIONPROGRESS_SHOWINACTIVE = 0;
+
+/**
+ * Default display of student 'last in course' time on overview page.
+ */
 const DEFAULT_COMPLETIONPROGRESS_SHOWLASTINCOURSE = 1;
+
+/**
+ * Default forcing the display of status icons in bar cells.
+ */
 const DEFAULT_COMPLETIONPROGRESS_FORCEICONSINBAR = 0;
+
+/**
+ * Default display of status icons in bar cells.
+ */
 const DEFAULT_COMPLETIONPROGRESS_PROGRESSBARICONS = 0;
+
+/**
+ * Default cell sort order mode: orderbytime or orderbycourse.
+ */
 const DEFAULT_COMPLETIONPROGRESS_ORDERBY = 'orderbytime';
+
+/**
+ * Default display of progress percentage in block.
+ */
 const DEFAULT_COMPLETIONPROGRESS_SHOWPERCENTAGE = 0;
+
+/**
+ * Default choice of activites included: activitycompletion or selectedactivities.
+ */
 const DEFAULT_COMPLETIONPROGRESS_ACTIVITIESINCLUDED = 'activitycompletion';
 
 /**
  * Finds submissions for a user in a course
  *
- * @param int    courseid ID of the course
- * @param int    userid   ID of user in the course
- * @return array Course module IDS submissions
+ * @param int    $courseid ID of the course
+ * @param int    $userid   ID of user in the course, or 0 for all
+ * @return array Course module IDs submissions
  */
-function block_completion_progress_student_submissions($courseid, $userid) {
-    global $DB;
+function block_completion_progress_submissions($courseid, $userid = 0) {
+    global $DB, $CFG;
+
+    require_once($CFG->dirroot . '/mod/quiz/lib.php');
 
     $submissions = array();
-    $params = array('courseid' => $courseid, 'userid' => $userid);
-
-    // Queries to deliver instance IDs of activities with submissions by user.
-    $queries = array (
-        'assign' => "SELECT c.id
-                       FROM {assign_submission} s, {assign} a, {modules} m, {course_modules} c
-                      WHERE s.userid = :userid
-                        AND s.latest = 1
-                        AND s.status = 'submitted'
-                        AND s.assignment = a.id
-                        AND a.course = :courseid
-                        AND m.name = 'assign'
-                        AND m.id = c.module
-                        AND c.instance = a.id",
-        'workshop' => "SELECT DISTINCT c.id
-                         FROM {workshop_submissions} s, {workshop} w, {modules} m, {course_modules} c
-                        WHERE s.authorid = :userid
-                          AND s.workshopid = w.id
-                          AND w.course = :courseid
-                          AND m.name = 'workshop'
-                          AND m.id = c.module
-                          AND c.instance = w.id",
-        'quiz'=> "SELECT DISTINCT c.id  FROM {quiz_attempts} qa,  {quiz} q, {modules} m, {course_modules} c "
-        . "  WHERE qa.userid=:userid "
-        . "AND qa.quiz=q.id "
-        . "AND  q.course=:courseid  "
-        . "AND m.name = 'quiz'"
-        . "AND m.id = c.module "
-        . "AND c.instance = q.id  "
+    $params = array(
+        'courseid' => $courseid,
     );
 
-    foreach ($queries as $moduletype => $query) {
-        $results = $DB->get_records_sql($query, $params);
-        foreach ($results as $cmid => $obj) {
-            $submissions[] = $cmid;
-        }
+    if ($userid) {
+        $assignwhere = 'AND s.userid = :userid';
+        $workshopwhere = 'AND s.authorid = :userid';
+        $quizwhere = 'AND qa.userid = :userid';
+
+        $params += [
+          'userid' => $userid,
+        ];
+    } else {
+        $assignwhere = '';
+        $workshopwhere = '';
+        $quizwhere = '';
     }
-  
-    return $submissions;
-}
-
-/**
- * Finds submissions for users in a course
- *
- * @param int    courseid   ID of the course
- * @return array Mapping of userid-cmid pairs for submissions
- */
-function block_completion_progress_course_submissions($courseid) {
-    global $DB;
-
-    $submissions = array();
-    $params = array('courseid' => $courseid);
 
     // Queries to deliver instance IDs of activities with submissions by user.
     $queries = array (
-        'assign' => "SELECT ". $DB->sql_concat('s.userid', "'-'", 'c.id') ."
-                       FROM {assign_submission} s, {assign} a, {modules} m, {course_modules} c
+        [
+            // Assignments with individual submission, or groups requiring a submission per user,
+            // or ungrouped users in a group submission situation.
+            'module' => 'assign',
+            'query' => "SELECT ". $DB->sql_concat('s.userid', "'-'", 'c.id') ." AS id,
+                         s.userid, c.id AS cmid,
+                         MAX(CASE WHEN ag.grade IS NULL OR ag.grade = -1 THEN 0 ELSE 1 END) AS graded
+                      FROM {assign_submission} s
+                        INNER JOIN {assign} a ON s.assignment = a.id
+                        INNER JOIN {course_modules} c ON c.instance = a.id
+                        INNER JOIN {modules} m ON m.name = 'assign' AND m.id = c.module
+                        LEFT JOIN {assign_grades} ag ON ag.assignment = s.assignment
+                              AND ag.attemptnumber = s.attemptnumber
+                              AND ag.userid = s.userid
                       WHERE s.latest = 1
                         AND s.status = 'submitted'
-                        AND s.assignment = a.id
                         AND a.course = :courseid
-                        AND m.name = 'assign'
-                        AND m.id = c.module
-                        AND c.instance = a.id",
-        'workshop' => "SELECT ". $DB->sql_concat('s.authorid', "'-'", 'c.id') ."
+                        AND (
+                            a.teamsubmission = 0 OR
+                            (a.teamsubmission <> 0 AND a.requireallteammemberssubmit <> 0 AND s.groupid = 0) OR
+                            (a.teamsubmission <> 0 AND a.preventsubmissionnotingroup = 0 AND s.groupid = 0)
+                        )
+                        $assignwhere
+                    GROUP BY s.userid, c.id",
+            'params' => [ ],
+        ],
+
+        [
+            // Assignments with groups requiring only one submission per group.
+            'module' => 'assign',
+            'query' => "SELECT ". $DB->sql_concat('s.userid', "'-'", 'c.id') ." AS id,
+                         s.userid, c.id AS cmid,
+                         MAX(CASE WHEN ag.grade IS NULL OR ag.grade = -1 THEN 0 ELSE 1 END) AS graded
+                      FROM {assign_submission} gs
+                        INNER JOIN {assign} a ON gs.assignment = a.id
+                        INNER JOIN {course_modules} c ON c.instance = a.id
+                        INNER JOIN {modules} m ON m.name = 'assign' AND m.id = c.module
+                        INNER JOIN {groups_members} s ON s.groupid = gs.groupid
+                        LEFT JOIN {assign_grades} ag ON ag.assignment = gs.assignment
+                              AND ag.attemptnumber = gs.attemptnumber
+                              AND ag.userid = s.userid
+                      WHERE gs.latest = 1
+                        AND gs.status = 'submitted'
+                        AND gs.userid = 0
+                        AND a.course = :courseid
+                        AND (a.teamsubmission <> 0 AND a.requireallteammemberssubmit = 0)
+                        $assignwhere
+                    GROUP BY s.userid, c.id",
+            'params' => [ ],
+        ],
+
+        [
+            'module' => 'workshop',
+            'query' => "SELECT ". $DB->sql_concat('s.authorid', "'-'", 'c.id') ." AS id,
+                           s.authorid AS userid, c.id AS cmid,
+                           1 AS graded
                          FROM {workshop_submissions} s, {workshop} w, {modules} m, {course_modules} c
                         WHERE s.workshopid = w.id
                           AND w.course = :courseid
                           AND m.name = 'workshop'
                           AND m.id = c.module
-                          AND c.instance = w.id",
-         'quiz' => "SELECT " . $DB->sql_concat('qa.userid', "'-'", 'c.id') . ""
-        . " ,qa.id FROM {quiz_attempts} qa,  {quiz} q, {modules} m, {course_modules} c "
-        . "  WHERE   qa.quiz=q.id "
-        . "AND  q.course=:courseid  "
-        . "AND m.name = 'quiz'"
-        . "AND m.id = c.module "
-        . "AND c.instance = q.id  "                  
+                          AND c.instance = w.id
+                          $workshopwhere
+                      GROUP BY s.authorid, c.id",
+            'params' => [ ],
+        ],
+
+        [
+            // Quizzes with 'first' and 'last attempt' grading methods.
+            'module' => 'quiz',
+            'query' => "SELECT ". $DB->sql_concat('qa.userid', "'-'", 'c.id') ." AS id,
+                       qa.userid, c.id AS cmid,
+                       (CASE WHEN qa.sumgrades IS NULL THEN 0 ELSE 1 END) AS graded
+                     FROM {quiz_attempts} qa
+                       INNER JOIN {quiz} q ON q.id = qa.quiz
+                       INNER JOIN {course_modules} c ON c.instance = q.id
+                       INNER JOIN {modules} m ON m.name = 'quiz' AND m.id = c.module
+                    WHERE qa.state = 'finished'
+                      AND q.course = :courseid
+                      AND qa.attempt = (
+                        SELECT CASE WHEN q.grademethod = :gmfirst THEN MIN(qa1.attempt)
+                                    WHEN q.grademethod = :gmlast THEN MAX(qa1.attempt) END
+                        FROM {quiz_attempts} qa1
+                        WHERE qa1.quiz = qa.quiz
+                          AND qa1.userid = qa.userid
+                          AND qa1.state = 'finished'
+                      )
+                      $quizwhere",
+            'params' => [
+                'gmfirst' => QUIZ_ATTEMPTFIRST,
+                'gmlast' => QUIZ_ATTEMPTLAST,
+            ],
+        ],
+        [
+            // Quizzes with 'maximum' and 'average' grading methods.
+            'module' => 'quiz',
+            'query' => "SELECT ". $DB->sql_concat('qa.userid', "'-'", 'c.id') ." AS id,
+                       qa.userid, c.id AS cmid,
+                       MIN(CASE WHEN qa.sumgrades IS NULL THEN 0 ELSE 1 END) AS graded
+                     FROM {quiz_attempts} qa
+                       INNER JOIN {quiz} q ON q.id = qa.quiz
+                       INNER JOIN {course_modules} c ON c.instance = q.id
+                       INNER JOIN {modules} m ON m.name = 'quiz' AND m.id = c.module
+                    WHERE (q.grademethod = :gmmax OR q.grademethod = :gmavg)
+                      AND qa.state = 'finished'
+                      AND q.course = :courseid
+                      $quizwhere
+                   GROUP BY qa.userid, c.id",
+            'params' => [
+                'gmmax' => QUIZ_GRADEHIGHEST,
+                'gmavg' => QUIZ_GRADEAVERAGE,
+            ],
+        ],
     );
 
-    foreach ($queries as $moduletype => $query) {
-        $results = $DB->get_records_sql($query, $params);
-        foreach ($results as $mapping => $obj) {
-            $submissions[] = $mapping;
+    foreach ($queries as $spec) {
+        $results = $DB->get_records_sql($spec['query'], $params + $spec['params']);
+        foreach ($results as $id => $obj) {
+            $submissions[$id] = $obj;
         }
     }
+
+    ksort($submissions);
 
     return $submissions;
 }
@@ -178,9 +274,9 @@ function block_completion_progress_modules_with_alternate_links() {
 /**
  * Returns the activities with completion set in current course
  *
- * @param int    courseid   ID of the course
- * @param int    config     The block instance configuration
- * @param string forceorder An override for the course order setting
+ * @param int    $courseid   ID of the course
+ * @param int    $config     The block instance configuration
+ * @param string $forceorder An override for the course order setting
  * @return array Activities with completion settings in the course
  */
 function block_completion_progress_get_activities($courseid, $config = null, $forceorder = null) {
@@ -189,7 +285,7 @@ function block_completion_progress_get_activities($courseid, $config = null, $fo
     $activities = array();
     foreach ($modinfo->instances as $module => $instances) {
         $modulename = get_string('pluginname', $module);
-        foreach ($instances as $index => $cm) {
+        foreach ($instances as $cm) {
             if (
                 $cm->completion != COMPLETION_TRACKING_NONE && (
                     $config == null || (
@@ -280,7 +376,7 @@ function block_completion_progress_filter_visibility($activities, $userid, $cour
     $coursecontext = CONTEXT_COURSE::instance($courseid);
 
     // Keep only activities that are visible.
-    foreach ($activities as $index => $activity) {
+    foreach ($activities as $activity) {
 
         $coursemodule = $modinfo->cms[$activity['id']];
 
@@ -301,17 +397,6 @@ function block_completion_progress_filter_visibility($activities, $userid, $cour
             }
         }
 
-        // Check visibility by grouping constraints (includes capability check).
-        if (!empty($CFG->enablegroupmembersonly)) {
-            if (isset($coursemodule->uservisible)) {
-                if ($coursemodule->uservisible != 1 && empty($coursemodule->availableinfo)) {
-                    continue;
-                }
-            } else if (!groups_course_module_visible($coursemodule, $userid)) {
-                continue;
-            }
-        }
-
         // Check for exclusions.
         if (in_array($activity['type'].'-'.$activity['instance'].'-'.$userid, $exclusions)) {
             continue;
@@ -329,43 +414,26 @@ function block_completion_progress_filter_visibility($activities, $userid, $cour
  * @param array $activities  The activities with completion in the course
  * @param int   $userid      The user's id
  * @param int   $course      The course instance
- * @param array $submissions Submissions by the user
+ * @param array $submissions Submissions information, keyed by 'userid-cmid'
  * @return array   an describing the user's attempts based on module+instance identifiers
  */
 function block_completion_progress_completions($activities, $userid, $course, $submissions) {
-   global $DB;
     $completions = array();
-    $completion = new completion_info($course);
+    $completioninfo = new completion_info($course);
     $cm = new stdClass();
 
     foreach ($activities as $activity) {
         $cm->id = $activity['id'];
-        $activitycompletion = $completion->get_data($cm, true, $userid);
-     
-        $completions[$activity['id']] = $activitycompletion->completionstate;
-         
-       
-       
-        if ($completions[$activity['id']] == COMPLETION_INCOMPLETE && in_array($activity['id'], $submissions)) {
-          
-            if ($cm = get_coursemodule_from_id('quiz', $activity['id'])) {
-                $SQL = "SELECT * FROM {quiz_attempts} where quiz=:quizid and userid=:userid  order by attempt desc limit 0,1";
-                $attempt = $DB->get_record_sql($SQL, array('quizid' => $cm->instance, 'userid' => $userid));
+        $completion = $completioninfo->get_data($cm, true, $userid);
+        $submission = $submissions[$userid . '-' . $cm->id] ?? null;
 
-                if ($attempt) {
-                    if ($attempt->state == 'inprogress') {
-                        $completions[$activity['id']] = 'inprogress';
-                    } else if ($attempt->state == 'finished') {
-                        if ($attempt->sumgrades == NULL) {
-                            $completions[$activity['id']] = 'submitted';
-                        } else {
-                            $completions[$activity['id']] = 3;
-                        }
-                    }
-                }
-            } else {
-                $completions[$activity['id']] = 'submitted';
-            }
+        if ($completion->completionstate == COMPLETION_INCOMPLETE && $submission) {
+            $completions[$cm->id] = 'submitted';
+        } else if ($completion->completionstate == COMPLETION_COMPLETE_FAIL && $submission
+                && !$submission->graded) {
+            $completions[$cm->id] = 'submitted';
+        } else {
+            $completions[$cm->id] = $completion->completionstate;
         }
     }
 
@@ -380,7 +448,7 @@ function block_completion_progress_completions($activities, $userid, $course, $s
  * @param stdClass $config      The blocks instance configuration settings
  * @param int      $userid      The user's id
  * @param int      $courseid    The course id
- * @param int      instance     The block instance (to identify it on page)
+ * @param int      $instance    The block instance (to identify it on page)
  * @param bool     $simple      Controls whether instructions are shown below a progress bar
  * @return string  Progress Bar HTML content
  */
@@ -393,19 +461,6 @@ function block_completion_progress_bar($activities, $completions, $config, $user
     $dateformat = get_string('strftimedate', 'langconfig');
     $alternatelinks = block_completion_progress_modules_with_alternate_links();
 
-    // Get colours and use defaults if they are not set in global settings.
-    $colournames = array(
-        'completed_colour' => 'completed_colour',
-        'submittednotcomplete_colour' => 'submittednotcomplete_colour',
-        'notCompleted_colour' => 'notCompleted_colour',
-        'futureNotCompleted_colour' => 'futureNotCompleted_colour',
-        'inProgress_colour' => 'inProgress_colour'
-    );
-    $colours = array();
-    foreach ($colournames as $name => $stringkey) {
-        $colours[$name] = get_config('block_completion_progress', $name) ?: get_string('block_completion_progress', $stringkey);
-    }
-
     // Get relevant block instance settings or use defaults.
     if (get_config('block_completion_progress', 'forceiconsinbar') !== "1") {
         $useicons = isset($config->progressBarIcons) ? $config->progressBarIcons : DEFAULT_COMPLETIONPROGRESS_PROGRESSBARICONS;
@@ -417,16 +472,17 @@ function block_completion_progress_bar($activities, $completions, $config, $user
     $longbars = isset($config->longbars) ? $config->longbars : $defaultlongbars;
     $displaynow = $orderby == 'orderbytime';
     $showpercentage = isset($config->showpercentage) ? $config->showpercentage : DEFAULT_COMPLETIONPROGRESS_SHOWPERCENTAGE;
-    $rowoptions = array();
-    $rowoptions['style'] = '';
-    $content .= HTML_WRITER::start_div('barContainer');
+    $rowoptions = array('style' => '');
+    $cellsoptions = array('style' => '');
+    $barclasses = array('barRow');
+    $content .= html_writer::start_div('barContainer', ['data-instanceid' => $instance]);
 
     // Determine the segment width.
     $wrapafter = get_config('block_completion_progress', 'wrapafter') ?: DEFAULT_COMPLETIONPROGRESS_WRAPAFTER;
     if ($wrapafter <= 1) {
         $wrapafter = 1;
     }
-    if ($numactivities <= $wrapafter) {
+    if ($longbars == 'wrap' && $numactivities <= $wrapafter) {
         $longbars = 'squeeze';
     }
     if ($longbars == 'wrap') {
@@ -434,37 +490,30 @@ function block_completion_progress_bar($activities, $completions, $config, $user
         if ($rows <= 1) {
             $rows = 1;
         }
-        $cellwidth = floor(100 / ceil($numactivities / $rows));
-        $cellunit = '%';
-        $celldisplay = 'inline-block';
+        $cellsoptions['style'] = 'flex-basis: calc(100% / ' . ceil($numactivities / $rows) . ');';
         $displaynow = false;
     }
     if ($longbars == 'scroll') {
-        $cellwidth = DEFAULT_COMPLETIONPROGRESS_SCROLLCELLWIDTH;
-        $cellunit = 'px';
-        $celldisplay = 'inline-block';
-        $rowoptions['style'] .= 'white-space: nowrap;';
         $leftpoly = HTML_WRITER::tag('polygon', '', array('points' => '30,0 0,15 30,30', 'class' => 'triangle-polygon'));
         $rightpoly = HTML_WRITER::tag('polygon', '', array('points' => '0,0 30,15 0,30', 'class' => 'triangle-polygon'));
         $content .= HTML_WRITER::tag('svg', $leftpoly, array('class' => 'left-arrow-svg', 'height' => '30', 'width' => '30'));
         $content .= HTML_WRITER::tag('svg', $rightpoly, array('class' => 'right-arrow-svg', 'height' => '30', 'width' => '30'));
     }
-    if ($longbars == 'squeeze') {
-        $cellwidth = $numactivities > 0 ? floor(100 / $numactivities) : 1;
-        $cellunit = '%';
-        $celldisplay = 'table-cell';
+    $barclasses[] = 'barMode' . ucfirst($longbars);
+    if ($useicons) {
+        $barclasses[] = 'barWithIcons';
     }
 
     // Determine where to put the NOW indicator.
     $nowpos = -1;
     if ($orderby == 'orderbytime' && $longbars != 'wrap' && $displaynow == 1 && !$simple) {
+        $barclasses[] = 'barWithNow';
 
         // Find where to put now arrow.
         $nowpos = 0;
         while ($nowpos < $numactivities && $now > $activities[$nowpos]['expected'] && $activities[$nowpos]['expected'] != 0) {
             $nowpos++;
         }
-        $rowoptions['style'] .= 'margin-top: 25px;';
         $nowstring = get_string('now_indicator', 'block_completion_progress');
         $leftarrowimg = $OUTPUT->pix_icon('left', $nowstring, 'block_completion_progress', array('class' => 'nowicon'));
         $rightarrowimg = $OUTPUT->pix_icon('right', $nowstring, 'block_completion_progress', array('class' => 'nowicon'));
@@ -491,53 +540,40 @@ function block_completion_progress_bar($activities, $completions, $config, $user
     }
 
     // Start progress bar.
-    $content .= HTML_WRITER::start_div('barRow', $rowoptions);
+    $content .= html_writer::start_div(implode(' ', $barclasses), $rowoptions);
+    $content .= html_writer::start_div('barRowCells', $cellsoptions);
     $counter = 1;
     foreach ($activities as $activity) {
         $complete = $completions[$activity['id']];
 
         // A cell in the progress bar.
-        $showinfojs = 'M.block_completion_progress.showInfo('.$instance.','.$userid.','.$activity['id'].');';
+        $cellcontent = '';
         $celloptions = array(
             'class' => 'progressBarCell',
-            'ontouchstart' => $showinfojs . ' return false;',
-            'onmouseover' => $showinfojs,
-             'style' => 'display:' . $celldisplay .'; width:' . $cellwidth . $cellunit . ';background-color:');
+            'data-info-ref' => 'progressBarInfo'.$instance.'-'.$userid.'-'.$activity['id'],
+        );
         if ($complete === 'submitted') {
-            $celloptions['style'] .= $colours['submittednotcomplete_colour'].';';
-            $cellcontent = $OUTPUT->pix_icon('blank', '', 'block_completion_progress');
+            $celloptions['class'] .= ' submittedNotComplete';
 
         } else if ($complete == COMPLETION_COMPLETE || $complete == COMPLETION_COMPLETE_PASS) {
-            $celloptions['style'] .= $colours['completed_colour'].';';
-            $cellcontent = $OUTPUT->pix_icon($useicons == 1 ? 'tick' : 'blank', '', 'block_completion_progress');
+            $celloptions['class'] .= ' completed';
 
         } else if (
             $complete == COMPLETION_COMPLETE_FAIL ||
             (!isset($config->orderby) || $config->orderby == 'orderbytime') &&
             (isset($activity['expected']) && $activity['expected'] > 0 && $activity['expected'] < $now)
         ) {
-            $celloptions['style'] .= $colours['notCompleted_colour'].';';
-            $cellcontent = $OUTPUT->pix_icon($useicons == 1 ? 'cross' : 'blank', '', 'block_completion_progress');
+            $celloptions['class'] .= ' notCompleted';
 
-        }else if ($complete === 'inprogress') {
-            $celloptions['style'] .= $colours['inProgress_colour'] . ';';
-            $cellcontent = $OUTPUT->pix_icon($useicons == 1 ? 'cross' : 'blank', '', 'block_completion_progress');
         } else {
-            $celloptions['style'] .= $colours['futureNotCompleted_colour'].';';
-            $cellcontent = $OUTPUT->pix_icon('blank', '', 'block_completion_progress');
+            $celloptions['class'] .= ' futureNotCompleted';
         }
         if (empty($activity['link'])) {
-            $celloptions['style'] .= 'cursor: unset;';
+            $celloptions['data-haslink'] = 'false';
         } else if (!empty($activity['available']) || $simple) {
-            $celloptions['onclick'] = 'document.location=\''.$activity['link'].'\';';
+            $celloptions['data-haslink'] = 'true';
         } else if (!empty($activity['link'])) {
-            $celloptions['style'] .= 'cursor: not-allowed;';
-        }
-        if ($longbars != 'wrap' && $counter == 1) {
-            $celloptions['class'] .= ' firstProgressBarCell';
-        }
-        if ($longbars != 'wrap' && $counter == $numactivities) {
-            $celloptions['class'] .= ' lastProgressBarCell';
+            $celloptions['data-haslink'] = 'not-allowed';
         }
 
         // Place the NOW indicator.
@@ -561,6 +597,7 @@ function block_completion_progress_bar($activities, $completions, $config, $user
     }
     $content .= HTML_WRITER::end_div();
     $content .= HTML_WRITER::end_div();
+    $content .= HTML_WRITER::end_div();
 
     // Add the percentage below the progress bar.
     if ($showpercentage == 1 && !$simple) {
@@ -578,8 +615,7 @@ function block_completion_progress_bar($activities, $completions, $config, $user
         $content .= get_string('mouse_over_prompt', 'block_completion_progress');
         $content .= ' ';
         $attributes = array (
-            'class' => 'accesshide',
-            'onclick' => 'M.block_completion_progress.showAll('.$instance.','.$userid.')'
+            'class' => 'accesshide progressShowAllInfo',
         );
         $content .= HTML_WRITER::link('#', get_string('showallinfo', 'block_completion_progress'), $attributes);
     }
@@ -593,7 +629,6 @@ function block_completion_progress_bar($activities, $completions, $config, $user
     $stringsubmitted = get_string('submitted', 'block_completion_progress');
     foreach ($activities as $activity) {
         $completed = $completions[$activity['id']];
-         
         $divoptions = array('class' => 'progressEventInfo',
                             'id' => 'progressBarInfo'.$instance.'-'.$userid.'-'.$activity['id'],
                             'style' => 'display: none;');
@@ -604,7 +639,7 @@ function block_completion_progress_bar($activities, $completions, $config, $user
                 array('src' => $activity['icon'], 'class' => 'moduleIcon', 'alt' => '', 'role' => 'presentation'));
         $text .= s(format_string($activity['name']));
         if (!empty($activity['link']) && (!empty($activity['available']) || $simple)) {
-            $content .= $OUTPUT->action_link($activity['link'], $text);
+            $content .= $OUTPUT->action_link($activity['link'], $text, null, ['class' => 'action_link']);
         } else {
             $content .= $text;
         }
@@ -619,15 +654,10 @@ function block_completion_progress_bar($activities, $completions, $config, $user
             $icon = 'tick';
             $altattribute = $stringpassed;
         } else if ($completed == COMPLETION_COMPLETE_FAIL) {
-            $content .= 'Re-attempt'.'&nbsp;';
+            $content .= $stringfailed.'&nbsp;';
             $icon = 'cross';
-            $altattribute = 'Re-attempt';
-        }else if ($completed === 'inprogress') {
-    
-            $content .=  'In-Progress &nbsp;';
-            $icon = 'cross';
-            $altattribute = 'In-Progress';
-        }  else {
+            $altattribute = $stringfailed;
+        } else {
             $content .= $stringincomplete .'&nbsp;';
             $icon = 'cross';
             $altattribute = $stringincomplete;
@@ -636,7 +666,6 @@ function block_completion_progress_bar($activities, $completions, $config, $user
                 $altattribute .= '(' . $stringsubmitted . ')';
             }
         }
-       
         $content .= $OUTPUT->pix_icon($icon, $altattribute, 'block_completion_progress', array('class' => 'iconInInfo'));
         $content .= HTML_WRITER::empty_tag('br');
         if ($activity['expected'] != 0) {
@@ -676,23 +705,31 @@ function block_completion_progress_percentage($activities, $completions) {
 }
 
 /**
- * Checks whether the current page is the My home page.
+ * Checks whether the given page is the Dashboard or Site home page.
  *
- * @return bool True when on the My home page.
+ * @param moodle_page $page the page to check, or the current page if not passed.
+ * @return boolean True when on the Dashboard or Site home page.
  */
-function block_completion_progress_on_site_page() {
-    global $SCRIPT, $COURSE;
+function block_completion_progress_on_site_page($page = null) {
+    global $PAGE;
 
-    return $SCRIPT === '/my/index.php' || $COURSE->id == 1;
+    $page = $page ?? $PAGE;
+    if (empty($page)) {
+        return false;   // Might be an asynchronous course copy.
+    }
+
+    $pagetypepatterns = matching_page_type_patterns_from_pattern($page->pagetype);
+    return in_array('my-*', $pagetypepatterns) || in_array('site-*', $pagetypepatterns);
 }
 
 /**
  * Finds gradebook exclusions for students in a course
  *
  * @param int $courseid The ID of the course containing grade items
+ * @param int $userid   The ID of the user whos grade items are being retrieved
  * @return array of exclusions as activity-user pairs
  */
-function block_completion_progress_exclusions ($courseid) {
+function block_completion_progress_exclusions ($courseid, $userid = null) {
     global $DB;
 
     $query = "SELECT g.id, ". $DB->sql_concat('i.itemmodule', "'-'", 'i.iteminstance', "'-'", 'g.userid') ." as exclusion
@@ -700,10 +737,15 @@ function block_completion_progress_exclusions ($courseid) {
               WHERE i.courseid = :courseid
                 AND i.id = g.itemid
                 AND g.excluded <> 0";
-    $params = array ('courseid' => $courseid);
+
+    $params = array('courseid' => $courseid);
+    if (!is_null($userid)) {
+        $query .= " AND g.userid = :userid";
+        $params['userid'] = $userid;
+    }
     $results = $DB->get_records_sql($query, $params);
     $exclusions = array();
-    foreach ($results as $key => $value) {
+    foreach ($results as $value) {
         $exclusions[] = $value->exclusion;
     }
     return $exclusions;
@@ -714,6 +756,7 @@ function block_completion_progress_exclusions ($courseid) {
  *
  * @param string $group    The group or grouping identifier starting with 'group-' or 'grouping-'
  * @param int    $courseid The ID of the course containing the block instance
+ * @param int    $userid   The ID of the user
  * @return boolean value indicating membership
  */
 function block_completion_progress_group_membership ($group, $courseid, $userid) {
@@ -726,53 +769,4 @@ function block_completion_progress_group_membership ($group, $courseid, $userid)
     }
 
     return false;
-}
-
-function block_completion_progress_pie_chart_data($completions) {
-    $result = array();
-    $complete = 0;
-    $inprogress = 0;
-    $submitted = 0;
-    $incomplete = 0;
-    $reattempt = 0;
-
-    foreach ($completions as $completion) {
-
-        if ('submitted' === $completion) {
-            $submitted++;
-        } else if ('inprogress' === $completion) {
-            $inprogress++;
-        
-        }else if (COMPLETION_COMPLETE === intval($completion) || COMPLETION_COMPLETE_PASS === intval($completion)) {
-            $complete++;
-        } else if (COMPLETION_INCOMPLETE == $completion) {
-          
-            $incomplete++;
-        } else if (COMPLETION_COMPLETE_FAIL == $completion) {
-            $reattempt++;
-        }
-    }
-    $result['data'] = array('Activities' => 'Completion Progress', 'Completed' => $complete, 'Not Completed' => $incomplete, 'Submitted' => $submitted, 'In Progress' => $inprogress, 'Re-attempt' => $reattempt);
- 
-    $colournames = array();
-     $colournames['completed_colour'] =  'completed_colour'; 
-      $colournames['futureNotCompleted_colour'] =  'futureNotCompleted_colour';  
-       $colournames['submittednotcomplete_colour'] =  'submittednotcomplete_colour';
-   
-      $colournames['inProgress_colour'] =  'inProgress_colour';   
-  
-      $colournames['notCompleted_colour'] =  'notCompleted_colour';   
-    
-    
-    
-    
-    $colours = array();
-    foreach ($colournames as $name => $stringkey) {
-        $colour = get_config('block_completion_progress', $name) ?: get_string('block_completion_progress', $stringkey);
-        $colours[] = array('color' => $colour);
-    }
-    $result['color'] = $colours;
- 
-  
-    return $result;
 }

@@ -3836,3 +3836,5 @@
 [09-Nov-2021 06:21:04 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
 [09-Nov-2021 06:21:27 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
 [09-Nov-2021 09:00:29 UTC] PHP Warning:  Module 'imagick' already loaded in Unknown on line 0
+[30-Nov-2021 11:29:46 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/questionnaire/classes/question/question.php on line 975
+[30-Nov-2021 11:29:54 Australia/Darwin] PHP Notice:  Trying to access array offset on value of type null in /home/customer/www/electricalcourses.net.au/public_html/mod/questionnaire/classes/question/question.php on line 975

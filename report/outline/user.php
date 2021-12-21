@@ -127,18 +127,19 @@ foreach ($sections as $i => $section) {
                     if (empty($mod->uservisible)) {
                         continue;
                     }
-
-                    $instance = $DB->get_record("$mod->modname", array("id"=>$mod->instance));
-                    $libfile = "$CFG->dirroot/mod/$mod->modname/lib.php";
+                    
+                        $instance = $DB->get_record("$mod->modname", array("id"=>$mod->instance));
+                        $libfile = "$CFG->dirroot/mod/$mod->modname/lib.php";
 
                     if (file_exists($libfile)) {
                         require_once($libfile);
-
+                    //to filter the required items in outline reports - Shubham 25/11/2021
+                    if(!($mod->modname == "page" || $mod->modname == "file" || $mod->modname == "label" || $mod->modname == "folder" || $mod->modname == "book" || $mod->modname == "resource" || $mod->modname == "structlabel" || $mod->modname == "labelcollapsed")){
                         switch ($mode) {
                             case "outline":
                                 $user_outline = $mod->modname."_user_outline";
                                 if (function_exists($user_outline)) {
-                                    $output = $user_outline($course, $user, $mod, $instance);
+                                   $output = $user_outline($course, $user, $mod, $instance);
                                 } else {
                                     $output = report_outline_user_outline($user->id, $cmid, $mod->modname, $instance->id);
                                 }
@@ -158,7 +159,7 @@ foreach ($sections as $i => $section) {
                                 if (function_exists($user_complete)) {
                                     $user_complete($course, $user, $mod, $instance);
                                 } else {
-                                    echo report_outline_user_complete($user->id, $cmid, $mod->modname, $instance->id);
+                                   echo report_outline_user_complete($user->id, $cmid, $mod->modname, $instance->id);
                                 }
                                 echo "</ul>";
 
@@ -196,6 +197,7 @@ foreach ($sections as $i => $section) {
                                 break;
                             }
                         }
+                    }
                     }
 
                 if ($mode == "outline") {

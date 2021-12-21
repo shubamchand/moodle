@@ -104,3 +104,6 @@ col-md-6 {
 	display:inline;
 }
 
+body { font-weight: normal !important;}
+
+b, strong { font-weight: bold !important;}

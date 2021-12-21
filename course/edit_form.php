@@ -289,6 +289,11 @@ class course_edit_form extends moodleform {
             $mform->addElement('selectyesno', 'enablecompletion', get_string('enablecompletion', 'completion'));
             $mform->setDefault('enablecompletion', $courseconfig->enablecompletion);
             $mform->addHelpButton('enablecompletion', 'enablecompletion', 'completion');
+            
+            /* added by nirmal for disabling notification on course */
+            $mform->addElement('selectyesno', 'completionnotify', get_string('completionnotify', 'completion'));
+            $mform->setDefault('completionnotify', $courseconfig->completionnotify);
+            $mform->addHelpButton('completionnotify', 'completionnotify_help', 'completion');
         } else {
             $mform->addElement('hidden', 'enablecompletion');
             $mform->setType('enablecompletion', PARAM_INT);

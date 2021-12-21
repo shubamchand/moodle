@@ -13133,3 +13133,337 @@ Error code: generalexceptionmessage
 [22-Oct-2021 15:48:21 Australia/Darwin] Potential coding error - existing temptables found when disposing database. Must be dropped!
 [22-Oct-2021 16:03:42 Australia/Darwin] Exception ignored in shutdown function Closure::__invoke: Error writing to database
 [22-Oct-2021 16:03:42 Australia/Darwin] Potential coding error - existing temptables found when disposing database. Must be dropped!
+[23-Nov-2021 10:10:10 Australia/Darwin] PHP Warning:  file_get_contents(/home/customer/www/electricalcourses.net.au/moodledata/localcache/b9ac17b6-f028-439b-ab03-f2736792533c/196db7de-89ea-4622-949c-57fc4b592655/h5p-619c386ac4f0a/H5P.AdvancedText-1.1/library.json): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/lib/h5p/h5p.classes.php on line 1447
+[23-Nov-2021 10:10:10 Australia/Darwin] PHP Notice:  cURL request for "https://api.h5p.org/v1/content-types/H5P.ArithmeticQuiz" failed with: getaddrinfo() thread failed to start
+ (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 1205 of /lib/filestorage/file_storage.php: call to download_file_content()
+* line 238 of /h5p/classes/core.php: call to file_storage->create_file_from_url()
+* line 197 of /h5p/classes/core.php: call to core_h5p\core->fetch_content_type()
+* line 55 of /lib/classes/task/h5p_get_content_types_task.php: call to core_h5p\core->fetch_latest_content_types()
+* line 201 of /lib/cronlib.php: call to core\task\h5p_get_content_types_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[23-Nov-2021 10:10:10 Australia/Darwin] PHP Notice:  cURL request for "https://download.moodle.org/langpack/3.8/languages.md5" failed with: Could not resolve host: download.moodle.org (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 708 of /lib/componentlib.class.php: call to download_file_content()
+* line 59 of /admin/tool/langimport/classes/controller.php: call to lang_installer->get_remote_list_of_languages()
+* line 56 of /admin/tool/langimport/classes/task/update_langpacks_task.php: call to tool_langimport\controller->__construct()
+* line 201 of /lib/cronlib.php: call to tool_langimport\task\update_langpacks_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[23-Nov-2021 10:10:10 Australia/Darwin] PHP Notice:  cURL request for "https://download.moodle.org/langpack/3.8/languages.md5" failed with: Could not resolve host: download.moodle.org (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 708 of /lib/componentlib.class.php: call to download_file_content()
+* line 144 of /admin/tool/langimport/classes/controller.php: call to lang_installer->get_remote_list_of_languages()
+* line 57 of /admin/tool/langimport/classes/task/update_langpacks_task.php: call to tool_langimport\controller->update_all_installed_languages()
+* line 201 of /lib/cronlib.php: call to tool_langimport\task\update_langpacks_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[23-Nov-2021 14:20:02 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.* line 6003 of /lib/moodlelib.php: call to debugging()
+* line 340 of /theme/ausinet/locallib.php: call to email_to_user()
+* line 322 of /theme/ausinet/locallib.php: call to course_completion_setup->send_email_trainers()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completi in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[24-Nov-2021 10:15:11 Australia/Darwin] PHP Warning:  file_get_contents(/home/customer/www/electricalcourses.net.au/moodledata/localcache/1aea4a2f-4210-48e9-a26e-b9eee0deff78/020bb137-1e48-401f-be09-9dfc7754d28b/h5p-619d8b1773cca/H5P.AdvancedText-1.1/library.json): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/lib/h5p/h5p.classes.php on line 1447
+[24-Nov-2021 10:15:11 Australia/Darwin] PHP Notice:  cURL request for "https://api.h5p.org/v1/content-types/H5P.ArithmeticQuiz" failed with: getaddrinfo() thread failed to start
+ (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 1205 of /lib/filestorage/file_storage.php: call to download_file_content()
+* line 238 of /h5p/classes/core.php: call to file_storage->create_file_from_url()
+* line 197 of /h5p/classes/core.php: call to core_h5p\core->fetch_content_type()
+* line 55 of /lib/classes/task/h5p_get_content_types_task.php: call to core_h5p\core->fetch_latest_content_types()
+* line 201 of /lib/cronlib.php: call to core\task\h5p_get_content_types_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[25-Nov-2021 13:35:13 Australia/Darwin] PHP Warning:  file_get_contents(/home/customer/www/electricalcourses.net.au/moodledata/localcache/e5704bb9-5798-46f8-9c0d-6bfa2dbf9814/89c29e56-999d-4fa5-a31e-ac2d7dba88d6/h5p-619f0b791e656/H5P.AdvancedText-1.1/library.json): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/lib/h5p/h5p.classes.php on line 1447
+[25-Nov-2021 13:35:13 Australia/Darwin] PHP Notice:  cURL request for "https://api.h5p.org/v1/content-types/H5P.ArithmeticQuiz" failed with: getaddrinfo() thread failed to start
+ (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 1205 of /lib/filestorage/file_storage.php: call to download_file_content()
+* line 238 of /h5p/classes/core.php: call to file_storage->create_file_from_url()
+* line 197 of /h5p/classes/core.php: call to core_h5p\core->fetch_content_type()
+* line 55 of /lib/classes/task/h5p_get_content_types_task.php: call to core_h5p\core->fetch_latest_content_types()
+* line 201 of /lib/cronlib.php: call to core\task\h5p_get_content_types_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[25-Nov-2021 13:35:13 Australia/Darwin] PHP Notice:  cURL request for "https://download.moodle.org/langpack/3.8/languages.md5" failed with: Could not resolve host: download.moodle.org (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 708 of /lib/componentlib.class.php: call to download_file_content()
+* line 59 of /admin/tool/langimport/classes/controller.php: call to lang_installer->get_remote_list_of_languages()
+* line 56 of /admin/tool/langimport/classes/task/update_langpacks_task.php: call to tool_langimport\controller->__construct()
+* line 201 of /lib/cronlib.php: call to tool_langimport\task\update_langpacks_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[25-Nov-2021 13:35:13 Australia/Darwin] PHP Notice:  cURL request for "https://download.moodle.org/langpack/3.8/languages.md5" failed with: Could not resolve host: download.moodle.org (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 708 of /lib/componentlib.class.php: call to download_file_content()
+* line 144 of /admin/tool/langimport/classes/controller.php: call to lang_installer->get_remote_list_of_languages()
+* line 57 of /admin/tool/langimport/classes/task/update_langpacks_task.php: call to tool_langimport\controller->update_all_installed_languages()
+* line 201 of /lib/cronlib.php: call to tool_langimport\task\update_langpacks_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[25-Nov-2021 21:45:02 Australia/Darwin] PHP Fatal error:  Cannot declare class quiz_reattempt_nav_panel, because the name is already in use in /home/customer/www/electricalcourses.net.au/public_html/mod/quiz/attemptlib.php on line 2858
+[26-Nov-2021 13:40:14 Australia/Darwin] PHP Warning:  file_get_contents(/home/customer/www/electricalcourses.net.au/moodledata/localcache/446a2529-741c-4522-9b6a-2d39a00b4e67/7cc17bb9-4f5d-4b38-82c5-dab0d35a94ac/h5p-61a05e262c87e/H5P.AdvancedText-1.1/library.json): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/lib/h5p/h5p.classes.php on line 1447
+[26-Nov-2021 13:40:14 Australia/Darwin] PHP Notice:  cURL request for "https://api.h5p.org/v1/content-types/H5P.ArithmeticQuiz" failed with: getaddrinfo() thread failed to start
+ (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 1205 of /lib/filestorage/file_storage.php: call to download_file_content()
+* line 238 of /h5p/classes/core.php: call to file_storage->create_file_from_url()
+* line 197 of /h5p/classes/core.php: call to core_h5p\core->fetch_content_type()
+* line 55 of /lib/classes/task/h5p_get_content_types_task.php: call to core_h5p\core->fetch_latest_content_types()
+* line 201 of /lib/cronlib.php: call to core\task\h5p_get_content_types_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[27-Nov-2021 13:45:15 Australia/Darwin] PHP Warning:  file_get_contents(/home/customer/www/electricalcourses.net.au/moodledata/localcache/21537aa5-dfa6-4698-8847-63d98838fffd/53851c9f-6dbd-4382-a43e-c130f0ae0878/h5p-61a1b0d33b0e3/H5P.AdvancedText-1.1/library.json): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/lib/h5p/h5p.classes.php on line 1447
+[27-Nov-2021 13:45:15 Australia/Darwin] PHP Notice:  cURL request for "https://api.h5p.org/v1/content-types/H5P.ArithmeticQuiz" failed with: getaddrinfo() thread failed to start
+ (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 1205 of /lib/filestorage/file_storage.php: call to download_file_content()
+* line 238 of /h5p/classes/core.php: call to file_storage->create_file_from_url()
+* line 197 of /h5p/classes/core.php: call to core_h5p\core->fetch_content_type()
+* line 55 of /lib/classes/task/h5p_get_content_types_task.php: call to core_h5p\core->fetch_latest_content_types()
+* line 201 of /lib/cronlib.php: call to core\task\h5p_get_content_types_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[28-Nov-2021 13:50:13 Australia/Darwin] PHP Warning:  file_get_contents(/home/customer/www/electricalcourses.net.au/moodledata/localcache/00e94b91-4233-4c6f-bca7-c8979aac9599/9c619bd8-83c2-42f6-9907-064b9a42f36f/h5p-61a3037d3c121/H5P.AdvancedText-1.1/library.json): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/lib/h5p/h5p.classes.php on line 1447
+[28-Nov-2021 13:50:13 Australia/Darwin] PHP Notice:  cURL request for "https://api.h5p.org/v1/content-types/H5P.ArithmeticQuiz" failed with: getaddrinfo() thread failed to start
+ (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 1205 of /lib/filestorage/file_storage.php: call to download_file_content()
+* line 238 of /h5p/classes/core.php: call to file_storage->create_file_from_url()
+* line 197 of /h5p/classes/core.php: call to core_h5p\core->fetch_content_type()
+* line 55 of /lib/classes/task/h5p_get_content_types_task.php: call to core_h5p\core->fetch_latest_content_types()
+* line 201 of /lib/cronlib.php: call to core\task\h5p_get_content_types_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[29-Nov-2021 13:55:11 Australia/Darwin] PHP Warning:  file_get_contents(/home/customer/www/electricalcourses.net.au/moodledata/localcache/2be3c3b7-5c7c-4812-b324-9143b14217c0/4b4f37b6-08f4-4573-832f-e22339ef3556/h5p-61a456277f2b6/H5P.AdvancedText-1.1/library.json): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/lib/h5p/h5p.classes.php on line 1447
+[29-Nov-2021 13:55:11 Australia/Darwin] PHP Notice:  cURL request for "https://api.h5p.org/v1/content-types/H5P.ArithmeticQuiz" failed with: getaddrinfo() thread failed to start
+ (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 1205 of /lib/filestorage/file_storage.php: call to download_file_content()
+* line 238 of /h5p/classes/core.php: call to file_storage->create_file_from_url()
+* line 197 of /h5p/classes/core.php: call to core_h5p\core->fetch_content_type()
+* line 55 of /lib/classes/task/h5p_get_content_types_task.php: call to core_h5p\core->fetch_latest_content_types()
+* line 201 of /lib/cronlib.php: call to core\task\h5p_get_content_types_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[30-Nov-2021 03:45:18 Australia/Darwin] PHP Warning:  file_get_contents(/home/customer/www/electricalcourses.net.au/moodledata/localcache/da8892f7-ded8-4fab-a1bb-543da8892914/cccdb71c-549e-498e-a35d-18566348b594/h5p-61a518b5f32ea/H5P.AdvancedText-1.1/library.json): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/lib/h5p/h5p.classes.php on line 1447
+[30-Nov-2021 03:45:18 Australia/Darwin] PHP Notice:  cURL request for "https://api.h5p.org/v1/content-types/H5P.ArithmeticQuiz" failed with: getaddrinfo() thread failed to start
+ (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 1205 of /lib/filestorage/file_storage.php: call to download_file_content()
+* line 238 of /h5p/classes/core.php: call to file_storage->create_file_from_url()
+* line 197 of /h5p/classes/core.php: call to core_h5p\core->fetch_content_type()
+* line 55 of /lib/classes/task/h5p_get_content_types_task.php: call to core_h5p\core->fetch_latest_content_types()
+* line 201 of /lib/cronlib.php: call to core\task\h5p_get_content_types_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[30-Nov-2021 03:45:18 Australia/Darwin] PHP Fatal error:  Cannot declare interface H5PFileStorage, because the name is already in use in /home/customer/www/electricalcourses.net.au/public_html/mod/hvp/library/h5p-file-storage.interface.php on line 10
+[30-Nov-2021 11:20:03 Australia/Darwin] PHP Warning:  File or directory not found: s3://devausinet/a1/0b/a10bacd3c04f94f062f1d6da42953a161042cf9a in /home/customer/www/electricalcourses.net.au/public_html/local/aws/sdk/Aws/S3/StreamWrapper.php on line 746
+[30-Nov-2021 11:20:03 Australia/Darwin] PHP Warning:  Error executing "GetObject" on "https://devausinet.s3.ap-southeast-2.amazonaws.com/a1/0b/a10bacd3c04f94f062f1d6da42953a161042cf9a"; AWS HTTP error: Client error: `GET https://devausinet.s3.ap-southeast-2.amazonaws.com/a1/0b/a10bacd3c04f94f062f1d6da42953a161042cf9a` resulted in a `404 Not Found` response NotFound (client): 404 Not Found (Request-ID: 0K349DZ99Y906TAT) -  in /home/customer/www/electricalcourses.net.au/public_html/local/aws/sdk/Aws/S3/StreamWrapper.php on line 746
+[30-Nov-2021 11:20:03 Australia/Darwin] PHP Warning:  copy(s3://devausinet/a1/0b/a10bacd3c04f94f062f1d6da42953a161042cf9a): failed to open stream: "Aws\S3\StreamWrapper::stream_open" call failed in /home/customer/www/electricalcourses.net.au/public_html/admin/tool/objectfs/classes/local/store/object_file_system.php on line 653
+[01-Dec-2021 03:50:15 Australia/Darwin] PHP Warning:  file_get_contents(/home/customer/www/electricalcourses.net.au/moodledata/localcache/10ed860e-adb6-4a77-8968-15c588cd0912/bef0a058-9278-4017-a884-f1a859c69142/h5p-61a66b5f54b7c/H5P.AdvancedText-1.1/library.json): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/lib/h5p/h5p.classes.php on line 1447
+[01-Dec-2021 03:50:15 Australia/Darwin] PHP Notice:  cURL request for "https://api.h5p.org/v1/content-types/H5P.ArithmeticQuiz" failed with: getaddrinfo() thread failed to start
+ (6)* line 1568 of /lib/filelib.php: call to debugging()
+* line 1205 of /lib/filestorage/file_storage.php: call to download_file_content()
+* line 238 of /h5p/classes/core.php: call to file_storage->create_file_from_url()
+* line 197 of /h5p/classes/core.php: call to core_h5p\core->fetch_content_type()
+* line 55 of /lib/classes/task/h5p_get_content_types_task.php: call to core_h5p\core->fetch_latest_content_types()
+* line 201 of /lib/cronlib.php: call to core\task\h5p_get_content_types_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+ in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[02-Dec-2021 13:00:01 Australia/Darwin] PHP Notice:  Undefined property: stdClass::$subtitle in /home/customer/www/electricalcourses.net.au/public_html/mod/questionnaire/classes/search/activity.php on line 75
+[02-Dec-2021 13:00:01 Australia/Darwin] PHP Notice:  Undefined property: stdClass::$info in /home/customer/www/electricalcourses.net.au/public_html/mod/questionnaire/classes/search/activity.php on line 76
+[06-Dec-2021 14:50:02 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.* line 6003 of /lib/moodlelib.php: call to debugging()
+* line 347 of /theme/ausinet/locallib.php: call to email_to_user()
+* line 322 of /theme/ausinet/locallib.php: call to course_completion_setup->send_email_trainers()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completi in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[06-Dec-2021 15:25:02 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.* line 6003 of /lib/moodlelib.php: call to debugging()
+* line 347 of /theme/ausinet/locallib.php: call to email_to_user()
+* line 322 of /theme/ausinet/locallib.php: call to course_completion_setup->send_email_trainers()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completi in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[06-Dec-2021 15:45:02 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.* line 6003 of /lib/moodlelib.php: call to debugging()
+* line 347 of /theme/ausinet/locallib.php: call to email_to_user()
+* line 322 of /theme/ausinet/locallib.php: call to course_completion_setup->send_email_trainers()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completi in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[06-Dec-2021 15:45:02 Australia/Darwin] PHP Notice:  Undefined variable: CFG in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 355
+[06-Dec-2021 15:45:02 Australia/Darwin] PHP Notice:  Trying to get property 'dirroot' of non-object in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 355
+[06-Dec-2021 15:45:02 Australia/Darwin] PHP Warning:  require_once(/enrol/locallib.php): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 355
+[06-Dec-2021 15:45:02 Australia/Darwin] PHP Fatal error:  require_once(): Failed opening required '/enrol/locallib.php' (include_path='/home/customer/www/electricalcourses.net.au/public_html/lib/pear:.:/usr/local/php73/pear') in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 355
+[06-Dec-2021 15:55:02 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.* line 6003 of /lib/moodlelib.php: call to debugging()
+* line 347 of /theme/ausinet/locallib.php: call to email_to_user()
+* line 322 of /theme/ausinet/locallib.php: call to course_completion_setup->send_email_trainers()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completi in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[06-Dec-2021 15:55:02 Australia/Darwin] PHP Notice:  Undefined variable: CFG in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 355
+[06-Dec-2021 15:55:02 Australia/Darwin] PHP Notice:  Trying to get property 'dirroot' of non-object in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 355
+[06-Dec-2021 15:55:02 Australia/Darwin] PHP Warning:  require_once(/enrol/locallib.php): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 355
+[06-Dec-2021 15:55:02 Australia/Darwin] PHP Fatal error:  require_once(): Failed opening required '/enrol/locallib.php' (include_path='/home/customer/www/electricalcourses.net.au/public_html/lib/pear:.:/usr/local/php73/pear') in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 355
+[06-Dec-2021 16:10:02 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.* line 6003 of /lib/moodlelib.php: call to debugging()
+* line 347 of /theme/ausinet/locallib.php: call to email_to_user()
+* line 322 of /theme/ausinet/locallib.php: call to course_completion_setup->send_email_trainers()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completi in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[06-Dec-2021 16:10:02 Australia/Darwin] PHP Notice:  Undefined variable: CFG in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 355
+[06-Dec-2021 16:10:02 Australia/Darwin] PHP Notice:  Trying to get property 'dirroot' of non-object in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 355
+[06-Dec-2021 16:10:02 Australia/Darwin] PHP Warning:  require_once(/enrol/locallib.php): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 355
+[06-Dec-2021 16:10:02 Australia/Darwin] PHP Fatal error:  require_once(): Failed opening required '/enrol/locallib.php' (include_path='/home/customer/www/electricalcourses.net.au/public_html/lib/pear:.:/usr/local/php73/pear') in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 355
+[07-Dec-2021 10:40:02 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.* line 6003 of /lib/moodlelib.php: call to debugging()
+* line 347 of /theme/ausinet/locallib.php: call to email_to_user()
+* line 322 of /theme/ausinet/locallib.php: call to course_completion_setup->send_email_trainers()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completi in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[07-Dec-2021 10:40:02 Australia/Darwin] PHP Notice:  Undefined variable: CFG in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 356
+[07-Dec-2021 10:40:02 Australia/Darwin] PHP Notice:  Trying to get property 'dirroot' of non-object in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 356
+[07-Dec-2021 10:40:02 Australia/Darwin] PHP Warning:  require_once(/enrol/locallib.php): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 356
+[07-Dec-2021 10:40:02 Australia/Darwin] PHP Fatal error:  require_once(): Failed opening required '/enrol/locallib.php' (include_path='/home/customer/www/electricalcourses.net.au/public_html/lib/pear:.:/usr/local/php73/pear') in /home/customer/www/electricalcourses.net.au/public_html/theme/ausinet/locallib.php on line 356
+[07-Dec-2021 10:55:02 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.* line 6003 of /lib/moodlelib.php: call to debugging()
+* line 347 of /theme/ausinet/locallib.php: call to email_to_user()
+* line 322 of /theme/ausinet/locallib.php: call to course_completion_setup->send_email_trainers()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completi in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[07-Dec-2021 10:55:02 Australia/Darwin] Default exception handler: Exception - Class 'status_field' not found Debug: 
+Error code: generalexceptionmessage
+* line 368 of /theme/ausinet/locallib.php: Error thrown
+* line 324 of /theme/ausinet/locallib.php: call to course_completion_setup->get_user_enrolled_status()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completion_regular_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+
+[07-Dec-2021 11:05:02 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.* line 6003 of /lib/moodlelib.php: call to debugging()
+* line 347 of /theme/ausinet/locallib.php: call to email_to_user()
+* line 322 of /theme/ausinet/locallib.php: call to course_completion_setup->send_email_trainers()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completi in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[07-Dec-2021 11:05:02 Australia/Darwin] Default exception handler: Exception - Class 'course_enrolment_manager' not found Debug: 
+Error code: generalexceptionmessage
+* line 359 of /theme/ausinet/locallib.php: Error thrown
+* line 324 of /theme/ausinet/locallib.php: call to course_completion_setup->get_user_enrolled_status()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completion_regular_task->execute()
+* line 119 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 61 of /admin/cli/cron.php: call to cron_run()
+
+[08-Dec-2021 11:25:02 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.* line 6003 of /lib/moodlelib.php: call to debugging()
+* line 349 of /theme/ausinet/locallib.php: call to email_to_user()
+* line 322 of /theme/ausinet/locallib.php: call to course_completion_setup->send_email_trainers()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completi in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[08-Dec-2021 12:00:03 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.* line 6003 of /lib/moodlelib.php: call to debugging()
+* line 349 of /theme/ausinet/locallib.php: call to email_to_user()
+* line 327 of /theme/ausinet/locallib.php: call to course_completion_setup->send_email_trainers()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completi in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[09-Dec-2021 12:00:03 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.* line 6003 of /lib/moodlelib.php: call to debugging()
+* line 349 of /theme/ausinet/locallib.php: call to email_to_user()
+* line 327 of /theme/ausinet/locallib.php: call to course_completion_setup->send_email_trainers()
+* line 22 of /theme/ausinet/classes/attempt_observer.php: call to course_completion_setup->__construct()
+* line ? of unknownfile: call to theme_ausinet\attempt_observer::course_completed()
+* line 155 of /lib/classes/event/manager.php: call to call_user_func()
+* line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()
+* line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()
+* line 173 of /completion/completion_completion.php: call to core\event\base->trigger()
+* line 173 of /lib/classes/task/completion_regular_task.php: call to completion_completion->mark_complete()
+* line 201 of /lib/cronlib.php: call to core\task\completi in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[14-Dec-2021 22:00:02 Australia/Darwin] PHP Warning:  file_get_contents(/home/customer/www/electricalcourses.net.au/moodledata/localcache/acd0d53a-0be6-45c6-937b-9c838a0eab3f/cc065da9-05b2-4699-82cb-668bf3a6678c/task.log): failed to open stream: No such file or directory in /home/customer/www/electricalcourses.net.au/public_html/lib/classes/task/database_logger.php on line 77
+[16-Dec-2021 02:05:01 UTC] Use of subplugins.php has been deprecated. Please update your '/home/customer/www/electricalcourses.net.au/public_html/local/edwiserform' plugin to provide a subplugins.json file instead.
+[16-Dec-2021 02:10:01 UTC] Use of subplugins.php has been deprecated. Please update your '/home/customer/www/electricalcourses.net.au/public_html/local/edwiserform' plugin to provide a subplugins.json file instead.

@@ -116,7 +116,15 @@ $headtags = $attemptobj->get_html_head_contributions($page);
 $PAGE->requires->js_init_call('M.mod_quiz.init_attempt_form', null, false, quiz_get_js_module());
 
 // Arrange for the navigation to be displayed in the first region on the page.
-$navbc = $attemptobj->get_navigation_panel($output, 'quiz_attempt_nav_panel', $page);
+// updated by nirmal to add previous wrong question or partial wrong question
+// echo $attemptobj->get_quiz()->attemps; exit;
+$last_attempt_data = quiz_get_user_attempts($attemptobj->get_quiz()->id, $USER->id, 'finished', true);
+if(count($last_attempt_data)<1){
+    $navbc = $attemptobj->get_navigation_panel($output, 'quiz_attempt_nav_panel', $page);
+} else {
+    $navbc = $attemptobj->get_navigation_panel($output, 'quiz_reattempt_nav_panel', $page);
+}
+
 $regions = $PAGE->blocks->get_regions();
 $PAGE->blocks->add_fake_block($navbc, reset($regions));
 

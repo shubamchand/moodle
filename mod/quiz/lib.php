@@ -1728,6 +1728,14 @@ function quiz_extend_settings_navigation($settings, $quiznode) {
         $quiznode->add_node($node, $beforekey);
     }
 
+    /* added by nirmal for compliance report */
+    if (has_capability('mod/quiz:manage', $PAGE->cm->context)) {
+        $node = navigation_node::create(get_string('comliancereport', 'quiz'),
+                new moodle_url('/mod/quiz/compliancereport.php', array('id'=>$PAGE->cm->id)),
+                navigation_node::TYPE_SETTING, null, 'mod_quiz_edit');
+        $quiznode->add_node($node, $beforekey);
+    }
+
     if (has_capability('mod/quiz:manage', $PAGE->cm->context)) {
         $node = navigation_node::create(get_string('editquiz', 'quiz'),
                 new moodle_url('/mod/quiz/edit.php', array('cmid'=>$PAGE->cm->id)),

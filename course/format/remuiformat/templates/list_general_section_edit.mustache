@@ -61,11 +61,11 @@
             <div class="page-title mb-15 wdm-generalsectiontitle">{{{generalsectiontitle}}}</div>
             <div class="font-size-14 summary">{{{ generalsectionsummary }}}</div>
         </div>
-        <div class="text-white mb-10 m-b-1 d-flex" style="justify-content: flex-end;">
+        {{! <div class="text-white mb-10 m-b-1 d-flex" style="justify-content: flex-end;"> // hidden as per jabbar 19/12/2021 - Shubham
             {{#teachers}}
-                {{{teacherimg}}}
-            {{/teachers}}
-        </div>
+                {{! {{{teacherimg}}
+            {{! {{/teachers}}
+        {{!</div> }}
         {{#percentage}}
             <div class="progress progress-square mb-0">
                 <div class="progress-bar bg-green-600" style="width: {{{percentage}}}%; height: 100%;" role="progressbar">

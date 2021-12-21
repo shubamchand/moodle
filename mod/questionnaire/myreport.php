@@ -18,6 +18,7 @@
 
 require_once("../../config.php");
 require_once($CFG->dirroot.'/mod/questionnaire/questionnaire.class.php');
+require_once($CFG->libdir . '/completionlib.php');
 
 $instance = required_param('instance', PARAM_INT);   // Questionnaire ID.
 $userid = optional_param('user', $USER->id, PARAM_INT);
@@ -38,6 +39,10 @@ if (! $cm = get_coursemodule_from_instance("questionnaire", $questionnaire->id, 
 
 require_course_login($course, true, $cm);
 $context = context_module::instance($cm->id);
+
+$completion = new completion_info($course); // added by nirmal
+$completion->process_for_observation($USER->id); // added by nirmal
+
 $questionnaire->canviewallgroups = has_capability('moodle/site:accessallgroups', $context);
 // Should never happen, unless called directly by a snoop...
 if ( !has_capability('mod/questionnaire:readownresponses', $context)

@@ -1510,3 +1510,80 @@ $a contents: 800
 [01-Nov-2021 15:00:30 Australia/Darwin] Invalid sequence found in restored multianswer question 5585
 [01-Nov-2021 15:00:30 Australia/Darwin] Invalid sequence found in restored multianswer question 5586
 [01-Nov-2021 15:00:30 Australia/Darwin] Invalid sequence found in restored multianswer question 5587
+[02-Dec-2021 12:39:44 Australia/Darwin] instantiating backup controller a2bf7292fc66601e69ecd0e5128afa5a
+[02-Dec-2021 12:39:44 Australia/Darwin] setting controller status to 100
+[02-Dec-2021 12:39:44 Australia/Darwin] loading controller plan
+[02-Dec-2021 12:39:44 Australia/Darwin] setting controller status to 300
+[02-Dec-2021 12:39:44 Australia/Darwin] applying plan defaults
+[02-Dec-2021 12:39:44 Australia/Darwin] setting controller status to 400
+[02-Dec-2021 12:39:44 Australia/Darwin] setting file inclusion to 
+[02-Dec-2021 12:39:44 Australia/Darwin] checking plan security
+[02-Dec-2021 12:39:44 Australia/Darwin] setting controller status to 500
+[02-Dec-2021 12:39:44 Australia/Darwin] checking plan security
+[02-Dec-2021 12:39:44 Australia/Darwin] checking plan security
+[02-Dec-2021 12:39:44 Australia/Darwin] checking plan security
+[02-Dec-2021 12:39:44 Australia/Darwin] saving controller to db
+[02-Dec-2021 12:39:44 Australia/Darwin] calculating controller checksum 9f29c01e5939300ef3efde076e55ed9d
+[02-Dec-2021 12:39:50 Australia/Darwin] loading controller from db
+[02-Dec-2021 12:39:50 Australia/Darwin] checking plan security
+[02-Dec-2021 12:39:50 Australia/Darwin] checking plan security
+[02-Dec-2021 12:39:50 Australia/Darwin] setting controller status to 700
+[02-Dec-2021 12:39:50 Australia/Darwin] saving controller to db
+[02-Dec-2021 12:39:50 Australia/Darwin] calculating controller checksum 4f7259493b666671859b0e5ecaa7f0bd
+[02-Dec-2021 12:39:50 Australia/Darwin] loading controller from db
+[02-Dec-2021 12:39:50 Australia/Darwin] setting file inclusion to 1
+[02-Dec-2021 12:39:50 Australia/Darwin] setting controller status to 800
+[02-Dec-2021 12:39:50 Australia/Darwin] saving controller to db
+[02-Dec-2021 12:39:50 Australia/Darwin] calculating controller checksum d35fa482270e8d11bc279e494f6562a9
+[02-Dec-2021 12:39:50 Australia/Darwin] loading controller from db
+[02-Dec-2021 12:39:51 Australia/Darwin] setting controller status to 1000
+[02-Dec-2021 12:39:51 Australia/Darwin] saving controller to db
+[02-Dec-2021 12:39:56 Australia/Darwin] The read action 'get_file_handle_for_path' was used on object with path /home/customer/www/electricalcourses.net.au/moodledata/filedir/6a/0e/6a0e9765984ad1d08f34fe4830ddc54b97150137. Time taken was: 1.0013580322266E-5 seconds. The object's size was 11.3KB
+[02-Dec-2021 12:39:56 Australia/Darwin] The read action 'get_file_handle_for_path' was used on object with path /home/customer/www/electricalcourses.net.au/moodledata/filedir/6a/0e/6a0e9765984ad1d08f34fe4830ddc54b97150137. Time taken was: 2.598762512207E-5 seconds. The object's size was 11.3KB
+[02-Dec-2021 12:40:24 Australia/Darwin] instantiating restore controller ccc635d89c19dee778b4ecfa2fe42119
+[02-Dec-2021 12:40:24 Australia/Darwin] setting controller status to 100
+[02-Dec-2021 12:40:24 Australia/Darwin] loading backup info
+[02-Dec-2021 12:40:24 Australia/Darwin] loading controller plan
+[02-Dec-2021 12:40:24 Australia/Darwin] setting controller status to 300
+[02-Dec-2021 12:40:24 Australia/Darwin] applying restore defaults
+[02-Dec-2021 12:40:24 Australia/Darwin] Unknown setting: questionbank
+[02-Dec-2021 12:40:24 Australia/Darwin] setting controller status to 400
+[02-Dec-2021 12:40:24 Australia/Darwin] checking plan security
+[02-Dec-2021 12:40:24 Australia/Darwin] setting controller status to 500
+[02-Dec-2021 12:40:24 Australia/Darwin] checking plan security
+[02-Dec-2021 12:40:24 Australia/Darwin] checking plan security
+[02-Dec-2021 12:40:24 Australia/Darwin] checking plan security
+[02-Dec-2021 12:40:24 Australia/Darwin] saving controller to db
+[02-Dec-2021 12:40:24 Australia/Darwin] calculating controller checksum a11bcaea44cbc4cc26a536dd67bc64d3
+[02-Dec-2021 12:40:29 Australia/Darwin] loading controller from db
+[02-Dec-2021 12:40:29 Australia/Darwin] checking plan security
+[02-Dec-2021 12:40:29 Australia/Darwin] checking plan security
+[02-Dec-2021 12:40:29 Australia/Darwin] checking plan security
+[02-Dec-2021 12:40:29 Australia/Darwin] saving controller to db
+[02-Dec-2021 12:40:29 Australia/Darwin] calculating controller checksum a11bcaea44cbc4cc26a536dd67bc64d3
+[02-Dec-2021 12:40:43 Australia/Darwin] loading controller from db
+[02-Dec-2021 12:40:43 Australia/Darwin] checking plan security
+[02-Dec-2021 12:40:43 Australia/Darwin] checking plan security
+[02-Dec-2021 12:40:43 Australia/Darwin] checking plan security
+[02-Dec-2021 12:40:43 Australia/Darwin] saving controller to db
+[02-Dec-2021 12:40:43 Australia/Darwin] calculating controller checksum 0c76489e7bc8780d36534955eff02e31
+[02-Dec-2021 12:40:46 Australia/Darwin] loading controller from db
+[02-Dec-2021 12:40:46 Australia/Darwin] checking plan security
+[02-Dec-2021 12:40:46 Australia/Darwin] checking plan security
+[02-Dec-2021 12:40:46 Australia/Darwin] setting controller status to 600
+[02-Dec-2021 12:40:46 Australia/Darwin] saving controller to db
+[02-Dec-2021 12:40:46 Australia/Darwin] calculating controller checksum 7fdad953bcdeacb0064f3f8af2894422
+[02-Dec-2021 12:40:46 Australia/Darwin] loading controller from db
+[02-Dec-2021 12:40:46 Australia/Darwin] setting controller status to 700
+[02-Dec-2021 12:40:46 Australia/Darwin] saving controller to db
+[02-Dec-2021 12:40:46 Australia/Darwin] calculating controller checksum 0c0bbc16955496e73d32c5ec14806bc1
+[02-Dec-2021 12:40:46 Australia/Darwin] loading controller from db
+[02-Dec-2021 12:40:46 Australia/Darwin] setting controller status to 800
+[02-Dec-2021 12:40:46 Australia/Darwin] saving controller to db
+[02-Dec-2021 12:40:46 Australia/Darwin] calculating controller checksum 83fc5571741c03b38ffcf34624640e09
+[02-Dec-2021 12:40:46 Australia/Darwin] loading controller from db
+[02-Dec-2021 12:40:46 Australia/Darwin] PHP Notice:  email_to_user: User 2 (Ausinet LMS) email (        support@ausinet.com.au.test-google-a.com) is invalid! Not sending.<ul style="text-align: left" data-rel="backtrace"><li>line 6003 of /lib/moodlelib.php: call to debugging()</li><li>line 102 of /message/output/email/message_output_email.php: call to email_to_user()</li><li>line 513 of /lib/classes/message/manager.php: call to message_output_email->send_message()</li><li>line 386 of /lib/classes/message/manager.php: call to core\message\manager::call_processors()</li><li>line 354 of /lib/classes/message/manager.php: call to core\message\manager::send_message_to_processors()</li><li>line 346 of /lib/messagelib.php: call to core\message\manager::send_message()</li><li>line 157 of /enrol/notificationeabc/lib.php: call to message_send()</li><li>line 184 of /enrol/notificationeabc/classes/observer.php: call to enrol_notificationeabc_plugin->enviarmail()</li><li>line ? of unknownfile: call to enrol_notificationeabc_observer::user_enroled()</li><li>line 155 of /lib/cl in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[02-Dec-2021 12:40:46 Australia/Darwin] PHP Notice:  Error calling message processor email<ul style="text-align: left" data-rel="backtrace"><li>line 514 of /lib/classes/message/manager.php: call to debugging()</li><li>line 386 of /lib/classes/message/manager.php: call to core\message\manager::call_processors()</li><li>line 354 of /lib/classes/message/manager.php: call to core\message\manager::send_message_to_processors()</li><li>line 346 of /lib/messagelib.php: call to core\message\manager::send_message()</li><li>line 157 of /enrol/notificationeabc/lib.php: call to message_send()</li><li>line 184 of /enrol/notificationeabc/classes/observer.php: call to enrol_notificationeabc_plugin->enviarmail()</li><li>line ? of unknownfile: call to enrol_notificationeabc_observer::user_enroled()</li><li>line 155 of /lib/classes/event/manager.php: call to call_user_func()</li><li>line 75 of /lib/classes/event/manager.php: call to core\event\manager::process_buffers()</li><li>line 834 of /lib/classes/event/base.php: call to core\event\manager::dispatch()</li><li>line 2025 of /l in /home/customer/www/electricalcourses.net.au/public_html/lib/weblib.php on line 3241
+[02-Dec-2021 12:40:47 Australia/Darwin] processing file aliases queue
+[02-Dec-2021 12:40:47 Australia/Darwin] setting controller status to 1000
+[02-Dec-2021 12:40:47 Australia/Darwin] saving controller to db

@@ -319,8 +319,17 @@ class course_completion_setup {
 		$this->course = get_course($courseid);
         if($courseid!=16)
         {
-		$this->send_email_trainers();
-		$this->send_email_student();
+			// $this->send_email_trainers();
+			if($this->course->completionnotify==1){ // notifiy only to active user
+				$status = $this->get_user_enrolled_status(); // check enrolment status of user
+				if($status==0){ 
+					$this->send_email_student();
+					$this->send_email_trainers();
+				}
+			} else {
+				$this->send_email_student();
+				$this->send_email_trainers();
+			}
         }
 	}
 
@@ -343,8 +352,42 @@ class course_completion_setup {
 
 	}
 
+	/* added by nirmal */
+	public function get_user_enrolled_status(){
+			global $PAGE, $CFG;
+			require_once($CFG->dirroot . '/enrol/locallib.php');
+			$manager = new course_enrolment_manager($PAGE, $this->course);
+            $userenrolments = $manager->get_user_enrolments($this->user->id);
+			$status = get_string('participationactive', 'enrol');
+			$statusval = '';
+            foreach ($userenrolments as $ue) {
+				$timestart = $ue->timestart;
+                $timeend = $ue->timeend;
+                switch ($ue->status) {
+                    case ENROL_USER_ACTIVE:
+						$statusval = ENROL_USER_ACTIVE;
+                        $currentdate = new DateTime();
+                        $now = $currentdate->getTimestamp();
+                        $isexpired = $timestart > $now || ($timeend > 0 && $timeend < $now);
+                        $enrolmentdisabled = $ue->enrolmentinstance->status == ENROL_INSTANCE_DISABLED;
+                        // If user enrolment status has not yet started/already ended or the enrolment instance is disabled.
+                        if ($isexpired || $enrolmentdisabled) {
+                            // $status = get_string('participationnotcurrent', 'enrol');
+                            $statusval = 2;
+                        }
+                        break;
+                    case ENROL_USER_SUSPENDED:
+                        // $status = get_string('participationsuspended', 'enrol');
+                        $statusval = 1;
+                        break;
+                }
+            }
+			return $statusval;
+	}
+
 	function send_email_student() {
 		global $CFG;
+    
 		// $trainers = $this->get_course_trainers($this->coursecontext);
 
 		$student = html_writer::link($CFG->wwwroot.'/user/profile.php?id='.$this->user->id, fullname($this->user));
@@ -354,7 +397,7 @@ class course_completion_setup {
 		
 			// $userto = \core_user::get_user($userid);
 		if (!empty($this->user)) {
-			email_to_user($this->user, null, $subject, $bodyhtml, $bodyhtml);
+			email_to_user($this->user, null,$subject, $bodyhtml, $bodyhtml);
 		}
 		
 

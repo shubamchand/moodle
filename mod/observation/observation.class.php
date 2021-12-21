@@ -304,6 +304,8 @@ class observation {
                 $completion = new completion_info($this->course);
                 if ($completion->is_enabled($this->cm) && $this->completionsubmit) {
                     $completion->update_state($this->cm, COMPLETION_COMPLETE, $quser);
+                     // observation complete here added by nirmal for observation
+                    $this->updateObservation($this->cm,$quser);
                 }
 
                 // Log this submitted response. Note this removes the anonymity in the logged event.
@@ -324,6 +326,31 @@ class observation {
             }
         }
     }
+
+
+    // added by nirmal for observation
+	public function updateObservation($cm, $userid){
+		global $DB;
+		$check_record = $DB->get_record('course_modules_completion_observation',
+			array(
+				'coursemoduleid' => $cm->id,
+				'userid' => $userid
+			),
+			'*'
+		);
+		if($check_record){
+			$sql = 'UPDATE {course_modules_completion_observation} 
+			SET completionstate = 1
+			WHERE coursemoduleid = ? and userid = ?';
+		
+			$params = array($cm->id,$userid);
+			$result = $DB->execute($sql, $params);
+			return $result;
+		}
+	
+		
+		
+	}
 
     public function delete_insert_response($rid, $sec, $quser) {
         $this->response_delete($rid, $sec);
@@ -1264,15 +1291,16 @@ class observation {
         global $PAGE;
 
         $courseid = $PAGE->course->id;
-
         $coursecontext = \context_course::instance($courseid);
         $enrolusers = get_role_users(5, $coursecontext);
         $users = [];
         foreach ($enrolusers as $enrols) {
-            $users[$enrols->id] = fullname($enrols);
-        }   
+            if (is_enrolled($coursecontext, $enrols, '', true)) { // if condition to check if the users are enrolled and active - Shubham 20/12/2021
+                $users[$enrols->id] = fullname($enrols);
+            }
+        }  
         $studentlist = \html_writer::select($users, 'studentid', null, null, array('required' => "true") );
-        return ['studentlist' => $studentlist ];  //$users;
+        return ['studentlist' => $studentlist ];  //$users; 
     }
 
     private function print_survey_start($message, $section, $numsections, $hasrequired, $rid='', $blankobservation=false) {
