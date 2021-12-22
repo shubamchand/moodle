@@ -102,9 +102,11 @@ function quiz_add_jsparam($PAGE) {
         $userid = $attemptobj->get_userid();
         $user = core_user::get_user($userid);
         $params['studentname'] = fullname($user);
-        $params['startdate'] = date( 'Y-m-d H:i', $attemptobj->get_attempt()->timestart);
+        //$params['startdate'] = date( 'Y-m-d H:i', $attemptobj->get_attempt()->timestart);
+        $params['startdate'] = date( 'Y-m-d H:i');
         $completedate = $attemptobj->get_submitted_date();
-        $params['completiondate'] = ($completedate) ? date( 'Y-m-d H:i', $completedate) : '';
+        //$params['completiondate'] = ($completedate) ? date( 'Y-m-d H:i', $completedate) : '';
+        $params['completiondate'] = date( 'Y-m-d H:i', $completedate);
         $params['date'] = date('Y-m-d', time());
         // $params['trainername'] = 
 
