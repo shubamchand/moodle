@@ -5546,10 +5546,10 @@ i.icon {
         color: var(--white);
     }
 /* Quiz page question text bold*/
-#page-mod-quiz-attempt .que .content .formulation .qtext {
+/* #page-mod-quiz-attempt .que .content .formulation .qtext {
     font-weight: bold;
     font-family: var(--font_3);
-}
+} */
 .que .info {
     width: 100%;
     float: none;
